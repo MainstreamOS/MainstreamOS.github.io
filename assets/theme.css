@@ -1,0 +1,206 @@
+/* ==========================================================================
+   Mainstream OS — shared theme tokens + chrome
+   Single source of truth for every page (index, docs, brand, privacy).
+   Night-first palette from the brand book; the stream gradient is the only
+   color that moves. Pages keep their own layout CSS and consume these tokens.
+   ========================================================================== */
+
+:root {
+  /* palette — night is the source of truth for this site */
+  --abyss:      #0b0d12;
+  --night:      #191a1f;
+  --slate:      #2a2b32;
+  --graphite:   #40434a;
+  --bone:       #c9ccd4;
+  --mist:       #9397a0;
+
+  /* mapped to the brand-book tokens */
+  --paper:      #191a1f;
+  --paper-2:    #212228;
+  --paper-3:    #2a2b32;
+  --paper-4:    #31333b;
+  --ink:        #ece9e3;
+  --ink-bone:   #c9ccd4;
+  --ink-mist:   #9397a0;
+
+  --line:        rgba(240,240,245,.10);
+  --line-strong: rgba(240,240,245,.22);
+
+  /* stream — the only color that moves */
+  --stream-a:    oklch(0.62 0.13 200);
+  --stream-b:    oklch(0.60 0.14 230);
+  --stream-grad: linear-gradient(95deg, var(--stream-a) 0%, var(--stream-b) 100%);
+  --stream-hi:   oklch(0.65 0.14 220);
+
+  /* status */
+  --warn: oklch(0.78 0.14 75);
+  --ok:   oklch(0.72 0.14 155);
+  --err:  oklch(0.66 0.18 25);
+
+  /* radii from brand spec */
+  --r-sm: 8px;
+  --r-md: 14px;
+  --r-lg: 22px;
+  --r-xl: 36px;
+
+  --shadow-1: 0 1px 2px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.25);
+  --shadow-2: 0 1px 2px rgba(0,0,0,.3), 0 20px 60px rgba(0,0,0,.35);
+
+  --font-display: "DM Sans", "Google Sans Flex", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-body:    "DM Sans", "Google Sans Flex", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  color-scheme: dark;
+}
+
+/* light mode — cool neutrals, activated by the docs top-bar toggle */
+html[data-theme="light"] {
+  --abyss:      #e8ebf0;
+  --night:      #f2f4f8;
+  --slate:      #e2e5eb;
+  --graphite:   #cdd2da;
+  --bone:       #3c4250;
+  --mist:       #616a7a;
+
+  --paper:      #f2f4f8;
+  --paper-2:    #fafbfd;
+  --paper-3:    #e8ebf1;
+  --paper-4:    #dfe3ea;
+  --ink:        #171b23;
+  --ink-bone:   #3c4250;
+  --ink-mist:   #616a7a;
+
+  --line:        rgba(20,24,32,.10);
+  --line-strong: rgba(20,24,32,.22);
+
+  --stream-hi:   oklch(0.55 0.14 220);
+}
+
+html[data-theme="light"] .nav {
+  background: rgba(242, 244, 248, 0.82);
+}
+
+::selection { background: oklch(0.60 0.14 230 / .35); color: #fff; }
+
+.container {
+  width: 100%;
+  max-width: 1440px;
+  padding: 0 56px;
+  margin: 0 auto;
+}
+
+.container.narrow { max-width: 980px; }
+
+/* ===== nav (web landing header style from brand sec-08) ===== */
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(25, 26, 31, 0.78);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 0;
+  gap: 48px;
+}
+
+.nav-wordmark {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--ink-bone);
+}
+
+.nav-wordmark .mark {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  flex: none;
+}
+
+.nav-wordmark .word {
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.nav-wordmark .sep,
+.nav-wordmark .page-label {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ink-mist);
+}
+
+.nav-links {
+  display: flex;
+  gap: 28px;
+  flex: 1;
+  justify-content: center;
+}
+
+.nav-links a {
+  color: var(--ink-mist);
+  font-size: 14px;
+  font-weight: 400;
+  transition: color .15s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active { color: var(--ink-bone); }
+
+.nav-actions {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* ===== buttons ===== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  font-size: 14.5px;
+  font-weight: 500;
+  font-family: inherit;
+  border: 1px solid transparent;
+  cursor: pointer;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: transform .15s ease, filter .15s ease, background .15s ease;
+}
+
+.btn.primary {
+  background: var(--ink);
+  color: var(--abyss);
+}
+
+.btn.primary:hover { filter: brightness(.95); }
+
+.btn.ghost {
+  background: transparent;
+  color: var(--ink-bone);
+  border-color: var(--line-strong);
+}
+
+.btn.ghost:hover { background: rgba(240,240,245,.04); }
+
+.btn.stream {
+  background: var(--stream-grad);
+  color: #fff;
+}
+
+.btn.stream:hover { filter: brightness(1.08); }
+
+.btn.small { padding: 9px 16px; font-size: 13px; }
+.btn svg { width: 14px; height: 14px; }

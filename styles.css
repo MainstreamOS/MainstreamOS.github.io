@@ -10,54 +10,15 @@
 
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=JetBrains+Mono:wght@300;400;500&display=swap");
 
-:root {
-  /* palette — night is the source of truth for this site */
-  --abyss:      #0b0d12;
-  --night:      #191a1f;
-  --slate:      #2a2b32;
-  --graphite:   #40434a;
-  --bone:       #c9ccd4;
-  --mist:       #9397a0;
-
-  /* mapped to the brand-book tokens */
-  --paper:      #191a1f;
-  --paper-2:    #212228;
-  --paper-3:    #2a2b32;
-  --ink:        #ece9e3;
-  --ink-bone:   #c9ccd4;
-  --ink-mist:   #9397a0;
-
-  --line:        rgba(240,240,245,.10);
-  --line-strong: rgba(240,240,245,.22);
-
-  /* stream — the only color that moves */
-  --stream-a:    oklch(0.62 0.13 200);
-  --stream-b:    oklch(0.60 0.14 230);
-  --stream-grad: linear-gradient(95deg, var(--stream-a) 0%, var(--stream-b) 100%);
-  --stream-hi:   oklch(0.65 0.14 220);
-
-  /* radii from brand spec */
-  --r-sm: 8px;
-  --r-md: 14px;
-  --r-lg: 22px;
-  --r-xl: 36px;
-
-  --shadow-1: 0 1px 2px rgba(0,0,0,.25), 0 6px 20px rgba(0,0,0,.25);
-  --shadow-2: 0 1px 2px rgba(0,0,0,.3), 0 20px 60px rgba(0,0,0,.35);
-
-  --font-display: "DM Sans", "Google Sans Flex", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-body:    "DM Sans", "Google Sans Flex", -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
-
-  color-scheme: dark;
-}
+/* Tokens, nav chrome, and buttons live in assets/theme.css (shared with the
+   docs page); this file holds the landing-page layout only. */
 
 * { box-sizing: border-box; }
 
 html, body {
   margin: 0;
   padding: 0;
-  background: var(--abyss);
+  background: var(--night);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
@@ -124,122 +85,6 @@ hr {
   border-top: 1px solid var(--line);
   margin: 88px 0;
 }
-
-.container {
-  width: 100%;
-  max-width: 1440px;
-  padding: 0 56px;
-  margin: 0 auto;
-}
-
-.container.narrow { max-width: 980px; }
-
-/* ===== nav (web landing header style from brand sec-08) ===== */
-
-.nav {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: rgba(11, 13, 18, 0.78);
-  border-bottom: 1px solid var(--line);
-}
-
-.nav-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 0;
-  gap: 48px;
-}
-
-.nav-wordmark {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  color: var(--ink-bone);
-}
-
-.nav-wordmark .mark {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  flex: none;
-}
-
-.nav-wordmark .word {
-  font-size: 17px;
-  font-weight: 500;
-  letter-spacing: -0.02em;
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  flex: 1;
-  justify-content: center;
-}
-
-.nav-links a {
-  color: var(--ink-mist);
-  font-size: 14px;
-  font-weight: 400;
-  transition: color .15s ease;
-}
-
-.nav-links a:hover,
-.nav-links a.active { color: var(--ink-bone); }
-
-.nav-actions {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-/* ===== buttons ===== */
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  padding: 13px 22px;
-  border-radius: 999px;
-  font-size: 14.5px;
-  font-weight: 500;
-  font-family: inherit;
-  border: 1px solid transparent;
-  cursor: pointer;
-  letter-spacing: -0.005em;
-  text-decoration: none;
-  white-space: nowrap;
-  transition: transform .15s ease, filter .15s ease, background .15s ease;
-}
-
-.btn.primary {
-  background: var(--ink);
-  color: var(--abyss);
-}
-
-.btn.primary:hover { filter: brightness(.95); }
-
-.btn.ghost {
-  background: transparent;
-  color: var(--ink-bone);
-  border-color: var(--line-strong);
-}
-
-.btn.ghost:hover { background: rgba(240,240,245,.04); }
-
-.btn.stream {
-  background: var(--stream-grad);
-  color: #fff;
-}
-
-.btn.stream:hover { filter: brightness(1.08); }
-
-.btn.small { padding: 9px 16px; font-size: 13px; }
-.btn svg { width: 14px; height: 14px; }
 
 /* ===== corner tickers ===== */
 
@@ -360,11 +205,58 @@ a.card {
 }
 a.card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
 
-/* ===== LANDING HERO (mirrors brand section 08) ===== */
+/* ===== LANDING HERO (mirrors brand section 08) =====
+   Wraps the hero in a card-lg with a fake browser-chrome strip reading
+   `mainstream.os` — the same "this is what the page looks like" framing
+   used in brand.html sec-08. The real sticky nav stays above. */
 
 .landing-hero {
-  padding: 88px 0 32px;
+  padding: 56px 0 32px;
   position: relative;
+  border-top: 0;
+}
+
+.hero-card {
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-2);
+}
+
+.hero-chrome {
+  display: flex;
+  align-items: center;
+  padding: 14px 18px;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  background: var(--paper-3);
+}
+
+.hero-chrome .dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  flex: none;
+}
+.hero-chrome .dot.red   { background: #e06c5b; }
+.hero-chrome .dot.amber { background: #e6b04c; }
+.hero-chrome .dot.green { background: #7fb86b; }
+
+.hero-chrome .url {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-mist);
+  /* pull visual center left so the dots don't bias it right */
+  margin-right: 57px;
+  letter-spacing: .02em;
+}
+
+.hero-body {
+  padding: 40px 56px 64px;
+  background: var(--paper);
 }
 
 .landing-hero-grid {
@@ -436,7 +328,7 @@ a.card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
 
 /* device mockup in hero */
 .device-hero {
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   border-radius: var(--r-lg);
   background: var(--abyss);
   overflow: hidden;
@@ -445,7 +337,7 @@ a.card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
   border: 1px solid var(--line);
 }
 
-.device-hero svg { width: 100%; height: 100%; display: block; }
+.device-hero svg, .device-hero img { width: 100%; height: 100%; display: block; object-fit: cover; }
 
 /* ===== MANIFESTO HERO (mirrors brand section 01) ===== */
 
@@ -839,7 +731,10 @@ a.card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
   .landing-hero-grid,
   .manifesto { grid-template-columns: 1fr; gap: 48px; }
   .manifesto { padding: 48px 32px; }
-  .landing-hero { padding: 48px 0 16px; }
+  .landing-hero { padding: 32px 0 16px; }
+  .hero-body { padding: 32px 24px 40px; }
+  .hero-chrome { padding: 12px 14px; }
+  .hero-chrome .url { margin-right: 49px; font-size: 11px; }
   .landing-hero h1 { font-size: 48px; }
   .manifesto h1 { font-size: 56px; }
   .sec-head { flex-direction: column; gap: 18px; }

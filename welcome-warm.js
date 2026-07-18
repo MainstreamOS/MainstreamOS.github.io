@@ -178,7 +178,86 @@ PAGES['news'] = {
   navTitle: 'News',
   lede: 'Release announcements and project updates, straight from the maintainer.',
   render: () => `
-    <p>Every Mainstream release lands here first — alongside the <a href="https://discord.gg/WJ3AUK5Aqd">Discord</a>, where announcements arrive the moment they're live.</p>
+    <div class="eyebrow">Release &middot; July 18, 2026</div>
+    <h2 id="mainstream-os-1-0-0">Mainstream OS 1.0.0 is here</h2>
+
+    <p>Mainstream OS 1.0.0 is an Arch-based Linux distribution that pairs a full Hyprland desktop with the polish of macOS — and nothing in it needs a terminal. Flash the ISO, click through the installer, and about eight minutes later you're on a desktop that themes itself to your wallpaper, backs itself up before every update, and turns into a game console on one keypress. This is the first stable release.</p>
+
+    <p>Mainstream ships end-4's <a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a> shell the way Ubuntu ships GNOME — heavily modified, openly credited, continuously merged from upstream, and one component of a full operating system. The people whose work Mainstream stands on are credited in Settings &rarr; About with links to sponsor them, and fixes go back upstream as pull requests.</p>
+
+    ${shot('Main-Desktop-UI.webp','The Mainstream OS desktop — bar on top, dock below, wallpaper clock between','The 1.0.0 desktop. Everything you see recolors from whatever wallpaper you pick.')}
+
+    <h2>One wallpaper, a whole look</h2>
+    <p>Pick any wallpaper — a photo, a render, even a video — and the entire desktop recolors to match: the bar, the dock, the apps, the terminal, even your login screen. Save the result as a named theme, switch between saved themes in one tap, or pair a Day and Night theme that follow the clock.</p>
+    <figure>
+      <div class="shot">
+        <video src="assets/docs/ThemesConfig-theme-switching-example-video.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
+      </div>
+      <figcaption>Switching saved themes — wallpaper, colors, and decorations change together, in one click.</figcaption>
+    </figure>
+
+    <h2>A desktop and a console, in one install</h2>
+    <p><code>SUPER</code> + <code>G</code> swaps the desktop for the same full-screen Big Picture session a Steam Deck boots into — a real gamescope session, not a fullscreen window — and one click brings the desktop back, exactly as you left it. Prefer the couch full-time? The installer's <strong>Console Mode</strong> boots straight into it.</p>
+    ${shot('Gaming-Big-Picture.webp','Steam Big Picture running as the Mainstream Gaming Mode session','Gaming Mode — AMD and NVIDIA, Proton GE pre-enabled.')}
+
+    <h2>A map of everything you're doing</h2>
+    <p>Flick the cursor into the corner and the desktop zooms out into a scrolling map of every workspace. Drag windows between them, drop files onto them, and glide across the whole thing in one motion — combined with the scrolling layout, it's the fastest way to get around the OS.</p>
+    <figure>
+      <div class="shot">
+        <video src="assets/docs/Hotcorner-Scrolling-Overview.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
+      </div>
+      <figcaption>Gliding across workspaces in the scrolling overview.</figcaption>
+    </figure>
+
+    <h2>Every setting, one app</h2>
+    <p>Seventeen pages cover the whole machine — displays and layouts, keybinds and gestures, drives, updates, recovery — and every one is a real panel with real controls, never a config file. Snapshots keep experimenting safe.</p>
+    <figure>
+      <div class="shot">
+        <video src="assets/docs/Settings-Tour.mp4" autoplay loop muted playsinline controls preload="metadata" style="width:100%;display:block"></video>
+      </div>
+      <figcaption>Quick, Wi-Fi, Bluetooth, Bar, Interface, Background, Themes, Display, Layouts, Keybinds, Mouse, Power, Accounts, Services, Update, Recovery, About — one app.</figcaption>
+    </figure>
+
+    <h2>What makes it a distro</h2>
+    <p>Everything here is in the box and checkable, not on a roadmap:</p>
+    <ul>
+      <li><strong>A real settings app for everything</strong> — displays, layouts, keybinds, gestures, drives, updates, recovery. A settings panel, not a config file.</li>
+      <li><strong>A graphical installer with five paths</strong> — including install-alongside-Windows dual-boot and one-tick full-disk encryption.</li>
+      <li><strong>GPU auto-configuration</strong> — AMD, Intel, and five NVIDIA driver generations, detected and configured at install.</li>
+      <li><strong>Install self-verification</strong> — 19 checks run on the finished system and write a health report, so a bad install tells you instead of failing silently.</li>
+      <li><strong>Updates with a safety net</strong> — a Btrfs snapshot before every update, and one-click rollback from the boot menu and Settings.</li>
+      <li><strong>Made with creators in mind</strong> — one-click installs for OBS and DaVinci Resolve, with GPU encoding on Wayland.</li>
+    </ul>
+
+    <h2>Get it</h2>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.0.0</strong></a> (x86_64 &middot; 2.7&nbsp;GB), flash it to a USB drive, and boot. The <a href="#install-iso">install guide</a> walks every step, and an <a href="#install-script">install script</a> can dress a fresh Arch install instead. Checksums and signatures for every release live on the <a href="https://sourceforge.net/projects/mainstreamos/files/">downloads page</a>.</p>
+
+    <h2>Verify your download</h2>
+    <p>Every Mainstream ISO is GPG-signed. Verifying takes about 30 seconds and proves the image genuinely came from us and wasn't tampered with in transit.</p>
+    <pre><code># 1. Fetch the Mainstream signing key
+curl -O https://mainstreamos.org/mainstream.pub
+
+# 2. Check its fingerprint BEFORE trusting it — it must be exactly:
+#    D644 BEB9 C1B7 668E 3A6C  16DA 8D56 7345 B265 848E
+gpg --show-keys mainstream.pub
+
+# 3. Import it, then verify the ISO against its signature
+gpg --import mainstream.pub
+gpg --verify mainstream-1.0.0.iso.sig mainstream-1.0.0.iso
+
+# 4. (optional) Confirm the download wasn't corrupted
+sha256sum -c mainstream-1.0.0.iso.sha256</code></pre>
+    <p>A good result shows <strong>Good signature from "MainstreamOS Packages"</strong>. You'll also see a warning that the key "is not certified with a trusted signature" — that's expected; it only means you haven't personally marked the key as trusted. What matters is that the fingerprint matches the one above and the signature reads <em>Good</em>.</p>
+
+    <h2>Built to outlast any one person</h2>
+    <p>Mainstream is a solo project, and you deserve a straight answer about what that means. Underneath, it's standard Arch — your system updates from Arch's mirrors no matter what happens to Mainstream. The package repo's build scripts are public, the ISO builder is public, and nothing stops you from ejecting to vanilla Arch. You're never locked in.</p>
+
+    <h2>Join in</h2>
+    <p>The community lives on <a href="https://discord.gg/WJ3AUK5Aqd">Discord</a> — help when you need it, showcases when you're proud, and release news first. Development happens in the open on <a href="https://github.com/MainstreamOS">GitHub</a>. Two things would genuinely help: <strong>translations</strong> (Mainstream should feel native beyond English) and <strong>honest feedback</strong> — if a decision looks off, say so.</p>
+
+    ${callout('tip','See it for yourself','<p>The fastest way to get it is to look around. Start with <a href="#desktop">The Desktop</a>, or <a href="https://mainstreamos.org/download">download the ISO</a> and try it live before you install.</p>')}
+
+    <p style="color:var(--ink-mist);font-size:13.5px;border-top:1px solid var(--line);padding-top:16px;margin-top:28px">Mainstream OS is free and open-source software, licensed GPLv3. The full list of projects it builds on — with sponsor links — lives in Settings &rarr; About and on the <a href="#why-mainstream">Why Mainstream</a> page.</p>
   `
 };
 

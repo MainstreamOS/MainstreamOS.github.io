@@ -441,9 +441,9 @@ PAGES.bar = {
 // ---------- INTERFACE ----------
 PAGES.interface = {
   group: 'Settings', title: 'Interface', icon: 'iface',
-  lede: 'Everything that affects window chrome, the dock, sidebars, fonts, and the lock screen. This is where Mainstream feels the most like your machine.',
+  lede: 'Everything that affects how windows look, the dock, sidebars, fonts, and the lock screen. This is where Mainstream feels the most like your machine.',
   render: () => `
-    ${shot('InterfaceConfig-1.webp','Decorations, dock, sidebars.','Decorations set window chrome. The Dock section controls the app launcher at the bottom. Left and Right Sidebars hold Mainstream\'s AI assistant and quick toggles.')}
+    ${shot('InterfaceConfig-1.webp','Decorations, dock, sidebars.','Decorations style the windows themselves — borders, rounded corners, shadows, and title bars. The Dock section controls the app launcher at the bottom. Left and Right Sidebars hold Mainstream\'s AI assistant and quick toggles.')}
 
     <h2>Decorations</h2>
     <div class="props">

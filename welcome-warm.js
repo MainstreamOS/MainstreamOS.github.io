@@ -108,6 +108,7 @@ PAGES['why-mainstream'] = {
       <li><strong>Speak another language?</strong> I want Mainstream to feel native well beyond English, and I can't do that alone — translators are wanted and welcome.</li>
       <li><strong>See something wrong?</strong> Nobody contributing to Mainstream should be above reproach. If a decision looks off or something's broken, please say so — questions and criticism are how you make things better.</li>
     </ul>
+    <p>And whether you're helping or just curious, the community lives on <a href="https://discord.gg/WJ3AUK5Aqd">Discord</a> — help when you need it, showcases when you're proud, and release news first.</p>
 
     ${callout('tip','See it for yourself','<p>The fastest way to get it is to look around. Start with <a href="#desktop">The Desktop</a>, or <a href="https://mainstreamos.org/download">download the ISO</a> and try it live before you install.</p>')}
   `

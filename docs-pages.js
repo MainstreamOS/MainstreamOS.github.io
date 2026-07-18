@@ -229,12 +229,12 @@ PAGES['install-iso'] = {
     <table class="t">
       <thead><tr><th>Image</th><th>Size</th><th>Best for</th></tr></thead>
       <tbody>
-        <tr><td><b>mainstream-1.0.0.iso</b></td><td>2.7 GB</td><td>Most modern laptops &amp; desktops</td></tr>
-        <tr><td><b>mainstream-nvidia-1.0.0.iso</b></td><td>3.7 GB</td><td>NVIDIA GTX 10-series and older (experimental support)</td></tr>
+        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-x.x.x.iso</b></a></td><td>2.7 GB</td><td>Most modern laptops &amp; desktops</td></tr>
+        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-legacy-nvidia-x.x.x.iso</b></a></td><td>3.7 GB</td><td>NVIDIA GTX 10-series and older (experimental support)</td></tr>
       </tbody>
     </table>
 
-    ${callout('note','All versions & checksums','<p>Looking for a specific release, the NVIDIA edition, or the <code>.sha256</code> and signature files? Browse <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">every download on SourceForge</a>.</p>')}
+    ${callout('note','All versions & checksums','<p>Looking for a specific release, the legacy-NVIDIA edition, or the <code>.sha256</code> and signature files? Browse <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">every download on SourceForge</a>.</p>')}
 
     <h2>Flash to USB</h2>
     <p>Flash the downloaded ISO file to a USB stick. Any USB stick 4 GB or larger works.</p>
@@ -1398,7 +1398,7 @@ gpg --verify mainstream-1.0.0.iso.sig mainstream-1.0.0.iso
 
 # 4. (optional) Confirm the download wasn\'t corrupted
 sha256sum -c mainstream-1.0.0.iso.sha256</code></pre>
-    <p>Using the NVIDIA edition? Same steps — just swap in its filenames.</p>
+    <p>Using the legacy-NVIDIA edition? Same steps — just swap in its filenames. Its ISO, signature, and checksum live in the <a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/"><code>legacy-nvidia/</code></a> folder on the downloads page.</p>
 
     <h2>What a good result looks like</h2>
     <p>Step 3 prints <strong>Good signature from "MainstreamOS Packages"</strong>, and step 4 prints <strong>OK</strong>. You\'ll also see a warning that the key "is not certified with a trusted signature" — that\'s normal: it only means you haven\'t personally marked the key as trusted in your own keyring. What matters is that the fingerprint from step 2 matches the one printed above, and step 3 says <em>Good</em>.</p>

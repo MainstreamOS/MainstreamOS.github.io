@@ -6,7 +6,7 @@ const NAV_ORDER = [
   { group: 'Desktop', ids: ['desktop','overview-launcher','shortcuts','sidebars','sharing','desktop-apps'] },
   { group: 'Settings', ids: ['quick','wifi','bluetooth','bar','interface','background','themes','display','layouts','keybinds','mouse','power','accounts','services','update','recovery','about'] },
   { group: 'Creative & Gaming', ids: ['davinci','obs','gaming'] },
-  { group: 'Security', ids: ['security'] },
+  { group: 'Security', ids: ['security','privacy'] },
 ];
 
 function renderSidebar(activeId){

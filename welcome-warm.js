@@ -172,6 +172,16 @@ PAGES['branding'] = {
   `
 };
 
+PAGES['news'] = {
+  title: 'News',
+  icon: 'send',
+  navTitle: 'News',
+  lede: 'Release announcements and project updates, straight from the maintainer.',
+  render: () => `
+    <p>Every Mainstream release lands here first — alongside the <a href="https://discord.gg/WJ3AUK5Aqd">Discord</a>, where announcements arrive the moment they're live.</p>
+  `
+};
+
 PAGES['donate'] = {
   title: 'Donate',
   icon: 'home',

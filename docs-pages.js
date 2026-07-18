@@ -1069,7 +1069,7 @@ PAGES.about = {
     <div class="props">
       <div class="prop"><center><div class="k">Documentation</div></center><div class="v">This site — <a href="https://mainstreamos.org/">mainstreamos.org</a>.</div></div>
       <div class="prop"><center><div class="k">Issues</div></center><div class="v">Report a bug or request a feature on the tracker.</div></div>
-      <div class="prop"><center><div class="k">Discussions</div></center><div class="v">Ask questions and share setups with the community.</div></div>
+      <div class="prop"><center><div class="k">Discord</div></center><div class="v">Live help and community — questions, showcases, and release news.</div></div>
       <div class="prop"><center><div class="k">Privacy Policy</div></center><div class="v">What Mainstream does and doesn\'t collect.</div></div>
       <div class="prop"><center><div class="k">Donate</div></center><div class="v">Like where this is going? Help it get there.</div></div>
     </div>

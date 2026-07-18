@@ -224,7 +224,7 @@ PAGES['install-iso'] = {
     ${shot('Install_Welcome_Screen.webp','Mainstream installer welcome screen','The Mainstream installer. The sidebar is the whole journey — Welcome, Location, Keyboard, Partitions, Users, Get Started, Apps, then a Summary before anything touches your disk.')}
 
     <h2>Download</h2>
-    <p>Grab the latest ISO from <a href="https://mainstreamos.org/download" style="color:var(--stream-a);text-decoration:underline">mainstreamos.org/download</a>. Images are signed; verify with the matching <code>.sig</code> if security matters to you.</p>
+    <p>Grab the latest ISO from <a href="https://mainstreamos.org/download" style="color:var(--stream-a);text-decoration:underline">mainstreamos.org/download</a>. Every image is signed — <a href="#verify" style="color:var(--stream-a);text-decoration:underline">verifying your download</a> takes about thirty seconds and proves it\'s exactly what we published.</p>
 
     <table class="t">
       <thead><tr><th>Image</th><th>Size</th><th>Best for</th></tr></thead>
@@ -1367,6 +1367,51 @@ PAGES.shortcuts = {
     <p>Windows can tile a few different ways — dwindle, master, scrolling, monocle, or float — and you can pick one per workspace in <a href="#layouts">Settings → Layouts</a>. Some of them add shortcuts of their own: rearranging the master stack, stepping through a monocle, scrolling between windows. If you switch off the default, press <code>SUPER</code> + <code>TAB</code> and look under <strong>Master Layout</strong>, <strong>Scrolling Layout</strong>, and <strong>Monocle Layout</strong> — the cheat sheet lists exactly what each one adds.</p>
 
     ${callout('tip','Make them yours','<p>Every shortcut is remappable from <a href="#keybinds">Settings → Keybinds</a> — search, rebind, and reset to defaults without touching a config file.</p>')}
+  `
+};
+
+// ---------- VERIFY YOUR ISO ----------
+PAGES.verify = {
+  group: 'Security', title: 'Verify your ISO', icon: 'shield', navTitle: 'Verify your ISO',
+  lede: 'Thirty seconds to prove the image you downloaded is exactly the one we published — untouched, byte for byte.',
+  render: () => `
+    <h2>Two files, two different jobs</h2>
+    <p>Every release ships with two companion files, and they answer different questions:</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">.sha256 — the checksum</div></center><div class="v">Proves the download wasn\'t corrupted on the way to you. Anyone can generate one, so it can\'t prove who made the ISO.</div></div>
+      <div class="prop"><center><div class="k">.sig — the signature</div></center><div class="v">Proves the ISO genuinely came from Mainstream and hasn\'t been replaced. Only the Mainstream signing key can produce it.</div></div>
+    </div>
+    <p>Both sit next to every release on the <a href="https://sourceforge.net/projects/mainstreamos/files/">downloads page</a>. The signature is the one that matters most — here\'s how to check it.</p>
+
+    <h2>Verify on Linux or macOS</h2>
+    <p>You need <code>gpg</code>, which ships with nearly every Linux distribution (macOS: <code>brew install gnupg</code>). Run these from the folder holding the ISO and its companion files:</p>
+    <pre><code># 1. Fetch the Mainstream signing key
+curl -O https://mainstreamos.org/mainstream.pub
+
+# 2. Check its fingerprint BEFORE trusting it — it must be exactly:
+#    D644 BEB9 C1B7 668E 3A6C  16DA 8D56 7345 B265 848E
+gpg --show-keys mainstream.pub
+
+# 3. Import it, then verify the ISO against its signature
+gpg --import mainstream.pub
+gpg --verify mainstream-1.0.0.iso.sig mainstream-1.0.0.iso
+
+# 4. (optional) Confirm the download wasn\'t corrupted
+sha256sum -c mainstream-1.0.0.iso.sha256</code></pre>
+    <p>Using the NVIDIA edition? Same steps — just swap in its filenames.</p>
+
+    <h2>What a good result looks like</h2>
+    <p>Step 3 prints <strong>Good signature from "MainstreamOS Packages"</strong>, and step 4 prints <strong>OK</strong>. You\'ll also see a warning that the key "is not certified with a trusted signature" — that\'s normal: it only means you haven\'t personally marked the key as trusted in your own keyring. What matters is that the fingerprint from step 2 matches the one printed above, and step 3 says <em>Good</em>.</p>
+
+    ${callout('warn','If anything doesn\'t match','<p>Stop — don\'t flash or boot the image. Delete it, download again from <a href="https://mainstreamos.org/download">mainstreamos.org/download</a>, and verify once more. If it still fails, tell us on <a href="https://discord.gg/WJ3AUK5Aqd">Discord</a> so we can look into the mirror that served it.</p>')}
+
+    <h2>Verifying from Windows</h2>
+    <p>Downloading from Windows before you switch? The checksum check is built in — open PowerShell in your Downloads folder and compare the output to the contents of the <code>.sha256</code> file:</p>
+    <pre><code>certutil -hashfile mainstream-1.0.0.iso SHA256</code></pre>
+    <p>For the signature, install <a href="https://gpg4win.org">Gpg4win</a> and run the same three <code>gpg</code> commands above — they work unchanged in PowerShell.</p>
+
+    <h2>Where the trust comes from</h2>
+    <p>The ISO is signed with the same key that signs every package in the <a href="#security">[mainstream] repository</a> — the key your installed system verifies on every single update. Its public half is published at <a href="https://mainstreamos.org/mainstream.pub">mainstreamos.org/mainstream.pub</a>, and the build system that produces everything it signs is <a href="https://github.com/MainstreamOS">public on GitHub</a>.</p>
   `
 };
 

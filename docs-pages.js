@@ -35,6 +35,9 @@ const I = {
   keyboard:'<rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 10h.01M10 10h.01M14 10h.01M18 10h.01M6 14h12"/>',
   info:    '<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
   shield:  '<path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/>',
+  check:   '<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/>',
+  fingerprint: '<path d="M8 20c1.5-2.5 2-5 2-8a2 2 0 0 1 4 0c0 3-.4 5.8-1.4 8.4"/><path d="M6 16.5c.7-1.5 1-3 1-4.5a5 5 0 0 1 10 0c0 1.2-.1 2.4-.3 3.5"/><path d="M4.8 12A7.2 7.2 0 0 1 12 4.8c2.7 0 5 1.4 6.3 3.6"/>',
+  lock:    '<rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   sidebar: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16"/>',
   send:    '<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/>',
 };
@@ -999,7 +1002,7 @@ PAGES.recovery = {
 
 // ---------- SECURITY ----------
 PAGES.security = {
-  group: 'Security', title: 'Security', icon: 'shield',
+  group: 'Security', title: 'The Safety Model', icon: 'check',
   lede: 'One question matters most here: is this safe? The answer comes twice: first in plain English for anyone who just wants to know their computer is safe, then in full technical depth for anyone who wants to verify every claim.',
   render: () => `
     <h2>Am I safe using this?</h2>
@@ -1236,7 +1239,7 @@ PAGES.obs = {
 
 // ---------- GAMING ----------
 PAGES.gaming = {
-  group: 'Creative', title: 'Set up Gaming', icon: 'game',
+  group: 'Creative', title: 'Set up Gaming', navTitle: 'Gaming', icon: 'game',
   lede: 'One package and one keybind: install the gaming stack from Welcome or with pacman, then press <code>SUPER</code> (the ⊞ Windows or ⌘ Command key) + <code>G</code> for a SteamOS-style Big Picture session. Proton, GameMode, MangoHud, ntsync, controllers, VRR and HDR all come configured.',
   render: () => `
     ${shot('Gaming-Big-Picture.webp', 'Steam Big Picture running as the Mainstream Gaming Mode session', 'Gaming Mode: Steam Big Picture, rendered full-screen by gamescope. One tap of <code>SUPER</code> + <code>G</code> from the desktop.')}
@@ -1390,7 +1393,7 @@ PAGES.shortcuts = {
 
 // ---------- VERIFY YOUR ISO ----------
 PAGES.verify = {
-  group: 'Security', title: 'Verify your ISO', icon: 'shield', navTitle: 'Verify your ISO',
+  group: 'Security', title: 'Verify your ISO', icon: 'fingerprint', navTitle: 'Verify your ISO',
   lede: 'Thirty seconds to prove the image you downloaded is exactly the one we published — untouched, byte for byte.',
   render: () => `
     <h2>Two files, two different jobs</h2>

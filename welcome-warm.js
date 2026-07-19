@@ -287,7 +287,7 @@ PAGES['donate'] = {
 
 PAGES['privacy'] = {
   title: 'Privacy Policy',
-  icon: 'shield',
+  icon: 'lock',
   navTitle: 'Privacy Policy',
   lede: 'No telemetry, no data collection, no age verification — foundational commitments, in plain terms.',
   render: () => `

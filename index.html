@@ -67,10 +67,23 @@
   .sidebar::-webkit-scrollbar-thumb{background:var(--paper-4);border-radius:3px}
 
   .nav-group{margin-bottom:22px}
+  .nav-group:first-child{margin-bottom:0}
   .nav-group-title{
     font-family:var(--font-mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
     color:var(--mist);margin-bottom:10px;padding:0 10px;
   }
+  .nav-fold-head{user-select:none}
+  .nav-fold-head .fold-dot{
+    width:4px;height:4px;border-radius:50%;background:currentColor;
+    opacity:0;transition:opacity .12s;flex:0 0 auto;margin-left:auto;
+  }
+  .nav-fold-head:hover .fold-dot{opacity:.5}
+  .nav-group-fold .nav-group-items .nav-item{padding-left:34px}
+  .nav-group[data-collapsed="true"] .nav-group-items{display:none}
+  .nav-group-fold,.nav-group-bare{margin-bottom:10px}
+  .nav-group-fold[data-collapsed="false"]{margin-bottom:18px}
+  .nav-group-fold:has(+ .nav-group-fold),.nav-group-fold:has(+ .nav-group-bare),
+  .nav-group-bare:has(+ .nav-group-fold),.nav-group-bare:has(+ .nav-group-bare){margin-bottom:1px}
   .nav-item{
     display:flex;align-items:center;gap:10px;
     padding:7px 10px;border-radius:7px;font-size:13.5px;
@@ -363,7 +376,7 @@
 </div>
 
 <script src="docs-pages.js?v=126"></script>
-<script src="welcome-warm.js?v=3"></script>
+<script src="welcome-warm.js?v=4"></script>
 <script src="docs-app.js?v=126"></script>
 <script>
 document.getElementById('themeToggle').addEventListener('click', () => {

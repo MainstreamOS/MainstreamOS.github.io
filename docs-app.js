@@ -2,26 +2,66 @@
 
 const NAV_ORDER = [
   { group: 'Start here', ids: ['home'] },
-  { group: 'Installation', ids: ['install-iso', 'install-script'] },
+  { group: 'Installation', ids: ['install-iso', 'install-script'], collapsible: true, icon: 'rocket' },
   { group: 'Desktop', ids: ['desktop','overview-launcher','shortcuts','sidebars','sharing','desktop-apps'] },
   { group: 'Settings', ids: ['quick','wifi','bluetooth','bar','interface','background','themes','display','layouts','keybinds','mouse','power','accounts','services','update','recovery','about'] },
-  { group: 'Creative & Gaming', ids: ['davinci','obs','gaming'] },
-  { group: 'Security', ids: ['security','verify','privacy'] },
+  { group: 'Creative', ids: ['davinci','obs'], collapsible: true, icon: 'film', heading: 'Topics' },
+  { group: 'Gaming', ids: ['gaming'], bare: true },
+  { group: 'Security', ids: ['security','verify','privacy'], collapsible: true, icon: 'shield' },
 ];
+
+const collapsedGroups = new Set(NAV_ORDER.filter(g => g.collapsible).map(g => g.group));
+let lastNavActive = null;
 
 function renderSidebar(activeId){
   const sb = document.getElementById('sidebar');
-  sb.innerHTML = NAV_ORDER.map(g => `
-    <div class="nav-group">
-      <div class="nav-group-title">${g.group}</div>
-      ${g.ids.map(id => {
-        const p = PAGES[id];
-        if (!p) return '';
-        const label = p.navTitle || p.title;
-        return `<a class="nav-item" data-id="${id}" href="#${id}" data-active="${id===activeId}">${icon(p.icon || 'book')}<span>${label}</span></a>`;
-      }).join('')}
+  if (activeId !== lastNavActive) {
+    for (const g of NAV_ORDER) {
+      if (!g.collapsible) continue;
+      if (g.ids.includes(activeId)) collapsedGroups.delete(g.group);
+      else collapsedGroups.add(g.group);
+    }
+    lastNavActive = activeId;
+  }
+  sb.innerHTML = NAV_ORDER.map(g => {
+    const collapsed = !!(g.collapsible && collapsedGroups.has(g.group));
+    const items = g.ids.map(id => {
+      if ((g.hiddenIds || []).includes(id) && id !== activeId) return '';
+      const p = PAGES[id];
+      if (!p) return '';
+      const label = p.navTitle || p.title;
+      return `<a class="nav-item" data-id="${id}" href="#${id}" data-active="${id===activeId}">${icon(p.icon || 'book')}<span>${label}</span></a>`;
+    }).join('');
+    if (g.bare) {
+      return `
+    <div class="nav-group nav-group-bare">
+      ${g.heading ? `<div class="nav-group-title">${g.heading}</div>` : ''}
+      <div class="nav-group-items">${items}</div>
     </div>
-  `).join('');
+  `;
+    }
+    if (g.collapsible) {
+      return `
+    <div class="nav-group nav-group-fold" data-collapsed="${collapsed}">
+      ${g.heading ? `<div class="nav-group-title">${g.heading}</div>` : ''}
+      <div class="nav-item nav-fold-head" data-group="${g.group}">${icon(g.icon || 'book')}<span>${g.group}</span><span class="fold-dot"></span></div>
+      <div class="nav-group-items">${items}</div>
+    </div>
+  `;
+    }
+    return `
+    <div class="nav-group" data-collapsed="${collapsed}">
+      <div class="nav-group-title">${g.group}</div>
+      <div class="nav-group-items">${items}</div>
+    </div>
+  `}).join('');
+  sb.querySelectorAll('.nav-fold-head').forEach(el => {
+    el.addEventListener('click', () => {
+      const name = el.dataset.group;
+      collapsedGroups.has(name) ? collapsedGroups.delete(name) : collapsedGroups.add(name);
+      renderSidebar(activeId);
+    });
+  });
 }
 
 function flatOrder(){

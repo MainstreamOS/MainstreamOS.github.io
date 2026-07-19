@@ -37,6 +37,8 @@ const I = {
   shield:  '<path d="M12 3l7 3v6c0 4.4-3 7.6-7 9-4-1.4-7-4.6-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/>',
   check:   '<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/>',
   fingerprint: '<path d="M8 20c1.5-2.5 2-5 2-8a2 2 0 0 1 4 0c0 3-.4 5.8-1.4 8.4"/><path d="M6 16.5c.7-1.5 1-3 1-4.5a5 5 0 0 1 10 0c0 1.2-.1 2.4-.3 3.5"/><path d="M4.8 12A7.2 7.2 0 0 1 12 4.8c2.7 0 5 1.4 6.3 3.6"/>',
+  play:    '<path d="M8 5.5v13l11-6.5z"/>',
+  dpad:    '<path d="M9 4h6v5h5v6h-5v5H9v-5H4V9h5V4Z"/>',
   lock:    '<rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   sidebar: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16"/>',
   send:    '<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/>',
@@ -138,7 +140,7 @@ PAGES.home = {
     <div class="card-grid">
       ${card('davinci','Set up DaVinci Resolve','film','GPU + OpenCL setup, AV1 hardware encode, and render presets for Resolve Studio.')}
       ${card('obs','Set up OBS','cam','Native bundle: Wayland game capture, a virtual camera, and GPU encoding.')}
-      ${card('gaming','Set up Gaming','game','Steam + Proton, GameMode, controllers, Vulkan drivers, and VRR.')}
+      ${card('gaming','Setting up Gaming','game','Steam + Proton, GameMode, controllers, Vulkan drivers, and VRR.')}
     </div>
   `
 };
@@ -1220,7 +1222,7 @@ PAGES.obs = {
       <li><strong>Apply the launch option.</strong> Right-click the game in Steam → <strong>Properties</strong>, and paste <code>env OBS_VKCAPTURE=1 %command%</code> into the <em>Launch Options</em> field.</li>
       <li><strong>Launch the game.</strong> <code>obs-vkcapture</code> hands the frames straight to OBS and the Game Capture source fills in automatically.</li>
     </ol>
-    ${callout('tip','Capture and tune at once', '<p>Launch options stack — chain the capture with a performance wrapper: <code>env OBS_VKCAPTURE=1 gamemoderun %command%</code>. See <a href="#gaming">Set up Gaming</a> for the full ordering rule.</p>')}
+    ${callout('tip','Capture and tune at once', '<p>Launch options stack — chain the capture with a performance wrapper: <code>env OBS_VKCAPTURE=1 gamemoderun %command%</code>. See <a href="#steam-proton">Steam + Proton</a> for the full ordering rule.</p>')}
 
     <h2>GPU encoding</h2>
     <p>Open <strong>Settings → Output</strong>. The hardware encoders only appear once you switch <strong>Output Mode</strong> from Simple to <strong>Advanced</strong>:</p>
@@ -1239,7 +1241,7 @@ PAGES.obs = {
 
 // ---------- GAMING ----------
 PAGES.gaming = {
-  group: 'Creative', title: 'Set up Gaming', navTitle: 'Gaming', icon: 'game',
+  group: 'Gaming', title: 'Setting up Gaming', icon: 'dpad',
   lede: 'One package and one keybind: install the gaming stack from Welcome or with pacman, then press <code>SUPER</code> (the ⊞ Windows or ⌘ Command key) + <code>G</code> for a SteamOS-style Big Picture session. Proton, GameMode, MangoHud, ntsync, controllers, VRR and HDR all come configured.',
   render: () => `
     ${shot('Gaming-Big-Picture.webp', 'Steam Big Picture running as the Mainstream Gaming Mode session', 'Gaming Mode: Steam Big Picture, rendered full-screen by gamescope. One tap of <code>SUPER</code> + <code>G</code> from the desktop.')}
@@ -1270,36 +1272,6 @@ PAGES.gaming = {
 
     ${callout('warn','NVIDIA and Wayland', '<p>Driver 555+ is required for good Wayland gaming (VRR, HDR, explicit sync). <code>nvidia-dkms</code> on Mainstream tracks the latest stable — run an update before your first game session.</p>')}
 
-    <h2>Steam + Proton</h2>
-    <p><strong>Proton GE comes installed and enabled by default.</strong> Steam Play is switched on for every title and Proton GE is the default compatibility tool, so most Windows games launch straight from your library with nothing to configure.</p>
-    <ol>
-      <li>Launch Steam, sign in.</li>
-      <li>Install a game and press <strong>Play</strong> — Proton GE handles the rest.</li>
-      <li>If a title doesn\'t start, right-click the game → <em>Properties</em> → <em>Compatibility</em> and try a different Proton version.</li>
-    </ol>
-
-    <h3>More Proton versions, with Proton Plus</h3>
-    <p>Steam bundles a few Proton versions and Proton GE covers most of the rest, but now and then a game wants a specific or newer build. <strong>Proton Plus</strong> makes that painless. Search for it in the <strong>Software</strong> app and install it, then open it up: the main view lists Proton versions you can download with a click. Once you\'ve grabbed the ones you want, switch to the <strong>Games</strong> tab — it lists your Steam library and lets you set which compatibility tool each game runs with, right from there.</p>
-
-    <h3>Launch options that matter</h3>
-    <table class="t">
-      <thead><tr><th>Option</th><th>Effect</th></tr></thead>
-      <tbody>
-        <tr><td><code>gamemoderun %command%</code></td><td>Runs the game under GameMode — CPU governor jumps to performance, kernel scheduler prioritizes the process, GPU throttles relax.</td></tr>
-        <tr><td><code>MANGOHUD=1 %command%</code></td><td>Overlay FPS, frame times, CPU/GPU temps.</td></tr>
-        <tr><td><code>PROTON_ENABLE_NVAPI=1 %command%</code></td><td>Enables DLSS frame generation on NVIDIA under Proton.</td></tr>
-        <tr><td><code>DXVK_ASYNC=1 %command%</code></td><td>Pre-compile shaders asynchronously. Reduces stutter on first load.</td></tr>
-        <tr><td><code>PROTON_FSR4_UPGRADE=1 %command%</code></td><td>Upgrades a game's upscaling to <strong>FSR 4</strong> on RDNA 4 (RX 9000) and other standard GPUs — sharper image, better frame generation.</td></tr>
-        <tr><td><code>PROTON_FSR4_RDNA3_UPGRADE=1 %command%</code></td><td>Enables the <strong>FSR 4</strong> upgrade path on RDNA 3 (RX 7000) GPUs.</td></tr>
-      </tbody>
-    </table>
-
-    <h3>Stacking several at once</h3>
-    <p>Combine as many of these as you like in one Launch Options line. The rule: <strong>environment variables</strong> (<code>NAME=value</code>) go first, any <strong>wrapper commands</strong> (<code>gamemoderun</code>, <code>mangohud</code>) go next, and <code>%command%</code> — the game itself — always comes last.</p>
-<pre><code><span class="c"># FSR 4 upscaling, under GameMode, with the MangoHud overlay</span>
-PROTON_FSR4_UPGRADE=1 gamemoderun mangohud %command%</code></pre>
-    ${twoShot('Gaming-Steam-Properties.webp', 'Right-click a game → Properties', 'Gaming-Steam-Launch-Options.webp', 'Paste your options into the Launch Options field')}
-
     <h2>Controllers</h2>
     <p>Plug or pair your controller (see <a href="#bluetooth">Bluetooth</a>). Steam Input auto-handles DualSense, DualShock, Xbox, Switch Pro, and 8BitDo pads, and the <code>ntsync</code> module that ships with the stack keeps Proton's synchronization fast.</p>
 
@@ -1315,6 +1287,41 @@ PROTON_FSR4_UPGRADE=1 gamemoderun mangohud %command%</code></pre>
       <li><strong>glxinfo / vulkaninfo</strong> — verify the driver is actually in use.</li>
       <li><strong>protontricks</strong> — per-game registry and DLL tweaks for edge-case titles.</li>
     </ul>
+  `
+};
+
+PAGES['steam-proton'] = {
+  group: 'Gaming', title: 'Steam + Proton', icon: 'play',
+  lede: 'Proton GE comes installed and enabled by default. Steam Play is switched on for every title and Proton GE is the default compatibility tool, so most Windows games launch straight from your library with nothing to configure.',
+  render: () => `
+    <h2>Play a Windows game</h2>
+    <ol>
+      <li>Launch Steam, sign in.</li>
+      <li>Install a game and press <strong>Play</strong> — Proton GE handles the rest.</li>
+      <li>If a title doesn\'t start, right-click the game → <em>Properties</em> → <em>Compatibility</em> and try a different Proton version.</li>
+    </ol>
+
+    <h2>More Proton versions, with Proton Plus</h2>
+    <p>Steam bundles a few Proton versions and Proton GE covers most of the rest, but now and then a game wants a specific or newer build. <strong>Proton Plus</strong> makes that painless. Search for it in the <strong>Software</strong> app and install it, then open it up: the main view lists Proton versions you can download with a click. Once you\'ve grabbed the ones you want, switch to the <strong>Games</strong> tab — it lists your Steam library and lets you set which compatibility tool each game runs with, right from there.</p>
+
+    <h2>Launch options that matter</h2>
+    <table class="t">
+      <thead><tr><th>Option</th><th>Effect</th></tr></thead>
+      <tbody>
+        <tr><td><code>gamemoderun %command%</code></td><td>Runs the game under GameMode — CPU governor jumps to performance, kernel scheduler prioritizes the process, GPU throttles relax.</td></tr>
+        <tr><td><code>MANGOHUD=1 %command%</code></td><td>Overlay FPS, frame times, CPU/GPU temps.</td></tr>
+        <tr><td><code>PROTON_ENABLE_NVAPI=1 %command%</code></td><td>Enables DLSS frame generation on NVIDIA under Proton.</td></tr>
+        <tr><td><code>DXVK_ASYNC=1 %command%</code></td><td>Pre-compile shaders asynchronously. Reduces stutter on first load.</td></tr>
+        <tr><td><code>PROTON_FSR4_UPGRADE=1 %command%</code></td><td>Upgrades a game's upscaling to <strong>FSR 4</strong> on RDNA 4 (RX 9000) and other standard GPUs — sharper image, better frame generation.</td></tr>
+        <tr><td><code>PROTON_FSR4_RDNA3_UPGRADE=1 %command%</code></td><td>Enables the <strong>FSR 4</strong> upgrade path on RDNA 3 (RX 7000) GPUs.</td></tr>
+      </tbody>
+    </table>
+
+    <h2>Stacking several at once</h2>
+    <p>Combine as many of these as you like in one Launch Options line. The rule: <strong>environment variables</strong> (<code>NAME=value</code>) go first, any <strong>wrapper commands</strong> (<code>gamemoderun</code>, <code>mangohud</code>) go next, and <code>%command%</code> — the game itself — always comes last.</p>
+<pre><code><span class="c"># FSR 4 upscaling, under GameMode, with the MangoHud overlay</span>
+PROTON_FSR4_UPGRADE=1 gamemoderun mangohud %command%</code></pre>
+    ${twoShot('Gaming-Steam-Properties.webp', 'Right-click a game → Properties', 'Gaming-Steam-Launch-Options.webp', 'Paste your options into the Launch Options field')}
   `
 };
 

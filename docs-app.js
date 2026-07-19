@@ -6,7 +6,7 @@ const NAV_ORDER = [
   { group: 'Desktop', ids: ['desktop','overview-launcher','shortcuts','sidebars','sharing','desktop-apps'] },
   { group: 'Settings', ids: ['quick','wifi','bluetooth','bar','interface','background','themes','display','layouts','keybinds','mouse','power','accounts','services','update','recovery','about'] },
   { group: 'Creative', ids: ['davinci','obs'], collapsible: true, icon: 'film', heading: 'Topics' },
-  { group: 'Gaming', ids: ['gaming'], bare: true },
+  { group: 'Gaming', ids: ['gaming','steam-proton'], collapsible: true, icon: 'game' },
   { group: 'Security', ids: ['security','verify','privacy'], collapsible: true, icon: 'shield' },
 ];
 

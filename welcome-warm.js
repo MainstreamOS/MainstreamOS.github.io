@@ -172,11 +172,11 @@ PAGES['branding'] = {
   `
 };
 
-PAGES['news'] = {
-  title: 'News',
+PAGES['blog'] = {
+  title: 'Blog',
   icon: 'send',
-  navTitle: 'News',
-  lede: 'Release announcements and project updates, straight from the maintainer.',
+  navTitle: 'Blog',
+  lede: 'Release announcements, project updates, and write-ups on how Mainstream works — straight from the maintainer.',
   render: () => `
     <div class="eyebrow">Release &middot; July 18, 2026</div>
     <h2 id="mainstream-os-1-0-0">Mainstream OS 1.0.0 is here</h2>

@@ -178,6 +178,22 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements, project updates, and write-ups on how Mainstream works — straight from the maintainer.',
   render: () => `
+    <div class="eyebrow">Release &middot; July 19, 2026</div>
+    <h2 id="mainstream-os-1-0-1">Mainstream OS 1.0.1 — first-class virtual machines</h2>
+
+    <p>1.0.1 is a small, fast follow-up to 1.0.0, focused on one thing: making Mainstream a first-class citizen inside virtual machines. Trying a distro in a VM is how most people meet it, so that first boot should be just as polished as the real-hardware one.</p>
+
+    <ul>
+      <li><strong>Boots in BIOS virtual machines.</strong> VirtualBox and QEMU create BIOS-firmware machines by default, and 1.0.0 assumed UEFI. The live ISO and installed systems now boot under BIOS with nothing to configure — BIOS installs carry a small FAT32 <code>/boot</code> partition, while UEFI installs are unchanged.</li>
+      <li><strong>Guest tools included — and tidy.</strong> VMs get the agents for QEMU/KVM, VirtualBox, and VMware out of the box: clipboard sharing, host integration, clean shutdown, each active only under its own hypervisor. Installs on real hardware keep none of them.</li>
+      <li><strong>A boot menu that gets out of the way.</strong> The Limine menu now auto-boots reliably and shows snapshot entries on BIOS systems too.</li>
+      <li><strong>A smarter installer notice.</strong> On a wired connection the Welcome screen now says you\'re ready to install instead of asking for Wi-Fi.</li>
+    </ul>
+
+    <p>As always, images are GPG-signed with checksums published alongside — the <a href="#verify">verify page</a> shows how to check yours in thirty seconds. 1.0.0 remains published unchanged; releases are immutable here.</p>
+
+    <div class="ribbon"></div>
+
     <div class="eyebrow">Release &middot; July 18, 2026</div>
     <h2 id="mainstream-os-1-0-0">Mainstream OS 1.0.0 is here</h2>
 

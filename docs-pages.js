@@ -1000,9 +1000,27 @@ PAGES.recovery = {
 // ---------- SECURITY ----------
 PAGES.security = {
   group: 'Security', title: 'Security', icon: 'shield',
-  lede: 'Every package on a Mainstream system is prebuilt, tested, and cryptographically signed. The Arch User Repository (AUR) — brilliant, but unvetted by design — is deliberately left off the default install. Here\'s why, and what replaces it.',
+  lede: 'One question matters most here: is this safe? The answer comes twice: first in plain English for anyone who just wants to know their computer is safe, then in full technical depth for anyone who wants to verify every claim.',
   render: () => `
-    <h2>The short version</h2>
+    <h2>Am I safe using this?</h2>
+    <p><strong>Yes — and you don\'t have to take our word for it.</strong> Mainstream is built so that staying safe is automatic, not a skill you have to learn. Here\'s what\'s working for you, in plain English:</p>
+
+    <table class="t">
+      <thead><tr><th>What we do</th><th>What it does for you</th></tr></thead>
+      <tbody>
+        <tr><td>Every app comes from a checked shelf, in sealed packaging</td><td>Your computer checks the seal on everything it installs — like tamper-proof packaging on medicine — and refuses anything that fails the check. Automatically, every time.</td></tr>
+        <tr><td>Your machine never runs build instructions from strangers</td><td>Some Linux systems download software recipes written by anonymous volunteers and run them on your computer. Mainstream doesn\'t. Everything arrives already built, tested, and sealed by us.</td></tr>
+        <tr><td>A restore point before every single update</td><td>If an update ever misbehaves, you pick the earlier version from a menu and you\'re back — no terminal required. Think System Restore, but automatic and dependable.</td></tr>
+        <tr><td>The download itself can be checked</td><td>Thirty seconds on the <a href="#verify" style="color:var(--stream-a);text-decoration:underline">verify page</a> proves the copy you downloaded is exactly, byte for byte, what we published.</td></tr>
+        <tr><td>Nothing about it is secret</td><td>Every piece is built in public on GitHub. Anyone in the world can inspect it — and people do.</td></tr>
+      </tbody>
+    </table>
+
+    <p>To be straight with you: no computer — Windows, Mac, or any Linux — is immune to every threat; anyone who claims otherwise isn\'t being honest with you. What Mainstream promises is narrower and honest: <strong>the software that reaches your machine is checked, sealed, and reversible, and none of that depends on you doing anything technical.</strong></p>
+
+    ${callout('tip','You shouldn\'t need a translator here','<p>If a security page only makes sense to engineers, it isn\'t doing its job. If anything here still reads like another language, tell us on <a href="https://discord.gg/WJ3AUK5Aqd">Discord</a> — confusing wording gets fixed the same way broken code does.</p>')}
+
+    <h2>The technical version</h2>
     <p>Mainstream never builds software recipes on your machine and never installs from an unvetted source. Everything comes from four signed repositories: Arch\'s own <code>core</code>, <code>extra</code>, and <code>multilib</code>, plus <strong>[mainstream]</strong> — our own curated, prebuilt repository that stands in for the AUR. No <code>yay</code>, no <code>paru</code>, no compiling at install time.</p>
 
     ${callout('note','Still full Arch underneath', '<p>Nothing here is locked down. Experienced users can opt into the AUR at any time (see the bottom of this page) — it just isn\'t the default, because the AUR\'s safety model asks more of you than a newcomer can reasonably give.</p>')}

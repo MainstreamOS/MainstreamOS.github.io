@@ -178,6 +178,13 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements, project updates, and write-ups on how Mainstream works — straight from the maintainer.',
   render: () => `
+    <div class="eyebrow">Release &middot; July 20, 2026</div>
+    <h2 id="mainstream-os-1-0-2">Mainstream OS 1.0.2 — brings support for Hyprland 0.56</h2>
+
+    <p>Hyprland (the software that controls your desktop's windows and visuals) just released a major update, version 0.56. It's a big enough change that most people using it would normally notice something breaking. This new version of Mainstream OS handles all of that for you — whether you're updating an existing system or installing fresh.</p>
+
+    <div class="ribbon"></div>
+
     <div class="eyebrow">Release &middot; July 19, 2026</div>
     <h2 id="mainstream-os-1-0-1">Mainstream OS 1.0.1 — first-class virtual machines</h2>
 

@@ -183,6 +183,8 @@ PAGES['blog'] = {
 
     <p>Hyprland (the software that controls your desktop's windows and visuals) just released a major update, version 0.56. It's a big enough change that most people using it would normally notice something breaking. This new version of Mainstream OS handles all of that for you — whether you're updating an existing system or installing fresh.</p>
 
+    <p>As always, images are GPG-signed with checksums published alongside — the <a href="#verify">verify page</a> shows how to check yours. Earlier releases remain published unchanged.</p>
+
     <div class="ribbon"></div>
 
     <div class="eyebrow">Release &middot; July 19, 2026</div>

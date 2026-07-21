@@ -197,7 +197,7 @@ PAGES['install-script'] = {
     <ol>
       <li>Enables the signed <code>[mainstream]</code> package repository.</li>
       <li>Installs the Hyprland + Quickshell desktop stack.</li>
-      <li>Detects your GPU and installs the right drivers — AMD, Intel, or NVIDIA, including the legacy branch for older cards.</li>
+      <li>Detects your GPU and installs the right drivers — AMD, Intel, or NVIDIA, including the legacy branch for older cards (experimental).</li>
       <li>Enables the Bluetooth, network discovery (Avahi), CUPS printing, and audio services.</li>
       <li>On qualifying systems (UEFI + Btrfs) replaces the bootloader with Limine and configures Snapper — automatic snapshots before every update, restorable from the boot menu. In <code>--verbose</code> mode you're asked before this step.</li>
       <li>Replaces your configs with the Mainstream dotfiles (clashing files are backed up to <code>~/original-dots-backup/</code> first).</li>

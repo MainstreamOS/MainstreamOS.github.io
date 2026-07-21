@@ -250,6 +250,7 @@ PAGES['blog'] = {
       <li><strong>A graphical installer with five paths</strong> — including install-alongside-Windows dual-boot and one-tick full-disk encryption.</li>
       <li><strong>GPU auto-configuration</strong> — AMD, Intel, and five NVIDIA driver generations, detected and configured at install.</li>
       <li><strong>Install self-verification</strong> — 19 checks run on the finished system and write a health report, so a bad install tells you instead of failing silently.</li>
+      <li><strong>A signed supply chain</strong> — every ISO and every package in the [mainstream] repository is GPG-signed, and nothing is pulled from the AUR at install time.</li>
       <li><strong>Updates with a safety net</strong> — a Btrfs snapshot before every update, and one-click rollback from the boot menu and Settings.</li>
       <li><strong>Made with creators in mind</strong> — one-click installs for OBS and DaVinci Resolve, with GPU encoding on Wayland.</li>
     </ul>

@@ -1,39 +1,37 @@
-# Mainstream OS — feature list / changelog material
+# Mainstream OS — Features
 
-Running list of headline features for introducing the OS (release notes,
-announcement posts) and for the site once each has the pictures it needs.
+What Mainstream OS gives you out of the box.
 
-Legend — Site: `—` not on the site yet · `partial` mentioned somewhere · `done` has its own section/page with media.
+## Desktop & theming
 
-**Release gate: before 1.0.0, every feature below must be reflected on both the website and the dots-hyprland README.**
+- **Whole-desktop Material You** — pick any wallpaper and the entire desktop — shell, settings app, terminal, GTK/Qt apps, and the lock screen — rethemes itself live from the colors in that image.
+- **Theme system** — a theme is a full snapshot of your look: wallpaper, the generated colors, your interface settings, and window decorations, saved under a name. Switch between saved themes with one tap, or pair a Day and Night theme that follow the clock.
+- **Scrolling overview** — a niri-style zoomed-out map of your whole desktop. Open it from a hot corner or with `Super+O`, scroll across every workspace, drag windows between them, and drop files and folders from the drawer.
+- **Native display settings** — arrangement, resolution, scale, HDR, and color management. Real display controls, no terminal.
+- **Layout switching** — Dwindle, Master, Scrolling, Monocle, or Float — pick a layout per workspace.
+- **Configurable keybinds** — view and remap every keyboard shortcut from a visual editor. No hand-editing config.
+- **Toggle-able title bars** — optional window title bars: on for a familiar desktop feel, off for pure tiling. Takes effect instantly.
+- **Touchpad gestures** — remap every swipe and pinch from Settings, applied instantly.
+- **Session restore** — log out or reboot and your windows come back — same apps, same workspaces. Works for browsers, terminals, file managers, and Electron apps alike.
+- **Folder & file search in the launcher** — the launcher isn't just apps: type to find folders and files and jump straight to them.
+- **Drag files & folders across workspaces** — grab a folder in the overview drawer and drop it onto any workspace.
 
-| Feature | What to say about it | Media needed | Site |
-|---|---|---|---|
-| Session restore | Log out or reboot and your windows come back — same apps, same workspaces. Works for browsers, terminals, file managers, and Electron apps alike. | None — mention in feature list only | — |
-| Folder & file search in app launcher | The launcher isn't just apps: type to find folders and files and jump straight to them. | — | done (Overview & Launcher page) |
-| LocalSend integration | Share files with any phone or laptop on your network, no cloud. Drag a file onto the bar's media widget to send; right-click it to receive — with live transfer progress in a panel. | — | done (Sharing page) |
-| Drag files & folders across workspaces | Grab a folder in the overview drawer and drop it onto any workspace. | — | done (Overview & Launcher page) |
-| Scrolling overview | A niri-style zoomed-out view of all workspaces, integrated into the whole shell — hot corner or Super+O to open, scroll through workspaces, drag windows between them, drop files and folders from the drawer. | — | done (Overview & Launcher page) |
-| Custom themes | Snapshot your current look, save it, and switch between saved themes any time. | — | done (Themes docs page) |
-| Native display settings | Arrangement, resolution, scale, HDR, and color management — real display controls, no terminal. | — | done (Display docs page) |
-| Layout switching | Dwindle, Master, Scrolling, Monocle, or Float — pick a layout per workspace. | — | done (Layouts docs page) |
-| Configurable keybinds | View and remap every keyboard shortcut from a visual editor — no hand-editing config. | — | done (Keybinds docs page) |
-| One-click full update | System and shell updated together from Settings — a safety snapshot is taken first, automatically. | — | done (Update docs page) |
-| Automatic recovery | Something breaks? Roll back to the pre-update snapshot from Settings or the boot menu. | — | done (Recovery docs page) |
-| Auto drive mounting | Set a drive up once in Auto Drive Mount and it's ready every login — with one-click formatting and naming for blank disks, and encrypted drives that unlock right in the app. | — | done (Desktop Apps page) |
-| Toggle-able title bars | Optional window title bars — flip them on for a familiar desktop feel, off for pure tiling. Takes effect instantly. | — | done (The Desktop page) |
-| Touchpad gestures | Remap every swipe and pinch from Settings, applied instantly. | — | done (Mouse docs page) |
-| Pre-installed Proton GE | Windows games run out of the box — Proton GE ships installed and set as the default compatibility tool, with Steam Play on for every title. | — | done (Gaming docs page) |
+## Gaming
 
-## Adding to this list
+- **SteamOS-style Gaming Mode** — one keypress (`Super+G`) swaps the whole desktop for the same gamescope Big Picture session a Steam Deck boots into, and one click brings the desktop back exactly as you left it. AMD and NVIDIA, Proton GE pre-enabled.
+- **Console Mode install** — an install option that boots straight into Big Picture, turning a mini-PC into a console.
+- **Pre-installed Proton GE** — Windows games run out of the box: Proton GE ships installed and set as the default compatibility tool, with Steam Play on for every title.
 
-Tell Claude: "add X to the feature list" — this file is the canonical copy
-(`FEATURES.md`, site repo root). Features graduate off this list into the
-docs/site once their media lands; move them to the shipped table below
-rather than deleting them.
+## Install, update & recover
 
-## Shipped on the site
+- **A real graphical installer** — a Calamares installer with install-alongside-Windows dual-boot and full-disk encryption, plus Default, Custom, and Gaming setups. No terminal.
+- **One-click full update** — system and shell update together from Settings, with a safety snapshot taken first, automatically.
+- **One-click rollback** — a Btrfs snapshot is taken before every update; if something breaks, restore the previous system from the boot menu or Settings → Recover in about a minute.
+- **Install self-check** — after every install, a 19-point self-verification runs and writes you a health report.
+- **Signed downloads and packages** — every ISO is GPG-signed with a published key and a verification walkthrough, and everything Mainstream adds is prebuilt and GPG-signed in its own repository (nothing is compiled from the AUR at install time).
+- **GPU auto-configuration** — graphics are detected and configured at install across AMD, Intel, and five NVIDIA driver generations. An experimental legacy edition covers pre-Turing cards.
 
-| Feature | Where |
-|---|---|
-| (none yet) | |
+## Extras
+
+- **LocalSend integration** — share files with any phone or laptop on your network, no cloud. Drag a file onto the bar's media widget to send; right-click it to receive, with live transfer progress in a panel.
+- **Auto drive mounting** — set a drive up once and it's ready every login, with one-click formatting and naming for blank disks, and encrypted drives that unlock right in the app.

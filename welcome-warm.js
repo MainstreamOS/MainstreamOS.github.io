@@ -93,7 +93,7 @@ PAGES['why-mainstream'] = {
 
     <h2>Isn't it just an Arch rice?</h2>
     <p>Fair question — here's the honest answer. The desktop shell is a lean, heavily modified version of end-4's excellent <a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a>, and Mainstream ships it the way Ubuntu ships GNOME: as one credited, continuously-upstream-merged part of a whole operating system. Nobody calls Ubuntu "rebranded GNOME."</p>
-    <p>The distro is everything a dotfiles repo can't be — a graphical installer with five paths, a post-install self-check that runs 19 tests and writes you a health report, a signed package repo (no AUR-compile roulette), one-click rollback with a snapshot before every update, GPU auto-config across AMD, Intel, and five NVIDIA generations, and a real settings panel for everything. Credit and the maintainers' own donate links are built into the About page, and fixes go back upstream as pull requests, not private patches.</p>
+    <p>The distro is everything a dotfiles repo can't be — a graphical installer with four paths, a post-install self-check that runs 19 tests and writes you a health report, a signed package repo (no AUR-compile roulette), one-click rollback with a snapshot before every update, GPU auto-config across AMD, Intel, and five NVIDIA generations, and a real settings panel for everything. Credit and the maintainers' own donate links are built into the About page, and fixes go back upstream as pull requests, not private patches.</p>
 
     <h2>Who it's for</h2>
     <p>People who want a computer that respects them — enthusiasts who want Arch without the babysitting, creators who need their tools to just work, and the family members they set up and would rather not get a support call about. For every home.</p>
@@ -103,8 +103,9 @@ PAGES['why-mainstream'] = {
     <p>The goal is bigger than one distro: I want the Linux desktop to genuinely go mainstream — a first choice anyone can live on, not an alternative — and I want the projects Mainstream stands on to rise with it. If Mainstream earns attention, the people whose work it builds on should feel it too. Let's make Linux mainstream.</p>
 
     <h2>How you can help</h2>
-    <p>Two things would genuinely help:</p>
+    <p>A few things would genuinely help:</p>
     <ul>
+      <li><strong>Write code, or want to build something together?</strong> Mainstream is one developer's project for now — and I'd rather it weren't. Pull requests are genuinely welcome (a one-line fix counts), and so is deeper collaboration: on Mainstream itself, or on the upstream projects it's built on. If you'd like to work on something together, reach out.</li>
       <li><strong>Speak another language?</strong> I want Mainstream to feel native well beyond English, and I can't do that alone — translators are wanted and welcome.</li>
       <li><strong>See something wrong?</strong> Nobody contributing to Mainstream should be above reproach. If a decision looks off or something's broken, please say so — questions and criticism are how you make things better.</li>
     </ul>
@@ -208,7 +209,7 @@ PAGES['blog'] = {
 
     <p>Mainstream OS 1.0.0 is an Arch-based Linux distribution that pairs a full Hyprland desktop with the polish of macOS — and nothing in it needs a terminal. Flash the ISO, click through the installer, and about eight minutes later you're on a desktop that themes itself to your wallpaper, backs itself up before every update, and turns into a game console on one keypress. This is the first stable release.</p>
 
-    <p>Mainstream ships end-4's <a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a> shell the way Ubuntu ships GNOME — heavily modified, openly credited, continuously merged from upstream, and one component of a full operating system. The people whose work Mainstream stands on are credited in Settings &rarr; About with links to sponsor them, and fixes go back upstream as pull requests.</p>
+    <p>Mainstream ships a lean, heavily modified version of end-4's <a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a> shell the way Ubuntu ships GNOME — openly credited, continuously merged from upstream, and one component of a full operating system. The people whose work Mainstream stands on are credited in Settings &rarr; About with links to sponsor them, and fixes go back upstream as pull requests.</p>
 
     ${shot('Main-Desktop-UI.webp','The Mainstream OS desktop — bar on top, dock below, wallpaper clock between','The 1.0.0 desktop. Everything you see recolors from whatever wallpaper you pick.')}
 
@@ -247,7 +248,7 @@ PAGES['blog'] = {
     <p>Everything here is in the box and checkable, not on a roadmap:</p>
     <ul>
       <li><strong>A real settings app for everything</strong> — displays, layouts, keybinds, gestures, drives, updates, recovery. A settings panel, not a config file.</li>
-      <li><strong>A graphical installer with five paths</strong> — including install-alongside-Windows dual-boot and one-tick full-disk encryption.</li>
+      <li><strong>A graphical installer with four paths</strong> — including install-alongside-Windows dual-boot and one-tick full-disk encryption.</li>
       <li><strong>GPU auto-configuration</strong> — AMD, Intel, and five NVIDIA driver generations, detected and configured at install.</li>
       <li><strong>Install self-verification</strong> — 19 checks run on the finished system and write a health report, so a bad install tells you instead of failing silently.</li>
       <li><strong>A signed supply chain</strong> — every ISO and every package in the [mainstream] repository is GPG-signed, and nothing is pulled from the AUR at install time.</li>

@@ -85,7 +85,7 @@ PAGES.home = {
   render: () => `
     <div class="home-hero">
       <div class="left">
-        <div class="eye">Mainstream Docs · 1.0.0</div>
+        <div class="eye">Mainstream Docs · 1.0.4</div>
         <h1>A desktop that <em>flows</em> with you.</h1>
         <p class="sub">Everything you need to install, configure, and live inside Mainstream — the Arch-based Hyprland distribution built for every home. Set it up once, tune it any time.</p>
         <div class="cta-row">
@@ -1422,10 +1422,10 @@ gpg --show-keys mainstream.pub
 
 # 3. Import it, then verify the ISO against its signature
 gpg --import mainstream.pub
-gpg --verify mainstream-1.0.0.iso.sig mainstream-1.0.0.iso
+gpg --verify mainstream-1.0.4.iso.sig mainstream-1.0.4.iso
 
 # 4. (optional) Confirm the download wasn\'t corrupted
-sha256sum -c mainstream-1.0.0.iso.sha256</code></pre>
+sha256sum -c mainstream-1.0.4.iso.sha256</code></pre>
     <p>Using the legacy-NVIDIA edition? Same steps — just swap in its filenames. Its ISO, signature, and checksum live in the <a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/"><code>legacy-nvidia/</code></a> folder on the downloads page.</p>
 
     <h2>What a good result looks like</h2>
@@ -1435,7 +1435,7 @@ sha256sum -c mainstream-1.0.0.iso.sha256</code></pre>
 
     <h2>Verifying from Windows</h2>
     <p>Downloading from Windows before you switch? The checksum check is built in — open PowerShell in your Downloads folder and compare the output to the contents of the <code>.sha256</code> file:</p>
-    <pre><code>certutil -hashfile mainstream-1.0.0.iso SHA256</code></pre>
+    <pre><code>certutil -hashfile mainstream-1.0.4.iso SHA256</code></pre>
     <p>For the signature, install <a href="https://gpg4win.org">Gpg4win</a> and run the same three <code>gpg</code> commands above — they work unchanged in PowerShell.</p>
 
     <h2>Where the trust comes from</h2>

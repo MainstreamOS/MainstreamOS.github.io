@@ -257,7 +257,7 @@ PAGES['blog'] = {
     </ul>
 
     <h2>Get it</h2>
-    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.0.0</strong></a> (x86_64 &middot; 2.7&nbsp;GB), flash it to a USB drive, and boot. The <a href="#install-iso">install guide</a> walks every step, and an <a href="#install-script">install script</a> can dress a fresh Arch install instead. Checksums and signatures for every release live on the <a href="https://sourceforge.net/projects/mainstreamos/files/">downloads page</a>.</p>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.0.4</strong></a> (x86_64 &middot; 2.7&nbsp;GB), flash it to a USB drive, and boot. The <a href="#install-iso">install guide</a> walks every step, and an <a href="#install-script">install script</a> can dress a fresh Arch install instead. Checksums and signatures for every release live on the <a href="https://sourceforge.net/projects/mainstreamos/files/">downloads page</a>.</p>
 
     <h2>Verify your download</h2>
     <p>Every Mainstream ISO is GPG-signed. Verifying takes about 30 seconds and proves the image genuinely came from us and wasn't tampered with in transit.</p>
@@ -270,10 +270,10 @@ gpg --show-keys mainstream.pub
 
 # 3. Import it, then verify the ISO against its signature
 gpg --import mainstream.pub
-gpg --verify mainstream-1.0.0.iso.sig mainstream-1.0.0.iso
+gpg --verify mainstream-1.0.4.iso.sig mainstream-1.0.4.iso
 
 # 4. (optional) Confirm the download wasn't corrupted
-sha256sum -c mainstream-1.0.0.iso.sha256</code></pre>
+sha256sum -c mainstream-1.0.4.iso.sha256</code></pre>
     <p>A good result shows <strong>Good signature from "MainstreamOS Packages"</strong>. You'll also see a warning that the key "is not certified with a trusted signature" — that's expected; it only means you haven't personally marked the key as trusted. What matters is that the fingerprint matches the one above and the signature reads <em>Good</em>.</p>
 
     <h2>Built to outlast any one person</h2>

@@ -158,23 +158,24 @@ function card(id, title, ic, desc, featured=false) {
 PAGES['install-script'] = {
   group: 'Installation', title: 'Install via script', icon: 'rocket',
   navTitle: 'Script',
-  lede: 'The Arch-native path: turn any fresh Arch install into Mainstream with a single command. Recommended for anyone comfortable bringing up base Arch.',
+  lede: 'One command turns a fresh Arch install into Mainstream. It does two jobs: it installs the same numbered release as the ISO, and with --edge it\'s the only way to run the mainstream branch as it stands, ahead of every release.',
   render: () => `
     ${shot('Mainstream_OS_Script_Install.webp', 'The Mainstream installer running in a terminal', 'The one-command installer runs three idempotent steps — dependencies, permissions and services, then config files.')}
     <h2>Before you begin</h2>
     <p>You should have a working Arch Linux install with a user account, <code>sudo</code> access, and an internet connection. Mainstream installs Hyprland, Quickshell, GPU drivers (detected automatically for your hardware), and everything else on top.</p>
 
-    ${callout('info','Fresh install or existing Arch?', '<p>The script is idempotent and safe to rerun, but we strongly recommend running it on a <strong>fresh Arch install</strong> the first time. If you already have Hyprland configured, the installer backs up clashing configs to <code>~/original-dots-backup</code> automatically before replacing them.</p>')}
+    ${callout('info','Fresh install or existing Arch?', '<p>The script is idempotent and safe to rerun — rerunning is also how you move onto a newer release later. We still strongly recommend running it on a <strong>fresh Arch install</strong> the first time. If you already have Hyprland configured, the installer backs up clashing configs to <code>~/original-dots-backup</code> automatically before replacing them.</p>')}
 
     <h2>One-line install</h2>
     <p>Open a terminal and run:</p>
 <pre><code><span class="c"># Clone and run the Mainstream installer</span>
 <span class="k">bash</span> &lt;(<span class="k">curl</span> -fsSL https://mainstreamos.org/install.sh)</code></pre>
 
-    <p>Or clone it manually if you'd rather read the script first:</p>
+    <p>Or clone it manually if you'd rather read the script first. A plain clone leaves you on the branch, so check out the newest release tag to match what the one-line command does:</p>
 <pre><code><span class="k">git</span> clone --branch mainstream \\
     https://github.com/MainstreamOS/dots-hyprland.git
 <span class="k">cd</span> dots-hyprland
+<span class="k">git</span> checkout "$(<span class="k">git</span> tag | grep -E '^[0-9]{1,2}\\.[0-9]+\\.[0-9]+$' | sort -V | tail -1)"
 ./setup install</code></pre>
 
     <h2>Install options</h2>
@@ -193,6 +194,18 @@ PAGES['install-script'] = {
 <span class="k">bash</span> &lt;(<span class="k">curl</span> -fsSL https://mainstreamos.org/install.sh) -- --console</code></pre>
 
     <p>Whichever method you pick, the installer echoes it back in its headers — e.g. <strong>Mainstream installer · --console</strong> — so you can confirm at a glance that the right one is running.</p>
+
+    <h2>Release or edge</h2>
+    <p>By default the script installs the newest numbered release — the same one the ISO ships, and the same one <a href="#update">Settings &rarr; Update</a> moves you to. Pass <code>--edge</code> and it installs the <code>mainstream</code> branch as it stands instead: every desktop, settings, and tooling change that has landed since that release, sometimes before it's finished or documented.</p>
+<pre><code><span class="c"># newest release — the default</span>
+<span class="k">bash</span> &lt;(<span class="k">curl</span> -fsSL https://mainstreamos.org/install.sh)
+
+<span class="c"># the branch as it stands, ahead of every release</span>
+<span class="k">bash</span> &lt;(<span class="k">curl</span> -fsSL https://mainstreamos.org/install.sh) --edge
+
+<span class="c"># --edge combines with the install options above</span>
+<span class="k">bash</span> &lt;(<span class="k">curl</span> -fsSL https://mainstreamos.org/install.sh) --edge -- --console</code></pre>
+    <p>The installer prints the channel in its header, so you can see which one you're on. Rerun the command any time to move forward on either channel. <a href="#update">Settings &rarr; Update</a> always follows the numbered releases, so on an edge install it stays quiet until a release catches up to where you already are.</p>
 
     <h2>What the script does</h2>
     <ol>
@@ -217,7 +230,8 @@ PAGES['install-script'] = {
     <p>If you swap in a different graphics card later, run <code>gpu-drivers</code> from a terminal — it re-detects the GPU and installs the matching drivers, no password needed. Reboot afterward.</p>
 
     <h2>Updating later</h2>
-    <p>After install, all updates go through <strong>Settings → Update</strong> or <code>sudo mainstream-update-helper</code> from a terminal. You never need to run the installer again.</p>
+    <p>After a release install, updates go through <strong>Settings → Update</strong> or <code>sudo mainstream-update-helper</code> from a terminal, and you never need to run the installer again.</p>
+    <p>On an edge install it's the other way round: rerunning the one-line command with <code>--edge</code> is what moves you forward. <strong>Settings → Update</strong> still tracks the numbered releases, so it waits until a release reaches you and then offers to put you back on the release line.</p>
   `
 };
 

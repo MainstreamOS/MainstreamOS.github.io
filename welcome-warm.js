@@ -26,7 +26,7 @@ PAGES.home = {
         </div>
       </div>
       <div class="right">
-        <figure class="hero-shot"><img src="assets/docs/Main-Desktop-UI.webp" alt="The Mainstream desktop — bar on top, dock below, and the wallpaper clock between"></figure>
+        <figure class="hero-shot"><img src="assets/docs/Welcome-Hero.webp" alt="The Mainstream desktop — bar on top, dock below, and the wallpaper clock beneath the Mainstream mark"></figure>
       </div>
     </div>
 

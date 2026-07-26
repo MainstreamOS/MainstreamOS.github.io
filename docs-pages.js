@@ -42,6 +42,7 @@ const I = {
   lock:    '<rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   sidebar: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16"/>',
   send:    '<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/>',
+  tag:     '<path d="M3 12V4h8l9 9-8 8-9-9Z"/><circle cx="7.5" cy="7.5" r="1.25"/>',
 };
 
 const icon = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${I[name] || I.disc}</svg>`;
@@ -1562,4 +1563,86 @@ PAGES['desktop-apps'] = {
 
     ${callout('tip','Both live in the launcher','<p>Search "mount" or "uninstall" from the overview to open them, or find <strong>Auto Mount</strong> and <strong>Uninstall Apps</strong> in the app grid.</p>')}
   `
+};
+
+// ---------- CHANGELOG ----------
+// Release history is read from releases.json at view time, so the page stays
+// current without a redeploy. Fetched once per visit and reused afterwards.
+let RELEASE_DATA = null;
+
+const RELEASE_KINDS = {
+  security: { label: 'Security', dot: 'var(--err)' },
+  feature:  { label: 'Feature',  dot: 'var(--stream-hi)' },
+  patch:    { label: 'Patch',    dot: 'var(--bone)' },
+};
+
+const RELEASE_MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+
+const releaseDate = (s) => {
+  const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(String(s || ''));
+  return m ? `${RELEASE_MONTHS[+m[2] - 1]} ${+m[3]}, ${m[1]}` : '';
+};
+
+const releaseList = (data) => {
+  const rows = (data && Array.isArray(data.releases)) ? data.releases : [];
+  if (!rows.length) return '';
+  return `<div class="props">${rows.map(r => {
+    const kind = RELEASE_KINDS[r.kind] || RELEASE_KINDS.patch;
+    const changes = (r.changes || []).filter(c => c !== r.summary);
+    const when = releaseDate(r.date);
+    return `
+      <div class="prop">
+        <center>
+          <div class="k" style="font-size:15px;letter-spacing:0">${escHtml(r.version)}</div>
+          ${when ? `<div style="font-family:var(--font-mono);font-size:11px;color:var(--mist);margin-top:5px">${escHtml(when)}</div>` : ''}
+          <div style="margin-top:9px">
+            ${r.version === data.latest ? '<span class="chip stream" style="margin:0 0 5px">Latest</span>' : ''}
+            <span class="chip" style="margin:0 0 5px"><span class="dot" style="background:${kind.dot}"></span>${kind.label}</span>
+          </div>
+        </center>
+        <div class="v">
+          <b>${escHtml(r.summary || '')}</b>
+          ${changes.length ? `<ul style="font-size:13.5px;line-height:1.6;color:var(--mist);margin:8px 0 0;padding-left:18px">${changes.map(c => `<li>${escHtml(c)}</li>`).join('')}</ul>` : ''}
+        </div>
+      </div>`;
+  }).join('')}</div>`;
+};
+
+const releaseListUnavailable = () => callout('note','The release list didn\'t load','<p>Every release, with its checksums and signatures, is also listed on the <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">downloads page</a>.</p>');
+
+PAGES.changelog = {
+  group: 'Settings', title: 'Changelog', icon: 'tag',
+  lede: 'Every Mainstream release, newest first — what changed, and when it landed.',
+  render: () => `
+    <p>Mainstream is a rolling release: your Arch packages update continuously, and on top of that the desktop, settings app, and system tooling are published as numbered Mainstream releases. This page lists them all. To install the pending ones, open <a href="#update">Settings &rarr; Update</a> and press <strong>Start update</strong> — a snapshot is taken first, so you can always go back.</p>
+    <p>When one of these is waiting for you, Mainstream says so — an icon appears in the bar and tells you which release, and how long it has been out.</p>
+
+    <h2>Release history</h2>
+    <div id="release-list">${RELEASE_DATA ? releaseList(RELEASE_DATA) : '<p style="color:var(--mist)">Loading releases…</p>'}</div>
+
+    ${callout('note','What the labels mean','<p><strong>Security</strong> releases fix something that affects the safety of your system — worth installing promptly. <strong>Feature</strong> releases add or change how something works. <strong>Patch</strong> releases are fixes and refinements.</p>')}
+
+    <h2>Being told about new releases</h2>
+    <p>Mainstream can let you know when a release you don\'t have yet is published — a small icon in the bar, a notification, both, or nothing at all. The icon only appears while a release is waiting. Click it to open <a href="#update">Settings &rarr; Update</a>; right-click it for <strong>What\'s new</strong> (this page), <strong>Check now</strong>, and a quick way to change how you\'re told.</p>
+    <p>The icon carries a coloured dot: white for a small fix, blue for a new feature, yellow once a release has been waiting a week, and red once it\'s been three weeks — or straight away if the release closes a security hole. Choose what you hear about, and how, under <strong>Release notifications</strong> in <a href="#update">Settings &rarr; Update</a>.</p>
+
+    ${callout('tip','ISOs, checksums, and signatures','<p>Installer images for every release — including the experimental legacy-NVIDIA edition — live on the <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">downloads page</a>. The <a href="#verify">verify page</a> shows how to check one.</p>')}
+  `,
+  hydrate: () => {
+    const host = document.getElementById('release-list');
+    if (!host || RELEASE_DATA) return;
+    fetch('releases.json', { cache: 'no-cache' })
+      .then(res => res.ok ? res.json() : Promise.reject(new Error('HTTP ' + res.status)))
+      .then(data => {
+        const html = releaseList(data);
+        if (!html) throw new Error('no releases in manifest');
+        RELEASE_DATA = data;
+        const el = document.getElementById('release-list');
+        if (el) el.innerHTML = html;
+      })
+      .catch(() => {
+        const el = document.getElementById('release-list');
+        if (el) el.innerHTML = releaseListUnavailable();
+      });
+  }
 };

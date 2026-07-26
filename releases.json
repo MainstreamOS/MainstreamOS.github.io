@@ -1,0 +1,67 @@
+{
+  "schema": 1,
+  "latest": "1.0.5",
+  "releases": [
+    {
+      "version": "1.0.5",
+      "date": "2026-07-22",
+      "kind": "patch",
+      "summary": "Fix GPU vendor detection + load gpu-config before it's used",
+      "changes": [
+        "Own the plugin machinery + configs, add Repair Install",
+        "Refuse to switch sessions without hardware Vulkan",
+        "Re-sync the screencast portal on compositor (re)start"
+      ]
+    },
+    {
+      "version": "1.0.4",
+      "date": "2026-07-21",
+      "kind": "patch",
+      "summary": "Apply the full last-applied-to-tag range and retry pacman once",
+      "changes": [
+        "Quiesce a window preview before closing it"
+      ]
+    },
+    {
+      "version": "1.0.3",
+      "date": "2026-07-20",
+      "kind": "patch",
+      "summary": "Defer dotfiles when the package step fails",
+      "changes": [
+        "Check out branch refs from origin so cached clones track pushes",
+        "Start the rebuild timers on install, not just next boot",
+        "Own the plugin rebuild system and recovery wrapper",
+        "Dispatch through hl.dsp instead of legacy names",
+        "Read bool-typed animations option on Hyprland 0.56"
+      ]
+    },
+    {
+      "version": "1.0.2",
+      "date": "2026-07-20",
+      "kind": "patch",
+      "summary": "Track Hyprland 0.56 scroll axis naming fix",
+      "changes": [
+        "Build from upstream hyprland-plugins",
+        "Drive the limine-snapper-sync 1.31 restore prompts",
+        "Cap rebuild commit walk-back at 15",
+        "Survive Hyprland updates that outrun plugin ABI"
+      ]
+    },
+    {
+      "version": "1.0.1",
+      "date": "2026-07-19",
+      "kind": "patch",
+      "summary": "Start the SPICE agent inside virtual machines",
+      "changes": [
+        "Note when the network is already connected"
+      ]
+    },
+    {
+      "version": "1.0.0",
+      "date": "2026-07-18",
+      "kind": "feature",
+      "summary": "Introduce Mainstream OS",
+      "changes": []
+    }
+  ]
+}

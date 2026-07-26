@@ -106,6 +106,7 @@ function renderPage(id){
   }
 
   main.innerHTML = head + page.render() + (id !== 'home' ? pager(id) : '');
+  if (page.hydrate) page.hydrate();
   window.scrollTo({top:0,behavior:'instant'});
 }
 

@@ -1597,26 +1597,72 @@ const releaseDate = (s) => {
   return m ? `${RELEASE_MONTHS[+m[2] - 1]} ${+m[3]}, ${m[1]}` : '';
 };
 
-const releaseList = (data) => {
+const RELEASE_REPO = 'https://github.com/MainstreamOS/dots-hyprland';
+const TECH_KEY = 'ms-changelog-tech';
+const techOn = () => { try { return localStorage.getItem(TECH_KEY) === '1'; } catch (e) { return false; } };
+const setTech = (on) => { try { localStorage.setItem(TECH_KEY, on ? '1' : '0'); } catch (e) {} };
+const commitParts = (s) => {
+  const t = String(s || '').trim();
+  const m = /^([0-9a-f]{7,40})\s+(\S[\s\S]*)$/.exec(t);
+  return m ? { id: m[1], subject: m[2] } : { id: '', subject: t };
+};
+
+// The technical track. Only ever reached when the reader has opted in — render()
+// passes a hard-coded false so commit text can't leak into the search index.
+const commitList = (r, prev) => {
+  const rows = Array.isArray(r.commits) ? r.commits : [];
+  const notes = r.commitNotes || {};
+  const body = rows.length
+    ? `<ul class="rl-commits">${rows.map(line => {
+        const { id, subject } = commitParts(line);
+        const sha = id
+          ? `<a class="rl-sha" href="${RELEASE_REPO}/commit/${escHtml(id)}">${escHtml(id)}</a>`
+          : '';
+        const note = id && notes[id]
+          ? `<div class="rl-note">${escHtml(notes[id])}</div>` : '';
+        return `<li>${sha}<span class="rl-subj">${escHtml(subject)}</span>${note}</li>`;
+      }).join('')}</ul>`
+    : r.unreleased
+      ? `<p class="rl-empty">Not tagged yet, so there is no commit range to list.</p>`
+      : `<p class="rl-empty">No commit range: 1.0.0 is the first release, so there is nothing to compare it against. <a href="${RELEASE_REPO}/tree/${escHtml(r.version)}">Browse the tree at ${escHtml(r.version)}</a>.</p>`;
+  const capped = r.commitsTotal && r.commitsTotal > rows.length
+    ? `<p class="rl-empty">Showing ${rows.length} of ${escHtml(String(r.commitsTotal))} commits; the full diff below has the rest.</p>` : '';
+  const merged = r.merges
+    ? `<p class="rl-empty">${r.merges} merge${r.merges === 1 ? '' : 's'} stepped over; commits they brought in aren't listed.</p>` : '';
+  const compare = prev
+    ? `<p class="rl-empty"><a href="${RELEASE_REPO}/compare/${escHtml(prev)}...${escHtml(r.version)}">Full diff ${escHtml(prev)} → ${escHtml(r.version)}</a></p>` : '';
+  return `<div class="rl-tech">
+    <div class="rl-tech-head">Commits in this release</div>
+    ${body}${capped}${merged}
+    <p class="rl-empty">Installer and ISO changes are tracked separately and aren't listed here.</p>
+    ${compare}
+  </div>`;
+};
+
+const releaseList = (data, tech) => {
   const rows = (data && Array.isArray(data.releases)) ? data.releases : [];
   if (!rows.length) return '';
-  return `<div class="props">${rows.map(r => {
+  return `<div class="props">${rows.map((r, i) => {
     const kind = RELEASE_KINDS[r.kind] || RELEASE_KINDS.patch;
     const changes = (r.changes || []).filter(c => c !== r.summary);
     const when = releaseDate(r.date);
+    // Newest first, so the previous release is the next row down.
+    const prev = rows[i + 1] ? rows[i + 1].version : '';
     return `
       <div class="prop">
         <center>
           <div class="k" style="font-size:15px;letter-spacing:0">${escHtml(r.version)}</div>
           ${when ? `<div style="font-family:var(--font-mono);font-size:11px;color:var(--mist);margin-top:5px">${escHtml(when)}</div>` : ''}
           <div style="margin-top:9px">
-            ${r.version === data.latest ? '<span class="chip stream" style="margin:0 0 5px">Latest</span>' : ''}
+            ${r.unreleased ? '<span class="chip" style="margin:0 0 5px">Upcoming</span>'
+              : r.version === data.latest ? '<span class="chip stream" style="margin:0 0 5px">Latest</span>' : ''}
             <span class="chip" style="margin:0 0 5px"><span class="dot" style="background:${kind.dot}"></span>${kind.label}</span>
           </div>
         </center>
         <div class="v">
           <b>${escHtml(r.summary || '')}</b>
           ${changes.length ? `<ul style="font-size:13.5px;line-height:1.6;color:var(--mist);margin:8px 0 0;padding-left:18px">${changes.map(c => `<li>${escHtml(c)}</li>`).join('')}</ul>` : ''}
+          ${tech ? commitList(r, prev) : ''}
         </div>
       </div>`;
   }).join('')}</div>`;
@@ -1632,7 +1678,8 @@ PAGES.changelog = {
     <p>When one of these is waiting for you, Mainstream says so — an icon appears in the bar and tells you which release, and how long it has been out.</p>
 
     <h2>Release history</h2>
-    <div id="release-list">${RELEASE_DATA ? releaseList(RELEASE_DATA) : '<p style="color:var(--mist)">Loading releases…</p>'}</div>
+    <div class="rl-bar"><button type="button" id="rl-tech-toggle" class="rl-toggle" aria-pressed="false">Show technical detail</button></div>
+    <div id="release-list">${RELEASE_DATA ? releaseList(RELEASE_DATA, false) : '<p style="color:var(--mist)">Loading releases…</p>'}</div>
 
     ${callout('note','What the labels mean','<p><strong>Security</strong> releases fix something that affects the safety of your system — worth installing promptly. <strong>Feature</strong> releases add or change how something works. <strong>Patch</strong> releases are fixes and refinements.</p>')}
 
@@ -1644,15 +1691,33 @@ PAGES.changelog = {
   `,
   hydrate: () => {
     const host = document.getElementById('release-list');
-    if (!host || RELEASE_DATA) return;
+    if (!host) return;
+
+    // The button lives outside #release-list, so repainting the list leaves it
+    // alone. render() always emits the off state; the reader's choice is
+    // applied here, after the page exists.
+    const btn = document.getElementById('rl-tech-toggle');
+    const paint = () => {
+      const on = techOn();
+      const el = document.getElementById('release-list');
+      if (el && RELEASE_DATA) el.innerHTML = releaseList(RELEASE_DATA, on);
+      if (btn) {
+        btn.textContent = on ? 'Hide technical detail' : 'Show technical detail';
+        btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      }
+    };
+    if (btn && !btn.dataset.wired) {
+      btn.dataset.wired = '1';
+      btn.addEventListener('click', () => { setTech(!techOn()); paint(); });
+    }
+
+    if (RELEASE_DATA) { paint(); return; }
     fetch('releases.json', { cache: 'no-cache' })
       .then(res => res.ok ? res.json() : Promise.reject(new Error('HTTP ' + res.status)))
       .then(data => {
-        const html = releaseList(data);
-        if (!html) throw new Error('no releases in manifest');
+        if (!releaseList(data, false)) throw new Error('no releases in manifest');
         RELEASE_DATA = data;
-        const el = document.getElementById('release-list');
-        if (el) el.innerHTML = html;
+        paint();
       })
       .catch(() => {
         const el = document.getElementById('release-list');

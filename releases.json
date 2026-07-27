@@ -2,6 +2,31 @@
   "latest": "1.0.5",
   "releases": [
     {
+      "version": "1.1.0",
+      "date": "2026-07-27",
+      "kind": "feature",
+      "summary": "A bar you arrange, themes you can share, and a look you choose",
+      "changes": [
+        "Export a theme to a single file and import it on another computer",
+        "A saved theme now remembers your app style, icons and pointer",
+        "Applying a theme or wallpaper finishes in about a third of the time",
+        "Switching themes no longer flashes the new layout with the old colors",
+        "A theme that fails to apply now says so instead of doing nothing",
+        "Show, hide, reorder and group any widget on your bar",
+        "Drag two bar widgets together to combine them into one pill",
+        "Choose your app style, icon theme and mouse cursor in Settings",
+        "Pick fonts from a searchable list that shows each one in its typeface",
+        "Most apps now use the font you pick for the shell",
+        "Video wallpapers just play, with no package to install yourself",
+        "Pick a cursor size from the sizes your theme can actually draw",
+        "Turn on Shake to Locate to magnify or enlarge a lost cursor",
+        "Mirror one display onto another from the monitor settings",
+        "A bar icon and a notification tell you when a new release is out"
+      ],
+      "commits": [],
+      "unreleased": true
+    },
+    {
       "version": "1.0.5",
       "date": "2026-07-22",
       "kind": "patch",
@@ -11,7 +36,17 @@
         "Adding the desktop to existing Arch now fits the matching NVIDIA driver",
         "Without hardware Vulkan, Gaming Mode explains itself instead of bouncing you to login",
         "Screen sharing and recording keep working after the desktop restarts"
-      ]
+      ],
+      "commits": [
+        "e057265e2 setups: fix GPU vendor detection + load gpu-config before it's used",
+        "5f7415a10 mainstream-system: own the plugin machinery + configs, add Repair Install",
+        "c4691cfad gaming: refuse to switch sessions without hardware Vulkan",
+        "633e23d96 hyprland: re-sync the screencast portal on compositor (re)start"
+      ],
+      "commitNotes": {
+        "e057265e2": "detect_gpu_vendors matched the name 'ati', a substring of 'VGA compatible\ncontroller' \u2014 so every machine falsely detected an AMD GPU and installed the\nmesa/vulkan-radeon stack (seen on a GTX 1050). Match the PCI vendor IDs from\nlspci -nn instead: [10de] nvidia, [1002] amd, [8086] intel.\n\nAlso move the sdata/lib/gpu-config.sh source to the top of the file. It was\nsourced ~450 lines after setup_gpu_drivers runs, so gpu_detect /\ngpu_classify_nvidia_driver were 'command not found' and the NVIDIA driver\nclassification silently failed (no proprietary driver selected on a fresh\n./setup install).",
+        "5f7415a10": "Extracts the plugin-rebuild machinery (hyprbars/scrolloverview rebuild scripts,\nhooks, timers, status-notify, limine-restore-auto, preset) out of mainstream-extras\ninto a new mainstream-system package that also owns canonical /usr/share templates\nfor the two plugin configs. Its install scriptlet seeds /etc from those templates\nand comments out any stale version pin (HYPRBARS_REF/SCROLLOVERVIEW_REF) \u2014 the fix\nfor the unowned /etc/hyprbars.conf that froze hyprbars at v0.55.0 and blocked\nrebuilds on Hyprland 0.56. mainstream-extras becomes an apps metapackage depending\non mainstream-system; install-deps builds it first.\n\nAdds a Recovery-page 'Repair Install' button: pkexec mainstream-repair pins the\ndotfiles clone to the latest release tag, runs ./setup install-setups\nnon-interactively, re-asserts mainstream-system, un-pins the plugin configs, and\nrebuilds the plugins \u2014 streamed into the log pane, no terminal. updatems and\ninstall-setups also ensure mainstream-system."
+      }
     },
     {
       "version": "1.0.4",
@@ -22,6 +57,10 @@
         "An update no longer applies just part of a release",
         "A failed package sync is retried once before the update stops",
         "Closing a window from the overview no longer risks crashing the shell"
+      ],
+      "commits": [
+        "cc5bafd6d update: apply the full last-applied-to-tag range and retry pacman once",
+        "e4ab2ca87 overview: quiesce a window preview before closing it"
       ]
     },
     {
@@ -33,6 +72,14 @@
         "The desktop update is held back when the system package update fails",
         "Title bar and overview plugins rebuild from the newest published source",
         "Game mode shows its real state in the Classic quick toggles"
+      ],
+      "commits": [
+        "51bbb7300 update: defer dotfiles when the package step fails",
+        "4a790d84b plugins: check out branch refs from origin so cached clones track pushes",
+        "52827ac9b extras: start the rebuild timers on install, not just next boot",
+        "6588a1b9e extras: own the plugin rebuild system and recovery wrapper",
+        "002606654 shell: dispatch through hl.dsp instead of legacy names",
+        "101e6127c quicktoggles: read bool-typed animations option on Hyprland 0.56"
       ]
     },
     {
@@ -44,7 +91,17 @@
         "Title bars and the overview stay off until they rebuild for a new Hyprland",
         "Restore Snapshot in Settings now makes the snapshot you booted from permanent",
         "Super plus scroll moves workspaces the way you scroll again"
-      ]
+      ],
+      "commits": [
+        "c202752aa keybinds: track Hyprland 0.56 scroll axis naming fix",
+        "ff8320423 hyprbars: build from upstream hyprland-plugins",
+        "d368b3524 recover: drive the limine-snapper-sync 1.31 restore prompts",
+        "85da839bf plugins: cap rebuild commit walk-back at 15",
+        "7f5b29e88 plugins: survive Hyprland updates that outrun plugin ABI"
+      ],
+      "commitNotes": {
+        "7f5b29e88": "A rebuild that fails for a new Hyprland version now quarantines the\nversion-mismatched .so instead of leaving it for dlopen to segfault on \u2014\nthe user logs into a plugin-less session with the existing status\nnotification instead of looping at SDDM, and the 24h retry timer restores\nthe plugin once upstream ships a compatible commit. Successful builds\nstamp each .so with the Hyprland version they were built for, and the\nconfig refuses to load a stamped plugin that does not match the installed\nHyprland \u2014 which also covers booting an older system snapshot against a\nnewer plugin in the shared home subvolume."
+      }
     },
     {
       "version": "1.0.1",
@@ -54,6 +111,10 @@
       "changes": [
         "Copy and paste between your host and a QEMU/KVM virtual machine",
         "The installer's welcome screen notes when you're already connected"
+      ],
+      "commits": [
+        "f57c08e2d execs: start the SPICE agent inside virtual machines",
+        "7a73e9921 installer: note when the network is already connected"
       ]
     },
     {
@@ -62,27 +123,30 @@
       "kind": "feature",
       "summary": "The first Mainstream OS release: a Hyprland desktop and an Arch-based installer ISO",
       "changes": [
-        "Retheme the shell, apps, terminal and lock screen from your wallpaper",
-        "Configure the whole desktop from a sixteen-page Settings app",
-        "Save wallpaper, palette and decorations as themes that switch day and night",
-        "Give each workspace its own layout: dwindle, master, scrolling, monocle or float",
-        "Zoom out to a scrolling map of every workspace with Super+O",
-        "Turn window title bars on or off without logging out",
-        "Remap any keyboard shortcut from Settings instead of editing config files",
-        "Reopen your windows on their original workspaces after a reboot",
-        "Arrange monitors and set scale, HDR and ICC profiles in Settings",
+        "Configure the whole desktop from one Settings app instead of a config file",
         "Enter a gamescope Steam Big Picture session with Super+G",
+        "Retheme the shell, apps, terminal and lock screen from your wallpaper",
+        "Boot back into an earlier Btrfs snapshot from the Limine menu",
         "Preinstall GE-Proton and set it as Steam's default compatibility tool",
+        "Arrange monitors and set scale, HDR and ICC profiles in Settings",
+        "Give each workspace its own layout: dwindle, master, scrolling, monocle or float",
+        "Remap any keyboard shortcut from Settings instead of editing config files",
+        "Turn window title bars on or off without logging out",
+        "Save wallpaper, palette and decorations as themes that switch day and night",
+        "Start with a set of everyday apps, each one optional at install",
+        "Install more apps from a store with pictures instead of package names",
+        "Zoom out to a scrolling map of every workspace with Super+O",
+        "Send files to nearby devices by dropping them on the bar",
+        "Reopen your windows on their original workspaces after a reboot",
         "Install from a graphical installer with a Get Started setup picker",
         "Encrypt the whole system with LUKS2 and a boot passphrase",
         "Install alongside Windows and add it to the boot menu",
         "Detect the graphics card during install and fit matching drivers",
-        "Boot back into an earlier Btrfs snapshot from the Limine menu",
-        "Update packages, Flatpaks and the desktop from one Settings button",
-        "Install prebuilt signed packages instead of building from the AUR",
         "Meet the desktop with a first-boot tour and one-click extra installs",
-        "Send files to nearby devices by dropping them on the bar"
-      ]
+        "Update packages, Flatpaks and the desktop from one Settings button",
+        "Install prebuilt signed packages instead of building from the AUR"
+      ],
+      "commits": []
     }
   ]
 }

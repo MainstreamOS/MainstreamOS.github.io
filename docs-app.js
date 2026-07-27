@@ -8,6 +8,7 @@ const NAV_ORDER = [
   { group: 'Creative', ids: ['davinci','obs'], collapsible: true, icon: 'film', heading: 'Topics' },
   { group: 'Gaming', ids: ['gaming','steam-proton'], collapsible: true, icon: 'game' },
   { group: 'Security', ids: ['security','verify','privacy'], collapsible: true, icon: 'shield' },
+  { group: '', ids: ['changelog'], bare: true },
 ];
 
 const collapsedGroups = new Set(NAV_ORDER.filter(g => g.collapsible).map(g => g.group));

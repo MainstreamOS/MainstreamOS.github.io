@@ -224,7 +224,7 @@ PAGES['blog'] = {
 
     <h2>A desktop and a console, in one install</h2>
     <p><code>SUPER</code> + <code>G</code> swaps the desktop for the same full-screen Big Picture session a Steam Deck boots into — a real gamescope session, not a fullscreen window — and one click brings the desktop back, exactly as you left it. Prefer the couch full-time? The installer's <strong>Console Mode</strong> boots straight into it.</p>
-    ${shot('Gaming-Big-Picture.webp','Steam Big Picture running as the Mainstream Gaming Mode session','Gaming Mode — AMD and NVIDIA, Proton GE pre-enabled.')}
+    ${shot('Gaming-Big-Picture.webp','Steam Big Picture running as the Mainstream Gaming Mode session','Gaming Mode — AMD, Intel, and NVIDIA, Proton GE pre-enabled.')}
 
     <h2>A map of everything you're doing</h2>
     <p>Flick the cursor into the corner and the desktop zooms out into a scrolling map of every workspace. Drag windows between them, drop files onto them, and glide across the whole thing in one motion — combined with the scrolling layout, it's the fastest way to get around the OS.</p>

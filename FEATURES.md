@@ -5,7 +5,7 @@ A tiling Linux desktop is normally built by hand, in text files. Mainstream OS i
 ## The headlines
 
 - **Hyprland you never have to configure** — Wallpaper and colors, displays, per-workspace layouts, keybinds, touchpad gestures, apps, updates, and recovery all live in one Settings app. A tiling desktop with no config file, and never a terminal.
-- **SteamOS-style Gaming Mode** — Press `Super+G` and the whole desktop swaps for the same gamescope Steam Big Picture session a Steam Deck boots into, and one click brings it back exactly as you left it. AMD and NVIDIA alike.
+- **SteamOS-style Gaming Mode** — Press `Super+G` and the whole desktop swaps for the same gamescope Steam Big Picture session a Steam Deck boots into, and one click brings it back exactly as you left it. AMD, Intel, and NVIDIA alike.
 - **Whole-desktop Material You** — Pick any wallpaper and the entire system recolors from it — the shell, the Settings app, your terminal, your GTK and Qt apps, and the lock screen. It happens live, with nothing to restart.
 - **One-minute rollback** — A Btrfs snapshot is taken before every update, so a bad day is one boot-menu entry away. Restore the earlier system from the boot menu or from Settings, in about a minute.
 

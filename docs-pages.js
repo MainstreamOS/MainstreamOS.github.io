@@ -674,7 +674,7 @@ PAGES.display = {
       <div class="prop"><center><div class="k">Mode</div></center><div class="v">Resolution × refresh rate, picked from the modes your monitor advertises.</div></div>
       <div class="prop"><center><div class="k">Scale</div></center><div class="v">UI scale. The menu shows only the steps that render pixel-perfectly on that monitor — up to ten of them between 100% and 200% — so whichever you pick stays sharp.</div></div>
       <div class="prop"><center><div class="k">Orientation</div></center><div class="v">Landscape / Portrait / Landscape (Flipped) / Portrait (Flipped).</div></div>
-      <div class="prop"><center><div class="k">VRR</div></center><div class="v">Variable Refresh Rate. <b>Always On</b> for GSync/FreeSync monitors — smoother gaming. <b>Fullscreen Only</b> saves power on the desktop. Greys out if your display or driver can\'t do it.</div></div>
+      <div class="prop"><center><div class="k">VRR</div></center><div class="v">Variable Refresh Rate. <b>Always On</b> for G-Sync, FreeSync, and Adaptive-Sync monitors — smoother gaming. <b>Fullscreen Only</b> saves power on the desktop. Greys out if your display or driver can\'t do it.</div></div>
       <div class="prop"><center><div class="k">10-bit</div></center><div class="v">Enables 10-bit color output. Greys out if your display or driver doesn\'t support it.</div></div>
     </div>
 

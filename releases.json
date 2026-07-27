@@ -5,54 +5,55 @@
       "version": "1.0.5",
       "date": "2026-07-22",
       "kind": "patch",
-      "summary": "Fix GPU vendor detection + load gpu-config before it's used",
+      "summary": "A one-click Repair Install, plus graphics driver and screen sharing fixes",
       "changes": [
-        "Own the plugin machinery + configs, add Repair Install",
-        "Refuse to switch sessions without hardware Vulkan",
-        "Re-sync the screencast portal on compositor (re)start"
+        "Repair Install on the Recovery page re-runs setup and rebuilds plugins",
+        "Adding the desktop to existing Arch now fits the matching NVIDIA driver",
+        "Without hardware Vulkan, Gaming Mode explains itself instead of bouncing you to login",
+        "Screen sharing and recording keep working after the desktop restarts"
       ]
     },
     {
       "version": "1.0.4",
       "date": "2026-07-21",
       "kind": "patch",
-      "summary": "Apply the full last-applied-to-tag range and retry pacman once",
+      "summary": "The next update picks up the config and packages an earlier one missed",
       "changes": [
-        "Quiesce a window preview before closing it"
+        "An update no longer applies just part of a release",
+        "A failed package sync is retried once before the update stops",
+        "Closing a window from the overview no longer risks crashing the shell"
       ]
     },
     {
       "version": "1.0.3",
       "date": "2026-07-20",
       "kind": "patch",
-      "summary": "Defer dotfiles when the package step fails",
+      "summary": "Safer update handling, fresher plugin rebuilds, and a quick-toggle fix",
       "changes": [
-        "Check out branch refs from origin so cached clones track pushes",
-        "Start the rebuild timers on install, not just next boot",
-        "Own the plugin rebuild system and recovery wrapper",
-        "Dispatch through hl.dsp instead of legacy names",
-        "Read bool-typed animations option on Hyprland 0.56"
+        "The desktop update is held back when the system package update fails",
+        "Title bar and overview plugins rebuild from the newest published source",
+        "Game mode shows its real state in the Classic quick toggles"
       ]
     },
     {
       "version": "1.0.2",
       "date": "2026-07-20",
       "kind": "patch",
-      "summary": "Track Hyprland 0.56 scroll axis naming fix",
+      "summary": "A Hyprland update can no longer strand you at the login screen",
       "changes": [
-        "Build from upstream hyprland-plugins",
-        "Drive the limine-snapper-sync 1.31 restore prompts",
-        "Cap rebuild commit walk-back at 15",
-        "Survive Hyprland updates that outrun plugin ABI"
+        "Title bars and the overview stay off until they rebuild for a new Hyprland",
+        "Restore Snapshot in Settings now makes the snapshot you booted from permanent",
+        "Super plus scroll moves workspaces the way you scroll again"
       ]
     },
     {
       "version": "1.0.1",
       "date": "2026-07-19",
       "kind": "patch",
-      "summary": "Start the SPICE agent inside virtual machines",
+      "summary": "Two small fixes for virtual machine guests and the installer's welcome screen",
       "changes": [
-        "Note when the network is already connected"
+        "Copy and paste between your host and a QEMU/KVM virtual machine",
+        "The installer's welcome screen notes when you're already connected"
       ]
     },
     {

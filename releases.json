@@ -1,5 +1,4 @@
 {
-  "schema": 1,
   "latest": "1.0.5",
   "releases": [
     {
@@ -60,8 +59,29 @@
       "version": "1.0.0",
       "date": "2026-07-18",
       "kind": "feature",
-      "summary": "Introduce Mainstream OS",
-      "changes": []
+      "summary": "The first Mainstream OS release: a Hyprland desktop and an Arch-based installer ISO",
+      "changes": [
+        "Retheme the shell, apps, terminal and lock screen from your wallpaper",
+        "Configure the whole desktop from a sixteen-page Settings app",
+        "Save wallpaper, palette and decorations as themes that switch day and night",
+        "Give each workspace its own layout: dwindle, master, scrolling, monocle or float",
+        "Zoom out to a scrolling map of every workspace with Super+O",
+        "Turn window title bars on or off without logging out",
+        "Remap any keyboard shortcut from Settings instead of editing config files",
+        "Reopen your windows on their original workspaces after a reboot",
+        "Arrange monitors and set scale, HDR and ICC profiles in Settings",
+        "Enter a gamescope Steam Big Picture session with Super+G",
+        "Preinstall GE-Proton and set it as Steam's default compatibility tool",
+        "Install from a graphical installer with a Get Started setup picker",
+        "Encrypt the whole system with LUKS2 and a boot passphrase",
+        "Install alongside Windows and add it to the boot menu",
+        "Detect the graphics card during install and fit matching drivers",
+        "Boot back into an earlier Btrfs snapshot from the Limine menu",
+        "Update packages, Flatpaks and the desktop from one Settings button",
+        "Install prebuilt signed packages instead of building from the AUR",
+        "Meet the desktop with a first-boot tour and one-click extra installs",
+        "Send files to nearby devices by dropping them on the bar"
+      ]
     }
   ]
 }

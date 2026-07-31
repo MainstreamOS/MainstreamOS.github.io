@@ -406,6 +406,15 @@ PAGES.bar = {
   render: () => `
     ${twoShot('BarConfig-1.webp','Time, date, position, workspaces.','BarConfig-2.webp','Utility buttons, weather, tray, volume.')}
 
+    <h2>Widget layout</h2>
+    <p>The bar is built from widgets you arrange yourself. There are two ways to go about it:</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Simple</div></center><div class="v">The stock arrangement. Everything sits where Mainstream put it and you only decide what is shown.</div></div>
+      <div class="prop"><center><div class="k">Custom</div></center><div class="v">Take over completely. Drag widgets to reorder them or move them between the left, center, and right sections — top, middle, and bottom on a vertical bar. Tap a widget to hide it, and it stays hidden until you put it back.</div></div>
+    </div>
+    <p>Drop one widget against another to <strong>group them into a pill</strong> — a single rounded container holding both, which is how the clock and its neighbours are drawn by default. <strong>Group style</strong> switches between pills and plain spacing. <strong>Reset to default layout</strong> puts everything back.</p>
+    ${callout('note','Vertical bars leave some widgets out', '<p>A few widgets only make sense across the top. The update indicator, for one, isn\'t offered when the bar is vertical.</p>')}
+
     <h2>Time &amp; Date</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Time Format</div></center><div class="v"><span class="tag">24h</span> 14:32 &nbsp; <span class="tag">12h am/pm</span> 2:32 pm &nbsp; <span class="tag">12h AM/PM</span> 2:32 PM (default)</div></div>
@@ -461,19 +470,11 @@ PAGES.bar = {
 // ---------- INTERFACE ----------
 PAGES.interface = {
   group: 'Settings', title: 'Interface', icon: 'iface',
-  lede: 'Everything that affects how windows look, the dock, sidebars, fonts, and the lock screen. This is where Mainstream feels the most like your machine.',
+  lede: 'The dock, the sidebars, the hot corner, and the lock screen — the parts of the desktop you reach for, rather than the parts that are simply drawn.',
   render: () => `
-    ${shot('InterfaceConfig-1.webp','Decorations, dock, sidebars.','Decorations style the windows themselves — borders, rounded corners, shadows, and title bars. The Dock section controls the app launcher at the bottom. Left and Right Sidebars hold Mainstream\'s AI assistant and quick toggles.')}
+    ${shot('InterfaceConfig-1.webp','Dock and sidebars.','The Dock section controls the app launcher at the bottom. Left and Right Sidebars hold Mainstream\'s AI assistant and quick toggles.')}
 
-    <h2>Decorations</h2>
-    <div class="props">
-      <div class="prop"><center><div class="k">Animations</div></center><div class="v">Workspace slides, window open/close, sidebar reveals. Disable for absolute minimum latency.</div></div>
-      <div class="prop"><center><div class="k">Blur</div></center><div class="v">Blur behind translucent surfaces. Gorgeous, GPU-light on modern hardware. Turn off for battery savings on integrated graphics.</div></div>
-      <div class="prop"><center><div class="k">Shadows</div></center><div class="v">Soft drop shadow under focused windows.</div></div>
-      <div class="prop"><center><div class="k">Borders</div></center><div class="v">A colored border around active and inactive windows — helpful for telling floating windows apart, optional for tiling.</div></div>
-      <div class="prop"><center><div class="k">Rounded Corners</div></center><div class="v">Rounds the corners of windows and the bar to your theme radius.</div></div>
-      <div class="prop"><center><div class="k">Title Bars</div></center><div class="v">On by default, so every window keeps its close and maximize buttons. Turn off for a chromeless look — the same toggle as on the <a href="#layouts">Layouts</a> page.</div></div>
-    </div>
+    ${callout('note','Looking for decorations or fonts?', '<p>Window borders, blur, shadows, rounded corners and title bars — along with your app style, icons, pointer and fonts — now live on their own <a href="#decorations">Decorations</a> page.</p>')}
 
     <h2>Dock</h2>
     ${twoShot('Dock-Right-Click-Per-App.webp','Right-click a dock icon — per-app view.','Dock-Right-Click-Per-Window.webp','Per-window view shows open instances individually with live volume sliders.')}
@@ -484,6 +485,7 @@ PAGES.interface = {
       <div class="prop"><center><div class="k">Pinned on startup</div></center><div class="v">Starts the session with the dock pinned open — always visible, reserving its space at the bottom — until you unpin it.</div></div>
       <div class="prop"><center><div class="k">Right-click volume control</div></center><div class="v">Adds a volume slider and mute toggle to the right-click menu of a dock icon for any app currently playing audio. <b>Per window</b> gives each window its own slider — handy for browsers or Discord where different windows play different sound; <b>Per app</b> groups them into one.</div></div>
       <div class="prop"><center><div class="k">Tint app icons</div></center><div class="v">Desaturates each icon and washes it with your accent color for a uniform look. Keep off for brand-accurate icons.</div></div>
+      <div class="prop"><center><div class="k">Launch animation</div></center><div class="v">The icon reacts when you start an app, so you can see the click landed before the window appears. <span class="tag">Bounce</span> the default &nbsp; <span class="tag">Pulse</span> &nbsp; <span class="tag">Pop</span> &nbsp; <span class="tag">Wobble</span> &nbsp; <span class="tag">None</span> Only a genuine launch animates — clicking an app that is already open, or opening a folder, does not.</div></div>
     </div>
 
     <h2>Left Hot Corner</h2>
@@ -501,11 +503,11 @@ PAGES.interface = {
       <div class="prop"><center><div class="k">Workspace scale</div></center><div class="v">How much each preview shrinks — lower fits more workspaces on screen. Default 50%.</div></div>
     </div>
 
-    <h2>Overview</h2>
+    <h2>Launcher Overview</h2>
     <p>Settings for the built-in overview grid (<a href="#overview-launcher">Overview &amp; Launcher</a>).</p>
     <div class="props">
       <div class="prop"><center><div class="k">Enable</div></center><div class="v">Master toggle for the overview.</div></div>
-      <div class="prop"><center><div class="k">Scale (%)</div></center><div class="v">How large the overview appears on screen.</div></div>
+      <div class="prop"><center><div class="k">Size (%)</div></center><div class="v">How much of the screen the overview fills.</div></div>
       <div class="prop"><center><div class="k">Rows / Columns</div></center><div class="v">The shape of the workspace grid. Default 2 rows by 5 columns.</div></div>
       <div class="prop"><center><div class="k">Pre-load overview</div></center><div class="v">Keeps the overview built in the background so it opens instantly, at a small memory cost.</div></div>
     </div>
@@ -543,10 +545,8 @@ PAGES.interface = {
       <div class="prop"><center><div class="k">Timeout (ms)</div></center><div class="v">How long the popup lingers after the last key press.</div></div>
     </div>
 
-    <h2>Fonts</h2>
-    ${shot('InterfaceConfig-3.webp','Font family overrides.')}
-
-    <p>Mainstream uses <strong>Google Sans Flex</strong> and <strong>JetBrains Mono NF</strong> by default. Every surface (main UI, numbers, titles, monospace, nerd-font icons, reading text) can be individually overridden. Font names are resolved via fontconfig, so anything in <code>fc-list</code> is fair game.</p>
+    <h2>Wallpaper selector</h2>
+    <p>Controls for the wallpaper picker itself — see <a href="#background">Background</a> for the wallpaper and its overlay widgets.</p>
   `
 };
 
@@ -556,6 +556,9 @@ PAGES.background = {
   lede: 'Wallpaper behavior and the two overlay widgets that live on top of it — the big clock on the right, and the optional weather card.',
   render: () => `
     ${twoShot('BackgroundConfig-1.webp','Wallpaper panning, Clock widget.','BackgroundConfig-2.webp','Digital clock styling, Weather widget.')}
+
+    <h2>Video wallpapers</h2>
+    <p>Pick a video the same way you pick a picture and it plays as your background — nothing to install first, and the colors are drawn from it just as they are from a still image. The picker shows your wallpapers as thumbnails, and a newly chosen one appears immediately while its palette is worked out in the background.</p>
 
     <h2>Wallpaper panning</h2>
     <p>Controls how the wallpaper moves as you switch workspaces and toggle sidebars. The default feel is a gentle parallax that echoes the ripples in the mark.</p>
@@ -608,6 +611,55 @@ PAGES.background = {
   `
 };
 
+// ---------- DECORATIONS ----------
+PAGES.decorations = {
+  group: 'Settings', title: 'Decorations', icon: 'sliders',
+  lede: 'How windows are drawn, which app style and icons the rest of your programs use, how big the mouse pointer is, and which fonts everything is set in.',
+  render: () => `
+    ${shot('DecorationsConfig-1.webp','Decorations and system look')}
+
+    <h2>Decorations</h2>
+    <p>These six switches control how a window is drawn. Turning any of them off is a fair trade for speed on older hardware — the desktop keeps working exactly the same, it just does less painting.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Animations</div></center><div class="v">Window open and close effects, and the slide between workspaces. Turn off for the lowest possible latency.</div></div>
+      <div class="prop"><center><div class="k">Blur</div></center><div class="v">Background blur behind transparent windows and panels. Looks best on modern hardware; turn it off to save battery on integrated graphics.</div></div>
+      <div class="prop"><center><div class="k">Shadows</div></center><div class="v">Drop shadows underneath windows.</div></div>
+      <div class="prop"><center><div class="k">Borders</div></center><div class="v">Colored borders around active and inactive windows — useful for telling floating windows apart.</div></div>
+      <div class="prop"><center><div class="k">Rounded Corners</div></center><div class="v">Rounded corners on windows and the bar, following your theme radius.</div></div>
+      <div class="prop"><center><div class="k">Title Bars</div></center><div class="v">Show title bars on windows, so every window keeps its close and maximize buttons. Turn off for a chromeless look — this is the same toggle as on the <a href="#layouts">Layouts</a> page.</div></div>
+    </div>
+
+    <h2>System look</h2>
+    <p>The desktop follows your theme on its own. These three pick what everything <em>else</em> uses — your file manager, your browser, your text editor. Each list shows only what is actually installed, so anything you pick here will work.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">App style</div></center><div class="v">The widget theme GTK and Qt programs are drawn with — buttons, menus, scrollbars.</div></div>
+      <div class="prop"><center><div class="k">Icons</div></center><div class="v">The icon set used across the desktop and inside apps.</div></div>
+      <div class="prop"><center><div class="k">Mouse cursor</div></center><div class="v">The pointer theme. Your choice survives a logout.</div></div>
+    </div>
+    ${callout('tip','Saved with your themes', '<p>All three of these are captured when you save a theme, so switching themes brings the whole look with it — not just the colors. See <a href="#themes">Themes</a>.</p>')}
+
+    <h2>Cursor</h2>
+    ${shot('DecorationsConfig-2.webp','Cursor size and fonts')}
+    <div class="props">
+      <div class="prop"><center><div class="k">Cursor Size</div></center><div class="v"><span class="tag">Small</span> 16px &nbsp; <span class="tag">Default</span> 24px &nbsp; <span class="tag">Large</span> 32px &nbsp; <span class="tag">Larger</span> 48px &nbsp; <span class="tag">Largest</span> 64px</div></div>
+    </div>
+    ${callout('note','Not every cursor theme can be resized', '<p>The list only offers the sizes your chosen pointer theme can actually draw, so you will sometimes see fewer than five. A theme built at a single size stays that size whichever option you pick.</p>')}
+
+    <h2>Fonts</h2>
+    <p>Mainstream uses <strong>Google Sans Flex</strong> and <strong>JetBrains Mono NF</strong> by default. Each list is searchable and previews every font in its own typeface, so you can see what you are choosing before you choose it. Anything installed on your system is available.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Main font</div></center><div class="v">The everyday interface font, used almost everywhere.</div></div>
+      <div class="prop"><center><div class="k">Numbers font</div></center><div class="v">Clocks, counters, and readouts, where even digit widths matter.</div></div>
+      <div class="prop"><center><div class="k">Title font</div></center><div class="v">Headings and larger titles.</div></div>
+      <div class="prop"><center><div class="k">Monospace font</div></center><div class="v">Terminal-style text and anything that needs to line up in columns.</div></div>
+      <div class="prop"><center><div class="k">Nerd font icons</div></center><div class="v">The glyph font behind the small icons in the bar and menus. Change this only if you know the replacement carries the same glyphs.</div></div>
+      <div class="prop"><center><div class="k">Reading font</div></center><div class="v">Longer passages of text, like notification bodies and the AI assistant.</div></div>
+      <div class="prop"><center><div class="k">Expressive font</div></center><div class="v">The occasional display font used for emphasis.</div></div>
+    </div>
+    ${callout('info','Your apps follow along', '<p>Setting the main font here also hands it to GTK and Qt programs, so your browser and file manager match the desktop instead of staying on the system default.</p>')}
+  `
+};
+
 // ---------- THEMES ----------
 PAGES.themes = {
   group: 'Settings', title: 'Themes', icon: 'themes',
@@ -619,9 +671,10 @@ PAGES.themes = {
     <p>A theme is a full snapshot of your desktop as it stands — not just the wallpaper and colors. Switching themes switches all of this at once:</p>
     <div class="props">
       <div class="prop"><center><div class="k">Wallpaper</div></center><div class="v">The image file itself is copied into the theme, so the theme keeps working even if you later move or delete the original.</div></div>
-      <div class="prop"><center><div class="k">Colors</div></center><div class="v">Your <strong>Material You palette style</strong> (Expressive, Monochrome, …) and <strong>Light/Dark</strong> choice. On apply, the palette is regenerated from the theme\'s wallpaper — and it reaches further than the shell: GTK apps follow the light/dark switch and the terminal recolors too.</div></div>
-      <div class="prop"><center><div class="k">Every Settings option</div></center><div class="v">The complete shell configuration as it stood when you saved: <strong>bar</strong> position, style, and modules; the <strong>dock</strong> — including which apps are pinned; <strong>background widgets</strong> (clock, weather, quote); <strong>fonts</strong> and sizes; <strong>transparency</strong>; interface and launcher tweaks. If it lives in Settings, the theme carries it.</div></div>
+      <div class="prop"><center><div class="k">Colors</div></center><div class="v">Your <strong>Material You palette style</strong> (Expressive, Monochrome, …) and <strong>Light/Dark</strong> choice. On apply, the palette is regenerated from the theme\'s wallpaper — and it reaches further than the desktop: GTK apps follow the light/dark switch and the terminal recolors too.</div></div>
+      <div class="prop"><center><div class="k">Every Settings option</div></center><div class="v">The complete desktop configuration as it stood when you saved: <strong>bar</strong> position, style, and modules; the <strong>dock</strong> — including which apps are pinned; <strong>background widgets</strong> (clock, weather, quote); <strong>fonts</strong> and sizes; <strong>transparency</strong>; interface and launcher tweaks. If it lives in Settings, the theme carries it.</div></div>
       <div class="prop"><center><div class="k">Window decorations</div></center><div class="v">Animations, blur, shadows, borders and gaps, rounded corners, and title bars — applied live, so windows re-dress the moment you switch.</div></div>
+      <div class="prop"><center><div class="k">System look</div></center><div class="v">Your app style, icon set, and mouse pointer, so your other programs change with the desktop instead of staying behind. Set these on the <a href="#decorations">Decorations</a> page.</div></div>
       <div class="prop"><center><div class="k">Preview</div></center><div class="v">A screenshot taken at save time becomes the theme\'s thumbnail in the grid.</div></div>
     </div>
 
@@ -653,8 +706,15 @@ PAGES.themes = {
 
     ${callout('tip','Two workflows, one OS', '<p>Build a "Focus" theme with muted grays, no blur, minimal chrome; and a "Weekend" theme with a photo wallpaper, expressive colors, and the clock widget enabled. Switch with one click depending on what you\'re doing — or let Day/Night switch for you.</p>')}
 
-    <h3>Sharing themes</h3>
-    <p>Each theme is a self-contained folder at <code>~/.config/mainstream/themes/&lt;name&gt;/</code> — the settings snapshot, the decoration flags, the wallpaper file, and the preview thumbnail, all together. Zip the folder to share it — or drop one into <code>~/.config/mainstream/themes/</code> to install a theme someone sent you.</p>
+    <h2>Sharing themes</h2>
+    <p>A theme travels as a single <code>.mtheme</code> file — the settings snapshot, the decoration flags, the wallpaper, and the preview thumbnail, packed together. <strong>Export</strong> writes one out, <strong>Import</strong> reads one in. Nothing needs to be zipped or copied by hand.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Export</div></center><div class="v">Saves the selected theme as a <code>.mtheme</code> file wherever you choose. Machine-specific details are stripped on the way out, so the file makes sense on somebody else\'s computer.</div></div>
+      <div class="prop"><center><div class="k">Import</div></center><div class="v">Opens a <code>.mtheme</code> file and adds it to your collection. If you already have a theme of the same name, the imported one replaces it — so re-importing an updated copy does the right thing rather than leaving you with duplicates.</div></div>
+    </div>
+    ${callout('note','If a theme needs something you don\'t have', '<p>A theme can name an app style, icon set, or pointer theme that isn\'t installed on your machine. It still imports, and Mainstream tells you which piece is missing so you can install it and import the file again for the complete look. That notice stays up until you\'ve dealt with it.</p>')}
+
+    <p>Themes still live as plain folders under <code>~/.config/mainstream/themes/</code> if you\'d rather poke at them directly.</p>
   `
 };
 
@@ -681,6 +741,9 @@ PAGES.display = {
     <p>Nothing changes until you press <strong>Apply changes</strong> — every monitor\'s edits apply together, then a countdown asks whether to <strong>Keep</strong> the new settings. Don\'t like what you see (or can\'t see anything at all)? Wait it out or press <strong>Revert</strong> and everything returns to how it was.</p>
 
     ${shot('DisplayConfig-2.webp','Secondary monitor with color management')}
+
+    <h3>Duplicate screen</h3>
+    <p>Show the same picture on two displays instead of spreading the desktop across them — the usual choice for a projector or a TV. Pick which monitor to copy and the second one mirrors it. Set it back to its own resolution and position to go back to an extended desktop.</p>
 
     <h2>Workspaces per monitor</h2>
     <p>By default workspaces 1-10 are shared across monitors. <strong>Custom</strong> pins specific workspaces to a monitor — useful for multi-monitor setups where you want workspace 1 always on the left screen. The <strong>+</strong> and <strong>−</strong> beside the rows add or remove another block of ten workspaces, same as on the <a href="#layouts">Layouts</a> page.</p>
@@ -779,6 +842,14 @@ PAGES.mouse = {
 
     <h2>General</h2>
     <p><strong>Primary Button</strong> — which physical button is the primary click. <b>Left</b> is the default; switch to <b>Right</b> for left-hand use.</p>
+
+    <h3>Shake to Locate</h3>
+    <p>Lost the pointer on a large or busy screen? Shake it and Mainstream makes it obvious. Off by default.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Magnifier Zoom</div></center><div class="v">Magnifies the area around the pointer while you shake, so you find it by the patch of enlarged screen.</div></div>
+      <div class="prop"><center><div class="k">Cursor Grows</div></center><div class="v">Grows the pointer itself instead of the screen under it. The lighter of the two.</div></div>
+    </div>
+    <p>Each mode has its own strength setting, so you can make the effect as subtle or as obvious as you like.</p>
 
     <h2>Mouse</h2>
     <div class="props">
@@ -947,6 +1018,10 @@ PAGES.update = {
   lede: 'Mainstream updates are snapshot-protected. Before anything installs, a snapshot of the system is taken — the snapshot skips your personal folders like Documents and Pictures, but backs up your programs, settings, and the OS itself — so if something stops working, you roll back from the boot screen without your files ever being touched.',
   render: () => `
     ${shot('UpdateConfig.webp','Update settings page')}
+
+    <h2>Knowing there is an update</h2>
+    <p>The page shows which release you are on, so you never have to guess. When a new one is published, a small indicator appears in your bar and a notification tells you what changed — you can read the release notes before deciding to install anything. The <a href="#changelog">changelog</a> carries the same notes.</p>
+    <p>You choose how much of that you want: the bar indicator and the notification can each be turned off, and you can ask to hear only about bigger releases rather than every patch.</p>
 
     <h2>Before &amp; after the update</h2>
     <p>The tip box at the top is worth reading before you click the button the first time: test the things you rely on <em>before</em> the update, and test the same things again after. Most updates come and go without a hitch, but knowing what to check makes it obvious if something stopped working.</p>
@@ -1118,7 +1193,7 @@ PAGES.about = {
       <thead><tr><th>Project</th><th>By</th><th>What it is</th></tr></thead>
       <tbody>
         <tr><td><b><a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a></b></td><td>end-4 (<a href="https://github.com/sponsors/end-4">Donate</a>)</td><td>The dotfiles Mainstream\'s desktop is forked from.</td></tr>
-        <tr><td><b><a href="https://git.outfoxxed.me/quickshell/quickshell">Quickshell</a></b></td><td>outfoxxed</td><td>The Qt/QML shell framework the whole UI is built on.</td></tr>
+        <tr><td><b><a href="https://git.outfoxxed.me/quickshell/quickshell">Quickshell</a></b></td><td>outfoxxed</td><td>The Qt/QML shell framework the UI is built on.</td></tr>
         <tr><td><b><a href="https://github.com/yayuuu/hyprland-scroll-overview">Scroll Overview</a></b></td><td>yayuuu</td><td>The Hyprland plugin behind the workspace overview.</td></tr>
         <tr><td><b><a href="https://calamares.io">Calamares</a></b></td><td>Calamares Team</td><td>The graphical installer.</td></tr>
         <tr><td><b><a href="https://github.com/ful1e5/Bibata_Cursor">Bibata Cursor</a></b></td><td>ful1e5 (<a href="https://github.com/sponsors/ful1e5">Donate</a>)</td><td>The default cursor theme.</td></tr>
@@ -1389,7 +1464,7 @@ PAGES.shortcuts = {
   render: () => `
     <h2>Every shortcut, one key away</h2>
     <p>Press <code>SUPER</code> (the ⊞ Windows or ⌘ Command key) + <code>TAB</code> at any time for a searchable cheat sheet of every keybind on the system. Start typing to filter it down — launching apps, moving windows, switching workspaces, screenshots, Gaming Mode, the lot. It\'s the fastest way to learn Mainstream, and the one shortcut worth knowing on day one.</p>
-    ${shot('Keybind-Cheatsheet.webp','The SUPER + TAB cheat sheet: a search box above every shortcut, grouped by Shell, Window, Workspace, Apps, and more','SUPER + TAB brings up a searchable list of every shortcut, grouped by what it does.')}
+    ${shot('Keybind-Cheatsheet.webp','The SUPER + TAB cheat sheet: a search box above every shortcut, grouped by Desktop, Window, Workspace, Apps, and more','SUPER + TAB brings up a searchable list of every shortcut, grouped by what it does.')}
 
     <h2>The essentials</h2>
     <p>A handful worth committing to memory — the rest are always a <code>SUPER</code> + <code>TAB</code> away.</p>

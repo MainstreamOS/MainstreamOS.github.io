@@ -93,7 +93,7 @@ PAGES['why-mainstream'] = {
 
     <h2>Isn't it just an Arch rice?</h2>
     <p>Fair question — here's the honest answer. The desktop shell is a lean, heavily modified version of end-4's excellent <a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a>, and Mainstream ships it the way Ubuntu ships GNOME: as one credited, continuously-upstream-merged part of a whole operating system. Nobody calls Ubuntu "rebranded GNOME."</p>
-    <p>The distro is everything a dotfiles repo can't be — a graphical installer with four paths, a post-install self-check that runs 19 tests and writes you a health report, a signed package repo (no AUR-compile roulette), one-click rollback with a snapshot before every update, GPU auto-config across AMD, Intel, and five NVIDIA generations, and a real settings panel for everything. Credit and the maintainers' own donate links are built into the About page, and fixes go back upstream as pull requests, not private patches.</p>
+    <p>The distro is everything a dotfiles repo can't be — a graphical installer with four paths, a post-install self-check that writes you a health report, a signed package repo (nothing built from the AUR while you install), one-click rollback with a snapshot before every update, GPU auto-config across AMD, Intel, and NVIDIA, and a real settings panel for everything. Credit and the maintainers' own donate links are built into the About page, and fixes go back upstream as pull requests, not private patches.</p>
 
     <h2>Who it's for</h2>
     <p>People who want a computer that respects them — enthusiasts who want Arch without the babysitting, creators who need their tools to just work, and the family members they set up and would rather not get a support call about. For every home.</p>
@@ -177,114 +177,104 @@ PAGES['blog'] = {
   title: 'Blog',
   icon: 'send',
   navTitle: 'Blog',
-  lede: 'Release announcements, project updates, and write-ups on how Mainstream works — straight from the maintainer.',
+  lede: 'Release announcements and project updates.',
   render: () => `
-    <div class="eyebrow">Release &middot; July 20, 2026</div>
-    <h2 id="mainstream-os-1-0-2">Mainstream OS 1.0.2 — brings support for Hyprland 0.56</h2>
+    <div class="eyebrow">Release &middot; July 31, 2026</div>
+    <h2 id="mainstream-os-1-1-0">Mainstream OS 1.1.0 — a Linux desktop you set up by clicking</h2>
 
-    <p>Hyprland (the software that controls your desktop's windows and visuals) just released a major update, version 0.56. It's a big enough change that most people using it would normally notice something breaking. This new version of Mainstream OS handles all of that for you — whether you're updating an existing system or installing fresh.</p>
+    <p>Mainstream OS is a Linux operating system built on Arch. Its desktop is Hyprland — the software that arranges your windows and decides where they go — and Hyprland is normally set up by hand, by editing text files. Here you set it up by clicking: displays, window layouts, keyboard shortcuts, the bar, the look of the whole interface, updates and repairs each get a proper settings page — a settings app, not a config file, and never a terminal. Pick a wallpaper and the whole desktop takes its colors from it. One keypress hands the machine over to a full-screen Steam session for gaming, and a graphical installer puts it all on your computer in a few minutes. <strong>Deeply featured. Genuinely friendly.</strong></p>
 
-    <p>As always, images are GPG-signed with checksums published alongside — the <a href="#verify">verify page</a> shows how to check yours. Earlier releases remain published unchanged.</p>
+    ${shot('Welcome-Hero.webp','The Mainstream OS desktop — bar along the top, dock below, wallpaper clock between','The desktop. Everything you see takes its colors from whatever wallpaper you pick.')}
 
-    <div class="ribbon"></div>
-
-    <div class="eyebrow">Release &middot; July 19, 2026</div>
-    <h2 id="mainstream-os-1-0-1">Mainstream OS 1.0.1 — first-class virtual machines</h2>
-
-    <p>1.0.1 is a small, fast follow-up to 1.0.0, focused on one thing: making Mainstream a first-class citizen inside virtual machines. Trying a distro in a VM is how most people meet it, so that first boot should be just as polished as the real-hardware one.</p>
-
-    <ul>
-      <li><strong>Boots in BIOS virtual machines.</strong> VirtualBox and QEMU create BIOS-firmware machines by default, and 1.0.0 assumed UEFI. The live ISO and installed systems now boot under BIOS with nothing to configure — BIOS installs carry a small FAT32 <code>/boot</code> partition, while UEFI installs are unchanged.</li>
-      <li><strong>Guest tools included — and tidy.</strong> VMs get the agents for QEMU/KVM, VirtualBox, and VMware out of the box: clipboard sharing, host integration, clean shutdown, each active only under its own hypervisor. Installs on real hardware keep none of them.</li>
-      <li><strong>A boot menu that gets out of the way.</strong> The Limine menu now auto-boots reliably and shows snapshot entries on BIOS systems too.</li>
-      <li><strong>A smarter installer notice.</strong> On a wired connection the Welcome screen now says you\'re ready to install instead of asking for Wi-Fi.</li>
-    </ul>
-
-    <p>As always, images are GPG-signed with checksums published alongside — the <a href="#verify">verify page</a> shows how to check yours in thirty seconds. 1.0.0 remains published unchanged; releases are immutable here.</p>
-
-    <div class="ribbon"></div>
-
-    <div class="eyebrow">Release &middot; July 18, 2026</div>
-    <h2 id="mainstream-os-1-0-0">Mainstream OS 1.0.0 is here</h2>
-
-    <p>Mainstream OS 1.0.0 is an Arch-based Linux distribution that pairs a full Hyprland desktop with the polish of macOS — and nothing in it needs a terminal. Flash the ISO, click through the installer, and about eight minutes later you're on a desktop that themes itself to your wallpaper, backs itself up before every update, and turns into a game console on one keypress. This is the first stable release.</p>
-
-    <p>Mainstream ships a lean, heavily modified version of end-4's <a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a> shell the way Ubuntu ships GNOME — openly credited, continuously merged from upstream, and one component of a full operating system. The people whose work Mainstream stands on are credited in Settings &rarr; About with links to sponsor them, and fixes go back upstream as pull requests.</p>
-
-    ${shot('Main-Desktop-UI.webp','The Mainstream OS desktop — bar on top, dock below, wallpaper clock between','The 1.0.0 desktop. Everything you see recolors from whatever wallpaper you pick.')}
+    <h2>What Mainstream is made of</h2>
+    <p>The shell — the bar, the dock, the side panels, the search box — is a lean, heavily modified version of <a href="https://github.com/end-4">end-4</a>'s <a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a>. Mainstream ships it the way Ubuntu ships GNOME: as one openly credited part of a complete operating system. Improvements from the original are still taken in periodically, and fixes found here are offered back rather than kept private. It has grown since: the dock, the app drawer, file search and the way colors are saved and scheduled are largely Mainstream's now, and so is everything around it — the installer, the settings app, the software repository, the backup and repair tools, the gaming session. Every project Mainstream is built with is credited in Settings &rarr; About.</p>
 
     <h2>One wallpaper, a whole look</h2>
-    <p>Pick any wallpaper — a photo, a render, even a video — and the entire desktop recolors to match: the bar, the dock, the apps, the terminal, even your login screen. Save the result as a named theme, switch between saved themes in one tap, or pair a Day and Night theme that follow the clock.</p>
+    <ul>
+      <li><strong>Colors from your wallpaper.</strong> Pick any wallpaper and the desktop, the settings app, your terminal, your apps, your folder icons and the lock screen all recolor to match it.</li>
+      <li><strong>Video wallpapers.</strong> A video works as a wallpaper with nothing extra to install — it plays quietly on a loop across every screen, and the color scheme comes from it just the same.</li>
+      <li><strong>Themes.</strong> Your whole look — wallpaper, colors, app style, icons, interface changes and window styling — saves under a name with a preview, and switches back in one tap.</li>
+      <li><strong>Take your look with you.</strong> A theme saves out to a single file you can hand to someone else, wallpaper included, with anything particular to your machine left behind.</li>
+      <li><strong>Day and Night.</strong> Pair two themes and let them follow the clock or your night-light schedule.</li>
+    </ul>
     <figure>
       <div class="shot">
         <video src="assets/docs/ThemesConfig-theme-switching-example-video.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
       </div>
-      <figcaption>Switching saved themes — wallpaper, colors, and decorations change together, in one click.</figcaption>
+      <figcaption>Switching saved themes — wallpaper, colors and window styling change together.</figcaption>
     </figure>
 
-    <h2>A desktop and a console, in one install</h2>
-    <p><code>SUPER</code> + <code>G</code> swaps the desktop for the same full-screen Big Picture session a Steam Deck boots into — a real gamescope session, not a fullscreen window — and one click brings the desktop back, exactly as you left it. Prefer the couch full-time? The installer's <strong>Console Mode</strong> boots straight into it.</p>
-    ${shot('Gaming-Big-Picture.webp','Steam Big Picture running as the Mainstream Gaming Mode session','Gaming Mode — AMD, Intel, and NVIDIA, Proton GE pre-enabled.')}
+    <h2>Make it yours</h2>
+    <ul>
+      <li><strong>A bar you arrange.</strong> Show, hide and reorder every piece of the bar by dragging, move them between the left, middle and right, and drop two together to join them into a single rounded group.</li>
+      <li><strong>App style, icons and pointer.</strong> All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.</li>
+      <li><strong>Fonts.</strong> A searchable list that shows each font in its own lettering, and your choice carries into your apps rather than stopping at the desktop.</li>
+      <li><strong>Dock animations.</strong> Icons animate when you launch something — Bounce, Pulse, Pop or Wobble. Contributed by <a href="https://github.com/sanaruca">sanaruca</a> (<a href="https://github.com/end-4/dots-hyprland/issues/3553">end-4/dots-hyprland#3553</a>).</li>
+      <li><strong>Title bars, on or off.</strong> On for a familiar desktop, off for a clean one, switched instantly.</li>
+    </ul>
+    ${shot('BarConfig-1.webp','The bar widget layout editor in Settings, showing Simple and Custom modes and the widget list','The bar layout editor. Drag two pieces together and they join into one.')}
 
-    <h2>A map of everything you're doing</h2>
-    <p>Flick the cursor into the corner and the desktop zooms out into a scrolling map of every workspace. Drag windows between them, drop files onto them, and glide across the whole thing in one motion — combined with the scrolling layout, it's the fastest way to get around the OS.</p>
-    <figure>
-      <div class="shot">
-        <video src="assets/docs/Hotcorner-Scrolling-Overview.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
-      </div>
-      <figcaption>Gliding across workspaces in the scrolling overview.</figcaption>
-    </figure>
+    <h2>A desktop and a games console, in one</h2>
+    <ul>
+      <li><strong>Gaming Mode.</strong> One keypress puts the desktop away and hands the machine to Steam's full-screen mode, the same way a Steam Deck runs, then gives the desktop back. AMD, Intel and NVIDIA alike.</li>
+      <li><strong>Console Mode.</strong> An install option that starts straight into the full-screen Steam session and sets up game controllers, turning a computer under the TV into a console — with the desktop still there whenever you want it.</li>
+      <li><strong>Windows games, ready to run.</strong> The compatibility layer that runs Windows titles is installed and switched on during setup, so your library works the first time you open it.</li>
+    </ul>
+    ${shot('Gaming-Big-Picture.webp','Steam Big Picture running as the Mainstream Gaming Mode session','Gaming Mode — the machine really does hand itself over, rather than running Steam in a window.')}
 
-    <h2>Every setting, one app</h2>
-    <p>Seventeen pages cover the whole machine — displays and layouts, keybinds and gestures, drives, updates, recovery — and every one is a real panel with real controls, never a config file. Snapshots keep experimenting safe.</p>
+    <h2>Everything in Settings</h2>
+    <p>Eighteen pages cover the whole machine, nine of which are Mainstream's own work with no equivalent in the shell it started from.</p>
+    <ul>
+      <li><strong>Displays.</strong> Arrange your monitors and set resolution, refresh rate, scale, orientation, HDR and color profiles, or mirror one screen onto another.</li>
+      <li><strong>A layout per workspace.</strong> Four ways of arranging windows automatically plus a floating mode, and every workspace remembers its own.</li>
+      <li><strong>Keyboard shortcuts.</strong> A real editor rather than a printed list — change the ones that ship, add your own, and set them by pressing the keys you want.</li>
+      <li><strong>Touchpad gestures.</strong> Choose what each swipe and pinch does, applied the moment you set it.</li>
+      <li><strong>Wi-Fi, Bluetooth, sound, power, accounts and services</strong>, each with a proper page instead of a text file.</li>
+    </ul>
     <figure>
       <div class="shot">
         <video src="assets/docs/Settings-Tour.mp4" autoplay loop muted playsinline controls preload="metadata" style="width:100%;display:block"></video>
       </div>
-      <figcaption>Quick, Wi-Fi, Bluetooth, Bar, Interface, Background, Themes, Display, Layouts, Keybinds, Mouse, Power, Accounts, Services, Update, Recovery, About — one app.</figcaption>
+      <figcaption>All eighteen pages, one app. Real controls, not a text file.</figcaption>
     </figure>
 
-    <h2>What makes it a distro</h2>
-    <p>Everything here is in the box and checkable, not on a roadmap:</p>
+    <h2>Day to day</h2>
     <ul>
-      <li><strong>A real settings app for everything</strong> — displays, layouts, keybinds, gestures, drives, updates, recovery. A settings panel, not a config file.</li>
-      <li><strong>A graphical installer with four paths</strong> — including install-alongside-Windows dual-boot and one-tick full-disk encryption.</li>
-      <li><strong>GPU auto-configuration</strong> — AMD, Intel, and five NVIDIA driver generations, detected and configured at install.</li>
-      <li><strong>Install self-verification</strong> — 19 checks run on the finished system and write a health report, so a bad install tells you instead of failing silently.</li>
-      <li><strong>A signed supply chain</strong> — every ISO and every package in the [mainstream] repository is GPG-signed, and nothing is pulled from the AUR at install time.</li>
-      <li><strong>Updates with a safety net</strong> — a Btrfs snapshot before every update, and one-click rollback from the boot menu and Settings.</li>
-      <li><strong>Made with creators in mind</strong> — one-click installs for OBS and DaVinci Resolve, with GPU encoding on Wayland.</li>
+      <li><strong>A ready-made set of apps</strong> — browser, files, editor, calculator, calendar, photos, music, system monitor — each a tick-box during the install, plus a software store with pictures and descriptions for the rest.</li>
+      <li><strong>A launcher that finds everything.</strong> Apps, folders, files, quick sums and your clipboard history, all from one search box.</li>
+      <li><strong>Zoom out to the whole desktop.</strong> Flick the pointer into the corner and the desktop pulls back into a scrolling map of every workspace — drag windows between them, drop files onto them. Built on <a href="https://github.com/yayuuu/hyprland-scroll-overview">Scroll Overview</a> by <a href="https://github.com/yayuuu">yayuuu</a>.</li>
+      <li><strong>Quick settings and notifications</strong> in one panel off the side of the screen.</li>
+      <li><strong>Pick up where you left off.</strong> Sign out or restart and your windows reopen on the workspaces they were on.</li>
+      <li><strong>Move files between your devices.</strong> Send several at once to any phone, tablet, or computer on your network running <a href="https://localsend.org">LocalSend</a>, and receive from them the same way, with live progress and no cloud in the middle. Mainstream builds LocalSend into the desktop rather than bundling the app.</li>
+      <li><strong>Auto Mount and Uninstall Apps</strong>, two small apps for the fiddly parts: drives that are ready at every login, and removing software without breaking the desktop.</li>
+    </ul>
+    ${shot('DecorationsConfig-1.webp','The Decorations page in Settings showing App style, Icons, Mouse cursor, Cursor Size and Fonts','App style, icons, pointer and fonts, all on one page.')}
+
+    <h2>Getting it installed</h2>
+    <ul>
+      <li><strong>A graphical installer.</strong> Four ways in — Default Apps, Customize Your Apps, Console Mode and OS Only.</li>
+      <li><strong>Dual-boot and encryption.</strong> Install alongside an existing Windows and it joins the start-up menu, or encrypt the whole system behind a passphrase. Both are set up during the install.</li>
+      <li><strong>Graphics sorted out for you.</strong> Your card is recognized and given drivers that match it — AMD, Intel or NVIDIA, laptops with two included — based on which model you have rather than just the brand. An experimental legacy edition covers older NVIDIA cards, back to the GeForce 400 series.</li>
+      <li><strong>A first-boot welcome</strong> that shows you around and offers one-click installs for the extras you want, including DaVinci Resolve and OBS for anyone making things.</li>
+    </ul>
+    ${shot('Install_Welcome_Screen.webp','The Mainstream OS installer welcome screen','The installer. Boot from the USB stick, click through it, and you land on the desktop.')}
+
+    <h2>Updates, repair and trust</h2>
+    <ul>
+      <li><strong>A safety net around every update.</strong> Mainstream saves a restore point before and after any change to your system software, so a bad update is one entry in the start-up menu away from being undone.</li>
+      <li><strong>One-click updates.</strong> System software, apps and the desktop all update together from a single button, and a marker on the bar tells you when a new release is out.</li>
+      <li><strong>Repair Install.</strong> One button re-runs the desktop setup and rebuilds its parts.</li>
+      <li><strong>Signed downloads and software.</strong> Every release is signed with checksums published alongside it, and everything Mainstream adds arrives ready-built and signed — the <a href="#verify">verify page</a> shows how to check yours.</li>
+      <li><strong>A self-check after every install</strong> that writes you a health report, so a bad install tells you rather than failing quietly.</li>
     </ul>
 
     <h2>Get it</h2>
-    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.0.4</strong></a> (x86_64 &middot; 2.7&nbsp;GB), flash it to a USB drive, and boot. The <a href="#install-iso">install guide</a> walks every step, and an <a href="#install-script">install script</a> can dress a fresh Arch install instead. Checksums and signatures for every release live on the <a href="https://sourceforge.net/projects/mainstreamos/files/">downloads page</a>.</p>
-
-    <h2>Verify your download</h2>
-    <p>Every Mainstream ISO is GPG-signed. Verifying takes about 30 seconds and proves the image genuinely came from us and wasn't tampered with in transit.</p>
-    <pre><code># 1. Fetch the Mainstream signing key
-curl -O https://mainstreamos.org/mainstream.pub
-
-# 2. Check its fingerprint BEFORE trusting it — it must be exactly:
-#    D644 BEB9 C1B7 668E 3A6C  16DA 8D56 7345 B265 848E
-gpg --show-keys mainstream.pub
-
-# 3. Import it, then verify the ISO against its signature
-gpg --import mainstream.pub
-gpg --verify mainstream-1.0.4.iso.sig mainstream-1.0.4.iso
-
-# 4. (optional) Confirm the download wasn't corrupted
-sha256sum -c mainstream-1.0.4.iso.sha256</code></pre>
-    <p>A good result shows <strong>Good signature from "MainstreamOS Packages"</strong>. You'll also see a warning that the key "is not certified with a trusted signature" — that's expected; it only means you haven't personally marked the key as trusted. What matters is that the fingerprint matches the one above and the signature reads <em>Good</em>.</p>
-
-    <h2>Built to outlast any one person</h2>
-    <p>Mainstream is a solo project, and you deserve a straight answer about what that means. Underneath, it's standard Arch — your system updates from Arch's mirrors no matter what happens to Mainstream. The package repo's build scripts are public, the ISO builder is public, and nothing stops you from ejecting to vanilla Arch. You're never locked in.</p>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.1.0</strong></a> — 2.7&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
 
     <h2>Join in</h2>
-    <p>The community lives on <a href="https://discord.gg/WJ3AUK5Aqd">Discord</a> — help when you need it, showcases when you're proud, and release news first. Development happens in the open on <a href="https://github.com/MainstreamOS">GitHub</a>. Two things would genuinely help: <strong>translations</strong> (Mainstream should feel native beyond English) and <strong>honest feedback</strong> — if a decision looks off, say so.</p>
+    <p>The community lives on <a href="https://discord.gg/WJ3AUK5Aqd">Discord</a> — help when you need it, showing off when you're pleased with something, and release news first. Development happens in the open on <a href="https://github.com/MainstreamOS">GitHub</a>, and contributions are welcome down to a one-line fix. Translations would help most of all, so Mainstream feels at home beyond English.</p>
 
-    ${callout('tip','See it for yourself','<p>The fastest way to get it is to look around. Start with <a href="#desktop">The Desktop</a>, or <a href="https://mainstreamos.org/download">download the ISO</a> and try it live before you install.</p>')}
-
-    <p style="color:var(--ink-mist);font-size:13.5px;border-top:1px solid var(--line);padding-top:16px;margin-top:28px">Mainstream OS is free and open-source software, licensed GPLv3. The full list of projects it builds on — with sponsor links — lives in Settings &rarr; About and on the <a href="#why-mainstream">Why Mainstream</a> page.</p>
+    <p style="color:var(--ink-mist);font-size:13.5px;border-top:1px solid var(--line);padding-top:16px;margin-top:28px">Mainstream OS is free and open-source software, licensed GPLv3. The full list of projects it's built with — and the people behind them — lives in Settings &rarr; About and on the <a href="#why-mainstream">Why Mainstream</a> page. Press enquiries: <a href="mailto:mainstreamlinuxos@gmail.com">mainstreamlinuxos@gmail.com</a>.</p>
   `
 };
 

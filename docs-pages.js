@@ -211,7 +211,7 @@ PAGES['install-script'] = {
     <ol>
       <li>Enables the signed <code>[mainstream]</code> package repository.</li>
       <li>Installs the Hyprland + Quickshell desktop stack.</li>
-      <li>Detects your GPU and installs the right drivers — AMD, Intel, or NVIDIA, including the legacy branch for older cards (experimental).</li>
+      <li>Detects your graphics card and installs drivers that match it — AMD, Intel, or NVIDIA, including older NVIDIA cards back to the GeForce 400 series (experimental).</li>
       <li>Enables the Bluetooth, network discovery (Avahi), CUPS printing, and audio services.</li>
       <li>On qualifying systems (UEFI + Btrfs) replaces the bootloader with Limine and configures Snapper — automatic snapshots before every update, restorable from the boot menu. In <code>--verbose</code> mode you're asked before this step.</li>
       <li>Replaces your configs with the Mainstream dotfiles (clashing files are backed up to <code>~/original-dots-backup/</code> first).</li>
@@ -250,14 +250,14 @@ PAGES['install-iso'] = {
       <thead><tr><th>Image</th><th>Size</th><th>Best for</th></tr></thead>
       <tbody>
         <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-x.x.x.iso</b></a></td><td>2.7 GB</td><td>Most modern laptops &amp; desktops</td></tr>
-        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-legacy-nvidia-x.x.x.iso</b></a></td><td>3.7 GB</td><td>NVIDIA GTX 10-series and older (experimental support)</td></tr>
+        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-legacy-nvidia-x.x.x.iso</b></a></td><td>4.0 GB</td><td>Older NVIDIA cards, back to the GeForce 400 series (experimental)</td></tr>
       </tbody>
     </table>
 
-    ${callout('note','All versions & checksums','<p>Looking for a specific release, the legacy-NVIDIA edition, or the <code>.sha256</code> and signature files? Browse <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">every download on SourceForge</a>.</p>')}
+    ${callout('note','All versions & checksums','<p>Looking for a specific release, the experimental legacy-NVIDIA edition, or the <code>.sha256</code> and signature files? Browse <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">every download on SourceForge</a>.</p>')}
 
     <h2>Flash to USB</h2>
-    <p>Flash the downloaded ISO file to a USB stick. Any USB stick 4 GB or larger works.</p>
+    <p>Flash the downloaded ISO file to a USB stick. Any USB stick 8 GB or larger works.</p>
     <p>A few apps you can use to do this:</p>
     <ul>
       <li><a href="https://etcher.balena.io" style="color:var(--stream-a);text-decoration:underline">balenaEtcher</a> (recommended) or <a href="https://unetbootin.github.io" style="color:var(--stream-a);text-decoration:underline">UNetbootin</a> — <strong>both work on any platform<br/>(Linux, macOS, or Windows)</strong></li>
@@ -632,7 +632,7 @@ PAGES.decorations = {
     <h2>System look</h2>
     <p>The desktop follows your theme on its own. These three pick what everything <em>else</em> uses — your file manager, your browser, your text editor. Each list shows only what is actually installed, so anything you pick here will work.</p>
     <div class="props">
-      <div class="prop"><center><div class="k">App style</div></center><div class="v">The widget theme GTK and Qt programs are drawn with — buttons, menus, scrollbars.</div></div>
+      <div class="prop"><center><div class="k">App style</div></center><div class="v">The widget theme your programs are drawn with — buttons, menus, scrollbars.</div></div>
       <div class="prop"><center><div class="k">Icons</div></center><div class="v">The icon set used across the desktop and inside apps.</div></div>
       <div class="prop"><center><div class="k">Mouse cursor</div></center><div class="v">The pointer theme. Your choice survives a logout.</div></div>
     </div>
@@ -656,7 +656,7 @@ PAGES.decorations = {
       <div class="prop"><center><div class="k">Reading font</div></center><div class="v">Longer passages of text, like notification bodies and the AI assistant.</div></div>
       <div class="prop"><center><div class="k">Expressive font</div></center><div class="v">The occasional display font used for emphasis.</div></div>
     </div>
-    ${callout('info','Your apps follow along', '<p>Setting the main font here also hands it to GTK and Qt programs, so your browser and file manager match the desktop instead of staying on the system default.</p>')}
+    ${callout('info','Your apps follow along', '<p>Setting the main font here also hands it to your programs, so your browser and file manager match the desktop instead of staying on the system default.</p>')}
   `
 };
 
@@ -671,7 +671,7 @@ PAGES.themes = {
     <p>A theme is a full snapshot of your desktop as it stands — not just the wallpaper and colors. Switching themes switches all of this at once:</p>
     <div class="props">
       <div class="prop"><center><div class="k">Wallpaper</div></center><div class="v">The image file itself is copied into the theme, so the theme keeps working even if you later move or delete the original.</div></div>
-      <div class="prop"><center><div class="k">Colors</div></center><div class="v">Your <strong>Material You palette style</strong> (Expressive, Monochrome, …) and <strong>Light/Dark</strong> choice. On apply, the palette is regenerated from the theme\'s wallpaper — and it reaches further than the desktop: GTK apps follow the light/dark switch and the terminal recolors too.</div></div>
+      <div class="prop"><center><div class="k">Colors</div></center><div class="v">Your <strong>Material You palette style</strong> (Expressive, Monochrome, …) and <strong>Light/Dark</strong> choice. On apply, the palette is regenerated from the theme\'s wallpaper — and it reaches further than the desktop: your apps follow the light/dark switch and the terminal recolors too.</div></div>
       <div class="prop"><center><div class="k">Every Settings option</div></center><div class="v">The complete desktop configuration as it stood when you saved: <strong>bar</strong> position, style, and modules; the <strong>dock</strong> — including which apps are pinned; <strong>background widgets</strong> (clock, weather, quote); <strong>fonts</strong> and sizes; <strong>transparency</strong>; interface and launcher tweaks. If it lives in Settings, the theme carries it.</div></div>
       <div class="prop"><center><div class="k">Window decorations</div></center><div class="v">Animations, blur, shadows, borders and gaps, rounded corners, and title bars — applied live, so windows re-dress the moment you switch.</div></div>
       <div class="prop"><center><div class="k">System look</div></center><div class="v">Your app style, icon set, and mouse pointer, so your other programs change with the desktop instead of staying behind. Set these on the <a href="#decorations">Decorations</a> page.</div></div>
@@ -734,8 +734,8 @@ PAGES.display = {
       <div class="prop"><center><div class="k">Mode</div></center><div class="v">Resolution × refresh rate, picked from the modes your monitor advertises.</div></div>
       <div class="prop"><center><div class="k">Scale</div></center><div class="v">UI scale. The menu shows only the steps that render pixel-perfectly on that monitor — up to ten of them between 100% and 200% — so whichever you pick stays sharp.</div></div>
       <div class="prop"><center><div class="k">Orientation</div></center><div class="v">Landscape / Portrait / Landscape (Flipped) / Portrait (Flipped).</div></div>
-      <div class="prop"><center><div class="k">VRR</div></center><div class="v">Variable Refresh Rate. <b>Always On</b> for G-Sync, FreeSync, and Adaptive-Sync monitors — smoother gaming. <b>Fullscreen Only</b> saves power on the desktop. Greys out if your display or driver can\'t do it.</div></div>
-      <div class="prop"><center><div class="k">10-bit</div></center><div class="v">Enables 10-bit color output. Greys out if your display or driver doesn\'t support it.</div></div>
+      <div class="prop"><center><div class="k">VRR</div></center><div class="v">Variable Refresh Rate. <b>Always On</b> for G-Sync, FreeSync, and Adaptive-Sync monitors — smoother gaming. <b>Fullscreen Only</b> saves power on the desktop. Grays out if your display or driver can\'t do it.</div></div>
+      <div class="prop"><center><div class="k">10-bit</div></center><div class="v">Enables 10-bit color output. Grays out if your display or driver doesn\'t support it.</div></div>
     </div>
 
     <p>Nothing changes until you press <strong>Apply changes</strong> — every monitor\'s edits apply together, then a countdown asks whether to <strong>Keep</strong> the new settings. Don\'t like what you see (or can\'t see anything at all)? Wait it out or press <strong>Revert</strong> and everything returns to how it was.</p>
@@ -777,7 +777,7 @@ PAGES.display = {
     ${shot('DisplayConfig-3.webp','VRR, 10-bit, color management, and Night Light')}
     <p>Warm the screen to cut blue light — easier on the eyes in the evening. <strong>Schedule night light</strong> runs it on its own (<b>Automatic</b>) or on your hours (<b>Set hours</b>), and <strong>Intensity</strong> controls how warm it gets.</p>
 
-    ${callout('warn','NVIDIA and HDR', '<p>HDR on NVIDIA requires the 555+ driver series. If the HDR toggle is greyed out, update your driver and reboot.</p>')}
+    ${callout('note','NVIDIA and HDR', '<p>HDR needs a current NVIDIA driver, which Mainstream installs during setup.</p>')}
   `
 };
 
@@ -1187,12 +1187,12 @@ PAGES.about = {
       <div class="prop"><center><div class="k">Donate</div></center><div class="v">Like where this is going? Help it get there.</div></div>
     </div>
 
-    <h2>Forked Projects</h2>
-    <p>Mainstream is built with excellent open-source, and the About page credits each project with a link to the original (and a Donate link where the maintainers accept support). The big ones:</p>
+    <h2>Built With</h2>
+    <p>Mainstream is built with excellent open-source software, and the About page credits each project with a link to the original (and a Donate link where the maintainers accept support). The big ones:</p>
     <table class="t">
       <thead><tr><th>Project</th><th>By</th><th>What it is</th></tr></thead>
       <tbody>
-        <tr><td><b><a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a></b></td><td>end-4 (<a href="https://github.com/sponsors/end-4">Donate</a>)</td><td>The dotfiles Mainstream\'s desktop is forked from.</td></tr>
+        <tr><td><b><a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a></b></td><td>end-4 (<a href="https://github.com/sponsors/end-4">Donate</a>)</td><td>The desktop shell Mainstream ships — a lean, heavily modified version, continuously merged from upstream.</td></tr>
         <tr><td><b><a href="https://git.outfoxxed.me/quickshell/quickshell">Quickshell</a></b></td><td>outfoxxed</td><td>The Qt/QML shell framework the UI is built on.</td></tr>
         <tr><td><b><a href="https://github.com/yayuuu/hyprland-scroll-overview">Scroll Overview</a></b></td><td>yayuuu</td><td>The Hyprland plugin behind the workspace overview.</td></tr>
         <tr><td><b><a href="https://calamares.io">Calamares</a></b></td><td>Calamares Team</td><td>The graphical installer.</td></tr>
@@ -1319,10 +1319,10 @@ PAGES.obs = {
     ${twoShot('Obs-Encoder-Settings-1.webp', 'Switch the Output Mode dropdown (highlighted) from Simple to Advanced.', 'Obs-Encoder-Settings-2.webp', 'The Video Encoder dropdown then lists your GPU\'s hardware encoders.')}
     <p>Pick the encoder that matches your GPU.</p>
 
-    ${callout('note','Linux encoder names', '<p>On Linux, AMD hardware encode is labelled <b>VAAPI</b> (not AMF), and Intel is <b>QuickSync via oneVPL</b> — both are set up by Mainstream\'s GPU driver install.</p>')}
+    ${callout('note','Linux encoder names', '<p>On Linux, AMD hardware encode is labeled <b>VAAPI</b> (not AMF), and Intel is <b>QuickSync via oneVPL</b> — both are set up by Mainstream\'s GPU driver install.</p>')}
 
     <h2>Virtual camera</h2>
-    <p>The bundle preconfigures <code>v4l2loopback</code> as <code>/dev/video10</code> labelled &ldquo;OBS Virtual Camera&rdquo;, so the <strong>Start Virtual Camera</strong> button works immediately — no manual <code>modprobe</code>. Any app (browser, Zoom, Discord) can then pick &ldquo;OBS Virtual Camera&rdquo; as its webcam.</p>
+    <p>The bundle preconfigures <code>v4l2loopback</code> as <code>/dev/video10</code> labeled &ldquo;OBS Virtual Camera&rdquo;, so the <strong>Start Virtual Camera</strong> button works immediately — no manual <code>modprobe</code>. Any app (browser, Zoom, Discord) can then pick &ldquo;OBS Virtual Camera&rdquo; as its webcam.</p>
 
     <h2>Webcam capture</h2>
     <p>Add a <strong>Source</strong> → <strong>Video Capture Device (V4L2)</strong>. Your webcam appears in the dropdown.</p>
@@ -1346,27 +1346,27 @@ PAGES.gaming = {
     <h3>From the terminal</h3>
 <pre><code><span class="k">sudo</span> pacman -S mainstream-gaming</code></pre>
 
-    ${callout('note','Drivers are already set up', '<p>You don\'t pick a GPU driver by hand. Mainstream configures it at install time — NVIDIA proprietary, AMD and Intel on mesa — and the Vulkan loaders plus 32-bit libraries come with the gaming stack. Just install and play.</p>')}
+    ${callout('note','Drivers are already set up', '<p>You don\'t pick a graphics driver by hand. Mainstream matches one to your card at install time — NVIDIA\'s own driver on the NVIDIA cards that support it, the open drivers on AMD and Intel — and everything the games need comes with the gaming stack. Just install and play.</p>')}
 
     <h2>Gaming Mode — <code>SUPER</code>+<code>G</code></h2>
     <p>Press <code>SUPER</code>+<code>G</code> from the desktop to drop into <strong>Steam Big Picture</strong>, rendered by gamescope as its own session — the same console-style experience as a Steam Deck, with VRR and HDR handled for you.</p>
     <ul>
       <li><strong>First press</strong> opens a quick <em>Gaming Mode Setup</em> menu. It introduces the one-time Steam download and lets you choose where <code>SUPER</code>+<code>G</code> returns to and whether to boot straight into gaming. Hit <strong>Start Gaming</strong> to go.</li>
       <li><strong><code>Ctrl</code>+<code>SUPER</code>+<code>G</code></strong> reopens the Setup menu any time, without switching sessions.</li>
-      <li><strong>To leave</strong>, open Steam's power menu and pick <em>Switch to Desktop</em> — you land back in your Hyprland session exactly as you left it.</li>
+      <li><strong>To leave</strong>, open Steam's power menu and pick <em>Switch to Desktop</em> — you land back in your Hyprland session.</li>
     </ul>
 
     ${shot('Gaming-Big-Picture-Power-Menu.webp', 'The Steam Big Picture power menu', 'Leaving is one click from the couch — open Steam\'s power menu in Big Picture and pick Switch to Desktop to drop back into Hyprland.')}
 
     ${callout('tip','Console Mode', '<p>Choose <strong>Console Mode</strong> on the installer\'s session screen (or set the boot target in Gaming Mode Setup) and the machine boots straight into Gaming Mode every time — turning any mini-PC into a couch console. The full desktop is always one <em>Switch to Desktop</em> away.</p>')}
 
-    ${callout('warn','NVIDIA and Wayland', '<p>Driver 555+ is required for good Wayland gaming (VRR, HDR, explicit sync). <code>nvidia-dkms</code> on Mainstream tracks the latest stable — run an update before your first game session.</p>')}
+    ${callout('note','NVIDIA on Wayland', '<p>Mainstream installs a current NVIDIA driver matched to your card — that is what variable refresh rate and HDR need. Older NVIDIA cards are covered by the experimental legacy edition, on the driver that matches them.</p>')}
 
     <h2>Controllers</h2>
     <p>Plug or pair your controller (see <a href="#bluetooth">Bluetooth</a>). Steam Input auto-handles DualSense, DualShock, Xbox, Switch Pro, and 8BitDo pads, and the <code>ntsync</code> module that ships with the stack keeps Proton's synchronization fast.</p>
 
     <h2>VRR &amp; HDR in games</h2>
-    <p>Turn on <strong>VRR</strong> in <a href="#display">Settings → Display</a> for your primary monitor. Run games fullscreen or borderless (Hyprland treats borderless-fullscreen the same as real fullscreen). HDR requires a driver with explicit-sync (NVIDIA 555+, RADV on mesa 24+).</p>
+    <p>Turn on <strong>VRR</strong> in <a href="#display">Settings → Display</a> for your primary monitor. Run games fullscreen or borderless (Hyprland treats borderless-fullscreen the same as real fullscreen). HDR needs a current graphics driver — the one Mainstream installs on any recent AMD, Intel, or NVIDIA card.</p>
 
     ${callout('tip','Lutris for non-Steam games',
       '<p>For GOG, Epic, Battle.net, and other stores install <code>lutris</code> and <code>wine-staging</code>. Lutris scripts auto-configure most titles — the install page is practically one click.</p>')}
@@ -1516,7 +1516,7 @@ gpg --verify mainstream-1.0.4.iso.sig mainstream-1.0.4.iso
 
 # 4. (optional) Confirm the download wasn\'t corrupted
 sha256sum -c mainstream-1.0.4.iso.sha256</code></pre>
-    <p>Using the legacy-NVIDIA edition? Same steps — just swap in its filenames. Its ISO, signature, and checksum live in the <a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/"><code>legacy-nvidia/</code></a> folder on the downloads page.</p>
+    <p>Using the experimental legacy-NVIDIA edition? Same steps — just swap in its filenames. Its ISO, signature, and checksum live in the <a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/"><code>legacy-nvidia/</code></a> folder on the downloads page.</p>
 
     <h2>What a good result looks like</h2>
     <p>Step 3 prints <strong>Good signature from "MainstreamOS Packages"</strong>, and step 4 prints <strong>OK</strong>. You\'ll also see a warning that the key "is not certified with a trusted signature" — that\'s normal: it only means you haven\'t personally marked the key as trusted in your own keyring. What matters is that the fingerprint from step 2 matches the one printed above, and step 3 says <em>Good</em>.</p>
@@ -1612,7 +1612,7 @@ PAGES.sidebars = {
 
 PAGES.sharing = {
   group: 'Desktop', title: 'Sharing', icon: 'send',
-  lede: 'Send a file to any phone or laptop connected to your Wi-Fi or Ethernet — and receive from them — without a cloud in sight.',
+  lede: 'Send files to any phone, tablet, or computer connected to your Wi-Fi or Ethernet — and receive from them — without a cloud in sight.',
   render: () => `
     <p>Mainstream speaks the <strong>LocalSend</strong> protocol, so it shares files with any device running the free LocalSend app — iPhone, Android, Mac, Windows, or another Linux box. Files hop directly between your devices over your own Wi-Fi or Ethernet; nothing ever touches the internet, and sharing stays off until you start it.</p>
 
@@ -1760,7 +1760,7 @@ PAGES.changelog = {
 
     <h2>Being told about new releases</h2>
     <p>Mainstream can let you know when a release you don\'t have yet is published — a small icon in the bar, a notification, both, or nothing at all. The icon only appears while a release is waiting. Click it to open <a href="#update">Settings &rarr; Update</a>; right-click it for <strong>What\'s new</strong> (this page), <strong>Check now</strong>, and a quick way to change how you\'re told.</p>
-    <p>The icon carries a coloured dot: white for a small fix, blue for a new feature, yellow once a release has been waiting a week, and red once it\'s been three weeks — or straight away if the release closes a security hole. Choose what you hear about, and how, under <strong>Release notifications</strong> in <a href="#update">Settings &rarr; Update</a>.</p>
+    <p>The icon carries a colored dot: white for a small fix, blue for a new feature, yellow once a release has been waiting a week, and red once it\'s been three weeks — or straight away if the release closes a security hole. Choose what you hear about, and how, under <strong>Release notifications</strong> in <a href="#update">Settings &rarr; Update</a>.</p>
 
     ${callout('tip','ISOs, checksums, and signatures','<p>Installer images for every release — including the experimental legacy-NVIDIA edition — live on the <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">downloads page</a>. The <a href="#verify">verify page</a> shows how to check one.</p>')}
   `,

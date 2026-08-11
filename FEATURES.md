@@ -35,7 +35,7 @@ A tiling Linux desktop is normally built by hand, in text files. Mainstream OS i
 - **A ready-made set of apps** — A browser, files, editor, calculator, calendar, photo viewer, music, and a system monitor are all there from first boot. Every one is a checkbox during install, so you can uncheck anything you don't want.
 - **A software store** — Browse and install more apps from a store with pictures and descriptions, no terminal and no package names to memorize.
 - **A launcher that finds everything** — Apps, folders, files, and quick math, all from one search box.
-- **Scrolling overview** — A hot corner or `Super+O` zooms out to a map of every workspace. Scroll across the lot, drag windows between them, and drop files and folders in from the drawer.
+- **Scrolling overview** — A hot corner or `Super+O` zooms out to a map of every workspace. Scroll across the workspace, drag windows between them, and drop files and folders in from the drawer.
 - **Quick settings and notifications** — Wi-Fi, Bluetooth, volume, night light, your calendar, and your notifications all live in one panel off the side of the screen.
 - **Screen sharing and recording** — Share your screen in video calls and record it on Wayland, with GPU-accelerated encoding.
 - **LocalSend built in** — Drag files onto the bar's media widget to send them to any phone, tablet, or computer on your network, and right-click to receive. Live transfer progress in a panel, and no cloud in the middle.
@@ -48,7 +48,7 @@ A tiling Linux desktop is normally built by hand, in text files. Mainstream OS i
 
 ## Getting installed
 
-- **A real graphical installer** — Boot the ISO and click through a Calamares installer, choosing Default, Custom, or Gaming from the Get Started picker. No terminal.
+- **A real graphical installer** — Boot the ISO and click through a Calamares installer, choosing Default, Custom, Console Mode, or OS Only from the Get Started picker. No terminal.
 - **Dual-boot and full-disk encryption** — Install alongside an existing Windows and it's added to the boot menu, so you pick between them every time you start up. Or lock the whole system behind a passphrase you enter at boot. Both are set up during the install itself.
 - **GPU auto-configuration** — Your card is detected during install and fitted with matching drivers across AMD, Intel, and NVIDIA. An experimental legacy edition covers older NVIDIA cards, back to the GeForce 400 series.
 - **A first-boot welcome** — The Welcome app meets you at first login, shows you around the desktop, and offers one-click installs for the extras you want.

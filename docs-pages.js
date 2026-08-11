@@ -1512,10 +1512,10 @@ gpg --show-keys mainstream.pub
 
 # 3. Import it, then verify the ISO against its signature
 gpg --import mainstream.pub
-gpg --verify mainstream-1.0.4.iso.sig mainstream-1.0.4.iso
+gpg --verify mainstream-x.x.x.iso.sig mainstream-x.x.x.iso
 
 # 4. (optional) Confirm the download wasn\'t corrupted
-sha256sum -c mainstream-1.0.4.iso.sha256</code></pre>
+sha256sum -c mainstream-x.x.x.iso.sha256</code></pre>
     <p>Using the experimental legacy-NVIDIA edition? Same steps — just swap in its filenames. Its ISO, signature, and checksum live in the <a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/"><code>legacy-nvidia/</code></a> folder on the downloads page.</p>
 
     <h2>What a good result looks like</h2>
@@ -1525,7 +1525,7 @@ sha256sum -c mainstream-1.0.4.iso.sha256</code></pre>
 
     <h2>Verifying from Windows</h2>
     <p>Downloading from Windows before you switch? The checksum check is built in — open PowerShell in your Downloads folder and compare the output to the contents of the <code>.sha256</code> file:</p>
-    <pre><code>certutil -hashfile mainstream-1.0.4.iso SHA256</code></pre>
+    <pre><code>certutil -hashfile mainstream-x.x.x.iso SHA256</code></pre>
     <p>For the signature, install <a href="https://gpg4win.org">Gpg4win</a> and run the same three <code>gpg</code> commands above — they work unchanged in PowerShell.</p>
 
     <h2>Where the trust comes from</h2>
@@ -1549,7 +1549,7 @@ PAGES['overview-launcher'] = {
     </figure>
 
     <h2>The scrolling overview</h2>
-    <p>Sweep the cursor into the hot corner (top left) or press <code>SUPER</code> + <code>O</code> and the desktop zooms out into a map of your workspaces. Scroll to glide through them, drag windows between them, and click anywhere to dive back in. Combine it with the Scrolling layout in <strong><a href="#layouts">Settings → Layouts</a></strong> and you get the full niri-like experience.</p>
+    <p>Sweep the cursor into the hot corner (top left) or press <code>SUPER</code> + <code>O</code> and the desktop zooms out into a map of your workspaces. Scroll across the workspace, drag windows between them, and click anywhere to dive back in. Combine it with the Scrolling layout in <strong><a href="#layouts">Settings → Layouts</a></strong> and you get the full niri-like experience.</p>
     <figure>
       <div class="shot">
         <video src="assets/docs/Hotcorner-Scrolling-Overview.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>

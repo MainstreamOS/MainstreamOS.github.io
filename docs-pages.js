@@ -317,11 +317,12 @@ PAGES.quick = {
     ${shot('QuickConfig.webp','Quick settings page','Settings → Quick is the everyday entry point. Every control on this page has a deeper counterpart elsewhere in Settings if you want to fine-tune.')}
 
     <h2>Wallpaper &amp; Colors</h2>
-    <p>Pick from the built-in wallpapers, or hit <strong>Choose file</strong> to use your own — a still image or a video. Mainstream extracts a Material You palette from whatever you pick and propagates the colors through the bar, sidebars, and system apps. Your login screen matches too, color scheme and all — it follows your wallpaper automatically, and each user gets their own, with no separate login background to set.</p>
+    <p>Pick from the built-in wallpapers, or hit <strong>Wallpaper</strong> to use your own — a still image or a video — or <strong>Slideshow</strong> to hand it a whole folder. Mainstream extracts a Material You palette from whatever you pick and propagates the colors through the bar, sidebars, and system apps. Your login screen matches too, color scheme and all — it follows your wallpaper automatically, and each user gets their own, with no separate login background to set.</p>
 
     <div class="props">
       <div class="prop"><center><div class="k">Default Wallpaper</div></center><div class="v">Select it to restore the default Mainstream wallpaper at any time.</div></div>
-      <div class="prop"><center><div class="k">Choose file</div></center><div class="v">Pick any image. <code>Ctrl</code>+<code>SUPER</code> (the ⊞ Windows or ⌘ Command key)+<code>T</code> is the keyboard shortcut.</div></div>
+      <div class="prop"><center><div class="k">Wallpaper</div></center><div class="v">Pick any image or video. <code>Ctrl</code>+<code>SUPER</code> (the ⊞ Windows or ⌘ Command key)+<code>T</code> is the keyboard shortcut.</div></div>
+      <div class="prop"><center><div class="k">Slideshow</div></center><div class="v">Point it at a folder instead of one picture and it moves through them on a timer. The palette follows along, so the whole desktop recolors with every change. Choosing a single wallpaper again ends it.</div></div>
       <div class="prop"><center><div class="k">Light / Dark</div></center><div class="v">Hard-switch between Mainstream's warm Day theme and the default Night. Pair with <a href="#interface">Auto theme</a> in Interface settings to follow sunrise/sunset.</div></div>
       <div class="prop"><center><div class="k">Palette style</div></center><div class="v"><span class="tag">Auto</span> <span class="tag">Content</span> <span class="tag">Expressive</span> <span class="tag">Fidelity</span> <span class="tag">Fruit Salad</span> <span class="tag">Monochrome</span> <span class="tag">Neutral</span> <span class="tag">Rainbow</span> <span class="tag">Tonal Spot</span><br/>Different Material You tonal maps. Expressive pops color the most; Monochrome strips it entirely.</div></div>
       <div class="prop"><center><div class="k">Transparency</div></center><div class="v">Toggles translucent surfaces (sidebars, notifications, dock). Turn off if you\'re on a slower GPU or prefer flat surfaces.</div></div>
@@ -614,49 +615,124 @@ PAGES.background = {
 // ---------- DECORATIONS ----------
 PAGES.decorations = {
   group: 'Settings', title: 'Decorations', icon: 'sliders',
-  lede: 'How windows are drawn, which app style and icons the rest of your programs use, how big the mouse pointer is, and which fonts everything is set in.',
+  lede: 'How windows are drawn — their shape, transparency, blur, shadow and borders — plus the app style and icons your other programs use, the pointer, the fonts, and per-app window rules.',
   render: () => `
-    ${shot('DecorationsConfig-1.webp','Decorations and system look')}
+    ${shot('DecorationsConfig-1.webp','Window decorations, shape and transparency')}
 
-    <h2>Decorations</h2>
-    <p>These six switches control how a window is drawn. Turning any of them off is a fair trade for speed on older hardware — the desktop keeps working exactly the same, it just does less painting.</p>
+    <h2>Window decorations</h2>
+    <p>Six switches for how a window is drawn. Turning any of them off is a fair trade for speed on older hardware — the desktop keeps working exactly the same, it just draws less.</p>
     <div class="props">
-      <div class="prop"><center><div class="k">Animations</div></center><div class="v">Window open and close effects, and the slide between workspaces. Turn off for the lowest possible latency.</div></div>
-      <div class="prop"><center><div class="k">Blur</div></center><div class="v">Background blur behind transparent windows and panels. Looks best on modern hardware; turn it off to save battery on integrated graphics.</div></div>
+      <div class="prop"><center><div class="k">Animations</div></center><div class="v">Window open and close effects, and the slide between workspaces. Turn off for the snappiest possible feel.</div></div>
+      <div class="prop"><center><div class="k">Blur</div></center><div class="v">Background blur behind transparent windows and panels. The most expensive thing on this page to draw.</div></div>
       <div class="prop"><center><div class="k">Shadows</div></center><div class="v">Drop shadows underneath windows.</div></div>
       <div class="prop"><center><div class="k">Borders</div></center><div class="v">Colored borders around active and inactive windows — useful for telling floating windows apart.</div></div>
       <div class="prop"><center><div class="k">Rounded Corners</div></center><div class="v">Rounded corners on windows and the bar, following your theme radius.</div></div>
-      <div class="prop"><center><div class="k">Title Bars</div></center><div class="v">Show title bars on windows, so every window keeps its close and maximize buttons. Turn off for a chromeless look — this is the same toggle as on the <a href="#layouts">Layouts</a> page.</div></div>
+      <div class="prop"><center><div class="k">Title Bars</div></center><div class="v">Show title bars on windows, so every window keeps its close and maximize buttons.</div></div>
+    </div>
+    ${callout('note','A switch turns the section off', '<p>Each switch gates the matching section further down. With <strong>Blur</strong> off, the blur sliders stop having an effect — they keep their values for when you turn it back on.</p>')}
+
+    <h2>Window shape</h2>
+    <p>The geometry every window is laid out with.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Corner radius</div></center><div class="v">How round the corners are. All the way down is perfectly square.</div></div>
+      <div class="prop"><center><div class="k">Border thickness</div></center><div class="v">How heavy the outline around each window is.</div></div>
+      <div class="prop"><center><div class="k">Gap between windows</div></center><div class="v">The space tiled windows leave between each other.</div></div>
+      <div class="prop"><center><div class="k">Gap around the edge</div></center><div class="v">The margin between your windows and the edge of the screen.</div></div>
     </div>
 
+    <h2>Window transparency</h2>
+    <p>How much of the wallpaper shows through a window, set separately for the one you are working in and the ones you are not.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Focused window</div></center><div class="v">The window you are currently using.</div></div>
+      <div class="prop"><center><div class="k">Unfocused windows</div></center><div class="v">Everything behind it. Dropping this a little is an easy way to see at a glance which window has your keystrokes.</div></div>
+    </div>
+
+    ${shot('DecorationsConfig-2.webp','Blur, dim, border color and shadow')}
+
+    <h2>Window blur</h2>
+    <p>What happens behind a transparent window. Needs <strong>Blur</strong> switched on above.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Strength</div></center><div class="v">How far the blur reaches. Higher costs more to draw.</div></div>
+      <div class="prop"><center><div class="k">Noise</div></center><div class="v">A light grain over the blur, which stops large flat areas from banding.</div></div>
+      <div class="prop"><center><div class="k">Saturation</div></center><div class="v">How much color the blurred wallpaper keeps.</div></div>
+      <div class="prop"><center><div class="k">Blur through to the wallpaper</div></center><div class="v">Blur past the windows underneath and show the wallpaper instead, so a stack of windows does not muddy into itself.</div></div>
+    </div>
+
+    <h2>Window dim</h2>
+    <p>Darkens whatever you are not working in, which is the quietest way to keep your eye on the right window.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Unfocused windows</div></center><div class="v">Whether the dimming happens at all.</div></div>
+      <div class="prop"><center><div class="k">Amount</div></center><div class="v">How dark they go. A little goes a long way.</div></div>
+    </div>
+
+    <h2>Window border color</h2>
+    <p>By default your borders are drawn from the wallpaper palette, so they change with your theme. Switch either one on to pick colors yourself instead — a gradient with as many stops as you like, at whatever angle.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Active border</div></center><div class="v">The window you are using.</div></div>
+      <div class="prop"><center><div class="k">Inactive border</div></center><div class="v">Everything else.</div></div>
+    </div>
+    ${callout('tip','Left alone, they follow your wallpaper', '<p>Leave both switched off and the borders keep tracking your theme, so a new wallpaper restyles them without you touching this page.</p>')}
+
+    <h2>Window shadow</h2>
+    <p>The shape of the shadow under each window. Needs <strong>Shadows</strong> switched on above.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Size</div></center><div class="v">How far the shadow spreads.</div></div>
+      <div class="prop"><center><div class="k">Falloff</div></center><div class="v">How sharply it fades at the edge — low is a soft haze, high is a defined edge.</div></div>
+      <div class="prop"><center><div class="k">Darkness</div></center><div class="v">How dark it is.</div></div>
+      <div class="prop"><center><div class="k">Offset X / Offset Y</div></center><div class="v">Which direction it falls, as though you were moving the light source.</div></div>
+    </div>
+
+    ${shot('DecorationsConfig-3.webp','Animations, reset, system look and cursor')}
+
+    <h2>Window animations</h2>
+    <p>One list, holding a whole set of curves and timings.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Style</div></center><div class="v"><span class="tag">Expressive</span> lively, with overshoot &nbsp; <span class="tag">Smooth</span> steady and unhurried &nbsp; <span class="tag">Minimal</span> short and plain, the cheapest to draw</div></div>
+    </div>
+
+    <h2>Reset</h2>
+    <p><strong>Reset window settings</strong> puts everything above back the way it shipped. It leaves the sections below alone — your app style, icons, pointer and fonts stay as you set them.</p>
+
     <h2>System look</h2>
-    <p>The desktop follows your theme on its own. These three pick what everything <em>else</em> uses — your file manager, your browser, your text editor. Each list shows only what is actually installed, so anything you pick here will work.</p>
+    <p>The desktop follows your theme on its own. These three pick what everything <em>else</em> uses — your file manager, your browser, your text editor.</p>
     <div class="props">
       <div class="prop"><center><div class="k">App style</div></center><div class="v">The widget theme your programs are drawn with — buttons, menus, scrollbars.</div></div>
       <div class="prop"><center><div class="k">Icons</div></center><div class="v">The icon set used across the desktop and inside apps.</div></div>
       <div class="prop"><center><div class="k">Mouse cursor</div></center><div class="v">The pointer theme. Your choice survives a logout.</div></div>
     </div>
-    ${callout('tip','Saved with your themes', '<p>All three of these are captured when you save a theme, so switching themes brings the whole look with it — not just the colors. See <a href="#themes">Themes</a>.</p>')}
+    ${callout('tip','Saved with your themes', '<p>All three of these are captured when you save a theme, along with everything above, so switching themes brings the whole look with it — not just the colors.</p>')}
 
     <h2>Cursor</h2>
-    ${shot('DecorationsConfig-2.webp','Cursor size and fonts')}
     <div class="props">
-      <div class="prop"><center><div class="k">Cursor Size</div></center><div class="v"><span class="tag">Small</span> 16px &nbsp; <span class="tag">Default</span> 24px &nbsp; <span class="tag">Large</span> 32px &nbsp; <span class="tag">Larger</span> 48px &nbsp; <span class="tag">Largest</span> 64px</div></div>
+      <div class="prop"><center><div class="k">Cursor Size</div></center><div class="v"><span class="tag">Small</span> 16px &nbsp; <span class="tag">Default</span> 24px &nbsp; <span class="tag">Large</span> 32px &nbsp; <span class="tag">Larger</span> 48px</div></div>
     </div>
-    ${callout('note','Not every cursor theme can be resized', '<p>The list only offers the sizes your chosen pointer theme can actually draw, so you will sometimes see fewer than five. A theme built at a single size stays that size whichever option you pick.</p>')}
+    ${callout('note','Not every cursor theme can be resized', '<p>The list only offers the sizes your chosen pointer theme can actually draw, so you will sometimes see fewer than four. A theme built at a single size stays that size whichever you pick.</p>')}
+
+    ${shot('DecorationsConfig-4.webp','Fonts and window rules')}
 
     <h2>Fonts</h2>
-    <p>Mainstream uses <strong>Google Sans Flex</strong> and <strong>JetBrains Mono NF</strong> by default. Each list is searchable and previews every font in its own typeface, so you can see what you are choosing before you choose it. Anything installed on your system is available.</p>
+    <p>Mainstream uses <strong>Google Sans Flex</strong> and <strong>JetBrains Mono NF</strong> by default. Each list is searchable and shows every font in its own typeface, so you can read a name the way it will look.</p>
     <div class="props">
       <div class="prop"><center><div class="k">Main font</div></center><div class="v">The everyday interface font, used almost everywhere.</div></div>
       <div class="prop"><center><div class="k">Numbers font</div></center><div class="v">Clocks, counters, and readouts, where even digit widths matter.</div></div>
       <div class="prop"><center><div class="k">Title font</div></center><div class="v">Headings and larger titles.</div></div>
       <div class="prop"><center><div class="k">Monospace font</div></center><div class="v">Terminal-style text and anything that needs to line up in columns.</div></div>
-      <div class="prop"><center><div class="k">Nerd font icons</div></center><div class="v">The glyph font behind the small icons in the bar and menus. Change this only if you know the replacement carries the same glyphs.</div></div>
+      <div class="prop"><center><div class="k">Nerd font icons</div></center><div class="v">The glyph font behind the small icons in the bar and menus. Change this only for a font that carries the same glyphs.</div></div>
       <div class="prop"><center><div class="k">Reading font</div></center><div class="v">Longer passages of text, like notification bodies and the AI assistant.</div></div>
       <div class="prop"><center><div class="k">Expressive font</div></center><div class="v">The occasional display font used for emphasis.</div></div>
     </div>
-    ${callout('info','Your apps follow along', '<p>Setting the main font here also hands it to your programs, so your browser and file manager match the desktop instead of staying on the system default.</p>')}
+    ${callout('info','Your apps follow along', '<p>Setting the main font here also hands it to your programs, so your browser and file manager match the desktop instead of drifting from it.</p>')}
+
+    <h2>Window rules</h2>
+    <p>Everything above applies to every window at once. A rule is for when one app should be treated differently — a calculator that should always float, a video player that should never dim, a chat window that belongs on its own workspace.</p>
+    <p>Press <strong>Add rule</strong> and name the app you mean, either by picking it from the windows you have open or by typing what it matches. Then choose what should happen to it: where it opens, how see-through it is, whether it gets a border, a shadow, blur, or an animation at all.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Match</div></center><div class="v">Which windows the rule is about — by app, by title, or both.</div></div>
+      <div class="prop"><center><div class="k">Effects</div></center><div class="v">What changes for them: floating, size and position, workspace, opacity, blur, shadow, border, rounding, dimming, and more.</div></div>
+      <div class="prop"><center><div class="k">Order</div></center><div class="v">Rules apply top to bottom, so when two disagree the later one wins. Use the arrows to reorder.</div></div>
+    </div>
+    ${callout('tip','Rules travel with a theme', '<p>Your rules are saved into a theme along with everything else on this page, so sharing a theme shares the behaviour you built up — not just how it looks.</p>')}
+    ${callout('note','Written to a file of its own', '<p>Rules are kept separately from anything you write by hand, so the settings page never overwrites your own Hyprland configuration.</p>')}
   `
 };
 

@@ -1803,6 +1803,7 @@ const releaseList = (data, tech) => {
       <div class="prop">
         <center>
           <div class="k" style="font-size:15px;letter-spacing:0">${escHtml(r.version)}</div>
+          ${r.name ? `<div style="font-size:12px;color:var(--mist);margin-top:4px">&ldquo;${escHtml(r.name)}&rdquo;</div>` : ''}
           ${when ? `<div style="font-family:var(--font-mono);font-size:11px;color:var(--mist);margin-top:5px">${escHtml(when)}</div>` : ''}
           <div style="margin-top:9px">
             ${r.unreleased ? '<span class="chip" style="margin:0 0 5px">Upcoming</span>'

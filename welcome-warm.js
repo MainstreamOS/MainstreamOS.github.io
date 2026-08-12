@@ -179,8 +179,8 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements and project updates.',
   render: () => `
-    <div class="eyebrow">Release &middot; July 31, 2026</div>
-    <h2 id="mainstream-os-1-1-0">Mainstream OS 1.1.0 — a Linux desktop you set up by clicking</h2>
+    <div class="eyebrow">Release &middot; August 12, 2026</div>
+    <h2 id="mainstream-os">Mainstream OS — a Linux desktop you set up by clicking</h2>
 
     <p>Mainstream OS is a Linux operating system built on Arch. Its desktop is Hyprland — the software that arranges your windows and decides where they go — and Hyprland is normally set up by hand, by editing text files. Here you set it up by clicking: displays, window layouts, keyboard shortcuts, the bar, the look of the whole interface, updates and repairs each get a proper settings page — a settings app, not a config file, and never a terminal. Pick a wallpaper and the whole desktop takes its colors from it. One keypress hands the machine over to a full-screen Steam session for gaming, and a graphical installer puts it all on your computer in a few minutes. <strong>Deeply featured. Genuinely friendly.</strong></p>
 
@@ -191,9 +191,10 @@ PAGES['blog'] = {
 
     <h2>One wallpaper, a whole look</h2>
     <ul>
-      <li><strong>Colors from your wallpaper.</strong> Pick any wallpaper and the desktop, the settings app, your terminal, your apps, your folder icons and the lock screen all recolor to match it.</li>
+      <li><strong>Colors from your wallpaper.</strong> Pick any wallpaper and the desktop, the settings app, your terminal, your apps — GTK and Qt alike — your folder icons and the lock screen all recolor to match it.</li>
+      <li><strong>A wallpaper that rotates.</strong> Point it at a folder instead of one picture and set a timer. The palette follows along with every change, so the whole desktop recolors as it goes.</li>
       <li><strong>Video wallpapers.</strong> A video works as a wallpaper with nothing extra to install — it plays quietly on a loop across every screen, and the color scheme comes from it just the same.</li>
-      <li><strong>Themes.</strong> Your whole look — wallpaper, colors, app style, icons, interface changes and window styling — saves under a name with a preview, and switches back in one tap.</li>
+      <li><strong>Themes.</strong> Your whole look — wallpaper, colors, app style, icons, interface changes, and now the shape, transparency, blur, dim, borders, shadow, animations and window rules as well — saves under a name with a preview, and switches back in one tap.</li>
       <li><strong>Take your look with you.</strong> A theme saves out to a single file you can hand to someone else, wallpaper included, with anything particular to your machine left behind.</li>
       <li><strong>Day and Night.</strong> Pair two themes and let them follow the clock or your night-light schedule.</li>
     </ul>
@@ -207,10 +208,11 @@ PAGES['blog'] = {
     <h2>Make it yours</h2>
     <ul>
       <li><strong>A bar you arrange.</strong> Show, hide and reorder every piece of the bar by dragging, move them between the left, middle and right, and drop two together to join them into a single rounded group.</li>
+      <li><strong>Title bars, on or off.</strong> On for a familiar desktop, off for a clean one, switched instantly.</li>
+      <li><strong>Windows drawn the way you want.</strong> Corner radius, border thickness, the gaps between windows and around the screen, how see-through they are, the blur behind them, the shadow beneath them, how much the ones you are not using dim, and how they animate. Give the borders a gradient of your own or leave them following the wallpaper, and put the lot back with one press.</li>
       <li><strong>App style, icons and pointer.</strong> All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.</li>
       <li><strong>Fonts.</strong> A searchable list that shows each font in its own lettering, and your choice carries into your apps rather than stopping at the desktop.</li>
-      <li><strong>Dock animations.</strong> Icons animate when you launch something — Bounce, Pulse, Pop or Wobble. Contributed by <a href="https://github.com/sanaruca">sanaruca</a> (<a href="https://github.com/end-4/dots-hyprland/issues/3553">end-4/dots-hyprland#3553</a>).</li>
-      <li><strong>Title bars, on or off.</strong> On for a familiar desktop, off for a clean one, switched instantly.</li>
+      <li><strong>A built-in window rule editor.</strong> Most desktops leave per-app rules to a config file you edit by hand. Here it is a page in Settings: teach one app where to open, whether it floats, how see-through it is, and what it is allowed to do.</li>
     </ul>
     ${shot('BarConfig-1.webp','The bar widget layout editor in Settings, showing Simple and Custom modes and the widget list','The bar layout editor. Drag two pieces together and they join into one.')}
 
@@ -244,11 +246,16 @@ PAGES['blog'] = {
       <li><strong>A launcher that finds everything.</strong> Apps, folders, files, quick sums and your clipboard history, all from one search box.</li>
       <li><strong>Zoom out to the whole desktop.</strong> Flick the pointer into the corner and the desktop pulls back into a scrolling map of every workspace — drag windows between them, drop files onto them. Built on <a href="https://github.com/yayuuu/hyprland-scroll-overview">Scroll Overview</a> by <a href="https://github.com/yayuuu">yayuuu</a>.</li>
       <li><strong>Quick settings and notifications</strong> in one panel off the side of the screen.</li>
-      <li><strong>Pick up where you left off.</strong> Sign out or restart and your windows reopen on the workspaces they were on.</li>
+      <li><strong>Pick up where you left off.</strong> Sign out or restart and your windows reopen on the workspaces they were on. The session is written down as you work, so a crash costs you no more than a tidy sign-out would.</li>
       <li><strong>Move files between your devices.</strong> Send several at once to any phone, tablet, or computer on your network running <a href="https://localsend.org">LocalSend</a>, and receive from them the same way, with live progress and no cloud in the middle. Mainstream builds LocalSend into the desktop rather than bundling the app.</li>
       <li><strong>Auto Mount and Uninstall Apps</strong>, two small apps for the fiddly parts: drives that are ready at every login, and removing software without breaking the desktop.</li>
     </ul>
-    ${shot('DecorationsConfig-1.webp','The Decorations page in Settings showing App style, Icons, Mouse cursor, Cursor Size and Fonts','App style, icons, pointer and fonts, all on one page.')}
+    <figure>
+      <div class="shot">
+        <video src="assets/docs/Decorations-Tour.mp4" autoplay loop muted playsinline controls preload="metadata" style="width:100%;display:block"></video>
+      </div>
+      <figcaption>The Decorations page, top to bottom — window shape, blur, shadow, borders, animations, the system look, fonts, and per-app rules.</figcaption>
+    </figure>
 
     <h2>Getting it installed</h2>
     <ul>
@@ -269,7 +276,10 @@ PAGES['blog'] = {
     </ul>
 
     <h2>Get it</h2>
-    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.1.0</strong></a> — 2.7&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.2.0</strong></a> — 2.7&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
+
+    <h2>Everything that changed</h2>
+    <p>This page is what Mainstream is, not what moved in any one release. For that — every version, and the commits behind each one — see the <a href="#changelog">changelog</a>.</p>
 
     <h2>Join in</h2>
     <p>The community lives on <a href="https://discord.gg/WJ3AUK5Aqd">Discord</a> — help when you need it, showing off when you're pleased with something, and release news first. Development happens in the open on <a href="https://github.com/MainstreamOS">GitHub</a>, and contributions are welcome down to a one-line fix. Translations would help most of all, so Mainstream feels at home beyond English.</p>

@@ -179,8 +179,8 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements and project updates.',
   render: () => `
-    <div class="eyebrow">Release &middot; August 12, 2026</div>
-    <h2 id="mainstream-os">Mainstream OS — a Linux desktop you set up by clicking</h2>
+    <div class="eyebrow">Release &middot; 1.3.0 &middot; August 17, 2026</div>
+    <h2 id="mainstream-os-1-3-0">Mainstream OS 1.3.0 — a Linux desktop you set up by clicking</h2>
 
     <p>Mainstream OS is a Linux operating system built on Arch. Its desktop is Hyprland — the software that arranges your windows and decides where they go — and Hyprland is normally set up by hand, by editing text files. Here you set it up by clicking: displays, window layouts, keyboard shortcuts, the bar, the look of the whole interface, updates and repairs each get a proper settings page — a settings app, not a config file, and never a terminal. Pick a wallpaper and the whole desktop takes its colors from it. One keypress hands the machine over to a full-screen Steam session for gaming, and a graphical installer puts it all on your computer in a few minutes. <strong>Deeply featured. Genuinely friendly.</strong></p>
 
@@ -194,7 +194,7 @@ PAGES['blog'] = {
       <li><strong>Colors from your wallpaper.</strong> Pick any wallpaper and the desktop, the settings app, your terminal, your apps — GTK and Qt alike — your folder icons and the lock screen all recolor to match it.</li>
       <li><strong>A wallpaper that rotates.</strong> Point it at a folder instead of one picture and set a timer. The palette follows along with every change, so the whole desktop recolors as it goes.</li>
       <li><strong>Video wallpapers.</strong> A video works as a wallpaper with nothing extra to install — it plays quietly on a loop across every screen, and the color scheme comes from it just the same.</li>
-      <li><strong>Themes.</strong> Your whole look — wallpaper, colors, app style, icons, interface changes, and now the shape, transparency, blur, dim, borders, shadow, animations and window rules as well — saves under a name with a preview, and switches back in one tap.</li>
+      <li><strong>Themes.</strong> Your whole look — wallpaper, colors, app style, icons, interface changes, and now the shape, transparency, blur, dim, borders, shadow, animations, window rules and which edge the dock sits on as well — saves under a name with a preview, and switches back in one tap.</li>
       <li><strong>Take your look with you.</strong> A theme saves out to a single file you can hand to someone else, wallpaper included, with anything particular to your machine left behind.</li>
       <li><strong>Day and Night.</strong> Pair two themes and let them follow the clock or your night-light schedule.</li>
     </ul>
@@ -208,6 +208,7 @@ PAGES['blog'] = {
     <h2>Make it yours</h2>
     <ul>
       <li><strong>A bar you arrange.</strong> Show, hide and reorder every piece of the bar by dragging, move them between the left, middle and right, and drop two together to join them into a single rounded group.</li>
+      <li><strong>A dock on any edge.</strong> Put it along the top, bottom, left or right of the screen, and the bar steps aside when you give the dock the edge it was using.</li>
       <li><strong>Title bars, on or off.</strong> On for a familiar desktop, off for a clean one, switched instantly.</li>
       <li><strong>Windows drawn the way you want.</strong> Corner radius, border thickness, the gaps between windows and around the screen, how see-through they are, the blur behind them, the shadow beneath them, how much the ones you are not using dim, and how they animate. Give the borders a gradient of your own or leave them following the wallpaper, and put the lot back with one press.</li>
       <li><strong>App style, icons and pointer.</strong> All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.</li>
@@ -276,7 +277,7 @@ PAGES['blog'] = {
     </ul>
 
     <h2>Get it</h2>
-    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.2.0</strong></a> — 2.7&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.3.0</strong></a> — 2.7&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
 
     <h2>Everything that changed</h2>
     <p>This page is what Mainstream is, not what moved in any one release. For that — every version, and the commits behind each one — see the <a href="#changelog">changelog</a>.</p>

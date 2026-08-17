@@ -11,13 +11,14 @@ The shell — the bar, the side panels, the search box — is a lean, heavily mo
 - **Colors from your wallpaper.** Pick any wallpaper and the desktop, the settings app, your terminal, your apps — GTK and Qt alike — your folder icons and the lock screen all recolor to match it.
 - **A wallpaper that rotates.** Point it at a folder instead of one picture and set a timer. The palette follows along with every change, so the whole desktop recolors as it goes.
 - **Video wallpapers.** A video works as a wallpaper with nothing extra to install — it plays quietly on a loop across every screen, and the color scheme comes from it just the same.
-- **Themes.** Your whole look — wallpaper, colors, app style, icons, interface changes, and the shape, transparency, blur, dim, borders, shadow, animations and window rules as well — saves under a name with a preview, and switches back in one tap.
+- **Themes.** Your whole look — wallpaper, colors, app style, icons, interface changes, and the shape, transparency, blur, dim, borders, shadow, animations, window rules and which edge the dock sits on as well — saves under a name with a preview, and switches back in one tap.
 - **Take your look with you.** A theme saves out to a single file you can hand to someone else, wallpaper included, with anything particular to your machine left behind.
 - **Day and Night.** Pair two themes and let them follow the clock or your night-light schedule.
 
 ## Make it yours
 
 - **A bar you arrange.** Show, hide and reorder every piece of the bar by dragging, move them between the left, middle and right, and drop two together to join them into a single rounded group.
+- **A dock on any edge.** Put it along the top, bottom, left or right of the screen, and the bar steps aside when you give the dock the edge it was using.
 - **Title bars, on or off.** On for a familiar desktop, off for a clean one, switched instantly.
 - **Windows drawn the way you want.** Corner radius, border thickness, the gaps between windows and around the screen, how see-through they are, the blur behind them, the shadow beneath them, how much the ones you are not using dim, and how they animate. Give the borders a gradient of your own or leave them following the wallpaper, and put the lot back with one press.
 - **App style, icons and pointer.** All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.

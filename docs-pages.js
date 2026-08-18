@@ -473,7 +473,7 @@ PAGES.interface = {
   group: 'Settings', title: 'Interface', icon: 'iface',
   lede: 'The dock, the sidebars, the hot corner, and the lock screen — the parts of the desktop you reach for, rather than the parts that are simply drawn.',
   render: () => `
-    ${shot('InterfaceConfig-1.webp','Dock and sidebars.','The Dock section controls the app launcher at the bottom. Left and Right Sidebars hold Mainstream\'s AI assistant and quick toggles.')}
+    ${shot('InterfaceConfig-1.webp','The hot corner, the overviews and the dock.','The Dock section sets which edge the dock lives on and how it behaves. Above it, the hot corner picks which overview it opens, and the Launcher Overview sets the size of the app grid.')}
 
     ${callout('note','Looking for decorations or fonts?', '<p>Window borders, blur, shadows, rounded corners and title bars — along with your app style, icons, pointer and fonts — now live on their own <a href="#decorations">Decorations</a> page.</p>')}
 
@@ -481,9 +481,9 @@ PAGES.interface = {
     ${twoShot('Dock-Right-Click-Per-App.webp','Right-click a dock icon — per-app view.','Dock-Right-Click-Per-Window.webp','Per-window view shows open instances individually with live volume sliders.')}
 
     <div class="props">
-      <div class="prop"><center><div class="k">Enable</div></center><div class="v">Master toggle for the bottom app dock.</div></div>
-      <div class="prop"><center><div class="k">Hover to reveal</div></center><div class="v">The dock stays hidden while a window is focused and slides up when your cursor touches the bottom edge. Off: it only appears on an empty workspace, not on hover.</div></div>
-      <div class="prop"><center><div class="k">Pinned on startup</div></center><div class="v">Starts the session with the dock pinned open — always visible, reserving its space at the bottom — until you unpin it.</div></div>
+      <div class="prop"><center><div class="k">Position</div></center><div class="v">Which edge the dock sits on: <span class="tag">Bottom</span> the default &nbsp; <span class="tag">Top</span> &nbsp; <span class="tag">Left</span> &nbsp; <span class="tag">Right</span> &nbsp; <span class="tag">Disabled</span> turns the dock off. On the left or right it stands vertically, icons stacked. Pick the edge your bar is already using and the bar moves to the opposite one, so the two never share a side.</div></div>
+      <div class="prop"><center><div class="k">Hover to reveal</div></center><div class="v">The dock stays hidden while a window is focused and slides in when your cursor touches the edge it sits on. Off: it only appears on an empty workspace, not on hover.</div></div>
+      <div class="prop"><center><div class="k">Pinned on startup</div></center><div class="v">Starts the session with the dock pinned open — always visible, reserving its space along its edge — until you unpin it.</div></div>
       <div class="prop"><center><div class="k">Right-click volume control</div></center><div class="v">Adds a volume slider and mute toggle to the right-click menu of a dock icon for any app currently playing audio. <b>Per window</b> gives each window its own slider — handy for browsers or Discord where different windows play different sound; <b>Per app</b> groups them into one.</div></div>
       <div class="prop"><center><div class="k">Tint app icons</div></center><div class="v">Desaturates each icon and washes it with your accent color for a uniform look. Keep off for brand-accurate icons.</div></div>
       <div class="prop"><center><div class="k">Launch animation</div></center><div class="v">The icon reacts when you start an app, so you can see the click landed before the window appears. <span class="tag">Bounce</span> the default &nbsp; <span class="tag">Pulse</span> &nbsp; <span class="tag">Pop</span> &nbsp; <span class="tag">Wobble</span> &nbsp; <span class="tag">None</span> Only a genuine launch animates — clicking an app that is already open, or opening a folder, does not.</div></div>

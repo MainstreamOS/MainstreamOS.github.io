@@ -1,6 +1,49 @@
 {
-  "latest": "1.3.0",
+  "latest": "1.3.2",
   "releases": [
+    {
+      "version": "1.3.2",
+      "date": "2026-08-19",
+      "kind": "patch",
+      "summary": "Improved compatability with hybrid NVIDIA laptops and Improved Intel graphics support",
+      "changes": [
+        "Allow hyprland to detect the graphics card automatically on hybrid NVIDIA laptops",
+        "Newer Intel graphics (Arc, Meteor Lake and later) now use the newer Xe module",
+        "Cleaned up the color picker's look and behavior",
+        "The media controls now open beside the widget on a vertical bar too"
+      ],
+      "commits": [
+        "9fb87008a fix(gpu-config): stop managing AQ_DRM_DEVICES on hybrid NVIDIA laptops",
+        "84127def8 gpu: name the Intel module the kernel actually bound",
+        "cd61965e7 color field: show the color, not the alpha behind it",
+        "617184c4e media: the controls open beside the widget on a vertical bar too",
+        "fd401b47e widgets: a color field can be emptied where having no color means something",
+        "cf85bd8bb widgets: a color field's swatch and box stand as tall as its button"
+      ],
+      "commitNotes": {
+        "9fb87008a": "nvidia_write_aq_drm() pinned Aquamarine's AQ_DRM_DEVICES to the NVIDIA\ncard alone whenever a hybrid GPU setup was detected. On most hybrid\nlaptops the internal panel is wired to the iGPU, not the dGPU, so this\nhanded Hyprland a render device with no connector for the built-in\nscreen \u2014 session never comes up, looks like a boot failure.\n\nConfirmed on an HP Omen Max 16 (RTX 5080): env.lua carried\n  hl.env(\"AQ_DRM_DEVICES\", \"/dev/dri/by-path/pci-0000:02:00.0-card\")\nwith no iGPU entry, matching this exact failure mode.\n\nA joined-list fix (NVIDIA first, plus every other connector-capable\ncard, so the panel's actual owning GPU stayed reachable) was tried\nbefore committing anything, on the theory that the missing connector\nwas the root cause. Testing on the same hardware showed it still\nfailed to boot. That points to the actual problem being NVIDIA's side\nof the multi-GPU render/blit handoff itself, not connector coverage \u2014\na known-fragile path per the Hyprland wiki's own multi-GPU/NVIDIA\nnote",
+        "84127def8": "The initramfs was told i915 for every Intel card. Which of i915 and xe claims a\npart is the kernel's call and it moves from one release to the next, so on the\nnewest hardware \u2014 where xe takes it \u2014 the initramfs carried a module that was\nnot driving anything and early KMS quietly did not happen. Nothing broke; the\ndriver still loaded later, and the flicker-free boot it was there for simply\ngot missing on the parts most likely to want it.\n\nReading it off the card settles it. The generation tiers were no help: the one\ncovering Xe spans parts on both sides of the split, so mapping tier to module\nwould have put xe in front of an Arrow Lake, which is worse than the hardcoded\nanswer it replaced. Asking what is bound cannot disagree with the kernel, and\nfollows it for free the release a default changes. i915 when nothing answers,\nwhich is both the older parts' module and what was named here before.\n\nThe card list the compositor is given grew a seam for its lookup directory at\nthe same time, b",
+        "cd61965e7": "The box takes a string, but a caller with a color rather than a typed one hands\nover whatever Qt makes of it \u2014 and Qt writes a color that carries alpha as nine\ndigits, the leading pair being that alpha. Nothing here expected them. The\nswatch painted the alpha too, so a color the interface draws at a tenth opacity\narrived as a near-invisible smear of itself; the box was sized for seven\ncharacters and showed a fragment of the nine; and the reader that guards typing\nrejects eight digits outright, so the value could not be edited back into shape\neither. A color nobody could see, read, or correct.\n\nThe reader now takes that form and drops the alpha, and the swatch and the box\nread through it rather than off the raw value. What a color is worth and how\nmuch of it shows through are two settings here, and only the first belongs in a\nbox that says which color it is.",
+        "617184c4e": "The popup was taught to open under the widget that asked for it, but only along\none axis: the placement returned early on a vertical bar and the margin was\nfixed at half the screen, so wherever the media widget sat on a side bar the\ncontrols appeared at the middle. The widget there never published itself either,\nso there was nothing to place against had the placement run.\n\nIt now measures the same way on either edge and slides along whichever axis the\nbar leaves free \u2014 across under a top or bottom bar, up and down beside a left or\nright one \u2014 clamped to the screen with the same gap at both ends. The stock\nmiddle spot remains what is used until the widget has been measured, and\nwhenever it cannot be.",
+        "fd401b47e": "A field could be given a color but never returned to not having one: an emptied\nbox normalises to nothing, and nothing was read as a typo and refused. Clearing\nit now says \"no color of my own\" wherever that is a state worth having.\n\nOff unless asked for. A gradient lane cannot draw an empty string, so refusing\nit there is still the right answer, and every field that exists today keeps the\nbehavior it had. It also takes a genuinely blank box rather than merely an\nunparseable one, so a half-typed code still snaps back instead of quietly\ndropping the color that was set.",
+        "cf85bd8bb": "The swatch took its height from the text control's drawn outline and the button\nbeside them took its own, so a row meant to be read as one control was three\nthings of two heights. Both now take the button's, which is the tallest of them\nand the one with a hard edge to line up against.\n\nThe same component draws the border gradient colors, so those rows sit level too."
+      }
+    },
+    {
+      "version": "1.3.1",
+      "date": "2026-08-17",
+      "kind": "patch",
+      "summary": "Works with newer LocalSend devices that now expect extra security during transfer",
+      "changes": [
+        "Enable sending files to receivers that now require a certificate to connect"
+      ],
+      "commits": [
+        "38d58c79a localsend: offer a certificate when a receiver asks for one"
+      ],
+      "commitNotes": {
+        "38d58c79a": "Receivers began requiring the sender to present a certificate during the TLS\nhandshake. Sending never offered one, so the connection was refused before a\nbyte of the file moved, and the failure arrived as a certificate alert rather\nthan as anything about the transfer. Nothing here changed; the other end did,\nwhich is why this worked for months and then stopped.\n\nOne is generated on first use and kept, so a peer goes on seeing the same\ndevice rather than a new one per transfer. Which certificate it is does not\nmatter to the handshake \u2014 that one is offered at all does. It is presented to\nevery receiver, since one that does not ask simply ignores it, and a receiver\nthat refuses to load it is no worse off than before."
+      }
+    },
     {
       "version": "1.3.0",
       "date": "2026-08-17",

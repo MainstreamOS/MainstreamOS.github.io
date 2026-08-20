@@ -179,8 +179,8 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements and project updates.',
   render: () => `
-    <div class="eyebrow">Release &middot; 1.3.0 &middot; August 17, 2026</div>
-    <h2 id="mainstream-os-1-3-0">Mainstream OS 1.3.0 — a Linux desktop you set up by clicking</h2>
+    <div class="eyebrow">Release &middot; 1.3.2 &middot; August 19, 2026</div>
+    <h2 id="mainstream-os-1-3-0">Mainstream OS 1.3.2 — a Linux desktop you set up by clicking</h2>
 
     <p>Mainstream OS is a Linux operating system built on Arch. Its desktop is Hyprland — the software that arranges your windows and decides where they go — and Hyprland is normally set up by hand, by editing text files. Here you set it up by clicking: displays, window layouts, keyboard shortcuts, the bar, the look of the whole interface, updates and repairs each get a proper settings page — a settings app, not a config file, and never a terminal. Pick a wallpaper and the whole desktop takes its colors from it. One keypress hands the machine over to a full-screen Steam session for gaming, and a graphical installer puts it all on your computer in a few minutes. <strong>Deeply featured. Genuinely friendly.</strong></p>
 
@@ -277,7 +277,7 @@ PAGES['blog'] = {
     </ul>
 
     <h2>Get it</h2>
-    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.3.0</strong></a> — 2.7&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.3.2</strong></a> — 2.7&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
 
     <h2>Everything that changed</h2>
     <p>This page is what Mainstream is, not what moved in any one release. For that — every version, and the commits behind each one — see the <a href="#changelog">changelog</a>.</p>

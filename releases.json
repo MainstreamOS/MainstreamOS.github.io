@@ -1,6 +1,33 @@
 {
-  "latest": "1.3.2",
+  "latest": "1.4.0",
   "releases": [
+    {
+      "version": "1.4.0",
+      "date": "2026-08-23",
+      "kind": "feature",
+      "summary": "Update UI Quickshell to 0.3.1",
+      "changes": [
+        "Now running on Quickshell 0.3.1",
+        "LocalSend file drops now also work on the vertical bar",
+        "Bluetooth input devices now reconnect more reliably"
+      ],
+      "commits": [
+        "03511127a quickshell: update to 0.3.1.r1",
+        "7fd1cf44d media: one drop target serves both bars' widgets",
+        "04f0d354e bluetooth: start the applet the tray-icon mask was silently keeping down",
+        "6fc1deda5 bluetooth: stop scanning the air while something is already connected",
+        "5c421cb38 bluetooth: reconnect trusted audio devices at startup",
+        "52158a0c9 bluetooth: pair before trusting a device"
+      ],
+      "commitNotes": {
+        "03511127a": "Pin _commit to 0fed22a2c47d9568ddf13cf61586b3f2ac4378a2, the current\ntip of master and one commit past the v0.3.1 tag (1a4716c).\n\n0.3.1 is a bug-fix-only release (session lock, JsonAdapter,\nScriptModel, and pipewire crash fixes, among others). No new\ndependencies, so depends/makedepends are unchanged.",
+        "7fd1cf44d": "The horizontal media widget opens the controls popup in transfer mode when a\nfile is dragged over it, and the vertical bar's widget is a parallel copy that\nnever received the drop target \u2014 a drag over it fell through to nothing, on\nthe bar where the widget looks the same and promises the same.\n\nThe target is one component now, under both widgets, the way the tray and the\ngroup pill are already shared between the two bars: hovering with files opens\nthe popup as a visible place to release, the popup's own drop area finalizes,\nand a send already in flight is left undisturbed. The popup already places\nitself beside whichever bar it was opened from, and the next thing a drag\nshould do lands on both bars by construction.",
+        "04f0d354e": "The autostart override that was meant to hide blueman-applet's tray icon\ndisabled the applet instead: Hidden=true in an autostart entry removes the\nentry, it does not quiet it. That mattered more than an icon. The applet is\nwhat registers blueman's BlueZ agent \u2014 the service bluetoothd consults before\nhonoring a connection a device opens on its own \u2014 and the KDE tools that used\nto provide one left with them. Since then no agent has run at all.\n\nDaily use never noticed, because nothing in it asks: connections the user\nstarts need no authorization, and trusted devices are waved through. The gap\nis a paired device that is not trusted dialing back in by itself \u2014 a mouse\nwaking from sleep. Refused for want of anyone to ask, it retries on every\nmovement, and the user watches it connect and disconnect without end. Trusting\ndevices on connect was the working remedy; this restores the thing whose\nabsence made it necessary.\n\nThe session starts the applet itself, through a script that first writes",
+        "6fc1deda5": "The night light panel started a Bluetooth scan when it opened and stopped one\nwhen it closed, carried over whole from the Bluetooth panel it was written from.\nNothing in it has anything to do with Bluetooth. Opening it put the adapter into\na scan, and a scan is one of the surer ways to unsettle a mouse or keyboard that\nis already connected \u2014 the link it has to hold is competing with the search for\nlinks it does not.\n\nThe list of devices found so far had the same trouble from the other direction.\nIt recorded the order they turned up in and then announced that the record had\ngrown, and the only thing reading that record is the sort inside the very list\nthe recording happens in, so the announcement asked the list to build itself\nagain. Building it recorded whatever was new, which announced again. Each new\naddress restarted it, and while a scan is running they arrive without pause.\nThe record is kept, the announcement is not: the sort reads what was written\nmoments earlier in its own run, ",
+        "5c421cb38": "BlueZ restores the adapter at login but does not initiate a connection to\nremembered devices. The old Hyprland hook filled that gap by sleeping four\nseconds, parsing bluetoothctl's trusted-device listing, and launching one\nbackground connect process per result.\n\nMove that one-shot request into the shell's Bluetooth service. After the same\nstartup delay, it asks each trusted, disconnected device BlueZ classifies as\naudio to connect. Speakers and headsets therefore regain startup recovery without\nhard-coding a device address.\n\nInput devices are deliberately excluded. A mouse or keyboard is left to its\nnormal Bluetooth reconnection path instead of being given an unsolicited host-side\nconnection request during startup. The standalone script and its formatted-command\nparsing are no longer needed.",
+        "52158a0c9": "The sidebar and connectivity panels labelled their unpaired-device action Pair,\nbut sent BlueZ a Connect request. Connect only asks for compatible profiles;\nPair is the request that establishes and stores the bond before discovering\nservices.\n\nBoth panels now send the pairing request and wait for the paired state before\nmarking the device trusted. A failed or cancelled pairing therefore no longer\nleaves a discovered device trusted, while a completed pairing keeps the\nprevious Always connect behavior until it is forgotten.\n\nThe startup reconnect path remains audio-only, so this does not reintroduce\nthe old host-initiated mouse connection attempts."
+      }
+    },
     {
       "version": "1.3.2",
       "date": "2026-08-19",

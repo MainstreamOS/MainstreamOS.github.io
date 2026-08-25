@@ -20,7 +20,7 @@ PAGES.home = {
         <div class="cta-row">
           <a class="btn stream" href="https://mainstreamos.org/download">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="m6 10 6 6 6-6"/><path d="M4 21h16"/></svg>
-            Download · 2.8 GB
+            Download · 2.9 GB
           </a>
           <a class="btn ghost" href="#install-iso">Install guide →</a>
         </div>
@@ -277,7 +277,7 @@ PAGES['blog'] = {
     </ul>
 
     <h2>Get it</h2>
-    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.4.0</strong></a> — 2.8&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.4.0</strong></a> — 2.9&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
 
     <h2>Everything that changed</h2>
     <p>This page is what Mainstream is, not what moved in any one release. For that — every version, and the commits behind each one — see the <a href="#changelog">changelog</a>.</p>

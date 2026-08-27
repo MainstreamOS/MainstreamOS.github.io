@@ -2,6 +2,22 @@
   "latest": "1.4.1",
   "releases": [
     {
+      "version": "1.4.2",
+      "date": "2026-08-26",
+      "kind": "patch",
+      "unreleased": true,
+      "summary": "ISO-only update: more room on the boot partition, plus a bootable check before finishing",
+      "changes": [
+        "New installs reserve more boot partition space and get a final boot-setup check"
+      ],
+      "commits": [
+        "install: reserve ESP capacity for UKIs and snapshots",
+        "boot: remove unused fallback image handling",
+        "limine: remove obsolete boot entry cleanup",
+        "fix: harden installed Limine boot chain"
+      ]
+    },
+    {
       "version": "1.4.1",
       "date": "2026-08-25",
       "kind": "patch",

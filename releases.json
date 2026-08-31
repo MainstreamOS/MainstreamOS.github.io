@@ -2,6 +2,21 @@
   "latest": "1.4.1",
   "releases": [
     {
+      "version": "2.0.0",
+      "date": "2026-08-31",
+      "kind": "feature",
+      "unreleased": true,
+      "summary": "Ventoy USB support, and a fix for sluggish docks on multi-monitor setups with a portrait screen",
+      "changes": [
+        "The live image now works with multi-ISO USB tools such as Ventoy",
+        "Docks no longer go sluggish across every screen when one monitor is in portrait"
+      ],
+      "commits": [
+        "iso: keep the GPT that describes the EFI system partition",
+        "dock: stop a narrow screen dragging every other dock through a resize"
+      ]
+    },
+    {
       "version": "1.4.2",
       "date": "2026-08-26",
       "kind": "patch",

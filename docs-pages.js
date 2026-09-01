@@ -355,7 +355,7 @@ PAGES.quick = {
 
     <div class="props">
       <div class="prop"><center><div class="k">Bar position</div></center><div class="v"><b>Top</b> (default) · <b>Left</b> · <b>Bottom</b> · <b>Right</b></div></div>
-      <div class="prop"><center><div class="k">Bar style</div></center><div class="v"><span class="tag">Hug</span> touches the screen edges.&nbsp; <span class="tag">Float</span> (default) floats with a gap around it.&nbsp; <span class="tag">Rect</span> is a flat rectangle.</div></div>
+      <div class="prop"><center><div class="k">Bar style</div></center><div class="v"><span class="tag">Hug</span> touches the screen edges.&nbsp; <span class="tag">Float</span> (default) floats with a gap around it.&nbsp; <span class="tag">Rect</span> is a flat rectangle.&nbsp; <span class="tag">Notch</span> sits on the edge with a curve drawn where each end leaves it, so the bar reads as grown out of the screen edge rather than laid on top of it.</div></div>
       <div class="prop"><center><div class="k">Screen round corner</div></center><div class="v">Draws subtle rounded corners at the edges of your monitor. <b>When not fullscreen</b> disables them automatically while a window is fullscreened.</div></div>
     </div>
 
@@ -435,6 +435,7 @@ PAGES.bar = {
       <div class="prop"><center><div class="k">Simple</div></center><div class="v">The stock arrangement. Everything sits where Mainstream put it and you only decide what is shown.</div></div>
       <div class="prop"><center><div class="k">Custom</div></center><div class="v">Take over completely. Drag widgets to reorder them or move them between the left, center, and right sections — top, middle, and bottom on a vertical bar. Tap a widget to hide it, and it stays hidden until you put it back.</div></div>
     </div>
+    <p>The catalog carries two window-title widgets: the plain one, drawn bare on the strip, and <strong>Window title (pill)</strong>, drawn on a pill like its neighbours, which starts to matter once the strip itself can be seen through. Both ship in the default layout with the pill one switched off, so existing bars look unchanged until you turn it on. Neither is offered while the bar is vertical.</p>
     <p>Drop one widget against another to <strong>group them into a pill</strong> — a single rounded container holding both, which is how the clock and its neighbours are drawn by default. <strong>Group style</strong> switches between pills and plain spacing. <strong>Reset to default layout</strong> puts everything back.</p>
     ${callout('note','Vertical bars leave some widgets out', '<p>A few widgets only make sense across the top. The update indicator, for one, isn\'t offered when the bar is vertical.</p>')}
 
@@ -448,9 +449,31 @@ PAGES.bar = {
     <div class="props">
       <div class="prop"><center><div class="k">Bar position</div></center><div class="v"><b>Top</b> is default. Left/Right orient the bar vertically — handy on ultrawide monitors. Bottom is classic macOS/Chrome OS.</div></div>
       <div class="prop"><center><div class="k">Automatically hide</div></center><div class="v">When <b>Yes</b>, the bar slides away when a window touches it and reappears on hover. Great for fullscreen work.</div></div>
-      <div class="prop"><center><div class="k">Corner style</div></center><div class="v"><span class="tag">Hug</span> flush to the screen edge. &nbsp; <span class="tag">Float</span> floats with margin on all sides (default). &nbsp; <span class="tag">Rect</span> full-width rectangle, no rounding.</div></div>
+      <div class="prop"><center><div class="k">Corner style</div></center><div class="v"><span class="tag">Hug</span> flush to the screen edge. &nbsp; <span class="tag">Float</span> floats with margin on all sides (default). &nbsp; <span class="tag">Rect</span> full-width rectangle, no rounding. &nbsp; <span class="tag">Notch</span> sits down on the edge and curves away from it, so the screen edge appears to fold around the bar. It starts opaque and fully rounded, and keeps its own width apart from Float&rsquo;s, so moving between the two does not carry one width over to the other.</div></div>
       <div class="prop"><center><div class="k">Group style</div></center><div class="v"><span class="tag">Pills</span> separate clusters for each module group (default). &nbsp; <span class="tag">Line-separated</span> one continuous bar split by thin dividers.</div></div>
     </div>
+
+    <h2>Shape</h2>
+    <p>These apply to the shapes that leave the screen edge, <b>Float</b> and <b>Notch</b>. A hugging or rectangular bar has no gap to size and no corners to round, so they are not offered for it.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Split into three</div></center><div class="v">Draws the left, center and right clusters as three separate strips with the desktop showing between them, instead of one continuous strip. Off by default. With it on, the slider below becomes <b>Spread</b> and sets how far the outer two sit from the middle one.</div></div>
+      <div class="prop"><center><div class="k">Width</div></center><div class="v">How far across the screen the floating strip reaches. Narrowing it carries the end clusters inward with the edges they are pinned to. The bottom of the track moves with how crowded the bar is, so a busy bar cannot be squeezed past what its widgets need. Notch stops a little short of full width so its end curves have room in the screen corners.</div></div>
+      <div class="prop"><center><div class="k">Corner roundness</div></center><div class="v">How rounded the strip&rsquo;s own corners are, from square to fully pill-shaped. Notch starts at the maximum so it reads as one shape with the dock; Float starts at the roundness the rest of the interface uses.</div></div>
+      <div class="prop"><center><div class="k">Widget pills</div></center><div class="v">How rounded the widget group pills inside the bar are. Not offered when <b>Group style</b> is Line-separated, since those groups draw no surface to round.</div></div>
+    </div>
+    <p><strong>Reset to default shape</strong> hands all four back to the interface in one press, and appears once you have moved any of them. It is not the same as sliding them back onto their marks: a mark is today&rsquo;s stock number, while the reset says to let the interface decide, which keeps following it if those numbers ever change.</p>
+
+    <h2>Transparency</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Show background</div></center><div class="v">Draws the bar&rsquo;s surface behind its widgets. Off leaves the widgets floating on the wallpaper with nothing behind them. On by default.</div></div>
+      <div class="prop"><center><div class="k">Background</div></center><div class="v">How far through that surface you can see, shown while <b>Show background</b> is on. The track stops short of fully clear on purpose: past that point the compositor drops the blur outright rather than easing it away, which reads as a step rather than a fade.</div></div>
+      <div class="prop"><center><div class="k">Widget pills</div></center><div class="v">How solid the widget group pills are, set apart from the strip behind them. Not offered when <b>Group style</b> is Line-separated.</div></div>
+    </div>
+    <p><strong>Reset to default transparency</strong> returns both sliders to following the interface. The tracks cannot express that state on their own, so this is the only way back to it.</p>
+
+    <h2>Colors</h2>
+    <p><strong>Background</strong> gives the strip a color of your own, by swatch or by hex. <strong>Widget pills</strong> does the same for the group pills, set apart from the strip, and is not offered when Group style is Line-separated. Leave either empty and it follows the theme, changing with your wallpaper like everything else. <strong>Reset to default colors</strong> empties every slot at once, which saves working out that an emptied box is how you say you want no color of your own.</p>
+    ${callout('note','Each mode keeps its own colors', '<p>Dark mode and light mode store these separately, so a color picked in one does not follow you into the other. Set them twice if you move between them.</p>')}
 
     <h2>Resource usage module</h2>
     <p>Flip this on to show CPU, RAM, and (if detected) GPU usage live in the bar. Clicking the module pops a mini-graph with a 60-second history.</p>
@@ -460,6 +483,7 @@ PAGES.bar = {
       <div class="prop"><center><div class="k">Always show numbers</div></center><div class="v">Off by default — only shows the number for the focused workspace. Turn on if you jump between workspaces by number a lot.</div></div>
       <div class="prop"><center><div class="k">Show app icons</div></center><div class="v">Draws the icon of whatever app is on each workspace. Quick visual map.</div></div>
       <div class="prop"><center><div class="k">Tint app icons</div></center><div class="v">Tints the icons with your Material You accent for a unified look.</div></div>
+      <div class="prop"><center><div class="k">Large circular app icons</div></center><div class="v">Draws each workspace&rsquo;s app icon larger and in a circle rather than small and square. Off by default.</div></div>
       <div class="prop"><center><div class="k">Workspaces shown</div></center><div class="v">How many workspace dots render in the bar. Default 10.</div></div>
       <div class="prop"><center><div class="k">Number show delay</div></center><div class="v">When you hold <code>SUPER</code> (the ⊞ Windows or ⌘ Command key), how long before the number overlay appears on each workspace. Default 300 ms.</div></div>
     </div>
@@ -477,7 +501,11 @@ PAGES.bar = {
     </ul>
 
     <h2>Weather</h2>
-    <p>Powered by Open-Meteo. When <strong>GPS based location</strong> is on, Mainstream uses GeoClue. Otherwise, type a city in the <em>City name</em> field. <strong>Polling interval</strong> is how often (in minutes) the widget refreshes.</p>
+    ${shot('BarConfig-3.webp','Workspaces, utility buttons and weather','Workspaces and the utility buttons, with the weather section and its temperature unit below them.')}
+    <p>Powered by Open-Meteo. When <strong>Enable GPS based location</strong> is on, Mainstream uses GeoClue and the <em>City name</em> field greys out, since your position is coming from the machine rather than from what you typed. Turn it off to name a city yourself. <strong>Polling interval</strong> is how often (in minutes) the widget refreshes.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Temperature unit</div></center><div class="v"><span class="tag">Automatic</span> the default, taking the unit from wherever you are, so a machine in the US reads Fahrenheit and one elsewhere reads Celsius without anybody setting it. &nbsp; <span class="tag">Celsius</span> &nbsp; <span class="tag">Fahrenheit</span> pin it whatever the location.</div></div>
+    </div>
 
     <h2>Tray</h2>
     <div class="props">
@@ -681,14 +709,21 @@ PAGES.decorations = {
       <div class="prop"><center><div class="k">Shadows</div></center><div class="v">Drop shadows underneath windows.</div></div>
       <div class="prop"><center><div class="k">Borders</div></center><div class="v">Colored borders around active and inactive windows — useful for telling floating windows apart.</div></div>
       <div class="prop"><center><div class="k">Rounded Corners</div></center><div class="v">Rounded corners on windows and the bar, following your theme radius.</div></div>
-      <div class="prop"><center><div class="k">Title Bars</div></center><div class="v">Show title bars on windows, so every window keeps its close and maximize buttons.</div></div>
+      <div class="prop"><center><div class="k">Title Bars</div></center><div class="v">Show title bars on windows, so every window keeps its close and maximize buttons. Turning this on reveals a <b>Title bars</b> section below, for coloring them.</div></div>
     </div>
     ${callout('note','A switch turns the section off', '<p>Each switch gates the matching section further down. With <strong>Blur</strong> off, the blur sliders stop having an effect — they keep their values for when you turn it back on.</p>')}
+
+    <h2>Title bars</h2>
+    <p>This section only appears while <b>Title Bars</b> above is on, since with them off there is no bar for a color to land on.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Color</div></center><div class="v">Paints the title bar. Left empty, the title bar keeps the color it comes with, which is the one the plugin picks for itself. Applies as you edit.</div></div>
+      <div class="prop"><center><div class="k">Opacity</div></center><div class="v">How see-through the title bar is. It takes effect once a color is set: the opacity is folded into the color the plugin is handed, so on its own, with no color, there is nothing to make transparent.</div></div>
+    </div>
 
     <h2>Window shape</h2>
     <p>The geometry every window is laid out with.</p>
     <div class="props">
-      <div class="prop"><center><div class="k">Corner radius</div></center><div class="v">How round the corners are. All the way down is perfectly square.</div></div>
+      <div class="prop"><center><div class="k">Corner roundness</div></center><div class="v">How round the corners are. All the way down is perfectly square.</div></div>
       <div class="prop"><center><div class="k">Border thickness</div></center><div class="v">How heavy the outline around each window is.</div></div>
       <div class="prop"><center><div class="k">Gap between windows</div></center><div class="v">The space tiled windows leave between each other.</div></div>
       <div class="prop"><center><div class="k">Gap around the edge</div></center><div class="v">The margin between your windows and the edge of the screen.</div></div>
@@ -802,11 +837,17 @@ PAGES.themes = {
     <div class="props">
       <div class="prop"><center><div class="k">Wallpaper</div></center><div class="v">The image file itself is copied into the theme, so the theme keeps working even if you later move or delete the original.</div></div>
       <div class="prop"><center><div class="k">Colors</div></center><div class="v">Your <strong>Material You palette style</strong> (Expressive, Monochrome, …) and <strong>Light/Dark</strong> choice. On apply, the palette is regenerated from the theme\'s wallpaper — and it reaches further than the desktop: your apps follow the light/dark switch and the terminal recolors too.</div></div>
-      <div class="prop"><center><div class="k">Every Settings option</div></center><div class="v">The complete desktop configuration as it stood when you saved: <strong>bar</strong> position, style, and modules; the <strong>dock</strong> — including which apps are pinned; <strong>background widgets</strong> (clock, weather, quote); <strong>fonts</strong> and sizes; <strong>transparency</strong>; interface and launcher tweaks. If it lives in Settings, the theme carries it.</div></div>
+      <div class="prop"><center><div class="k">Every Settings option</div></center><div class="v">The desktop configuration as it stood when you saved: <strong>bar</strong> position, style, and modules; the <strong>dock</strong>&rsquo;s size, marks and end buttons; <strong>background widgets</strong> (clock, weather, quote); <strong>fonts</strong> and sizes; <strong>transparency</strong>; interface and launcher tweaks.</div></div>
       <div class="prop"><center><div class="k">Window decorations</div></center><div class="v">Animations, blur, shadows, borders and gaps, rounded corners, and title bars — applied live, so windows re-dress the moment you switch.</div></div>
       <div class="prop"><center><div class="k">System look</div></center><div class="v">Your app style, icon set, and mouse pointer, so your other programs change with the desktop instead of staying behind. Set these on the <a href="#decorations">Decorations</a> page.</div></div>
       <div class="prop"><center><div class="k">Preview</div></center><div class="v">A screenshot taken at save time becomes the theme\'s thumbnail in the grid.</div></div>
     </div>
+
+    ${callout('note','Two things a theme leaves alone', '<p>Your <b>pinned dock apps</b> and your <b>weather settings</b> stay with the machine. Pins are stripped when a theme is saved and taken from your live config whenever one is applied, so switching looks never rearranges your dock and an imported theme cannot leave you with launchers for software you do not have. Weather is left alone the same way, so applying somebody else&rsquo;s theme will not move your forecast to their city or flip your degrees.</p>')}
+
+    <h2>Renaming and reapplying</h2>
+    <p>Right-click any saved theme tile for a small menu on the card. <strong>Rename</strong> turns the name into an editable field in place: Enter or a click away commits it, Escape cancels. Only the display name changes, so the theme&rsquo;s folder on disk and any Day/Night pairing pointing at it keep working.</p>
+    <p><strong>Reapply</strong> shows only on the theme currently applied, and puts that look back after your settings have drifted from it. It is there because the main button on the active card reads <b>Update</b>, which overwrites the theme with your current settings rather than the other way round.</p>
 
     <h2>Saving your first theme</h2>
     <ol>
@@ -829,7 +870,7 @@ PAGES.themes = {
     ${shot('ThemesConfig-DayNight.webp','Day/Night Themes section of the Themes page','Pair two saved themes to time of day — a bright one for daytime, a dark one for night — and Mainstream switches between them on its own.')}
     <p>Pick a <strong>Day</strong> theme and a <strong>Night</strong> theme from your saved collection, then choose how the switch happens:</p>
     <div class="props">
-      <div class="prop"><center><div class="k">Follow Night Light</div></center><div class="v">Switches together with the Night Light schedule — day theme at sunrise, night theme at sunset. (This option only shows if Night Light is enabled.)</div></div>
+      <div class="prop"><center><div class="k">Follow Night Light</div></center><div class="v">Switches together with the Night Light schedule: day theme at sunrise, night theme at sunset. Offered whether or not the Night Light color filter itself is switched on, since you may want the themes to follow the sun without the screen being warmed. A line under the dropdown spells out the hours it will actually cover, because those hours belong to Night Light and are edited over on the <a href="#display">Display</a> page rather than here. At polar latitudes it says so instead of naming a time.</div></div>
       <div class="prop"><center><div class="k">Custom times</div></center><div class="v">Set your own day-start and night-start times if you\'d rather not follow the sun.</div></div>
       <div class="prop"><center><div class="k">Off</div></center><div class="v">No automatic switching — the desktop keeps whichever theme you applied last.</div></div>
     </div>
@@ -856,7 +897,13 @@ PAGES.display = {
     ${shot('DisplayConfig-1.webp','Display arrangement and primary monitor settings')}
 
     <h2>Display Arrangement</h2>
-    <p>The top card draws your monitors to scale — a 3840×2160 panel visually dwarfs a 1920×1080 one. To arrange them, use the <strong>Position</strong> dropdown under each monitor (<em>To Right of Default Display</em>, <em>Below Default Display</em>, and so on).</p>
+    <p>The top card draws your monitors to scale, so a 3840×2160 panel visually dwarfs a 1920×1080 one. <strong>Drag a monitor to where you want it</strong> and drop it: Mainstream picks the <em>Position</em> for whichever side of the default display you left it on and works out the offset needed to land it exactly there, keeping the dropdown and the offset boxes below in step with the picture. The default display stays at the origin and cannot be dragged, since everything else is placed relative to it.</p>
+    <p>If you would rather be precise than drag, the <strong>Position</strong> dropdown under each monitor still takes <em>To Right of Default Display</em>, <em>Below Default Display</em> and the rest, and the two offsets below it nudge from there.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Horizontal Offset</div></center><div class="v">Nudges the monitor left or right in pixels, on top of the Position it has been given. This is what lines up displays of different physical size at the bezel instead of leaving them flush at one edge. The small reset button at the end of the row snaps it back to zero.</div></div>
+      <div class="prop"><center><div class="k">Vertical Offset</div></center><div class="v">The same, up and down.</div></div>
+    </div>
+    ${callout('note','Offsets cannot overlap the default display', '<p>Each offset is capped by the Position it belongs to, so a monitor set to the right of the default display can only be nudged further right, never back across it. With no Position chosen, both offsets sit at zero and stay there.</p>')}
 
     <h2>Per-monitor settings</h2>
     <div class="props">
@@ -905,7 +952,11 @@ PAGES.display = {
 
     <h2>Night Light</h2>
     ${shot('DisplayConfig-3.webp','VRR, 10-bit, color management, and Night Light')}
-    <p>Warm the screen to cut blue light — easier on the eyes in the evening. <strong>Schedule night light</strong> runs it on its own (<b>Automatic</b>) or on your hours (<b>Set hours</b>), and <strong>Intensity</strong> controls how warm it gets.</p>
+    <p>Warm the screen to cut blue light, which is easier on the eyes in the evening. <strong>Intensity</strong> controls how warm it gets, and <strong>Schedule night light</strong> decides when.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Automatic</div></center><div class="v">Follows the real sunset and sunrise where you are, worked out from your location, so the hours move through the year on their own. A line underneath names the window in force. Somewhere the sun does not set or does not rise, it says so rather than inventing a time, and before your location has been worked out it says which hours it is using meanwhile.</div></div>
+      <div class="prop"><center><div class="k">Set hours</div></center><div class="v">Your own <b>Turn on</b> and <b>Turn off</b> times. These read on whichever clock the <a href="#bar">Bar</a> page is set to: on a 24-hour system the hour box runs 0 to 23 and there is no AM/PM to pick.</div></div>
+    </div>
 
     ${callout('note','NVIDIA and HDR', '<p>HDR needs a current NVIDIA driver, which Mainstream installs during setup.</p>')}
   `
@@ -997,6 +1048,9 @@ PAGES.mouse = {
     </div>
 
     <h2>Touchpad</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Touchpad</div></center><div class="v">Turns the touchpad itself on or off. <b>Enabled</b> by default. The row only appears when a touchpad is actually detected, so a desktop never sees it. The change applies at once and is written to your Hyprland config, so it survives a restart.</div></div>
+    </div>
     ${shot('MouseConfig-2.webp','Touchpad settings — scroll direction and gesture pickers','Scroll direction and every gesture, remappable from one panel.')}
 
     <p><strong>Scroll Direction</strong> works exactly like the mouse setting but is stored separately — touchpads default to <strong>Natural</strong> scrolling (the phone and tablet feel) while mice default to <strong>Traditional</strong>, and you can override either.</p>
@@ -1143,7 +1197,7 @@ PAGES.services = {
     <p>Feeds the weather shown on the <a href="#bar">bar</a>.</p>
     <div class="props">
       <div class="prop"><center><div class="k">Enable GPS based location</div></center><div class="v">Finds your location automatically so the forecast follows you. Turn it off to use a fixed city instead.</div></div>
-      <div class="prop"><center><div class="k">Fahrenheit unit</div></center><div class="v">Switch from °C to °F. Takes a few seconds to apply.</div></div>
+      <div class="prop"><center><div class="k">Temperature unit</div></center><div class="v"><span class="tag">Automatic</span> the default, taking the unit from the location that was resolved, so a machine in the US reads Fahrenheit and one elsewhere reads Celsius on its own. &nbsp; <span class="tag">Celsius</span> &nbsp; <span class="tag">Fahrenheit</span> pin it whatever the location. The <em>City name</em> field beside it greys out while GPS based location is on.</div></div>
       <div class="prop"><center><div class="k">City name</div></center><div class="v">The place to show weather for when GPS based location is off.</div></div>
       <div class="prop"><center><div class="k">Polling interval (m)</div></center><div class="v">How often the forecast refreshes, in minutes.</div></div>
     </div>

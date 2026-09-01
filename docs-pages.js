@@ -336,7 +336,8 @@ PAGES.quick = {
   group: 'Settings', title: 'Quick', icon: 'quick',
   lede: 'Quick is the first screen of Settings — the dial-in knobs you\'ll touch most often. Wallpaper, color scheme, bar position, and rounded corners, all in one place.',
   render: () => `
-    ${shot('QuickConfig.webp','Quick settings page','Settings → Quick is the everyday entry point. Every control on this page has a deeper counterpart elsewhere in Settings if you want to fine-tune.')}
+    <p class="shot-note">The whole page at once. Quick is the everyday entry point, and every control on it has a fuller counterpart deeper in Settings when you want to go further than the shortcut.</p>
+    ${shot('QuickConfig.webp','Quick settings page')}
 
     <h2>Wallpaper &amp; Colors</h2>
     <p>Pick from the built-in wallpapers, or hit <strong>Wallpaper</strong> to use your own — a still image or a video — or <strong>Slideshow</strong> to hand it a whole folder. Mainstream extracts a Material You palette from whatever you pick and propagates the colors through the bar, sidebars, and system apps. Your login screen matches too, color scheme and all — it follows your wallpaper automatically, and each user gets their own, with no separate login background to set.</p>
@@ -367,6 +368,7 @@ PAGES.wifi = {
   group: 'Settings', title: 'Wi-Fi', icon: 'wifi',
   lede: 'Scan, connect, and manage saved Wi-Fi networks. Uses NetworkManager under the hood so any command-line tool you already know still works.',
   render: () => `
+    <p class="shot-note">Networks in range, with the one you are on at the top. Everything below follows this order: joining a network first, then reading what the list is telling you.</p>
     ${shot('WiFiConfig.webp','Wi-Fi settings page')}
 
     <h2>Connecting to a network</h2>
@@ -395,6 +397,7 @@ PAGES.bluetooth = {
   group: 'Settings', title: 'Bluetooth', icon: 'bluetooth',
   lede: 'Pair headphones, keyboards, speakers, and controllers.',
   render: () => `
+    <p class="shot-note">The adapter, the devices it knows about, and the ones it can see right now. Pairing comes first below, then the modes that decide what is discoverable.</p>
     ${shot('BluetoothConfig.webp','Bluetooth settings page')}
 
     <h2>Pairing a device</h2>
@@ -427,7 +430,8 @@ PAGES.bar = {
   group: 'Settings', title: 'Bar', icon: 'bar',
   lede: 'The top bar is Mainstream\'s status center. Everything from workspace indicators to GPS weather to utility buttons lives here, and every module can be toggled or repositioned.',
   render: () => `
-    ${twoShot('BarConfig-1.webp','Time, date, position, workspaces.','BarConfig-2.webp','Utility buttons, weather, tray, volume.')}
+    <p class="shot-note">The top of the page: the widget catalog you arrange the bar from, then the clock formats and where the bar sits.</p>
+    ${shot('BarConfig-1.webp','Widget layout, Time and Date, and Positioning')}
 
     <h2>Widget layout</h2>
     <p>The bar is built from widgets you arrange yourself. There are two ways to go about it:</p>
@@ -452,6 +456,9 @@ PAGES.bar = {
       <div class="prop"><center><div class="k">Corner style</div></center><div class="v"><span class="tag">Hug</span> flush to the screen edge. &nbsp; <span class="tag">Float</span> floats with margin on all sides (default). &nbsp; <span class="tag">Rect</span> full-width rectangle, no rounding. &nbsp; <span class="tag">Notch</span> sits down on the edge and curves away from it, so the screen edge appears to fold around the bar. It starts opaque and fully rounded, and keeps its own width apart from Float&rsquo;s, so moving between the two does not carry one width over to the other.</div></div>
       <div class="prop"><center><div class="k">Group style</div></center><div class="v"><span class="tag">Pills</span> separate clusters for each module group (default). &nbsp; <span class="tag">Line-separated</span> one continuous bar split by thin dividers.</div></div>
     </div>
+
+    <p class="shot-note">Everything that decides what the bar looks like rather than what it holds: its shape, how far through it you can see, and its color.</p>
+    ${shot('BarConfig-2.webp','Shape, Transparency and Colors')}
 
     <h2>Shape</h2>
     <p>These apply to the shapes that leave the screen edge, <b>Float</b> and <b>Notch</b>. A hugging or rectangular bar has no gap to size and no corners to round, so they are not offered for it.</p>
@@ -478,6 +485,9 @@ PAGES.bar = {
     <h2>Resource usage module</h2>
     <p>Flip this on to show CPU, RAM, and (if detected) GPU usage live in the bar. Clicking the module pops a mini-graph with a 60-second history.</p>
 
+    <p class="shot-note">The rest of the page: the workspace indicators, the utility buttons beside them, and the weather section below.</p>
+    ${shot('BarConfig-3.webp','Workspaces, utility buttons and weather')}
+
     <h2>Workspaces</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Always show numbers</div></center><div class="v">Off by default — only shows the number for the focused workspace. Turn on if you jump between workspaces by number a lot.</div></div>
@@ -501,7 +511,6 @@ PAGES.bar = {
     </ul>
 
     <h2>Weather</h2>
-    ${shot('BarConfig-3.webp','Workspaces, utility buttons and weather','Workspaces and the utility buttons, with the weather section and its temperature unit below them.')}
     <p>Powered by Open-Meteo. When <strong>Enable GPS based location</strong> is on, Mainstream uses GeoClue and the <em>City name</em> field greys out, since your position is coming from the machine rather than from what you typed. Turn it off to name a city yourself. <strong>Polling interval</strong> is how often (in minutes) the widget refreshes.</p>
     <div class="props">
       <div class="prop"><center><div class="k">Temperature unit</div></center><div class="v"><span class="tag">Automatic</span> the default, taking the unit from wherever you are, so a machine in the US reads Fahrenheit and one elsewhere reads Celsius without anybody setting it. &nbsp; <span class="tag">Celsius</span> &nbsp; <span class="tag">Fahrenheit</span> pin it whatever the location.</div></div>
@@ -523,7 +532,8 @@ PAGES.dock = {
   group: 'Settings', title: 'Dock', icon: 'dock',
   lede: 'The dock is the row of app icons along one edge of the screen. It has a page of its own for where it sits, how it reacts to the pointer, what shape it takes, and what color it is.',
   render: () => `
-    ${twoShot('DockConfig-1.webp','Behavior, and the start of Shape.','DockConfig-2.webp','Shape, transparency and color.')}
+    <p class="shot-note">Where the dock sits and how it reacts to the pointer, which is everything under Behavior below.</p>
+    ${shot('DockConfig-1.webp','Dock behavior, and the start of Shape')}
 
     <h2>Behavior</h2>
     <div class="props">
@@ -541,7 +551,11 @@ PAGES.dock = {
       <div class="prop"><center><div class="k">Tint app icons</div></center><div class="v">Desaturates each icon and washes it with your accent color for a uniform look. Keep off for brand-accurate icons.</div></div>
     </div>
 
-    ${twoShot('Dock-Right-Click-Per-App.webp','Right-click a dock icon — per-app view.','Dock-Right-Click-Per-Window.webp','Per-window view shows open instances individually with live volume sliders.')}
+    <p class="shot-note">The two shapes the right-click menu takes, set by <b>Right-click volume control</b> above: one slider for the app, or one for each of its windows.</p>
+    ${twoShot('Dock-Right-Click-Per-App.webp','Right-click a dock icon, per-app view','Dock-Right-Click-Per-Window.webp','Per-window view, one slider per open window')}
+
+    <p class="shot-note">What the dock looks like rather than how it behaves: its shape, how solid its surface is, and its color.</p>
+    ${shot('DockConfig-2.webp','Dock shape, transparency and colors')}
 
     <h2>Shape</h2>
     <div class="props">
@@ -567,7 +581,8 @@ PAGES.interface = {
   group: 'Settings', title: 'Interface', icon: 'iface',
   lede: 'The sidebars, the hot corner, the overviews and the lock screen — the parts of the desktop you reach for, rather than the parts that are simply drawn.',
   render: () => `
-    ${shot('InterfaceConfig-1.webp','The hot corner and the overviews.','The hot corner picks which overview it opens, and the Launcher Overview sets the size of the app grid. The Dock section below them now has a <a href="#dock">page of its own</a>.')}
+    <p class="shot-note">The top of the page: the hot corner and the two overviews it can open. The dock section that used to sit below them now has a <a href="#dock">page of its own</a>.</p>
+    ${shot('InterfaceConfig-1.webp','The hot corner and the overviews')}
 
     ${callout('note','Looking for decorations or fonts?', '<p>Window borders, blur, shadows, rounded corners and title bars — along with your app style, icons, pointer and fonts — now live on their own <a href="#decorations">Decorations</a> page.</p>')}
 
@@ -601,8 +616,10 @@ PAGES.interface = {
       <div class="prop"><center><div class="k">Translator</div></center><div class="v">Click-to-translate selected text, powered by Gemini or a local LibreTranslate server.</div></div>
     </div>
 
+    <p class="shot-note">The right sidebar and what it holds, then the lock screen settings below it.</p>
+    ${shot('InterfaceConfig-2.webp','The right sidebar, its quick toggles and timer')}
+
     <h2>Right Sidebar</h2>
-    ${shot('InterfaceConfig-2.webp','Quick toggles, timer, lock screen.')}
     <div class="props">
       <div class="prop"><center><div class="k">Quick toggles</div></center><div class="v"><span class="tag">Classic</span> a horizontal row of pills. <span class="tag">Android</span> a 2-column grid like modern Android Quick Settings.</div></div>
       <div class="prop"><center><div class="k">Columns</div></center><div class="v">How many columns when Android style is selected. Default 5.</div></div>
@@ -611,6 +628,9 @@ PAGES.interface = {
 
     <h3>Timer &amp; Pomodoro</h3>
     <p>Built-in Pomodoro with customizable focus blocks, short and long breaks, and cycle counts. Alarms can be independently muted for Pomodoro and generic timers.</p>
+
+    <p class="shot-note">The lock screen, and the last two sections on the page: how long an on-screen display stays up, and which picker the wallpaper chooser uses.</p>
+    ${shot('InterfaceConfig-3.webp','Lock screen, on-screen display and wallpaper selector')}
 
     <h3>Lock screen</h3>
     <div class="props">
@@ -699,7 +719,8 @@ PAGES.decorations = {
   group: 'Settings', title: 'Decorations', icon: 'sliders',
   lede: 'How windows are drawn — their shape, transparency, blur, shadow and borders — plus the app style and icons your other programs use, the pointer, the fonts, and per-app window rules.',
   render: () => `
-    ${shot('DecorationsConfig-1.webp','Window decorations, shape and transparency')}
+    <p class="shot-note">The top of the page: which decorations windows get, the title bar colors that follow from them, and the shape and transparency of the windows themselves.</p>
+    ${shot('DecorationsConfig-1.webp','Window decorations, title bars, shape and transparency')}
 
     <h2>Window decorations</h2>
     <p>Six switches for how a window is drawn. Turning any of them off is a fair trade for speed on older hardware — the desktop keeps working exactly the same, it just draws less.</p>
@@ -736,6 +757,7 @@ PAGES.decorations = {
       <div class="prop"><center><div class="k">Unfocused windows</div></center><div class="v">Everything behind it. Dropping this a little is an easy way to see at a glance which window has your keystrokes.</div></div>
     </div>
 
+    <p class="shot-note">The effects drawn around and behind a window: its blur, the dimming of everything else, its border color and its shadow.</p>
     ${shot('DecorationsConfig-2.webp','Blur, dim, border color and shadow')}
 
     <h2>Window blur</h2>
@@ -771,6 +793,7 @@ PAGES.decorations = {
       <div class="prop"><center><div class="k">Offset X / Offset Y</div></center><div class="v">Which direction it falls, as though you were moving the light source.</div></div>
     </div>
 
+    <p class="shot-note">How windows move, the reset that undoes everything above, and the app style, icons and pointer the rest of the system uses.</p>
     ${shot('DecorationsConfig-3.webp','Animations, reset, system look and cursor')}
 
     <h2>Window animations</h2>
@@ -797,6 +820,7 @@ PAGES.decorations = {
     </div>
     ${callout('note','Not every cursor theme can be resized', '<p>The list only offers the sizes your chosen pointer theme can actually draw, so you will sometimes see fewer than four. A theme built at a single size stays that size whichever you pick.</p>')}
 
+    <p class="shot-note">The last two sections: the fonts everything is set in, and the per-window rules that override any of it for one app.</p>
     ${shot('DecorationsConfig-4.webp','Fonts and window rules')}
 
     <h2>Fonts</h2>
@@ -1027,7 +1051,8 @@ PAGES.mouse = {
   group: 'Settings', title: 'Mouse', icon: 'mouse',
   lede: 'Pointer speed, button layout, acceleration, and scroll direction — separately for mice and touchpads.',
   render: () => `
-    ${shot('MouseConfig.webp','Mouse settings page')}
+    <p class="shot-note">The top of the page: which button is primary, finding a lost pointer, and the mouse speed and acceleration below that.</p>
+    ${shot('MouseConfig.webp','Primary button, shake to locate, and mouse settings')}
 
     <h2>General</h2>
     <p><strong>Primary Button</strong> — which physical button is the primary click. <b>Left</b> is the default; switch to <b>Right</b> for left-hand use.</p>
@@ -1047,11 +1072,13 @@ PAGES.mouse = {
       <div class="prop"><center><div class="k">Scroll Direction</div></center><div class="v"><b>Traditional</b> — scrolling moves the viewport (scroll up = page scrolls up). <b>Natural</b> — scrolling moves the content (scroll up = content moves up, like on mobile).</div></div>
     </div>
 
+    <p class="shot-note">The touchpad half: turning it off, its scroll direction, and every gesture it recognises.</p>
+    ${shot('MouseConfig-2.webp','Touchpad settings, scroll direction and gestures')}
+
     <h2>Touchpad</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Touchpad</div></center><div class="v">Turns the touchpad itself on or off. <b>Enabled</b> by default. The row only appears when a touchpad is actually detected, so a desktop never sees it. The change applies at once and is written to your Hyprland config, so it survives a restart.</div></div>
     </div>
-    ${shot('MouseConfig-2.webp','Touchpad settings — scroll direction and gesture pickers','Scroll direction and every gesture, remappable from one panel.')}
 
     <p><strong>Scroll Direction</strong> works exactly like the mouse setting but is stored separately — touchpads default to <strong>Natural</strong> scrolling (the phone and tablet feel) while mice default to <strong>Traditional</strong>, and you can override either.</p>
 

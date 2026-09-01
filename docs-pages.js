@@ -490,26 +490,58 @@ PAGES.bar = {
   `
 };
 
+// ---------- DOCK ----------
+PAGES.dock = {
+  group: 'Settings', title: 'Dock', icon: 'dock',
+  lede: 'The dock is the row of app icons along one edge of the screen. It has a page of its own for where it sits, how it reacts to the pointer, what shape it takes, and what color it is.',
+  render: () => `
+    ${twoShot('DockConfig-1.webp','Behavior, and the start of Shape.','DockConfig-2.webp','Shape, transparency and color.')}
+
+    <h2>Behavior</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Position</div></center><div class="v">Which edge the dock sits on: <span class="tag">Bottom</span> the default &nbsp; <span class="tag">Top</span> &nbsp; <span class="tag">Left</span> &nbsp; <span class="tag">Right</span> &nbsp; <span class="tag">Disabled</span> turns the dock off. On the left or right it stands vertically, icons stacked. Pick the edge your bar is already using and the bar moves to the opposite one, so the two never share a side.</div></div>
+      <div class="prop"><center><div class="k">Window indicators</div></center><div class="v">The mark under an icon that says the app is running, and how many windows it has. <span class="tag">Dashes</span> the default &nbsp; <span class="tag">Dots</span> &nbsp; <span class="tag">Count badge</span> a number instead of marks, which stays readable past three or four windows &nbsp; <span class="tag">None</span></div></div>
+      <div class="prop"><center><div class="k">Launch animation</div></center><div class="v">The icon reacts when you start an app, so you can see the click landed before the window appears. <span class="tag">Bounce</span> the default &nbsp; <span class="tag">Pulse</span> &nbsp; <span class="tag">Pop</span> &nbsp; <span class="tag">Wobble</span> &nbsp; <span class="tag">None</span> Only a genuine launch animates: clicking an app that is already open, or opening a folder, does not.</div></div>
+      <div class="prop"><center><div class="k">Hover animation</div></center><div class="v">What an icon does as the pointer passes over it. <span class="tag">Magnify</span> the icon grows, in the manner of a classic dock &nbsp; <span class="tag">Glow</span> a lit halo instead of a size change &nbsp; <span class="tag">None</span></div></div>
+      <div class="prop"><center><div class="k">Magnify amount</div></center><div class="v">How far the hovered icon grows. The mark on the track is the stock setting, so you can always find your way back to it.</div></div>
+      <div class="prop"><center><div class="k">Glow intensity</div></center><div class="v">How strong the halo is. Appears in place of the magnify slider when Glow is the chosen hover animation.</div></div>
+      <div class="prop"><center><div class="k">Hover to reveal</div></center><div class="v">The dock stays hidden while a window is focused and slides in when your cursor touches the edge it sits on. Off: it only appears on an empty workspace, not on hover.</div></div>
+      <div class="prop"><center><div class="k">Pinned on startup</div></center><div class="v">Starts the session with the dock pinned open, always visible and reserving its space along its edge, until you unpin it.</div></div>
+      <div class="prop"><center><div class="k">Show overview button</div></center><div class="v">Puts the overview button on the end of the dock. Turn it off if you open the overview by hot corner or keyboard and would rather have the space.</div></div>
+      <div class="prop"><center><div class="k">Show pin button</div></center><div class="v">Puts the pin toggle on the dock, so you can hold it open for a while without going to settings.</div></div>
+      <div class="prop"><center><div class="k">Right-click volume control</div></center><div class="v">Adds a volume slider and mute toggle to the right-click menu of a dock icon for any app currently playing audio. <b>Per window</b> gives each window its own slider, handy for browsers or Discord where different windows play different sound; <b>Per app</b> groups them into one.</div></div>
+      <div class="prop"><center><div class="k">Tint app icons</div></center><div class="v">Desaturates each icon and washes it with your accent color for a uniform look. Keep off for brand-accurate icons.</div></div>
+    </div>
+
+    ${twoShot('Dock-Right-Click-Per-App.webp','Right-click a dock icon — per-app view.','Dock-Right-Click-Per-Window.webp','Per-window view shows open instances individually with live volume sliders.')}
+
+    <h2>Shape</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Corner style</div></center><div class="v"><span class="tag">Float</span> the dock floats clear of the edge with a margin around it, the default &nbsp; <span class="tag">Rect</span> a plain rectangle with no rounding &nbsp; <span class="tag">Notch</span> sits against the edge and curves away from it, so the screen edge appears to fold around the dock.</div></div>
+      <div class="prop"><center><div class="k">Icon size</div></center><div class="v">How large the app icons are, and with them the dock itself.</div></div>
+      <div class="prop"><center><div class="k">Corner roundness</div></center><div class="v">How rounded the dock\'s own corners are, from square to fully pill-shaped.</div></div>
+    </div>
+
+    <h2>Transparency</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Show background</div></center><div class="v">Draws the dock\'s surface behind the icons. Off leaves the icons floating on the wallpaper with nothing behind them.</div></div>
+      <div class="prop"><center><div class="k">Background</div></center><div class="v">How far through that surface you can see. Slide it down for a dock that reads as part of the wallpaper, up for one that reads as a solid shelf.</div></div>
+    </div>
+
+    <h2>Colors</h2>
+    <p><strong>Dock background</strong> takes a color of your own, either from the swatch or by typing a hex value. Leave it empty and the dock follows the theme, changing with your wallpaper like everything else.</p>
+    ${callout('note','Each mode keeps its own color', '<p>Dark mode and light mode store the dock color separately, so a color picked in one does not follow you into the other. Set it twice if you switch between them.</p>')}
+  `
+};
+
 // ---------- INTERFACE ----------
 PAGES.interface = {
   group: 'Settings', title: 'Interface', icon: 'iface',
-  lede: 'The dock, the sidebars, the hot corner, and the lock screen — the parts of the desktop you reach for, rather than the parts that are simply drawn.',
+  lede: 'The sidebars, the hot corner, the overviews and the lock screen — the parts of the desktop you reach for, rather than the parts that are simply drawn.',
   render: () => `
-    ${shot('InterfaceConfig-1.webp','The hot corner, the overviews and the dock.','The Dock section sets which edge the dock lives on and how it behaves. Above it, the hot corner picks which overview it opens, and the Launcher Overview sets the size of the app grid.')}
+    ${shot('InterfaceConfig-1.webp','The hot corner and the overviews.','The hot corner picks which overview it opens, and the Launcher Overview sets the size of the app grid. The Dock section below them now has a <a href="#dock">page of its own</a>.')}
 
     ${callout('note','Looking for decorations or fonts?', '<p>Window borders, blur, shadows, rounded corners and title bars — along with your app style, icons, pointer and fonts — now live on their own <a href="#decorations">Decorations</a> page.</p>')}
-
-    <h2>Dock</h2>
-    ${twoShot('Dock-Right-Click-Per-App.webp','Right-click a dock icon — per-app view.','Dock-Right-Click-Per-Window.webp','Per-window view shows open instances individually with live volume sliders.')}
-
-    <div class="props">
-      <div class="prop"><center><div class="k">Position</div></center><div class="v">Which edge the dock sits on: <span class="tag">Bottom</span> the default &nbsp; <span class="tag">Top</span> &nbsp; <span class="tag">Left</span> &nbsp; <span class="tag">Right</span> &nbsp; <span class="tag">Disabled</span> turns the dock off. On the left or right it stands vertically, icons stacked. Pick the edge your bar is already using and the bar moves to the opposite one, so the two never share a side.</div></div>
-      <div class="prop"><center><div class="k">Hover to reveal</div></center><div class="v">The dock stays hidden while a window is focused and slides in when your cursor touches the edge it sits on. Off: it only appears on an empty workspace, not on hover.</div></div>
-      <div class="prop"><center><div class="k">Pinned on startup</div></center><div class="v">Starts the session with the dock pinned open — always visible, reserving its space along its edge — until you unpin it.</div></div>
-      <div class="prop"><center><div class="k">Right-click volume control</div></center><div class="v">Adds a volume slider and mute toggle to the right-click menu of a dock icon for any app currently playing audio. <b>Per window</b> gives each window its own slider — handy for browsers or Discord where different windows play different sound; <b>Per app</b> groups them into one.</div></div>
-      <div class="prop"><center><div class="k">Tint app icons</div></center><div class="v">Desaturates each icon and washes it with your accent color for a uniform look. Keep off for brand-accurate icons.</div></div>
-      <div class="prop"><center><div class="k">Launch animation</div></center><div class="v">The icon reacts when you start an app, so you can see the click landed before the window appears. <span class="tag">Bounce</span> the default &nbsp; <span class="tag">Pulse</span> &nbsp; <span class="tag">Pop</span> &nbsp; <span class="tag">Wobble</span> &nbsp; <span class="tag">None</span> Only a genuine launch animates — clicking an app that is already open, or opening a folder, does not.</div></div>
-    </div>
 
     <h2>Left Hot Corner</h2>
     <p>The very top-left corner of the screen is a hot corner — sweep your cursor into it and the overview opens.</p>
@@ -910,12 +942,20 @@ PAGES.layouts = {
   `
 };
 
-// ---------- KEYBINDS ----------
-PAGES.keybinds = {
-  group: 'Settings', title: 'Keybinds', icon: 'keyboard',
-  lede: 'Every keyboard shortcut in one searchable place — browse the defaults, tweak the ones you use, and add your own, without hand-editing a config file.',
+// ---------- KEYBOARD ----------
+PAGES.keyboard = {
+  group: 'Settings', title: 'Keyboard', icon: 'keyboard',
+  lede: 'What your keyboard types and what it does. Add the layouts you write in and switch between them with a keystroke, then browse, retune and extend every shortcut on the system without hand-editing a config file.',
   render: () => `
-    ${shot('KeybindsConfig.webp','Keybinds page — searchable, grouped by action')}
+    ${shot('KeyboardConfig.webp','Keyboard page — layouts on top, the searchable keybind list below')}
+
+    <h2>Keyboard layouts</h2>
+    <p>Pick any layout XKB supports from the dropdown and press <strong>Add</strong>. It is available straight away, with no logout, and it is still there after a restart.</p>
+    <p><strong>Enabled Layouts</strong> lists what you have added. <strong>Remove</strong> takes one back off. Keep as many as you write in and drop the rest.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Cycle layouts</div></center><div class="v">Press <code>CTRL</code> + <code>SUPER</code> (the ⊞ Windows or ⌘ Command key) + <code>K</code> to step through your enabled layouts. With two added it reads as a straight toggle between them.</div></div>
+    </div>
+    ${callout('tip','Adding a second language', '<p>Add the layout you need, leave <b>us — English (US)</b> in place, and the shortcut flips between the two. Nothing else has to change: the layout you are on applies everywhere, including the lock screen.</p>')}
 
     <h2>Finding a shortcut</h2>
     <p>Type in <strong>Filter keybinds…</strong> to narrow the list. Bindings are grouped by what they do: Launch Application, Window Management, Workspace Navigation, Focus and Move Windows, and so on.</p>
@@ -1582,7 +1622,7 @@ PAGES.shortcuts = {
     <h2>Shortcuts for your layout</h2>
     <p>Windows can tile a few different ways — dwindle, master, scrolling, monocle, or float — and you can pick one per workspace in <a href="#layouts">Settings → Layouts</a>. Some of them add shortcuts of their own: rearranging the master stack, stepping through a monocle, scrolling between windows. If you switch off the default, press <code>SUPER</code> + <code>TAB</code> and look under <strong>Master Layout</strong>, <strong>Scrolling Layout</strong>, and <strong>Monocle Layout</strong> — the cheat sheet lists exactly what each one adds.</p>
 
-    ${callout('tip','Make them yours','<p>Every shortcut is remappable from <a href="#keybinds">Settings → Keybinds</a> — search, rebind, and reset to defaults without touching a config file.</p>')}
+    ${callout('tip','Make them yours','<p>Every shortcut is remappable from <a href="#keyboard">Settings → Keyboard</a> — search, rebind, and reset to defaults without touching a config file.</p>')}
   `
 };
 

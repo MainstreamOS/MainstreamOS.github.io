@@ -4,7 +4,7 @@ const NAV_ORDER = [
   { group: 'Start here', ids: ['home'] },
   { group: 'Installation', ids: ['install-iso', 'install-script'], collapsible: true, icon: 'rocket' },
   { group: 'Desktop', ids: ['desktop','overview-launcher','shortcuts','sidebars','sharing','desktop-apps'] },
-  { group: 'Settings', ids: ['quick','wifi','bluetooth','bar','interface','background','decorations','themes','display','layouts','keybinds','mouse','power','accounts','services','update','recovery','about'] },
+  { group: 'Settings', ids: ['quick','wifi','bluetooth','bar','dock','interface','background','decorations','themes','display','layouts','keyboard','mouse','power','accounts','services','update','recovery','about'] },
   { group: 'Creative', ids: ['davinci','obs'], collapsible: true, icon: 'film', heading: 'Topics' },
   { group: 'Gaming', ids: ['gaming','steam-proton'], collapsible: true, icon: 'game' },
   { group: 'Security', ids: ['security','verify','privacy'], collapsible: true, icon: 'shield' },

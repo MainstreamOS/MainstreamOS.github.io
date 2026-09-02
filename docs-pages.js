@@ -1011,17 +1011,21 @@ PAGES.layouts = {
 // ---------- KEYBOARD ----------
 PAGES.keyboard = {
   group: 'Settings', title: 'Keyboard', icon: 'keyboard',
-  lede: 'What your keyboard types and what it does. Add the layouts you write in and switch between them with a keystroke, then browse, retune and extend every shortcut on the system without hand-editing a config file.',
+  lede: 'What your keyboard types and what it does. Add the layouts you write in and switch between them with a keystroke, pick an input source to type languages that compose characters, then browse, retune and extend every shortcut on the system without hand-editing a config file.',
   render: () => `
-    ${shot('KeyboardConfig.webp','Keyboard page — layouts on top, the searchable keybind list below')}
+    ${shot('KeyboardConfig.webp?v=2','Keyboard page: layouts and input sources on top, the searchable keybind list below')}
 
     <h2>Keyboard layouts</h2>
-    <p>Pick any layout XKB supports from the dropdown and press <strong>Add</strong>. It is available straight away, with no logout, and it is still there after a restart.</p>
+    <p>Pick a layout from the dropdown, or search for it, and press <strong>Add</strong>. It is available straight away, with no logout, and it is still there after a restart.</p>
     <p><strong>Enabled Layouts</strong> lists what you have added. <strong>Remove</strong> takes one back off. Keep as many as you write in and drop the rest.</p>
     <div class="props">
       <div class="prop"><center><div class="k">Cycle layouts</div></center><div class="v">Press <code>CTRL</code> + <code>SUPER</code> (the ⊞ Windows or ⌘ Command key) + <code>K</code> to step through your enabled layouts. With two added it reads as a straight toggle between them.</div></div>
     </div>
     ${callout('tip','Adding a second language', '<p>Add the layout you need, leave <b>us — English (US)</b> in place, and the shortcut flips between the two. Nothing else has to change: the layout you are on applies everywhere, including the lock screen.</p>')}
+
+    <h2>Input sources</h2>
+    <p>Languages such as Japanese, Chinese, Korean and Vietnamese build characters as you type, which takes an <em>input method</em> rather than another layout. Pick the language under <strong>Input Sources</strong> and Mainstream installs the right input method, wires it up, and switches to it; one password prompt and it is ready. <strong>None (Plain keyboard)</strong> is the way back out.</p>
+    <p>If you installed Mainstream in one of these languages, this is already set up and ready to type.</p>
 
     <h2>Finding a shortcut</h2>
     <p>Type in <strong>Filter keybinds…</strong> to narrow the list. Bindings are grouped by what they do: Launch Application, Window Management, Workspace Navigation, Focus and Move Windows, and so on.</p>

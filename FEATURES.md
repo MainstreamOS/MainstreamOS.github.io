@@ -39,6 +39,7 @@ Eighteen pages cover the whole machine, nine of which are Mainstream's own work 
 - **Displays.** Arrange your monitors and set resolution, refresh rate, scale, orientation, HDR and color profiles, or mirror one screen onto another.
 - **A layout per workspace.** Four ways of arranging windows automatically plus a floating mode, and every workspace remembers its own.
 - **Keyboard shortcuts.** A real editor rather than a printed list — change the ones that ship, add your own, and set them by pressing the keys you want.
+- **Type in any language.** Add the keyboard layouts you write in and flip between them with a keystroke. For Japanese, Chinese, Korean or Vietnamese, pick an input source and the right input method is installed and switched on for you. Installs done in those languages arrive with it already working.
 - **Touchpad gestures.** Choose what each swipe and pinch does, applied the moment you set it.
 - **Wi-Fi, Bluetooth, sound, power, accounts and services**, each with a proper page instead of a text file.
 
@@ -51,6 +52,8 @@ Eighteen pages cover the whole machine, nine of which are Mainstream's own work 
 - **Pick up where you left off.** Sign out or restart and your windows reopen on the workspaces they were on. The session is written down as you work, so a crash costs you no more than a tidy sign-out would.
 - **Move files between your devices.** Send several at once to any phone, tablet, or computer on your network running [LocalSend](https://localsend.org), and receive from them the same way, with live progress and no cloud in the middle. Mainstream builds LocalSend into the desktop rather than bundling the app.
 - **Screen sharing and recording.** Share your screen in video calls and record it on Wayland, with GPU-accelerated encoding.
+- **Printing that just works.** Plug a printer in, or pick one up on the network, and print. No driver hunting and no unlock prompts.
+- **A local AI assistant.** The sidebar chats with an AI that runs entirely on your machine, so nothing you type leaves it. The first message walks you through the short setup, and cloud models can be added with a key if you want them.
 - **Auto Mount and Uninstall Apps**, two small apps for the fiddly parts: drives that are ready at every login, and removing software without breaking the desktop.
 
 ## Getting it installed

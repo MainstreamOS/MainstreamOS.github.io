@@ -258,12 +258,15 @@ PAGES['install-iso'] = {
 
     <h2>Flash to USB</h2>
     <p>Flash the downloaded ISO file to a USB stick. Any USB stick 8 GB or larger works.</p>
-    <p>A few apps you can use to do this:</p>
-    <ul>
-      <li><a href="https://etcher.balena.io" style="color:var(--stream-a);text-decoration:underline">balenaEtcher</a> (recommended) or <a href="https://unetbootin.github.io" style="color:var(--stream-a);text-decoration:underline">UNetbootin</a> — <strong>both work on any platform<br/>(Linux, macOS, or Windows)</strong></li>
-      <li><strong>Other Linux options</strong>: Impression, GNOME Disks, or Ventoy</li>
-      <li><strong>Other Windows options</strong>: Rufus in DD mode, or Ventoy</li>
-    </ul>
+    <p>Any of these apps can do it. If one of their icons looks familiar, you may already have it installed:</p>
+    <div class="flash-grid">
+      <a class="flash-app" href="https://etcher.balena.io"><img src="assets/flash-apps/etcher.png" alt="balenaEtcher icon"/><span class="fa-name">balenaEtcher</span><span class="fa-rec">Recommended</span><span class="fa-plat">Linux · macOS · Windows</span></a>
+      <a class="flash-app" href="https://unetbootin.github.io"><img src="assets/flash-apps/unetbootin.png" alt="UNetbootin icon"/><span class="fa-name">UNetbootin</span><span class="fa-plat">Linux · macOS · Windows</span></a>
+      <a class="flash-app" href="https://www.ventoy.net"><img src="assets/flash-apps/ventoy.png" alt="Ventoy icon"/><span class="fa-name">Ventoy</span><span class="fa-plat">Linux · Windows</span></a>
+      <a class="flash-app" href="https://apps.gnome.org/Impression/"><img src="assets/flash-apps/impression.png" alt="Impression icon"/><span class="fa-name">Impression</span><span class="fa-plat">Linux</span></a>
+      <a class="flash-app" href="https://apps.gnome.org/DiskUtility/"><img src="assets/flash-apps/gnome-disks.svg" alt="GNOME Disks icon"/><span class="fa-name">GNOME Disks</span><span class="fa-plat">Linux</span></a>
+      <a class="flash-app" href="https://rufus.ie"><img src="assets/flash-apps/rufus.png" alt="Rufus icon"/><span class="fa-name">Rufus</span><span class="fa-plat">Windows · pick DD mode</span></a>
+    </div>
 
     <h2>Turn off Secure Boot</h2>
     <p>Most computers ship with a setting called <strong>Secure Boot</strong> switched on. It tells the machine to only start operating systems that Microsoft has signed. Mainstream isn\'t on that list, so you need to switch it off first, or the computer will refuse to start from your USB stick, usually with a message like <em>Security Violation</em>, <em>Invalid signature detected</em>, or simply by ignoring the USB and booting straight back into Windows.</p>

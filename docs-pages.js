@@ -261,11 +261,10 @@ PAGES['install-iso'] = {
     <p>Any of these apps can do it. If one of their icons looks familiar, you may already have it installed:</p>
     <div class="flash-grid">
       <a class="flash-app" href="https://etcher.balena.io"><img src="assets/flash-apps/etcher.png" alt="balenaEtcher icon"/><span class="fa-name">balenaEtcher</span><span class="fa-rec">Recommended</span><span class="fa-plat">Linux · macOS · Windows</span></a>
-      <a class="flash-app" href="https://unetbootin.github.io"><img src="assets/flash-apps/unetbootin.png" alt="UNetbootin icon"/><span class="fa-name">UNetbootin</span><span class="fa-plat">Linux · macOS · Windows</span></a>
       <a class="flash-app" href="https://www.ventoy.net"><img src="assets/flash-apps/ventoy.png" alt="Ventoy icon"/><span class="fa-name">Ventoy</span><span class="fa-plat">Linux · Windows</span></a>
+      <a class="flash-app" href="https://rufus.ie"><img src="assets/flash-apps/rufus.png" alt="Rufus icon"/><span class="fa-name">Rufus</span><span class="fa-plat">Windows · pick DD mode</span></a>
       <a class="flash-app" href="https://apps.gnome.org/Impression/"><img src="assets/flash-apps/impression.png" alt="Impression icon"/><span class="fa-name">Impression</span><span class="fa-plat">Linux</span></a>
       <a class="flash-app" href="https://apps.gnome.org/DiskUtility/"><img src="assets/flash-apps/gnome-disks.svg" alt="GNOME Disks icon"/><span class="fa-name">GNOME Disks</span><span class="fa-plat">Linux</span></a>
-      <a class="flash-app" href="https://rufus.ie"><img src="assets/flash-apps/rufus.png" alt="Rufus icon"/><span class="fa-name">Rufus</span><span class="fa-plat">Windows · pick DD mode</span></a>
     </div>
 
     <h2>Turn off Microsoft's Secure Boot feature</h2>

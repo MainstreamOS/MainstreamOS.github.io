@@ -279,7 +279,7 @@ PAGES['install-iso'] = {
     ${callout('warn','If you have a Windows install you want to keep, or you want to dual boot','<p>If Windows is encrypted with BitLocker, changing Secure Boot can make it ask for the <strong>BitLocker recovery key</strong> the next time it starts. Save yours first at <a href="https://aka.ms/myrecoverykey" style="color:var(--stream-a);text-decoration:underline">aka.ms/myrecoverykey</a>. If Windows asks later, you type it in once and everything carries on as normal.</p>')}
 
     <h2>Boot the installer</h2>
-    <p>Plug the USB into the target machine and boot it (you may need to press <code>F12</code>, <code>F2</code>, or <code>Del</code> to pick the boot device). On the Limine menu select <strong>Mainstream Live</strong>, wait for the desktop. A Welcome app appears where you can set your resolution and monitor scale, and connect to Wi-Fi if you aren't on Ethernet. Once you've applied your settings, click <strong>Start install</strong>.</p>
+    <p>Plug the USB into your computer and boot it (you may need to press <code>F12</code>, <code>F2</code>, or <code>Del</code> to pick the boot device). On the boot menu select <strong>Mainstream OS - Live (default)</strong>, wait for the desktop. A Welcome app appears where you can set your resolution and monitor scale, and connect to Wi-Fi if you aren't on Ethernet. Once you've applied your settings, click <strong>Start install</strong>.</p>
 
     <h2>Installer walkthrough</h2>
     <p>The welcome screen picks your language — and keeps support, known issues, and release notes one click away. From there the sidebar walks you through every step in order, and nothing is written to disk until you approve the final Summary:</p>

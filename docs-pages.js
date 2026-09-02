@@ -268,7 +268,7 @@ PAGES['install-iso'] = {
       <a class="flash-app" href="https://rufus.ie"><img src="assets/flash-apps/rufus.png" alt="Rufus icon"/><span class="fa-name">Rufus</span><span class="fa-plat">Windows · pick DD mode</span></a>
     </div>
 
-    <h2>Turn off Secure Boot</h2>
+    <h2>Turn off Microsoft's Secure Boot feature</h2>
     <p>Most computers ship with a setting called <strong>Secure Boot</strong> switched on. It tells the machine to only start operating systems that Microsoft has signed. Mainstream isn\'t on that list, so you need to switch it off first, or the computer will refuse to start from your USB stick, usually with a message like <em>Security Violation</em>, <em>Invalid signature detected</em>, or simply by ignoring the USB and booting straight back into Windows.</p>
     <p>This is normal for Linux installs and it isn\'t a sign anything is wrong with your download. Arch Linux, which Mainstream is built on, works the same way.</p>
     <p>You change it in your computer\'s firmware settings, sometimes still called the BIOS. Here\'s the whole process:</p>

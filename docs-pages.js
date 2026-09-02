@@ -261,8 +261,8 @@ PAGES['install-iso'] = {
     <p>A few apps you can use to do this:</p>
     <ul>
       <li><a href="https://etcher.balena.io" style="color:var(--stream-a);text-decoration:underline">balenaEtcher</a> (recommended) or <a href="https://unetbootin.github.io" style="color:var(--stream-a);text-decoration:underline">UNetbootin</a> — <strong>both work on any platform<br/>(Linux, macOS, or Windows)</strong></li>
-      <li><strong>Other Linux options</strong>: Impression or GNOME Disks</li>
-      <li><strong>Other Windows options</strong>: Rufus in DD mode</li>
+      <li><strong>Other Linux options</strong>: Impression, GNOME Disks, or Ventoy</li>
+      <li><strong>Other Windows options</strong>: Rufus in DD mode, or Ventoy</li>
     </ul>
 
     <h2>Turn off Secure Boot</h2>

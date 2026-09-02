@@ -269,26 +269,14 @@ PAGES['install-iso'] = {
     </div>
 
     <h2>Turn off Microsoft's Secure Boot feature</h2>
-    <p>Most computers ship with a setting called <strong>Secure Boot</strong> switched on. It tells the machine to only start operating systems that Microsoft has signed. Mainstream isn\'t on that list, so you need to switch it off first, or the computer will refuse to start from your USB stick, usually with a message like <em>Security Violation</em>, <em>Invalid signature detected</em>, or simply by ignoring the USB and booting straight back into Windows.</p>
-    <p>This is normal for Linux installs and it isn\'t a sign anything is wrong with your download. Arch Linux, which Mainstream is built on, works the same way.</p>
-    <p>You change it in your computer\'s firmware settings, sometimes still called the BIOS. Here\'s the whole process:</p>
+    <p>Most computers will only start operating systems Microsoft has signed, a setting called <strong>Secure Boot</strong>. Mainstream isn\'t on that list, so switch it off first or the machine will ignore your USB stick. This is normal for Linux installs; nothing is wrong with your download.</p>
     <ol>
-      <li><strong>Restart the computer</strong>, and as soon as it starts up, press the key that opens the firmware settings. Which key it is depends on who made the machine, so press it a few times right after powering on:
-        <ul>
-          <li>Dell, Lenovo, Toshiba, Acer, Asus (most): <code>F2</code></li>
-          <li>HP: <code>F10</code> or <code>Esc</code></li>
-          <li>Lenovo ThinkPad: <code>F1</code></li>
-          <li>MSI, Gigabyte, ASRock (desktops): <code>Del</code></li>
-        </ul>
-        If you miss it, just restart and try again. Many machines also show the right key on screen for a second while starting.
-      </li>
-      <li><strong>Find the Secure Boot setting.</strong> It usually lives under a tab named <strong>Security</strong>, <strong>Boot</strong>, or <strong>Authentication</strong>. Some machines hide it until you switch from <em>Easy</em> or <em>Simple</em> mode to <strong>Advanced</strong>, often <code>F7</code>.</li>
-      <li><strong>Set Secure Boot to Disabled</strong>, using the arrow keys and <code>Enter</code>. Your mouse may not work in here, which is expected.</li>
+      <li><strong>Restart</strong> and tap the firmware key while the machine powers on. It is usually <code>F2</code>; HP uses <code>F10</code>, most desktops use <code>Del</code>, and many machines show the key on screen for a moment.</li>
+      <li><strong>Find Secure Boot</strong>, usually under a <strong>Security</strong> or <strong>Boot</strong> tab, and set it to <strong>Disabled</strong>.</li>
       <li><strong>Save and exit</strong>, usually <code>F10</code>. The computer restarts.</li>
     </ol>
-    <p>Now you can carry on and boot from the USB stick.</p>
-    ${callout('warn','If your Windows drive is encrypted with BitLocker','<p>Changing Secure Boot can make Windows ask for a <strong>BitLocker recovery key</strong> the next time it starts. This mostly affects work or school laptops, and Windows 11 machines where device encryption is on.</p><p>Before you change anything, sign in at <a href="https://aka.ms/myrecoverykey" style="color:var(--stream-a);text-decoration:underline">aka.ms/myrecoverykey</a> and save your recovery key somewhere else, such as your phone or a piece of paper. If Windows does ask for it later, you type it in once and everything carries on as normal. Without it, you can be locked out of your Windows files.</p>')}
-    ${callout('note','Two things that trip people up','<p><strong>The option is greyed out.</strong> Some laptops, particularly Lenovo and HP, won\'t let you touch Secure Boot until an administrator or supervisor password is set. Set one under the <strong>Security</strong> tab, change Secure Boot, then remove the password again if you\'d rather not keep it. Do write it down in the meantime.</p><p><strong>Leave it switched off.</strong> Mainstream needs Secure Boot off to start, both from the USB stick and after it\'s installed. If you turn it back on later, the machine will stop booting into Mainstream until you turn it off again.</p>')}
+    <p>That\'s the whole job. Boot from the USB stick and carry on, and leave Secure Boot off afterwards: Mainstream needs it off after the install too.</p>
+    ${callout('warn','If you have a Windows install you want to keep, or you want to dual boot','<p>If Windows is encrypted with BitLocker, changing Secure Boot can make it ask for the <strong>BitLocker recovery key</strong> the next time it starts. Save yours first at <a href="https://aka.ms/myrecoverykey" style="color:var(--stream-a);text-decoration:underline">aka.ms/myrecoverykey</a>. If Windows asks later, you type it in once and everything carries on as normal.</p>')}
 
     <h2>Boot the installer</h2>
     <p>Plug the USB into the target machine and boot it (you may need to press <code>F12</code>, <code>F2</code>, or <code>Del</code> to pick the boot device). On the Limine menu select <strong>Mainstream Live</strong>, wait for the desktop. A Welcome app appears where you can set your resolution and monitor scale, and connect to Wi-Fi if you aren't on Ethernet. Once you've applied your settings, click <strong>Start install</strong>.</p>

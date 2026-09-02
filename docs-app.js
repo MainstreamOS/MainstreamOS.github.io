@@ -7,7 +7,8 @@ const NAV_ORDER = [
   { group: 'Settings', ids: ['quick','wifi','bluetooth','bar','dock','interface','background','decorations','themes','display','layouts','keyboard','mouse','power','accounts','services','update','recovery','about'] },
   { group: 'Creative', ids: ['davinci','obs'], collapsible: true, icon: 'film', heading: 'Topics' },
   { group: 'Gaming', ids: ['gaming','steam-proton'], collapsible: true, icon: 'game' },
-  { group: 'Security', ids: ['security','verify','privacy'], collapsible: true, icon: 'shield' },
+  { group: 'Remote Access', ids: ['remote-access'], collapsible: true, icon: 'display' },
+  { group: 'Security', ids: ['security','verify','firewall','privacy'], collapsible: true, icon: 'shield' },
   { group: '', ids: ['changelog'], bare: true },
 ];
 
@@ -96,7 +97,9 @@ function renderPage(id){
   let head = '';
   if (id !== 'home'){
     const crumb = group
-      ? `<a href="#home">Docs</a><span class="sep">/</span><span>${group}</span><span class="sep">/</span><span style="color:var(--ink)">${page.title}</span>`
+      ? (group === page.title
+          ? `<a href="#home">Docs</a><span class="sep">/</span><span style="color:var(--ink)">${page.title}</span>`
+          : `<a href="#home">Docs</a><span class="sep">/</span><span>${group}</span><span class="sep">/</span><span style="color:var(--ink)">${page.title}</span>`)
       : `<a href="#home">Home</a><span class="sep">/</span><span style="color:var(--ink)">${page.title}</span>`;
     head = `
       <div class="breadcrumbs">${crumb}</div>

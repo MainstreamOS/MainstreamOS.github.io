@@ -1752,6 +1752,43 @@ sha256sum -c mainstream-x.x.x.iso.sha256</code></pre>
   `
 };
 
+// ---------- FIREWALL ----------
+PAGES.firewall = {
+  group: 'Security', title: 'Firewall', icon: 'shield',
+  lede: 'Your firewall is already on. This page explains what it quietly does for you, how to open a port when you need one, and which tools to use with it.',
+  render: () => `
+    <h2>What the default does</h2>
+    <p>Every Mainstream install runs <strong>firewalld</strong>, the same firewall engine Fedora and Red Hat use, with a desktop profile drawn from Fedora Workstation\'s. In plain terms:</p>
+    <table class="t">
+      <thead><tr><th>Traffic</th><th>What happens</th></tr></thead>
+      <tbody>
+        <tr><td>Anything your computer asks for</td><td>Allowed. Browsing, updates, game downloads, video calls: outgoing connections are never blocked.</td></tr>
+        <tr><td>Apps listening on high ports (1025 and up)</td><td>Allowed. Game hosting, LocalSend, Syncthing, VNC, and virtually every desktop app work with no setup.</td></tr>
+        <tr><td>Unsolicited traffic to system ports (1 through 1024)</td><td>Rejected, apart from a short list: SSH, printer discovery, and Windows network browsing.</td></tr>
+      </tbody>
+    </table>
+    <p>That last row is the entire restriction. It keeps strangers on your network away from system services you never meant to share, and it is the same line Fedora draws for millions of desktops.</p>
+
+    <h2>Opening a port</h2>
+    <p>Hosting something on a system port, say a web server on port 80? Two commands open it and keep it open across reboots:</p>
+<pre><code><span class="c"># See everything the firewall currently allows</span>
+<span class="k">sudo</span> firewall-cmd --list-all
+
+<span class="c"># Open a port now and after every reboot</span>
+<span class="k">sudo</span> firewall-cmd --permanent --add-port=80/tcp
+<span class="k">sudo</span> firewall-cmd --reload</code></pre>
+    <p>One honest tip before touching any of that: on ports 1025 and up the firewall is already out of the picture, so a refused connection there means the program on the other end is not listening. Check the service before blaming the firewall.</p>
+
+    <h2>The graphical way</h2>
+    <p><strong>Firewall</strong> (the <code>firewall-config</code> package) is the first-party window onto firewalld: see zones, open ports, and undo changes with checkboxes instead of commands. Script installs include it; on the ISO it is offered in the installer\'s app picker under System &amp; Utilities, and any system can add it later:</p>
+<pre><code><span class="k">sudo</span> pacman -S firewall-config</code></pre>
+
+    ${callout('warn','Using GUFW? Read this first','<p>GUFW is a front end for <code>ufw</code>, a <em>different</em> firewall daemon. Installing it does not replace Mainstream\'s firewall; it adds a second one, both filter every packet, and either one\'s block wins. That is why GUFW appears to do nothing here while quietly breaking things that used to work. Never run both. If you strongly prefer ufw, disable firewalld first (<code>sudo systemctl disable --now firewalld</code>), then set up ufw and recreate the defaults above; otherwise stick with the tools on this page.</p>')}
+
+    ${callout('note','Printing is already handled','<p>Printer discovery is allowed out of the box. The one time the firewall will ever ask about printing is when you turn on printer <em>sharing</em> for other devices, and that single confirmation is by design: it is the moment your machine goes from finding printers to being one.</p>')}
+  `
+};
+
 PAGES['overview-launcher'] = {
   group: 'Desktop', title: 'Overview & Launcher', icon: 'overview',
   lede: 'A zoomed-out map of every workspace, and a launcher that finds apps, folders, files, and answers.',
@@ -1854,6 +1891,47 @@ PAGES.sharing = {
     </figure>
 
     ${callout('note','Private by design','<p>Sharing is off until you start it, and only devices on your own network can ever see yours. There\'s no account to create, no server in the middle, and no size limit beyond your disk.</p>')}
+  `
+};
+
+// ---------- REMOTE ACCESS ----------
+PAGES['remote-access'] = {
+  group: 'Remote Access', title: 'Remote Access', icon: 'display',
+  lede: 'Reach your Mainstream machine from another computer: the terminal over SSH, or the full desktop over VNC. Both work with the firewall exactly as shipped.',
+  render: () => `
+    <h2>The terminal, over SSH</h2>
+    <p>Turn the SSH server on once, then connect from anywhere on your network:</p>
+<pre><code><span class="c"># On the Mainstream machine</span>
+<span class="k">sudo</span> systemctl enable --now sshd
+
+<span class="c"># From the other computer</span>
+<span class="k">ssh</span> yourname@the-machines-address</code></pre>
+
+    <h2>The full desktop, over VNC</h2>
+    <p>The desktop is served by <strong>wayvnc</strong>. It runs <em>on the Mainstream machine</em>; the computer you are sitting at only needs an ordinary VNC viewer. Set it up once:</p>
+<pre><code><span class="c"># 1. Install the server</span>
+<span class="k">sudo</span> pacman -S wayvnc
+
+<span class="c"># 2. Give it a login and a key</span>
+<span class="k">mkdir</span> -p ~/.config/wayvnc
+<span class="k">ssh-keygen</span> -m pem -f ~/.config/wayvnc/rsa_key.pem -t rsa -N ""</code></pre>
+    <p>Then create <code>~/.config/wayvnc/config</code> with:</p>
+<pre><code>address=0.0.0.0
+enable_auth=true
+username=yourname
+password=choose-a-real-password
+rsa_private_key_file=rsa_key.pem</code></pre>
+    <p>Start it with a plain <code>wayvnc</code> in a terminal, or make it part of every session by adding one line to <code>~/.config/hypr/custom/execs.lua</code>:</p>
+<pre><code>hl.on("hyprland.start", <span class="k">function</span>() hl.exec_cmd("wayvnc") <span class="k">end</span>)</code></pre>
+
+    <h2>Connecting from the other computer</h2>
+    <p>Install <strong>TigerVNC viewer</strong> (free, on Windows, macOS, and Linux) and connect to <code>the-machines-address:5900</code>. It signs in with the username and password from the config above. To be clear about a common mix-up: wayvnc is only ever the server side; there is no wayvnc app to install on the computer you are connecting <em>from</em>.</p>
+
+    ${callout('note','Running Mainstream in a VM?','<p>The steps are identical for a Proxmox, VirtualBox, or QEMU guest: set up wayvnc inside the VM and point the viewer at the VM\'s address. If the guest ever boots with no display attached, give it one with <code>hyprctl output create headless</code>.</p>')}
+
+    ${callout('warn','Keep it on your own network','<p>The password protects the session, but VNC is a local-network tool. For access from across the internet, connect over SSH and tunnel the desktop through it rather than exposing anything directly.</p>')}
+
+    <p>One troubleshooting rule covers nearly every failed connection: <strong>connection refused means the server is not running</strong>, on the Mainstream side. The firewall as shipped already lets both SSH and VNC through, so start with <code>systemctl status sshd</code> or a quick check that wayvnc is running before changing any firewall settings.</p>
   `
 };
 

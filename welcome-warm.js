@@ -312,7 +312,6 @@ PAGES['donate'] = {
       <a class="btn ghost" href="https://ko-fi.com/mainstreamos">Tip on Ko-fi</a>
       <a class="btn ghost" href="https://www.patreon.com/cw/MainstreamOS">Support on Patreon</a>
       <a class="btn ghost" href="https://crowdin.com/project/mainstream-os">Help translate</a>
-      <a class="btn ghost" href="https://github.com/MainstreamOS/dots-hyprland">Contribute on GitHub →</a>
     </div>
 
     ${callout('note','Thank you','<p>Whether you sponsor, contribute, or just use it and tell someone — thank you for helping make Linux mainstream.</p>')}

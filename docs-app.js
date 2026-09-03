@@ -7,7 +7,7 @@ const NAV_ORDER = [
   { group: 'Settings', ids: ['quick','wifi','bluetooth','bar','dock','interface','background','decorations','themes','display','layouts','keyboard','mouse','power','accounts','services','update','recovery','about'] },
   { group: 'Creative', ids: ['davinci','obs'], collapsible: true, icon: 'film', heading: 'Topics' },
   { group: 'Gaming', ids: ['gaming','steam-proton'], collapsible: true, icon: 'game' },
-  { group: 'Remote Access', ids: ['remote-access'], collapsible: true, icon: 'display' },
+  { group: 'Remote Access', ids: ['remote-access'], bare: true },
   { group: 'Security', ids: ['security','verify','firewall','privacy'], collapsible: true, icon: 'shield' },
   { group: '', ids: ['changelog'], bare: true },
 ];

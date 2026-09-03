@@ -20,7 +20,7 @@ PAGES.home = {
         <div class="cta-row">
           <a class="btn stream" href="https://mainstreamos.org/download">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="m6 10 6 6 6-6"/><path d="M4 21h16"/></svg>
-            Download · 2.9 GB
+            Download · 3.4 GB
           </a>
           <a class="btn ghost" href="#install-iso">Install guide →</a>
         </div>
@@ -179,8 +179,8 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements and project updates.',
   render: () => `
-    <div class="eyebrow">Release &middot; 1.4.0 &middot; August 23, 2026</div>
-    <h2 id="mainstream-os-1-3-0">Mainstream OS 1.4.0 — a Linux desktop you set up by clicking</h2>
+    <div class="eyebrow">Release &middot; 2.0.0 &middot; September 3, 2026</div>
+    <h2 id="mainstream-os-2-0-0">Mainstream OS 2.0.0 — a Linux desktop you set up by clicking</h2>
 
     <p>Mainstream OS is a Linux operating system built on Arch. Its desktop is Hyprland — the software that arranges your windows and decides where they go — and Hyprland is normally set up by hand, by editing text files. Here you set it up by clicking: displays, window layouts, keyboard shortcuts, the bar, the look of the whole interface, updates and repairs each get a proper settings page — a settings app, not a config file, and never a terminal. Pick a wallpaper and the whole desktop takes its colors from it. One keypress hands the machine over to a full-screen Steam session for gaming, and a graphical installer puts it all on your computer in a few minutes. <strong>Deeply featured. Genuinely friendly.</strong></p>
 
@@ -197,6 +197,7 @@ PAGES['blog'] = {
       <li><strong>Themes.</strong> Your whole look — wallpaper, colors, app style, icons, interface changes, and now the shape, transparency, blur, dim, borders, shadow, animations, window rules and which edge the dock sits on as well — saves under a name with a preview, and switches back in one tap.</li>
       <li><strong>Take your look with you.</strong> A theme saves out to a single file you can hand to someone else, wallpaper included, with anything particular to your machine left behind.</li>
       <li><strong>Day and Night.</strong> Pair two themes and let them follow the clock or your night-light schedule.</li>
+      <li><strong>Themes carry all of it.</strong> A theme takes every bar, dock and title bar setting with it: style, color, transparency, shape and behavior.</li>
     </ul>
     <figure>
       <div class="shot">
@@ -214,6 +215,13 @@ PAGES['blog'] = {
       <li><strong>App style, icons and pointer.</strong> All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.</li>
       <li><strong>Fonts.</strong> A searchable list that shows each font in its own lettering, and your choice carries into your apps rather than stopping at the desktop.</li>
       <li><strong>A built-in window rule editor.</strong> Most desktops leave per-app rules to a config file you edit by hand. Here it is a page in Settings: teach one app where to open, whether it floats, how see-through it is, and what it is allowed to do.</li>
+      <li><strong>Four bar styles.</strong> Hug, Float, Rect, or Notch, which sits on the screen edge and curves away from it.</li>
+      <li><strong>A bar you can paint.</strong> Set the shape, transparency, color and width of the bar and of each widget on it.</li>
+      <li><strong>A bar in three pieces.</strong> Any floating bar can be split into three strips.</li>
+      <li><strong>A settings page for the dock.</strong> Size, shape, corner roundness, transparency and color, all in one place.</li>
+      <li><strong>Three dock styles.</strong> Float, Rect or Notch.</li>
+      <li><strong>A dock that behaves how you like.</strong> Set how far an icon grows on hover and whether hovering magnifies or glows, mark open windows with dashes, dots or a count badge, choose the animation when you click an app, and turn the buttons on either side on or off.</li>
+      <li><strong>Title bars in your colors.</strong> Set their color and how far you can see through them, and return to stock in one press.</li>
     </ul>
     ${shot('BarConfig-1.webp','The bar widget layout editor in Settings, showing Simple and Custom modes and the widget list','The bar layout editor. Drag two pieces together and they join into one.')}
 
@@ -250,6 +258,7 @@ PAGES['blog'] = {
       <li><strong>Pick up where you left off.</strong> Sign out or restart and your windows reopen on the workspaces they were on. The session is written down as you work, so a crash costs you no more than a tidy sign-out would.</li>
       <li><strong>Move files between your devices.</strong> Send several at once to any phone, tablet, or computer on your network running <a href="https://localsend.org">LocalSend</a>, and receive from them the same way, with live progress and no cloud in the middle. Mainstream builds LocalSend into the desktop rather than bundling the app.</li>
       <li><strong>Auto Mount and Uninstall Apps</strong>, two small apps for the fiddly parts: drives that are ready at every login, and removing software without breaking the desktop.</li>
+      <li><strong>AI in the sidebar.</strong> Sign in to Claude or ChatGPT with a subscription you already have and no API key to paste, or follow a guided setup for free local AI with Ollama, where nothing you type leaves the computer.</li>
     </ul>
     <figure>
       <div class="shot">
@@ -274,10 +283,11 @@ PAGES['blog'] = {
       <li><strong>Repair Install.</strong> One button re-runs the desktop setup and rebuilds its parts.</li>
       <li><strong>Signed downloads and software.</strong> Every release is signed with checksums published alongside it, and everything Mainstream adds arrives ready-built and signed — the <a href="#verify">verify page</a> shows how to check yours.</li>
       <li><strong>A self-check after every install</strong> that writes you a health report, so a bad install tells you rather than failing quietly.</li>
+      <li><strong>A firewall you can see into.</strong> Every install runs firewalld, and a <a href="#firewall">page on the site</a> explains exactly what it is doing for you.</li>
     </ul>
 
     <h2>Get it</h2>
-    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 1.4.0</strong></a> — 2.9&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 2.0.0</strong></a> — 3.4&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
 
     <h2>Everything that changed</h2>
     <p>This page is what Mainstream is, not what moved in any one release. For that — every version, and the commits behind each one — see the <a href="#changelog">changelog</a>.</p>

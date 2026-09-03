@@ -249,8 +249,8 @@ PAGES['install-iso'] = {
     <table class="t">
       <thead><tr><th>Image</th><th>Size</th><th>Best for</th></tr></thead>
       <tbody>
-        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-x.x.x.iso</b></a></td><td>2.9 GB</td><td>Most modern laptops &amp; desktops</td></tr>
-        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-legacy-nvidia-x.x.x.iso</b></a></td><td>4.1 GB</td><td>Older NVIDIA cards, back to the GeForce 400 series (experimental)</td></tr>
+        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-x.x.x.iso</b></a></td><td>3.4 GB</td><td>Most modern laptops &amp; desktops</td></tr>
+        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-legacy-nvidia-x.x.x.iso</b></a></td><td>4.8 GB</td><td>Older NVIDIA cards, back to the GeForce 400 series (experimental)</td></tr>
       </tbody>
     </table>
 
@@ -270,7 +270,7 @@ PAGES['install-iso'] = {
     <h2>Turn off Microsoft's Secure Boot feature</h2>
     <p>Most computers will only start operating systems Microsoft has signed, a setting called <strong>Secure Boot</strong>. Mainstream isn\'t on that list, so switch it off first or the machine will ignore your USB stick. This is normal for Linux installs; nothing is wrong with your download.</p>
     <ol>
-      <li><strong>Restart</strong> and tap the firmware key while the machine powers on. It is usually <code>F2</code>; HP uses <code>F10</code>, most desktops use <code>Del</code>, and many machines show the key on screen for a moment.</li>
+      <li><strong>Restart</strong> and tap the BIOS key while the machine powers on. It is usually <code>F2</code>; HP uses <code>F10</code>, most desktops use <code>Del</code>, and many machines show the key on screen for a moment.</li>
       <li><strong>Find Secure Boot</strong>, usually under a <strong>Security</strong> or <strong>Boot</strong> tab, and set it to <strong>Disabled</strong>.</li>
       <li><strong>Save and exit</strong>, usually <code>F10</code>. The computer restarts.</li>
     </ol>
@@ -1290,6 +1290,21 @@ PAGES.recovery = {
 
     <h2>System Restore</h2>
     <p>The lower panel shows the live output when you hit <strong>Restore Snapshot</strong>. <strong>Copy</strong> grabs the log, <strong>Clear output</strong> wipes the pane.</p>
+
+    <h2>Updates fail with a key error</h2>
+    <p>If an update stops with <code>key "D644BEB9..." is unknown</code>, <code>missing required signature</code>, or <code>GPGME error</code>, the signing key for the Mainstream package repository is not trusted on your machine. Because pacman refuses the whole transaction when one repository fails to verify, this blocks <em>every</em> repository, so nothing updates at all.</p>
+
+    <p>Open <strong>Settings &rarr; Recovery</strong> and press <strong>Repair Package Keys</strong>. It rebuilds the keyring, re-imports the Mainstream key, and confirms the repository verifies before handing control back. Or run the same thing from a terminal:</p>
+<pre><code><span class="k">sudo</span> mainstream-keyring-repair</code></pre>
+
+    <p>The system also checks itself every six hours and after each boot, so a machine left alone repairs itself without anyone pressing anything.</p>
+
+    ${callout('tip','On an install from an older ISO','<p>Machines installed before this check shipped may not have the command yet. Run this instead, once, and the repair command arrives with your next update:</p><pre><code><span class="k">sudo</span> gpgconf --homedir /etc/pacman.d/gnupg --kill all\n<span class="k">sudo</span> rm -rf /etc/pacman.d/gnupg\n<span class="k">sudo</span> pacman-key --init\n<span class="k">sudo</span> pacman-key --populate archlinux\n<span class="k">sudo</span> pacman-key --add /usr/local/share/mainstream.pub\n<span class="k">sudo</span> pacman-key --lsign-key D644BEB9C1B7668E3A6C16DA8D567345B265848E\n<span class="k">sudo</span> pacman-key --updatedb\n<span class="k">sudo</span> rm -f /var/lib/pacman/sync/mainstream.db*\n<span class="k">sudo</span> pacman -Syu</code></pre>')}
+
+    <p>To confirm the key is trusted, this should print <code>[  full  ]</code> next to the Mainstream identity:</p>
+<pre><code><span class="k">gpg</span> --homedir /etc/pacman.d/gnupg --list-keys D644BEB9C1B7668E3A6C16DA8D567345B265848E</code></pre>
+
+    <p>If the key still cannot be verified, Mainstream switches its own repository off rather than accepting unverified packages, and the rest of the system keeps updating normally. The update summary says so, and the repository comes back on its own once the key is trusted again.</p>
 
     <h2>Manual snapshot management</h2>
 <pre><code><span class="c"># List all snapshots</span>

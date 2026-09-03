@@ -1,35 +1,148 @@
 {
-  "latest": "1.4.1",
+  "latest": "2.0.0",
   "releases": [
     {
       "version": "2.0.0",
-      "date": "2026-08-31",
+      "date": "2026-09-03",
       "kind": "feature",
-      "unreleased": true,
-      "summary": "Ventoy USB support, and a fix for sluggish docks on multi-monitor setups with a portrait screen",
+      "summary": "Shape the bar, dock and title bars from Settings: four bar styles, a dock with a settings page of its own, and color and transparency throughout, all carried by your themes",
       "changes": [
-        "The live image now works with multi-ISO USB tools such as Ventoy",
-        "Docks no longer go sluggish across every screen when one monitor is in portrait"
+        "Both the Bar and the Dock have gained new styles",
+        "The Bar gains a new \"Notch\" style to live alongside its \"Hug\", \"Float\" and \"Rect\" styles",
+        "You can now change the Bar and bar widgets Shape, Transparency, Color, and Bar Width",
+        "Any floating bar style can be set to be three strips instead of one",
+        "The Dock now graduates to its own settings menu",
+        "The Dock gains both \"Rect\" and \"Notch\" to live alongside its original \"Float\" style",
+        "The new Dock menu also allows you to customize the Dock's Size, Shape, Transparency, and Color",
+        "Change how the Dock behaves, not just how it looks",
+        "Set how big an icon grows on hover, and what hovering does: \"Magnify\" or \"Glow\"",
+        "Choose how open windows are marked: \"Dashes\", \"Dots\" or a \"Count badge\"",
+        "Choose the animation that plays when you click an app",
+        "Turn the buttons on either side of the Dock on or off",
+        "You can now customize the Title Bar Color and Transparency",
+        "Themes now, in addition to what they previously carried, carry all of the new settings added in 2.0.0; all Bar, Dock, and Title Bar customizing including Style, Color, Transparency, Shape, and all new behavioral customizations. HAVE FUN!",
+        "You can now position monitors in the Display settings by dragging them, or by changing them precisely with the new display offset settings",
+        "You can now customize your keybinds and search through them in plain words instead of the commands behind them",
+        "The Float layout is now treated like a first class citizen and got real attention this release, now with a much better workflow",
+        "Sign in to Claude or ChatGPT directly from the sidebar using an existing subscription, or get guided through getting started with local, free AI (Ollama) with a simple, easy to follow first time setup",
+        "Sidebars open from the side your vertical bar is on",
+        "Set wallpapers directly from Files",
+        "Weather's temperature settings (Fahrenheit, Celsius) now respond to your location and are set automatically",
+        "Night light's \"automatic\" now uses your actual sunrise and sunset",
+        "Plug in a USB printer and print, with no driver to hunt down and nothing to set up",
+        "Update handling is even more careful, and the Recovery settings page can now repair the package keys",
+        "The brightness device can be chosen on the Services page in Settings (thanks @M7MMAD-OMAR)",
+        "The right sidebar automatically fits short displays (thanks @Nitin Dixit)",
+        "Want to tune your graphics card? LACT is one checkbox away during install",
+        "Improved Firewall setup, and we are now even more transparent with our new Firewall page on our website listed under the Security section: https://mainstreamos.org/#firewall",
+        "Made it easier to set up Remote access. Check out our new Remote Access page on our website at https://mainstreamos.org/#remote-access",
+        "Increased the ISO's hardware compatibility across the board, including adding Ventoy support",
+        "Improved multilingual installations. Pick your language and your keyboard layout and it will be set up for you at the login screen and inside the OS automatically",
+        "Now including Chinese, Japanese and Korean fonts when you choose Chinese, Japanese or Korean",
+        "Chinese, Japanese or Korean language input is set up and installed automatically when you choose that language, allowing you to type your own language from the first boot",
+        "Focus master moves from SUPER + M to Ctrl+Super+Space so it does not clash with the media playback keybind",
+        "Wallpapers fill a rotated monitor instead of leaving it short",
+        "Num Lock is preserved across sessions (thanks @jussiemion)",
+        "The tray's overflow keeps focus after its menu closes (thanks @jussiemion)",
+        "The login screen now keeps the keyboard layout you chose"
       ],
       "commits": [
-        "iso: keep the GPT that describes the EFI system partition",
-        "dock: stop a narrow screen dragging every other dock through a resize"
-      ]
+        "6c0193413 release: 2.0.0, Shape the bar, dock and title bars from Settings: four bar styles, a dock with a settings page of its own, and color and transparency throughout, all carried by your themes",
+        "528b0f59f readme: add the 2.0.0 features to the feature list",
+        "282a4d67f ai: install a plan CLI without leaving the sidebar",
+        "80d9decaa settings: hide the title bar reset once there is nothing to put back",
+        "c29dd14c6 i18n: carry the new AI setup and reset strings into every locale",
+        "3930c9dd1 ai: fix the Codex plan never installing on a fresh machine",
+        "8a0be6b7c sddm: name the greeter setup failure",
+        "66370e09a limine: recognize our boot entry when it is not named after the machine-id",
+        "0cbf59b59 setup: stop retrying forever when there is nobody to answer",
+        "53cb25316 keyring: prove the key is trusted before the repo switch becomes one way",
+        "044d16b4e mac: shared Apple hardware library, applied on both install paths",
+        "6d6eb294c packaging: declare the printing dependencies on mainstream-system",
+        "4eebec7eb keyboard: picking an input source sets it up even on a bare machine",
+        "601c85c6d cursor: a killed shake watcher stops disabling the hot corner",
+        "6d31fb3c8 setup: the overrides file is restored from the repo, checked",
+        "253c8b503 hypr: an unset HOME no longer takes the config with it",
+        "083f1bbe6 titlebars: one stock opacity, agreed on by both sides",
+        "5d33f469c weather: a partly cloudy sky stops reporting as overcast",
+        "7fa9f0669 settings: the title bar colour waits for the drag to settle",
+        "041831434 hypr: a window rule stops reading an error as a number",
+        "cb680338e ai: a plan shows its models only while it is the one in use",
+        "86ee6977c update: the system refresh runs the release it is applying",
+        "7fc7f68c3 printing: the queue maker ships with the package that brings ipp-usb",
+        "587abb49b sddm: the greeter reads the keyboard layout instead of being told it",
+        "022d53384 themes: the title bar's stock value agrees with the code",
+        "2176459f6 settings: a saved choice survives a slow start and a theme apply",
+        "e3aa62837 hypr: plugin loading stays behind its version guard",
+        "0bee96a16 update: an upgrade stops overwriting what the machine owns",
+        "fa5a795b4 update: an existing machine gets the new printing experience",
+        "b161233f1 settings: the title bar opacity slider works before any color",
+        "5f99ab4a8 settings: keybinds speak plain words instead of commands",
+        "bfc9ad979 ai: a ChatGPT plan joins the sidebar the way the Claude one did",
+        "1f8c6461f printing: the queue maker triggers the way ipp-usb does",
+        "b7ce239fa ai: the model picker stops cutting the list at ten",
+        "0a8078285 printing: a permanent queue instead of a browser daemon",
+        "c22010777 ai: a Claude plan signs in from the sidebar and brings five models",
+        "7968575ab settings: the title bar color hint waits to be asked",
+        "955e00c63 dock: a restored Chromium folds back into its pin",
+        "f9f7772da settings: title bars get their way back",
+        "150637d36 setup: the prune map learns Spotify's real name"
+      ],
+      "commitsTotal": 151,
+      "commitNotes": {
+        "528b0f59f": "The bar and dock styles and their settings, title bar colors, the AI\nsidebar, the language and font work and the firewall page were missing\nfrom the list people read first.",
+        "282a4d67f": "Signing in to the ChatGPT plan opened a terminal that reported codex as\nan unknown command. The install step reported success while installing\nnothing: it was a pipeline, so the shell returned the status of the\nreading end, which succeeds on empty input, and the flow went on to open\na sign-in window for a command that was never there.\n\nAn install script now ends on the command it was meant to provide, so a\nzero means the tool is really present and every way an install can fall\nshort is caught, not just that one. The download also retries itself,\nincluding on the error a failing CDN actually returns, which curl does\nnot retry by default.\n\nWhen the download will not come at all, the same CLI is in the system\nrepositories and one prompt installs it from the banner. The helper\nbehind that prompt takes a name from a list it does not get to extend,\nnever a package name, because a root helper that installs whatever\nstring it is handed is a way to install anything as root, and it checks\nthe co",
+        "80d9decaa": "The control sat there at stock settings too, where pressing it changes\nnothing, and a button that does nothing reads as one that is broken. It\nnow shows only while the colour or the opacity differs from what the\nbars ship with, and the row goes with it so no gap is left behind.\n\nThe stock opacity had been written twice, in the reset and in the check\nagainst it, which is the kind of pair that drifts. It is named once now.\n\nThe comparison carries a tolerance because the value makes a round trip\nthrough a file as text and the slider quantises to whole percents, so an\nexact match would not survive either.",
+        "c29dd14c6": "Placeholders in the source language, the way an untranslated string reads\nin these files, so the walkthrough and the title bar reset are not blank\nfor anyone before the translations land.",
+        "3930c9dd1": "Signing in to the ChatGPT plan opened a terminal that reported codex as\nan unknown command. The install step pointed at a download that returns\n404, and because it was a pipeline the shell reported the status of the\nreading end, which succeeds on empty input. A zero came back, the CLI was\nrecorded as installed, and the sign-in window opened for a command that\nwas never there. It only looked healthy on machines that already had\ncodex from somewhere else.\n\nCodex has no rootless installer of its own, so it now comes from the\npackage manager the way local AI already does, and the sidebar names the\ncommand rather than pulling 290 MB behind a prompt it cannot explain.\n\nThe trust in the exit status is fixed separately, since that is what hid\nthis: an install script now ends on the command it was supposed to\nprovide, so a zero means the tool is present rather than that something\nin the pipeline was willing to exit quietly.",
+        "8a0be6b7c": "The visual installer retries a failed helper from its exit status, but the\nSDDM helper gave it no source location. The install log therefore ended at\n\"Configuring the SDDM Wayland greeter\" with only rc=1 to explain it.\n\nThe helper now prints its failed command and line number before it exits.\nThe keyboard-layout probes also treat an absent layout as an empty value,\nwhich is normal on a fresh system and must not trip set -e with pipefail.",
+        "66370e09a": "The gate before removing the previous bootloader looked for a machine-id\ncomment in limine.conf. limine-entry-tool writes that comment only while\nit names unified kernel images after the machine-id, and post-install\nsets CUSTOM_UKI_NAME, so on our own installs the images are named\nmainstream_* and no machine-id is ever written. The gate could not pass\non a machine configured the way we configure it, and ./setup stopped\nthere on a system that boots perfectly well.\n\nIt now accepts either form, and the custom-name form has to be backed by\na unified kernel image that actually exists, so an entry pointing at a\nmissing file is still refused.",
+        "0cbf59b59": "The failure prompt defaults to repeating the command, and read returns\nempty at EOF, so any run whose stdin is not a terminal answered its own\nprompt with the default and looped. It is not a harmless spin either:\nthe retried command can have side effects, and this loop was observed\nre-running a bootloader installer over and over.\n\nEOF now ends the loop and the command reports its failure. Answering with\nan empty line at a real prompt still repeats, so the interactive\nbehaviour is unchanged.",
+        "53cb25316": "Switching [mainstream] to SigLevel = Required and deleting the baked in\nlocal repo were both gated on the exit status of pacman-key --add and\n--lsign-key. Those can report success while nothing reaches the keyring,\nand the switch then leaves a machine demanding a signature it cannot\nverify, with the offline fallback already gone. pacman -Syu fails for\nevery repository after that, core and extra included, so the machine\ncannot update at all and has no way back.\n\nTrust is now read back out of the keyring instead of inferred, against a\nfingerprint hardcoded here rather than taken from the key file. The\ndestructive steps are reordered behind that proof: the config is backed\nup, the signed database has to fetch and verify, and only then is the\nlocal repo removed. A failed fetch rolls the config back.\n\nWhen trust cannot be established the repo is commented out rather than\ndropped to SigLevel = Never, because an unverified repo is a worse\noutcome than one that is switched off while the rest o",
+        "044d16b4e": "Intel Macs from 2015 to 2017 boot on a stock kernel but arrive with the\nmedia keys inverted, a keyboard the initramfs cannot see, wifi that\nreports a wrong password on a correct one, and an NVMe that will not\ncome back from suspend. applespi, hid_apple and applesmc are all\nmainline now, so what is left is module options and initramfs entries\nrather than drivers.\n\nThe library follows gpu-config.sh: one file, sourced by the ./setup and\narchiso paths, writing nothing until it is asked to. T2 machines are\nclassified and reported but not configured, because their keyboard,\ntrackpad, audio and fan control sit behind a patched kernel this project\ndoes not ship, and saying that plainly beats a dead keyboard with no\nexplanation.\n\nThe PCI probe matches against a captured string rather than piping into\ngrep -q, so grep closing the pipe early cannot send SIGPIPE to lspci and\nread as absent hardware under pipefail.",
+        "6d6eb294c": "The package ships mainstream-printer-setup, its udev rule and a drop-in\nfor ipp-usb.service, but declared neither cups nor ipp-usb. On a machine\nthat lacks them the queue maker is inert and the drop-in targets a unit\nthat is not installed, so driverless USB printing never comes up.\n\nipp-usb pulls avahi, libusb and glibc only, so cups has to be named\nexplicitly for lpadmin, lpstat and ipptool.",
+        "4eebec7eb": "The environment variables and the autostart line were appended only if\nthe two files under custom/ already existed, and those are seeded at\ninstall and never touched again, so a machine without them took the\nwhole path silently: the profile was written, the script reported\nsuccess, and the sidebar said the input method was ready while nothing\ncould actually type in it. The files are created when absent, the way\nthe GTK settings beside them already were.",
+        "601c85c6d": "The watcher marks the effect with a file so a shell starting mid-zoom\nstill knows to hold the hot corner back, and it removes the file when\nthe effect ends. A watcher that never reaches that point \u2014 killed\noutright, or taken down with the session \u2014 leaves the mark behind, and\nthe corner then reads it forever: overview by hot corner simply stops\nworking. The mark now names the process that wrote it, and a watcher\nstarting up drops one whose writer is gone. The reader also stops\nfalling back to a different directory than the writer uses, where it\ncould either miss a real effect or hold the corner on a file left by\nsomething else entirely.",
+        "6d31fb3c8": "The migration moves a user's custom general config aside and puts the\nshipped stub back, and that restore was the one path here not anchored\nto the repo root, with its result discarded. Run from anywhere but the\nrepo it would report success having written nothing, leaving the user\nwith no overrides file and only the copy it had moved away.",
+        "253c8b503": "The saved Num Lock state is read from a path built by concatenating\nHOME, which raises when HOME is unset, and the read happens inside the\ntop level config call: monitors, input, decoration and animations all\nfail with it. Guarded the way every sibling file already guards it.",
+        "083f1bbe6": "The settings service fell back to fully solid for an unreadable value\nwhile the compositor config fell back to the plugin's own 53 percent,\nso a bar drawn one way could be described the other: the slider read\n53 over a title bar painted solid. Both now name the stock value.",
+        "5d33f469c": "The fallback provider names its conditions in one string, and cloudy\nis a part of partlycloudy, so the overcast test matched first and the\npartly cloudy entry below it could never be reached. Whenever the\nusual provider is down, the bar showed full cloud on every partly\ncloudy day. The narrower name is tested first.",
+        "7fa9f0669": "The picker commits on every pointer move so the swatch previews the\ncolour as it is chosen, and applying a title bar colour reloads the\ncompositor. One drag across the swatch therefore spawned dozens of\nreloads, reconfiguring every window each time. The colour now rides\nthe same debounce the opacity slider beside it already used.",
+        "041831434": "hl.get_config answers with a value and an error, and a call sitting in\nthe last argument position passes both along, so a key that is absent\nhanded tonumber the error string where it expects a numeric base and\nraised. The absent key is the title bar height whenever hyprbars is\nnot loaded, which is exactly what the version guard arranges for a\nplugin built against another Hyprland, so on those machines every\nfloating window opened unplaced behind a runtime error. Both lookups\nare parenthesized down to the one value they meant to read.",
+        "cb680338e": "Two signed-in subscriptions put nine plan entries in the picker at\nonce, eight of them for a provider the user was not talking to. A\nplan now keeps its models to itself until it is the plan answering:\nthe others are represented by the single entry that was already there\nfor signing in, which reads as an invitation once the sign-in is done\nand lands on that plan's first model when picked. Switching away puts\nthe models back.",
+        "86ee6977c": "The update helper calls this script by name, which resolves to the\ncopy the previous release installed, and the script refreshes itself\nonly at the very end. Anything added to it therefore sat out the\nrelease it shipped in and first ran on the one after, which is how\nthe printing work and the greeter reseed would both have missed the\nmachines they were written for. It now hands over to the copy in the\npulled release before doing any work.",
+        "7fc7f68c3": "An upgrade from 1.4.2 installs ipp-usb for the first time, and ipp-usb\nclaims a USB printer's interface the moment it arrives: any queue\nbuilt on the classic backend stops reaching the printer. The queue\nmaker that puts a working driverless queue in its place was delivered\nby the update scripts, which on that first hop are still the copies\nthe old release installed, so the daemon would have arrived without\nit and left those machines unable to print at all.\n\nBoth now travel together. The queue maker, the printer-app unlock and\nthe test-page hook are files mainstream-system installs, so they land\nin the same pacman transaction as ipp-usb on every road in: an\nupgrade, a fresh setup, or the ISO. The scripts keep only what a\npackage cannot do, which is editing cupsd.conf and clearing a config\nan unreleased revision left behind, and the package scriptlet rereads\nthe udev rules and runs the queue maker once so an attached printer\nis set up without waiting for a replug.",
+        "587abb49b": "The greeter's layout was written into its config at install time and\nnowhere else, so every refresh of that file carried it off and left\nthe password box on US. The update path does exactly that refresh,\nand the machine most hurt is the one that cannot type its password\nafterwards. The config now derives the layout when the greeter starts,\nfrom the same keyboard configuration the system keeps, so a replaced\nfile configures itself. Console keymaps are normalized to the XKB\nnames Hyprland expects (jp106 becomes jp, fr-latin1 becomes fr) and\nanything unrecognizable is left alone rather than guessed at.",
+        "022d53384": "The schema the theme system reads still called stock title bar\nopacity fully solid, while the shell had moved it to the plugin's own\n53 percent. A theme saved on an untouched machine therefore recorded a\nvalue that machine was not using, and applying it turned every title\nbar solid. The schema now says what the code says, and the page-wide\nwindow reset leaves the title bar keys to the section that owns them.",
+        "2176459f6": "Two ways a stored setting could be lost. The model picker reads its\nselection from persistent state, which is the default until the file\nloads, so a local model arriving in that window looked like the local\nAI default waiting to be filled in and overwrote whichever model the\nuser had chosen. The read now waits for the state to load, and a\nmachine with no state file counts as loaded so a fresh install is not\nleft waiting forever.\n\nThe other is the config file: a write held during a theme apply is\nretried rather than dropped, which is right for a setting changed in\nthat window but wrong when the apply edited the file itself, since\nwhat is in memory is then older than the disk. A write held across an\noutside edit is dropped now, so a deleted theme's wallpaper path stops\ncoming back.",
+        "e3aa62837": "The installer prepended a bare hl.plugin.load() for hyprbars and for\nscrolloverview into custom/general.lua, pointing at the same paths\nhyprland/plugins.lua already loads. That file loads them only when the\nbuilt .so matches the running Hyprland, which is what keeps a stale\nplugin from taking the compositor down at login; an unguarded copy of\nthe line beside it walks straight past that check. Both prepends go,\nleaving the guarded loader as the only one.",
+        "0bee96a16": "Two files a machine writes for itself were being replaced by the\nshipped copies on every update. custom/general.lua promises in its own\ntext that it is written once and never touched again, yet it now\ndiffers from the stub it ships as, so an unattended update took the\nbackup-and-replace path and carried off both a user's overrides and\nthe keyboard layouts Settings keeps there. monitors.lua is rewritten\nby Settings > Display with explicit monitor blocks, and replacing it\nthrew every tuned resolution, scale and refresh rate back to the\nauto-scale guess. A repo .updateignore now covers both.\n\nThe updater could also record a release as applied while delivering\nnothing: with no last-applied tag to park on, the jump to the target\ncan land where the clone already sits, leaving an empty range to read\nand a marker that stops the next run from trying again. That case now\ncompares the whole tree instead.",
+        "fa5a795b4": "The queue maker, the printer app's polkit unlock, the surviving test\npage, and the retry policy only reached fresh installs; a machine\nthat updates never re-runs the installer, and the updater's printing\nblock stopped at the spooler socket and mDNS. It now installs the\nwhole set from the pulled repo, cleans the unreleased cups-browsed\nconfig out of the way, and starts the queue maker once so a printer\nalready plugged in gets its permanent queue on this very run. The\npackages ride the mainstream-basic upgrade on the same pass, and the\ntest page hook becomes one shared file instead of a script heredoc.",
+        "b161233f1": "Without a color pick the opacity slider wrote a value nothing read,\nbecause the composer refused to touch bar_color unless a color of the\nuser's own existed, and the slider read as broken. A saved opacity\nnow composes over the plugin's stock gray at the exact alpha the\nuntouched bar ships with, so the slider's first nudge is continuous\nwith the look on screen: the default position sits at 53, the track\ncarries a mark there, and the section reset returns to it. A machine\nthat never touched the section still leaves the plugin alone.",
+        "5f99ab4a8": "The keybind list led every row with its raw action, so Super+Shift+P\nread as a playerctl invocation with the human meaning underneath in\nsmall print, and the filter only matched the command text. Rows now\nshow one name: the bind's own description when it has one, otherwise\na settings-side name table that knows every bind the system ships,\nfrom media keys to the workspace loops whose Lua source is all the\nparser can see of them. The filter searches those names, so typing\nplay finds the media key without anyone knowing what playerctl is.\nThe table lives entirely in Settings: the cheatsheet keeps its own\ncurated list, and a bind the table does not recognize keeps its raw\ntext, so a user's own commands are never mislabeled.",
+        "bfc9ad979": "The plan machinery generalizes from one provider to a table: setup\nentries, plan models, detection, install, terminal sign-in, and the\nsigned-in handoff are all keyed by api_format now, so Codex is rows\nin that table rather than a second copy of the code. Signing in to a\nChatGPT plan from the sidebar brings Codex Sol, Terra, Luna, and\nGPT-5.5 into /model, chatting rides codex exec with a read-only\nsandbox and resumes its thread between messages, and session and\nweekly usage meters appear under the chat, fed from the same endpoint\nthe CLI's own status screen reads. An old CLI strategy for codex from\nthe testing branch was a never-verified plain-text sketch; this one\nspeaks the documented JSONL stream. Also fixed along the way:\nclearing the chat now drops CLI session ids, which used to quietly\nthread the old conversation back into the next request.",
+        "1f8c6461f": "The udev rule matched the USB interface device, a form whose systemd\nwants never proved itself in the field, and it missed HP's\nnon-standard 255/9/1 class. The rule now mirrors ipp-usb's own\nactivation lines exactly, so the queue maker fires for precisely the\ndevices ipp-usb claims, and a drop-in on ipp-usb starts it as well:\neither road reaching the daemon reaches the queue.",
+        "b7ce239fa": "The suggestion row capped itself at ten chips, which was invisible\nuntil the plan models joined and pushed Sonnet and Haiku past the\ncliff. The flow wraps onto new rows, so the cap was never about\nspace; it loosens to thirty, enough for a real model shelf while\nstill bounding a runaway completion list.",
+        "0a8078285": "cups-browsed answered the visibility problem with discovered queues,\nwhich the Chromium family buries behind See more and prints to\nthrough a temporary queue rebuilt per job, the path that fails with\nnothing on screen. The machine that prints reliably holds a permanent\nIPP Everywhere queue on the ipp-usb port, so the install now builds\nexactly that: a udev-started oneshot waits for ipp-usb to expose the\nprinter, reads its name, and runs lpadmin -m everywhere, covering\nhotplug and boot alike. cups-browsed retires along with its scoping\nconfig and the drop-in that started it; the printer app unlock, the\ntest page fix, and the retry policy stay.",
+        "c22010777": "The shelved Claude Code plan work comes back, fitted to the sidebar\nas it stands now. A single Claude (Pro/Max plan) entry sits in the\npicker until the sign-in completes; picking it raises a banner that\ninstalls the CLI if needed and hands the OAuth link to the browser.\nOnce the login is live, the entry gives way to five plan models,\nFable, Opus, Opus 1M, Sonnet, and Haiku, each answering /model like\nany other and each riding the subscription instead of an API key.\nRequests run the CLI with stream-json, resume their session, and a\nfailed run explains itself: the CLI reports failures as successes\nwith an error flag, and reading the subtype alone showed an expired\nlogin as a model with nothing to say. Usage meters for the session\nand the week appear under the chat while a plan model is active.\n\nRe-landing surfaced a standing defect: the local model fetch assigned\nmodelList by hand, severing its binding to the model map, so models\nregistered after that assignment never reached the picker.",
+        "7968575ab": "StyledToolTip counts a parent with no hovered property as hovered, so\nthe hint attached to the title bar color field sat open for as long\nas the Decorations page did. ColorField now reports hover the same\nway ConfigSlider already does, and any tooltip attached to a color\nfield shows on hover like everywhere else.",
+        "955e00c63": "Chromium's native Wayland windows report the class chromium-browser,\na name no desktop entry answered to, so a window brought back by\nsession restore grew its own dock entry wearing the icon theme's\nplain chromium icon. The override entry now declares that class as\nits StartupWMClass, the same road the Spotify override already rides.\nThe grouping model also learned to re-resolve once the desktop entry\ndatabase finishes its lazy startup scan; windows restored at login\nused to keep whatever raw grouping they were dealt before it landed.",
+        "f9f7772da": "The title bar color field refused to be emptied even though empty is\nits stock state, so the picker hid its Reset button and there was no\nroad back to the bar's own color short of editing files. The field now\nallows empty, with the plugin's stock gray as the swatch stand-in, and\nthe section gains a reset that returns color and opacity together. The\npage-wide window reset now takes the title bar appearance back too.",
+        "150637d36": "The os-only prune keyed Spotify by a package and desktop file that\nnever existed on an install; the shipped package and entry are both\nnamed spotify-launcher. The ISO's cleanup map already said so; the\nsetup path now matches."
+      },
+      "merges": 3
     },
     {
       "version": "1.4.2",
       "date": "2026-08-26",
       "kind": "patch",
-      "unreleased": true,
       "summary": "ISO-only update: more room on the boot partition, plus a bootable check before finishing",
       "changes": [
         "New installs reserve more boot partition space and get a final boot-setup check"
       ],
       "commits": [
-        "install: reserve ESP capacity for UKIs and snapshots",
-        "boot: remove unused fallback image handling",
-        "limine: remove obsolete boot entry cleanup",
-        "fix: harden installed Limine boot chain"
+        "22391f34e release: 1.4.2, ISO-only update: more room on the boot partition, plus a bootable check before finishing",
+        "3b75cc126 release: 1.4.1, Better GPU/laptop support, plus new touchpad controls and keyboard layouts"
       ]
     },
     {
@@ -49,7 +162,8 @@
         "f5af23e90 updates: wait for the repo rather than race the first boot",
         "2bef4fcc2 touchpad: add enable/disable toggle for touchpad",
         "45a61343a settings: manage keyboard layouts alongside keybinds",
-        "fffbb8c02 localsend: read the body the sender actually sent"
+        "fffbb8c02 localsend: read the body the sender actually sent",
+        "5281b7951 release: 1.4.0, Update UI Quickshell to 0.3.1"
       ],
       "commitNotes": {
         "00d3d0a12": "How a driver survives suspend is the driver's own business, and mainline changed\nits answer at 595: nvidia-utils now ships nvidia-sleep.conf asking for kernel\nsuspend notifiers, and its install scriptlet switches off the suspend, hibernate\nand resume units on the way past, because the handshake they perform is gone.\nThe legacy branches still ask to preserve video memory and still need those\nunits.\n\nBoth answers were being written to every card. The file here is called\nnvidia.conf while theirs is nvidia-sleep.conf, so it stacks rather than\nreplaces, and a Turing machine ended up holding both mechanisms at once with\nthree services switched back on underneath them. Turing and newer now get the\nmodeset options and nothing else, and say nothing about sleep at all. Maxwell\nand older are untouched.\n\nThe kms hook is left alone. It was being removed to keep the nvidia modules out\nof the initramfs, but that hook collects modules by matching paths inside the\nkernel tree, and nvidia's live beside ",
@@ -68,7 +182,7 @@
       "summary": "Update UI Quickshell to 0.3.1",
       "changes": [
         "Now running on Quickshell 0.3.1",
-        "LocalSend file drops now also work on the vertical bar",
+        "LocalSend file drops now work on the vertical bar too",
         "Bluetooth input devices now reconnect more reliably"
       ],
       "commits": [
@@ -92,12 +206,13 @@
       "version": "1.3.2",
       "date": "2026-08-19",
       "kind": "patch",
-      "summary": "Improved compatability with hybrid NVIDIA laptops and Improved Intel graphics support",
+      "summary": "Stop managing AQ_DRM_DEVICES on hybrid NVIDIA laptops",
       "changes": [
-        "Allow hyprland to detect the graphics card automatically on hybrid NVIDIA laptops",
-        "Newer Intel graphics (Arc, Meteor Lake and later) now use the newer Xe module",
-        "Cleaned up the color picker's look and behavior",
-        "The media controls now open beside the widget on a vertical bar too"
+        "Name the Intel module the kernel actually bound",
+        "Show the color, not the alpha behind it",
+        "The controls open beside the widget on a vertical bar too",
+        "A color field can be emptied where having no color means something",
+        "A color field's swatch and box stand as tall as its button"
       ],
       "commits": [
         "9fb87008a fix(gpu-config): stop managing AQ_DRM_DEVICES on hybrid NVIDIA laptops",
@@ -109,7 +224,7 @@
       ],
       "commitNotes": {
         "9fb87008a": "nvidia_write_aq_drm() pinned Aquamarine's AQ_DRM_DEVICES to the NVIDIA\ncard alone whenever a hybrid GPU setup was detected. On most hybrid\nlaptops the internal panel is wired to the iGPU, not the dGPU, so this\nhanded Hyprland a render device with no connector for the built-in\nscreen \u2014 session never comes up, looks like a boot failure.\n\nConfirmed on an HP Omen Max 16 (RTX 5080): env.lua carried\n  hl.env(\"AQ_DRM_DEVICES\", \"/dev/dri/by-path/pci-0000:02:00.0-card\")\nwith no iGPU entry, matching this exact failure mode.\n\nA joined-list fix (NVIDIA first, plus every other connector-capable\ncard, so the panel's actual owning GPU stayed reachable) was tried\nbefore committing anything, on the theory that the missing connector\nwas the root cause. Testing on the same hardware showed it still\nfailed to boot. That points to the actual problem being NVIDIA's side\nof the multi-GPU render/blit handoff itself, not connector coverage \u2014\na known-fragile path per the Hyprland wiki's own multi-GPU/NVIDIA\nnote",
-        "84127def8": "The initramfs was told i915 for every Intel card. Which of i915 and xe claims a\npart is the kernel's call and it moves from one release to the next, so on the\nnewest hardware \u2014 where xe takes it \u2014 the initramfs carried a module that was\nnot driving anything and early KMS quietly did not happen. Nothing broke; the\ndriver still loaded later, and the flicker-free boot it was there for simply\ngot missing on the parts most likely to want it.\n\nReading it off the card settles it. The generation tiers were no help: the one\ncovering Xe spans parts on both sides of the split, so mapping tier to module\nwould have put xe in front of an Arrow Lake, which is worse than the hardcoded\nanswer it replaced. Asking what is bound cannot disagree with the kernel, and\nfollows it for free the release a default changes. i915 when nothing answers,\nwhich is both the older parts' module and what was named here before.\n\nThe card list the compositor is given grew a seam for its lookup directory at\nthe same time, b",
+        "84127def8": "The initramfs was told i915 for every Intel card. Which of i915 and xe claims a\npart is the kernel's call and it moves from one release to the next, so on the\nnewest hardware \u2014 where xe takes it \u2014 the initramfs carried a module that was\nnot driving anything and early KMS quietly did not happen. Nothing broke; the\ndriver still loaded later, and the flicker-free boot it was there for simply\nwent missing on the parts most likely to want it.\n\nReading it off the card settles it. The generation tiers were no help: the one\ncovering Xe spans parts on both sides of the split, so mapping tier to module\nwould have put xe in front of an Arrow Lake, which is worse than the hardcoded\nanswer it replaced. Asking what is bound cannot disagree with the kernel, and\nfollows it for free the release a default changes. i915 when nothing answers,\nwhich is both the older parts' module and what was named here before.\n\nThe card list the compositor is given grew a seam for its lookup directory at\nthe same time, b",
         "cd61965e7": "The box takes a string, but a caller with a color rather than a typed one hands\nover whatever Qt makes of it \u2014 and Qt writes a color that carries alpha as nine\ndigits, the leading pair being that alpha. Nothing here expected them. The\nswatch painted the alpha too, so a color the interface draws at a tenth opacity\narrived as a near-invisible smear of itself; the box was sized for seven\ncharacters and showed a fragment of the nine; and the reader that guards typing\nrejects eight digits outright, so the value could not be edited back into shape\neither. A color nobody could see, read, or correct.\n\nThe reader now takes that form and drops the alpha, and the swatch and the box\nread through it rather than off the raw value. What a color is worth and how\nmuch of it shows through are two settings here, and only the first belongs in a\nbox that says which color it is.",
         "617184c4e": "The popup was taught to open under the widget that asked for it, but only along\none axis: the placement returned early on a vertical bar and the margin was\nfixed at half the screen, so wherever the media widget sat on a side bar the\ncontrols appeared at the middle. The widget there never published itself either,\nso there was nothing to place against had the placement run.\n\nIt now measures the same way on either edge and slides along whichever axis the\nbar leaves free \u2014 across under a top or bottom bar, up and down beside a left or\nright one \u2014 clamped to the screen with the same gap at both ends. The stock\nmiddle spot remains what is used until the widget has been measured, and\nwhenever it cannot be.",
         "fd401b47e": "A field could be given a color but never returned to not having one: an emptied\nbox normalises to nothing, and nothing was read as a typo and refused. Clearing\nit now says \"no color of my own\" wherever that is a state worth having.\n\nOff unless asked for. A gradient lane cannot draw an empty string, so refusing\nit there is still the right answer, and every field that exists today keeps the\nbehavior it had. It also takes a genuinely blank box rather than merely an\nunparseable one, so a half-typed code still snaps back instead of quietly\ndropping the color that was set.",
@@ -120,12 +235,13 @@
       "version": "1.3.1",
       "date": "2026-08-17",
       "kind": "patch",
-      "summary": "Works with newer LocalSend devices that now expect extra security during transfer",
+      "summary": "Offer a certificate when a receiver asks for one",
       "changes": [
-        "Enable sending files to receivers that now require a certificate to connect"
+        "1.3.0, everything in its place"
       ],
       "commits": [
-        "38d58c79a localsend: offer a certificate when a receiver asks for one"
+        "38d58c79a localsend: offer a certificate when a receiver asks for one",
+        "603a22619 release: 1.3.0, everything in its place"
       ],
       "commitNotes": {
         "38d58c79a": "Receivers began requiring the sender to present a certificate during the TLS\nhandshake. Sending never offered one, so the connection was refused before a\nbyte of the file moved, and the failure arrived as a certificate alert rather\nthan as anything about the transfer. Nothing here changed; the other end did,\nwhich is why this worked for months and then stopped.\n\nOne is generated on first use and kept, so a peer goes on seeing the same\ndevice rather than a new one per transfer. Which certificate it is does not\nmatter to the handshake \u2014 that one is offered at all does. It is presented to\nevery receiver, since one that does not ask simply ignores it, and a receiver\nthat refuses to load it is no worse off than before."

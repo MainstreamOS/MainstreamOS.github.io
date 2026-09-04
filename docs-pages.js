@@ -1251,6 +1251,14 @@ PAGES.update = {
 
     ${callout('tip','Show advanced options', '<p>Enable the advanced options list to pick and choose which parts of the update run — a checklist shows exactly what the update will include.</p>')}
 
+    <h2>Edge updates, for early adopters</h2>
+    <p>Releases are how the desktop normally updates: work accumulates, gets tested together, and arrives with release notes. If you would rather not wait, <strong>Edge updates</strong> under the advanced options follows the development branch instead, applying fixes and new features as they land, before they are released. The same snapshots protect an edge update as any other, and switching the option off simply returns you to releases: the next published release picks you up from wherever edge left you.</p>
+<pre><code><span class="c"># The same switch, from a terminal</span>
+<span class="k">sudo</span> mainstream-update-helper --edge
+
+<span class="c"># Or just the desktop refresh, skipping the package steps</span>
+updatems --edge</code></pre>
+
     <h2>If something breaks</h2>
     <p>Don\'t panic. You have a snapshot. Head over to <a href="#recovery">Recovery</a> to walk through rolling back from the Limine boot screen.</p>
 

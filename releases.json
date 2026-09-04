@@ -1,6 +1,81 @@
 {
-  "latest": "2.0.0",
+  "latest": "2.1.0",
   "releases": [
+    {
+      "version": "2.1.0",
+      "date": "2026-09-04",
+      "kind": "feature",
+      "summary": "The big customization release, delivered smoothly: shape the bar, dock and title bars from Settings, with color and transparency throughout, and a fix for doubled title bar buttons after updating",
+      "changes": [
+        "Fixed doubled title bar buttons after updating from 1.4.2",
+        "Update notifications now describe every release you are behind, not just the newest one",
+        "A new edge channel for early adopters: one switch in the update panel's advanced options, and fixes and new features reach you as they land, before they are released",
+        "Refreshed translations across all 13 languages, and Hebrew translations are restored under their correct locale",
+        "Everything below shipped in 2.0.0 and is repeated here so machines updating straight from 1.4.2 do not miss it:",
+        "Both the Bar and the Dock have gained new styles",
+        "The Bar gains a new \"Notch\" style to live alongside its \"Hug\", \"Float\" and \"Rect\" styles",
+        "You can now change the Bar and bar widgets Shape, Transparency, Color, and Bar Width",
+        "Any floating bar style can be set to be three strips instead of one",
+        "The Dock now graduates to its own settings menu",
+        "The Dock gains both \"Rect\" and \"Notch\" to live alongside its original \"Float\" style",
+        "The new Dock menu also allows you to customize the Dock's Size, Shape, Transparency, and Color",
+        "Change how the Dock behaves, not just how it looks",
+        "Set how big an icon grows on hover, and what hovering does: \"Magnify\" or \"Glow\"",
+        "Choose how open windows are marked: \"Dashes\", \"Dots\" or a \"Count badge\"",
+        "Choose the animation that plays when you click an app",
+        "Turn the buttons on either side of the Dock on or off",
+        "You can now customize the Title Bar Color and Transparency",
+        "Themes now, in addition to what they previously carried, carry all of the new settings added in 2.0.0; all Bar, Dock, and Title Bar customizing including Style, Color, Transparency, Shape, and all new behavioral customizations. HAVE FUN!",
+        "You can now position monitors in the Display settings by dragging them, or by changing them precisely with the new display offset settings",
+        "You can now customize your keybinds and search through them in plain words instead of the commands behind them",
+        "The Float layout is now treated like a first class citizen and got real attention this release, now with a much better workflow",
+        "Sign in to Claude or ChatGPT directly from the sidebar using an existing subscription, or get guided through getting started with local, free AI (Ollama) with a simple, easy to follow first time setup",
+        "Sidebars open from the side your vertical bar is on",
+        "Set wallpapers directly from Files",
+        "Weather's temperature settings (Fahrenheit, Celsius) now respond to your location and are set automatically",
+        "Night light's \"automatic\" now uses your actual sunrise and sunset",
+        "Plug in a USB printer and print, with no driver to hunt down and nothing to set up",
+        "Update handling is even more careful, and the Recovery settings page can now repair the package keys",
+        "The brightness device can be chosen on the Services page in Settings (thanks @M7MMAD-OMAR)",
+        "The right sidebar automatically fits short displays (thanks @Nitin Dixit)",
+        "Want to tune your graphics card? LACT is one checkbox away during install",
+        "Improved Firewall setup, and we are now even more transparent with our new Firewall page on our website listed under the Security section: https://mainstreamos.org/#firewall",
+        "Made it easier to set up Remote access. Check out our new Remote Access page on our website at https://mainstreamos.org/#remote-access",
+        "Increased the ISO's hardware compatibility across the board, including adding Ventoy support",
+        "Improved multilingual installations. Pick your language and your keyboard layout and it will be set up for you at the login screen and inside the OS automatically",
+        "Now including Chinese, Japanese and Korean fonts when you choose Chinese, Japanese or Korean",
+        "Chinese, Japanese or Korean language input is set up and installed automatically when you choose that language, allowing you to type your own language from the first boot",
+        "Focus master moves from SUPER + M to Ctrl+Super+Space so it does not clash with the media playback keybind",
+        "Wallpapers fill a rotated monitor instead of leaving it short",
+        "Num Lock is preserved across sessions (thanks @jussiemion)",
+        "The tray's overflow keeps focus after its menu closes (thanks @jussiemion)",
+        "The login screen now keeps the keyboard layout you chose"
+      ],
+      "commits": [
+        "6acec31e1 release notes for 2.1.0, carrying the 2.0.0 list forward",
+        "ae6a159a5 crowdin: document which tool owns the sync",
+        "f60eac82f i18n: sync from Crowdin, and give Hebrew its real locale code",
+        "855b70327 crowdin: a configuration the CLI can actually run",
+        "d0b1c7b60 update: say what to do when a file conflict cannot be adopted",
+        "a72f00f3a exp-update: clear a hold a killed run could have left behind",
+        "a22d532c1 exp-update: let nothing reload while the files are being replaced",
+        "3f80702f5 updates: an edge channel, for the work that is pushed but not released",
+        "8ef91fb28 updates: describe the release a machine is behind, not just the newest",
+        "881f52a78 migrations: run them on the update path too, not just on install"
+      ],
+      "commitNotes": {
+        "6acec31e1": "A machine on 1.4.2 that updates now lands on 2.1.0 without ever having\nbeen shown what 2.0.0 brought, so the 2.1.0 entry repeats the 2.0.0 list\nunder a note saying why it is there. The next release drops the repeat.\n\nThe migration keeps every backup it makes instead of overwriting the\nprevious one when a restored file sends it around a second time.",
+        "ae6a159a5": "The GitHub integration uploads new source strings and returns translations as\na pull request, so the CLI is only there for pushing strings up ahead of the\nnext scheduled run. Pulling with `crowdin download` stays out of the workflow,\nbecause running it in the same cycle as merging the integration's PR means\nwhichever one finished last wins.\n\nAlso drops a `branch` key that read as load-bearing but is not a configuration\noption at all. The branch comes from -b on the command line, and without it an\nupload lands at the project root and registers the source file a second time.\nThe name changes whenever the integration is rebuilt, so read it with\n`crowdin branch list` rather than writing it down here.",
+        "f60eac82f": "Hebrew was kept as he_HE, which is not a locale: the language is he and\nthe country is IL. The 488 translations under that name had never reached\nCrowdin, whose own export produces he_IL, so they were invisible to the\nproject and would have been overwritten by the first sync. They are in\nhe_IL.json now, uploaded, and they survive the round trip.\n\nEverything else is Crowdin's current state, which retires strings the\nsource no longer has and keeps the 87 added since the last upload. 6,791\ntranslations across thirteen locales, every file at 1994 keys.",
+        "855b70327": "The file was missing an api_token, so the CLI refused to run against it.\nIt is read from the environment now, so nothing secret is committed.\n\nIt was also missing preserve_hierarchy, which defaults to false and\nflattens an upload to the project root. That is how the same source came\nto be registered twice, once at its real path and once at the root, with\ntranslators entering every string in both. Reported by Renato while\nworking on pt-BR.\n\nThe sources sit in a Crowdin branch rather than at the project root, and\nsaying so is what stops the CLI reporting every file as omitted for want\nof a matching source. A Crowdin branch is its own copy of the strings and\nhas nothing to do with the git branch sharing its name.",
+        "d0b1c7b60": "A package wanting a path that is already on disk and owned by nobody is\nusually software installed by its own vendor script before it was\npackaged here. Adoption is refused in that case on purpose, because\ntaking the path over unasked could throw away whatever is inside it, but\nthe refusal read as the update failing for no stated reason.\n\nThe path, the package that wants it, and the command that resolves it are\nnow printed, built from the conflicts pacman reported so the next one is\nhandled without changing anything here. Adoption itself is unchanged.",
+        "a72f00f3a": "The holds outlive the script that took them, and a run killed outright\nnever releases. Clearing both before taking them costs nothing when there\nis nothing to clear, and spares the next person a session where their\nsettings quietly stop applying.",
+        "a22d532c1": "An update rewrites the files the running system is built from, one at a\ntime, and everything watching them reacts to each write. Hyprland reloaded\npart-way through and put a screen of config errors in front of someone who\nhad done nothing wrong. The shell came back assembled from a tree that was\nhalf old and half new: panels showing the wrong things, and the controls\nthat would have put it right were the ones that had broken, so the way out\nwas a terminal or the power button.\n\nBoth are held for the copying and released afterwards, each with one\nreload of the finished tree. Releasing always reloads, so held is never\nsomewhere either can be left, and one trap releases both however the run\nends. A shell without the handler refuses the hold and the update carries\non as before.",
+        "3f80702f5": "A fix pushed after a release cannot reach the people who hit the bug\nuntil the next tag, and a release cannot be watched landing on a real\nmachine without tagging one to find out what it does. Both are the same\ngap: there is no way to follow the branch.\n\nEdge follows origin instead of the newest tag. The applied marker carries\nthe commit, so a later push reads as newer the way a new tag would, and\nturning it off returns the machine to the newest release through the same\ncomparison as always. Nothing about the release path changes.\n\nThe switch sits last in Settings > Update > Advanced, beside the AUR one,\nwhere the levers that want a deliberate hunt already live. That row was\nhidden without an AUR helper, which is most machines, so the condition\nmoves to the AUR switch and the row stays.",
+        "8ef91fb28": "The notification read the newest release and nothing else, so a patch\nlanding days after a feature release was the entire story anyone still on\nthe older version would ever see of it. The release it fixed reached them\nas a line counting how many they had missed.\n\nIt now describes whichever pending release carries the span: security\nfirst because that is the reason to act, then the feature release, then a\npatch when that is genuinely all there is. The newest version is named\nalongside the count so a later fix does not look left out.",
+        "881f52a78": "The repair that retires the plugin machinery from a machine's own\ncustom/general.lua sat in the install path alone: 3.files.sh is sourced\nunder install, and the update path never referenced it at all. custom/ is\ndeliberately kept across updates, so everyone who updated held on to the\nold copy and the shipped hyprland/plugins.lua was loaded beside a second,\nolder version of the same machinery, its own plugin loading and ABI guard\nincluded.\n\nIt moves to a shared file that install and exp-update both call, because\na repair kept in one path reaches only the people who did not need it.\nThe behaviour is unchanged: a file without the old machinery is left\nalone, and one that has it is moved aside rather than deleted."
+      }
+    },
     {
       "version": "2.0.0",
       "date": "2026-09-03",
@@ -47,7 +122,8 @@
         "The login screen now keeps the keyboard layout you chose"
       ],
       "commits": [
-        "6c0193413 release: 2.0.0, Shape the bar, dock and title bars from Settings: four bar styles, a dock with a settings page of its own, and color and transparency throughout, all carried by your themes",
+        "c4a4f4a49 release: 2.0.0, Shape the bar, dock and title bars from Settings: four bar styles, a dock with a settings page of its own, and color and transparency throughout, all carried by your themes",
+        "c8eb45509 hyprbars: stop a reload adding a second set of buttons",
         "528b0f59f readme: add the 2.0.0 features to the feature list",
         "282a4d67f ai: install a plan CLI without leaving the sidebar",
         "80d9decaa settings: hide the title bar reset once there is nothing to put back",
@@ -85,11 +161,11 @@
         "c22010777 ai: a Claude plan signs in from the sidebar and brings five models",
         "7968575ab settings: the title bar color hint waits to be asked",
         "955e00c63 dock: a restored Chromium folds back into its pin",
-        "f9f7772da settings: title bars get their way back",
-        "150637d36 setup: the prune map learns Spotify's real name"
+        "f9f7772da settings: title bars get their way back"
       ],
-      "commitsTotal": 151,
+      "commitsTotal": 152,
       "commitNotes": {
+        "c8eb45509": "add_button appends and the plugin cannot be asked what it already holds,\nso every reload of this file added another close, maximize and special\nbutton to every bar. A theme apply and the title bar switch both reload,\nso the row grew each time one was used.\n\nThe mark goes on the plugin's own table, which is what makes its life\nmatch the buttons': a config reload leaves both in place, and an unload\nand load of the plugin clears both together, so the buttons come back\nwith it.\n\nA table that will not take the mark reads as unmarked every time, and the\nbuttons are added again rather than skipped. Two of each is untidy; none\nat all leaves a window with no way to close it.",
         "528b0f59f": "The bar and dock styles and their settings, title bar colors, the AI\nsidebar, the language and font work and the firewall page were missing\nfrom the list people read first.",
         "282a4d67f": "Signing in to the ChatGPT plan opened a terminal that reported codex as\nan unknown command. The install step reported success while installing\nnothing: it was a pipeline, so the shell returned the status of the\nreading end, which succeeds on empty input, and the flow went on to open\na sign-in window for a command that was never there.\n\nAn install script now ends on the command it was meant to provide, so a\nzero means the tool is really present and every way an install can fall\nshort is caught, not just that one. The download also retries itself,\nincluding on the error a failing CDN actually returns, which curl does\nnot retry by default.\n\nWhen the download will not come at all, the same CLI is in the system\nrepositories and one prompt installs it from the banner. The helper\nbehind that prompt takes a name from a list it does not get to extend,\nnever a package name, because a root helper that installs whatever\nstring it is handed is a way to install anything as root, and it checks\nthe co",
         "80d9decaa": "The control sat there at stock settings too, where pressing it changes\nnothing, and a button that does nothing reads as one that is broken. It\nnow shows only while the colour or the opacity differs from what the\nbars ship with, and the row goes with it so no gap is left behind.\n\nThe stock opacity had been written twice, in the reset and in the check\nagainst it, which is the kind of pair that drifts. It is named once now.\n\nThe comparison carries a tolerance because the value makes a round trip\nthrough a file as text and the slider quantises to whole percents, so an\nexact match would not survive either.",
@@ -127,8 +203,7 @@
         "c22010777": "The shelved Claude Code plan work comes back, fitted to the sidebar\nas it stands now. A single Claude (Pro/Max plan) entry sits in the\npicker until the sign-in completes; picking it raises a banner that\ninstalls the CLI if needed and hands the OAuth link to the browser.\nOnce the login is live, the entry gives way to five plan models,\nFable, Opus, Opus 1M, Sonnet, and Haiku, each answering /model like\nany other and each riding the subscription instead of an API key.\nRequests run the CLI with stream-json, resume their session, and a\nfailed run explains itself: the CLI reports failures as successes\nwith an error flag, and reading the subtype alone showed an expired\nlogin as a model with nothing to say. Usage meters for the session\nand the week appear under the chat while a plan model is active.\n\nRe-landing surfaced a standing defect: the local model fetch assigned\nmodelList by hand, severing its binding to the model map, so models\nregistered after that assignment never reached the picker.",
         "7968575ab": "StyledToolTip counts a parent with no hovered property as hovered, so\nthe hint attached to the title bar color field sat open for as long\nas the Decorations page did. ColorField now reports hover the same\nway ConfigSlider already does, and any tooltip attached to a color\nfield shows on hover like everywhere else.",
         "955e00c63": "Chromium's native Wayland windows report the class chromium-browser,\na name no desktop entry answered to, so a window brought back by\nsession restore grew its own dock entry wearing the icon theme's\nplain chromium icon. The override entry now declares that class as\nits StartupWMClass, the same road the Spotify override already rides.\nThe grouping model also learned to re-resolve once the desktop entry\ndatabase finishes its lazy startup scan; windows restored at login\nused to keep whatever raw grouping they were dealt before it landed.",
-        "f9f7772da": "The title bar color field refused to be emptied even though empty is\nits stock state, so the picker hid its Reset button and there was no\nroad back to the bar's own color short of editing files. The field now\nallows empty, with the plugin's stock gray as the swatch stand-in, and\nthe section gains a reset that returns color and opacity together. The\npage-wide window reset now takes the title bar appearance back too.",
-        "150637d36": "The os-only prune keyed Spotify by a package and desktop file that\nnever existed on an install; the shipped package and entry are both\nnamed spotify-launcher. The ISO's cleanup map already said so; the\nsetup path now matches."
+        "f9f7772da": "The title bar color field refused to be emptied even though empty is\nits stock state, so the picker hid its Reset button and there was no\nroad back to the bar's own color short of editing files. The field now\nallows empty, with the plugin's stock gray as the swatch stand-in, and\nthe section gains a reset that returns color and opacity together. The\npage-wide window reset now takes the title bar appearance back too."
       },
       "merges": 3
     },

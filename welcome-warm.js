@@ -280,6 +280,7 @@ PAGES['blog'] = {
     <ul>
       <li><strong>A safety net around every update.</strong> Mainstream saves a restore point before and after any change to your system software, so a bad update is one entry in the start-up menu away from being undone.</li>
       <li><strong>One-click updates.</strong> System software, apps and the desktop all update together from a single button, and a marker on the bar tells you when a new release is out.</li>
+      <li><strong>An edge channel for early adopters.</strong> One switch in the update panel's advanced options, and fixes and new features reach you as they land, before they are released.</li>
       <li><strong>Repair Install.</strong> One button re-runs the desktop setup and rebuilds its parts.</li>
       <li><strong>Signed downloads and software.</strong> Every release is signed with checksums published alongside it, and everything Mainstream adds arrives ready-built and signed — the <a href="#verify">verify page</a> shows how to check yours.</li>
       <li><strong>A self-check after every install</strong> that writes you a health report, so a bad install tells you rather than failing quietly.</li>

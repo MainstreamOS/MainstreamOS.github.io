@@ -1119,6 +1119,8 @@ PAGES.power = {
       <div class="prop"><center><div class="k">Automatic Suspend</div></center><div class="v">Puts the whole system to sleep after <b>Delay</b>. Default 15 minutes.</div></div>
     </div>
 
+    ${callout('note','Automatic suspend and your graphics card','<p>On the experimental legacy-NVIDIA edition. The legacy NVIDIA driver branches do not reliably bring the desktop back from sleep on Wayland. That is one of the reasons the edition carries the experimental label, and it comes down to how NVIDIA has handled its legacy driver support rather than anything a distribution can patch around. If the desktop comes back broken afterward, that is why, and a fresh login puts it right.</p>')}
+
     <h2>Battery</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Low warning (%)</div></center><div class="v">First warning popup. Default 20%.</div></div>

@@ -1656,50 +1656,6 @@ PROTON_FSR4_UPGRADE=1 gamemoderun mangohud %command%</code></pre>
 // end
 
 // ---------- DESKTOP ----------
-PAGES.macs = {
-  group: 'Hardware', title: 'Intel Macs', icon: 'wrench',
-  lede: 'Mainstream runs on Intel Macs from 2012 to 2020. The installer recognizes the machine and applies what each generation needs on its own; this page says what that covers, what it cannot, and the one thing to do before you boot the USB stick.',
-  render: () => `
-    <h2>Before you boot the stick</h2>
-    <p>Every Mac from 2018 on, and any older one you have set it on, has Apple\'s own Secure Boot. It has to be off before the USB stick will start, and it stays off afterwards.</p>
-    <ol>
-      <li><strong>Restart</strong> and hold <code>Command</code> + <code>R</code> until the Apple logo shows, to open Recovery.</li>
-      <li>In the menu bar, open <strong>Utilities &rarr; Startup Security Utility</strong>.</li>
-      <li>Set Secure Boot to <strong>No Security</strong> and allow booting from external media.</li>
-      <li>Restart, hold <code>Option</code>, and pick the USB stick.</li>
-    </ol>
-    ${callout('warn','Mainstream replaces macOS','<p>The installer\'s <strong>Erase disk</strong> option takes the whole drive. Keeping macOS alongside is not something we test on Macs; back up anything you want first.</p>')}
-
-    <h2>What the installer does on a Mac</h2>
-    <p>The installer reads the machine\'s model and its Wi-Fi chip, and applies only what that machine needs. Nothing here is a setting you have to find.</p>
-    <ul>
-      <li><strong>Keyboard and trackpad at the disk password.</strong> The 2015 to 2017 Retina models wire both over SPI. Their driver goes into the early boot image, so an encrypted install has a keyboard at the passphrase prompt.</li>
-      <li><strong>Waking from sleep.</strong> The same models keep their NVMe drive out of the deepest power state, which is what stopped them coming back.</li>
-      <li><strong>Wi-Fi that accepts your password.</strong> Broadcom\'s firmware runs the WPA handshake itself and fails it on many home routers, which shows up as &ldquo;wrong password&rdquo; for a password that is right. The handshake is handed back to Linux on every Mac whose chip has the problem.</li>
-      <li><strong>Media keys as printed.</strong> Brightness, volume and playback work without holding <code>fn</code>.</li>
-      <li><strong>Wi-Fi on the 2012 to 2015 models.</strong> Their Broadcom chip needs a driver that lives outside the kernel. It rides on the install image and is built for your kernel during the install, so those machines have Wi-Fi at first boot. The live session itself has no Wi-Fi on them, so plug in Ethernet or a phone on USB tethering for the install.</li>
-    </ul>
-    <p>The live session the installer runs from gets the two of these it can take without a reboot, the Wi-Fi handshake fix and the media keys, so a 2016 or 2017 MacBook can join its Wi-Fi from the Welcome app before installing.</p>
-
-    <h2>Macs with the T2 chip, 2018 to 2020</h2>
-    <p>The T2 sits between the system and the built-in keyboard, trackpad, speakers and fans. Supporting those needs a patched kernel that Mainstream does not ship, so on a T2 Mac:</p>
-    <ul>
-      <li>Plug in a <strong>USB keyboard and mouse</strong> for the install and afterwards. The built-in ones do not work.</li>
-      <li><strong>Sound and fan control</strong> are not available.</li>
-      <li><strong>Wi-Fi and Bluetooth do work.</strong> Their drivers are in the kernel; only Apple\'s firmware is missing, and Apple does not allow anyone to ship it. So the Mac fetches its own: once it has a wired or tethered connection, it downloads its own recovery image from Apple, the same one Internet Recovery uses, checks it against Apple\'s signature list, and takes the firmware from it. From then on Wi-Fi and Bluetooth are up on every boot.</li>
-    </ul>
-    ${callout('note','Getting a T2 Mac online the first time','<p>Any of these gives it the connection it needs: an Ethernet adapter, a phone on USB tethering, or a USB Wi-Fi stick. The download is about 850 MB and runs on its own in the background; the fetch keeps trying on each boot until it has succeeded. Plug the connection in before installing and the installer does the fetch itself, so the desktop comes up with Wi-Fi on its first boot. To have Wi-Fi in the live session as well, open a terminal there and run <code>sudo mainstream-mac-firmware</code>.</p>')}
-
-    <h2>The 2016 and 2017 Touch Bar models</h2>
-    <p>These carry the earlier T1 chip, and their Touch Bar is driven by the kernel Mainstream ships. Expect it to show function keys; if it stays dark on your machine, let us know which model.</p>
-
-    <h2>Which Mac is this?</h2>
-    <p>Apple\'s model numbers are on the underside, but the name the installer goes by is easier to read from the Mac itself. In a terminal:</p>
-<pre><code>cat /sys/class/dmi/id/product_name</code></pre>
-    <p><code>MacBookPro14,3</code> is a 2017 15-inch; anything <code>MacBookPro15</code> or later, <code>MacBookAir8</code> or later, and the 2018 Mac mini carry the T2.</p>
-  `
-};
-
 PAGES.desktop = {
   group: 'Desktop', title: 'The Desktop', icon: 'iface', navTitle: 'The Desktop',
   lede: 'One bar, one dock, and windows that stay out of your way. This page is the tour of the pieces you look at all day.',

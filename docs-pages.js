@@ -10,6 +10,7 @@ const I = {
   disc:    '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/>',
   sliders: '<line x1="4" y1="7" x2="20" y2="7"/><circle cx="9" cy="7" r="2"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="15" cy="17" r="2"/>',
   wrench:  '<path d="M20 7a5 5 0 0 1-6.6 4.7L7 18a2.1 2.1 0 0 1-3-3l6.3-6.3A5 5 0 0 1 16 2l-2.8 2.8 2.5 2.5L18.5 4.5A5 5 0 0 1 20 7Z"/>',
+  apps:   '<rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/>',
   laptop:  '<rect x="5" y="5" width="14" height="10" rx="1.5"/><path d="M3 18h18"/>',
   gpu:     '<rect x="3" y="7" width="18" height="10" rx="1.5"/><circle cx="9" cy="12" r="2.5"/><path d="M15 12h3"/><path d="M6 17v3M12 17v3M18 17v3"/>',
   wifi:    '<path d="M5 12a11 11 0 0 1 14 0"/><path d="M8.5 15a6 6 0 0 1 7 0"/><circle cx="12" cy="18" r="1"/>',
@@ -648,9 +649,29 @@ PAGES.interface = {
 // ---------- BACKGROUND ----------
 PAGES.background = {
   group: 'Settings', title: 'Background', icon: 'bg',
-  lede: 'Wallpaper behavior and the two overlay widgets that live on top of it — the big clock on the right, and the optional weather card.',
+  lede: 'How the wallpaper behaves, how one picture transitions to the next, and the eleven widgets that live on top of it.',
   render: () => `
     ${twoShot('BackgroundConfig-1.webp','Wallpaper panning, Clock widget.','BackgroundConfig-2.webp','Digital clock styling, Weather widget.')}
+
+    <h2>Wallpaper transitions</h2>
+    <p>Changing the wallpaper does not have to be a hard cut. Pick how one picture transitions to the next and the preview above the picker plays your choice on a loop, so you can judge it before you commit.</p>
+
+    <div class="props">
+      <div class="prop"><center><div class="k">Crossfade</div></center><div class="v">The default. One picture dissolves into the next.</div></div>
+      <div class="prop"><center><div class="k">Slide</div></center><div class="v">The outgoing picture travels off while the new one follows it in.</div></div>
+      <div class="prop"><center><div class="k">Zoom</div></center><div class="v">The new wallpaper grows into place.</div></div>
+      <div class="prop"><center><div class="k">Wipe</div></center><div class="v">A hard edge sweeps across the screen.</div></div>
+      <div class="prop"><center><div class="k">Circle</div></center><div class="v">The new wallpaper opens out from the middle.</div></div>
+      <div class="prop"><center><div class="k">Ripple</div></center><div class="v">A wave crosses the screen and leaves the new picture behind it.</div></div>
+      <div class="prop"><center><div class="k">Peel</div></center><div class="v">The old wallpaper lifts away like a page.</div></div>
+      <div class="prop"><center><div class="k">Glitch</div></center><div class="v">A brief digital tear between the two.</div></div>
+      <div class="prop"><center><div class="k">CRT</div></center><div class="v">The old tube television collapse, then back out to the new picture.</div></div>
+      <div class="prop"><center><div class="k">Shatter</div></center><div class="v">The outgoing wallpaper breaks apart and falls.</div></div>
+      <div class="prop"><center><div class="k">Random</div></center><div class="v">A different one every time the wallpaper changes.</div></div>
+      <div class="prop"><center><div class="k">None</div></center><div class="v">Swap instantly, with no animation at all.</div></div>
+    </div>
+
+    <p>Transitions run on the graphics card. On older hardware, <b>Crossfade</b> and <b>None</b> are the cheapest of the set.</p>
 
     <h2>Video wallpapers</h2>
     <p>Pick a video the same way you pick a picture and it plays as your background — nothing to install first, and the colors are drawn from it just as they are from a still image. The picker shows your wallpapers as thumbnails, and a newly chosen one appears immediately while its palette is worked out in the background.</p>
@@ -665,6 +686,34 @@ PAGES.background = {
       <div class="prop"><center><div class="k">Preferred wallpaper zoom (%)</div></center><div class="v">Baseline zoom level. 100% shows the image at screen size; &gt;100% crops in and gives panning more room.</div></div>
     </div>
 
+    <h2>Widgets on the wallpaper</h2>
+    <p>Eleven widgets can sit on the desktop, each switched on and placed on its own. Drag one where you want it and it stays there, remembered as a share of the screen rather than a pixel position, so one theme lays your desktop out the same way on a laptop panel and a 4K monitor alike.</p>
+
+    <div class="props">
+      <div class="prop"><center><div class="k">Clock</div></center><div class="v">The big time readout. Three styles, covered below.</div></div>
+      <div class="prop"><center><div class="k">Weather</div></center><div class="v">Icon, temperature and forecast, from the same source as the bar.</div></div>
+      <div class="prop"><center><div class="k">Calendar</div></center><div class="v">The month at a glance, with today marked.</div></div>
+      <div class="prop"><center><div class="k">World clock</div></center><div class="v">Other time zones beside your own.</div></div>
+      <div class="prop"><center><div class="k">Notes</div></center><div class="v">Short notes kept on the desktop.</div></div>
+      <div class="prop"><center><div class="k">To do</div></center><div class="v">A checklist that lives on the wallpaper.</div></div>
+      <div class="prop"><center><div class="k">Timers</div></center><div class="v">Countdowns you can start and reset in place.</div></div>
+      <div class="prop"><center><div class="k">Resources</div></center><div class="v">Processor, memory and disk at a glance.</div></div>
+      <div class="prop"><center><div class="k">Media</div></center><div class="v">What is playing, with controls.</div></div>
+      <div class="prop"><center><div class="k">Visualizer</div></center><div class="v">Audio drawn as it plays.</div></div>
+      <div class="prop"><center><div class="k">Your own image</div></center><div class="v">Any picture, placed on the desktop.</div></div>
+    </div>
+
+    <h3>Where each widget sits</h3>
+    <div class="props">
+      <div class="prop"><center><div class="k">Draggable</div></center><div class="v">Put it exactly where you want by hand.</div></div>
+      <div class="prop"><center><div class="k">Least busy</div></center><div class="v">Finds the emptiest part of the wallpaper and sits there.</div></div>
+      <div class="prop"><center><div class="k">Most busy</div></center><div class="v">Sits inside the detail of the picture, as a deliberate hero element.</div></div>
+    </div>
+
+    <h3>Frosted glass</h3>
+    <p>Switch on <b>Frosted widget backgrounds</b> and every widget card blurs the wallpaper behind it instead of sitting on a flat color, with a slider for how soft the blur is.</p>
+    <p>It ships off. Each card that is on pays for its own blur, so a machine with older graphics is left alone unless you ask for it, and nothing is built at all while the switch is off.</p>
+
     <h2>Widget: Clock</h2>
     <p>The giant time readout is the signature of the default Mainstream wallpaper. Everything about it is adjustable — position, style, font, whether it shows the date, whether it's only visible when the screen is locked.</p>
 
@@ -672,7 +721,7 @@ PAGES.background = {
       <div class="prop"><center><div class="k">Enable</div></center><div class="v">Master toggle.</div></div>
       <div class="prop"><center><div class="k">Draggable / Least busy / Most busy</div></center><div class="v">Where the clock sits. <b>Least busy</b> auto-picks the emptiest corner; <b>Most busy</b> sits inside your window cluster as a deliberate hero element; <b>Draggable</b> lets you pin it by hand.</div></div>
       <div class="prop"><center><div class="k">Show only when locked</div></center><div class="v">Clock hides when the desktop is active and reappears on the lock screen.</div></div>
-      <div class="prop"><center><div class="k">Clock style</div></center><div class="v"><span class="tag">Digital</span> numeric (default) &nbsp; <span class="tag">Cookie</span> analog pie-chart style. Lock-screen style is chosen separately.</div></div>
+      <div class="prop"><center><div class="k">Clock style</div></center><div class="v"><span class="tag">Digital</span> numeric (default) &nbsp; <span class="tag">Cookie</span> analog pie-chart style &nbsp; <span class="tag">Pixel</span> a chunky pixel readout, upright or on its side. Lock-screen style is chosen separately.</div></div>
     </div>
 
     <h3>Digital clock settings</h3>
@@ -1226,6 +1275,36 @@ PAGES.services = {
       <div class="prop"><center><div class="k">City name</div></center><div class="v">The place to show weather for when GPS based location is off.</div></div>
       <div class="prop"><center><div class="k">Polling interval (m)</div></center><div class="v">How often the forecast refreshes, in minutes.</div></div>
     </div>
+  `
+};
+
+// ---------- MANAGE ----------
+PAGES.manage = {
+  group: 'Settings', title: 'Manage', icon: 'apps', navTitle: 'Manage',
+  lede: 'Which app opens which kind of file, and what starts up when you log in.',
+  render: () => `
+    <h2>Default apps</h2>
+    <p>Ten roles, each with a picker that lists every app on the machine able to fill it. Change one and the choice is written where the rest of the system reads it, so a link in a chat window and a double click in Files both land on the app you named.</p>
+    <p>Every role arrives already set on a fresh install, so nothing here starts out blank.</p>
+
+    <div class="props">
+      <div class="prop"><center><div class="k">Web Browser</div></center><div class="v">Opens links from any app.</div></div>
+      <div class="prop"><center><div class="k">Email</div></center><div class="v">Handles mail links.</div></div>
+      <div class="prop"><center><div class="k">File Manager</div></center><div class="v">Opens folders.</div></div>
+      <div class="prop"><center><div class="k">Terminal</div></center><div class="v">What Open in Terminal uses.</div></div>
+      <div class="prop"><center><div class="k">Text Editor</div></center><div class="v">Plain text files.</div></div>
+      <div class="prop"><center><div class="k">Code Editor</div></center><div class="v">Source files, when you want them apart from plain text.</div></div>
+      <div class="prop"><center><div class="k">Music</div></center><div class="v">Audio files.</div></div>
+      <div class="prop"><center><div class="k">Videos</div></center><div class="v">Video files.</div></div>
+      <div class="prop"><center><div class="k">Photos</div></center><div class="v">Images.</div></div>
+      <div class="prop"><center><div class="k">PDF Documents</div></center><div class="v">PDFs, and the other document formats Papers reads.</div></div>
+    </div>
+
+    <h2>Auto start apps</h2>
+    <p>Everything that opens on its own after you log in, in one list. Each entry says whether you added it or whether it came with the system, so the ones you can safely turn off are obvious.</p>
+    <p>Add an app with the picker at the bottom, or remove one from the list. Turning an entry off does not uninstall anything.</p>
+
+    ${callout('note','Takes effect at next login','<p>A change here is not applied to the session you are in. Nothing opens or closes when you make it; the list is read the next time you log in.</p>')}
   `
 };
 
@@ -1802,6 +1881,10 @@ PAGES.desktop = {
       <figcaption>The dock in motion.</figcaption>
     </figure>
 
+    <h2>The wallpaper menu</h2>
+    <p>Right click any empty part of the desktop and a menu opens on the wallpaper. It leads with the wallpaper itself, so changing your background is one click from where you already are, and carries on into the theme, the bar and the dock without opening Settings first.</p>
+    <p>The widgets that sit on the wallpaper, the clock and the ten beside it, are set up in <a href="#background">Settings &rarr; Background</a>.</p>
+
     <h2>Title bars, your call</h2>
     <p>Tiling purists keep windows clean; everyone else can flip on familiar title bars with a close button. It\'s one toggle in <strong>Settings → Interface → Decorations</strong>, and it applies to every window instantly — no logout, no reload.</p>
     <figure>
@@ -1811,7 +1894,7 @@ PAGES.desktop = {
       <figcaption>Title bars flipping on and off live from Settings.</figcaption>
     </figure>
 
-    ${callout('tip','Make it yours','<p>Everything on this page is tunable: bar position and style in <a href="#bar">Settings → Bar</a>, dock behavior in <a href="#interface">Settings → Interface</a>, and the wallpaper clock in <a href="#background">Settings → Background</a>.</p>')}
+    ${callout('tip','Make it yours','<p>Everything on this page is tunable: bar position and style in <a href="#bar">Settings → Bar</a>, dock behavior in <a href="#interface">Settings → Interface</a>, and the wallpaper and its widgets in <a href="#background">Settings → Background</a>.</p>')}
   `
 };
 

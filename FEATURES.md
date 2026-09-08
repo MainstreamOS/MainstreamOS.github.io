@@ -10,6 +10,7 @@ The shell — the bar, the side panels, the search box — is a lean, heavily mo
 
 - **Colors from your wallpaper.** Pick any wallpaper and the desktop, the settings app, your terminal, your apps — GTK and Qt alike — your folder icons and the lock screen all recolor to match it.
 - **A wallpaper that rotates.** Point it at a folder instead of one picture and set a timer. The palette follows along with every change, so the whole desktop recolors as it goes.
+- **A wallpaper that changes with style.** Ten ways for one picture to transition to the next: crossfade, slide, zoom, wipe, circle, ripple, peel, glitch, CRT and shatter, or let it pick at random.
 - **Video wallpapers.** A video works as a wallpaper with nothing extra to install — it plays quietly on a loop across every screen, and the color scheme comes from it just the same.
 - **Themes.** Your whole look — wallpaper, colors, app style, icons, interface changes, and the shape, transparency, blur, dim, borders, shadow, animations, window rules and which edge the dock sits on as well — saves under a name with a preview, and switches back in one tap.
 - **Take your look with you.** A theme saves out to a single file you can hand to someone else, wallpaper included, with anything particular to your machine left behind.
@@ -24,6 +25,8 @@ The shell — the bar, the side panels, the search box — is a lean, heavily mo
 - **App style, icons and pointer.** All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.
 - **Fonts.** A searchable list that shows each font in its own lettering, and your choice carries into your apps rather than stopping at the desktop.
 - **A built-in window rule editor.** Most desktops leave per-app rules to a config file you edit by hand. Here it is a page in Settings: teach one app where to open, whether it floats, how see-through it is, and what it is allowed to do.
+- **Widgets on your desktop.** Eleven of them: the clock, weather, a calendar, world clocks, notes, a to do list, timers, system resources, a music visualizer, media controls and a picture of your own. Drag each one where you want it, and give them frosted glass that samples the wallpaper behind. A theme remembers which are on and where they sit. The clock gains a third style, a chunky pixel readout, alongside digital and cookie.
+- **A menu on the wallpaper.** Right click the desktop to change the wallpaper, switch theme, and reach the bar and dock settings without opening Settings first.
 - **Shake to Locate.** Switch it on, give the mouse a shake, and the pointer grows until you spot it.
 
 ## A desktop and a games console, in one
@@ -34,13 +37,14 @@ The shell — the bar, the side panels, the search box — is a lean, heavily mo
 
 ## Everything in Settings
 
-Eighteen pages cover the whole machine, nine of which are Mainstream's own work with no equivalent in the shell it started from.
+Twenty pages cover the whole machine, ten of which are Mainstream's own work with no equivalent in the shell it started from.
 
 - **Displays.** Arrange your monitors and set resolution, refresh rate, scale, orientation, HDR and color profiles, or mirror one screen onto another.
 - **A layout per workspace.** Four ways of arranging windows automatically plus a floating mode, and every workspace remembers its own.
 - **Keyboard shortcuts.** A real editor rather than a printed list — change the ones that ship, add your own, and set them by pressing the keys you want.
 - **Type in any language.** Add the keyboard layouts you write in and flip between them with a keystroke. For Japanese, Chinese, Korean or Vietnamese, pick an input source and the right input method is installed and switched on for you. Installs done in those languages arrive with it already working.
 - **Touchpad gestures.** Choose what each swipe and pinch does, applied the moment you set it.
+- **Manage your apps.** Choose which app opens which kind of file, and what starts up when you log in, from one page.
 - **Wi-Fi, Bluetooth, sound, power, accounts and services**, each with a proper page instead of a text file.
 
 ## Day to day

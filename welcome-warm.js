@@ -179,8 +179,8 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements and project updates.',
   render: () => `
-    <div class="eyebrow">Release &middot; 2.0.0 &middot; September 3, 2026</div>
-    <h2 id="mainstream-os-2-0-0">Mainstream OS 2.0.0 — a Linux desktop you set up by clicking</h2>
+    <div class="eyebrow">Release &middot; 2.2.0 &middot; September 8, 2026</div>
+    <h2 id="mainstream-os-2-2-0">Mainstream OS 2.2.0 — a Linux desktop you set up by clicking</h2>
 
     <p>Mainstream OS is a Linux operating system built on Arch. Its desktop is Hyprland — the software that arranges your windows and decides where they go — and Hyprland is normally set up by hand, by editing text files. Here you set it up by clicking: displays, window layouts, keyboard shortcuts, the bar, the look of the whole interface, updates and repairs each get a proper settings page — a settings app, not a config file, and never a terminal. Pick a wallpaper and the whole desktop takes its colors from it. One keypress hands the machine over to a full-screen Steam session for gaming, and a graphical installer puts it all on your computer in a few minutes. <strong>Deeply featured. Genuinely friendly.</strong></p>
 
@@ -193,6 +193,7 @@ PAGES['blog'] = {
     <ul>
       <li><strong>Colors from your wallpaper.</strong> Pick any wallpaper and the desktop, the settings app, your terminal, your apps — GTK and Qt alike — your folder icons and the lock screen all recolor to match it.</li>
       <li><strong>A wallpaper that rotates.</strong> Point it at a folder instead of one picture and set a timer. The palette follows along with every change, so the whole desktop recolors as it goes.</li>
+      <li><strong>A wallpaper that changes with style.</strong> Ten ways for one picture to transition to the next: crossfade, slide, zoom, wipe, circle, ripple, peel, glitch, CRT and shatter, or let it pick at random. A preview beside the picker plays your choice on a loop.</li>
       <li><strong>Video wallpapers.</strong> A video works as a wallpaper with nothing extra to install — it plays quietly on a loop across every screen, and the color scheme comes from it just the same.</li>
       <li><strong>Themes.</strong> Your whole look — wallpaper, colors, app style, icons, interface changes, and now the shape, transparency, blur, dim, borders, shadow, animations, window rules and which edge the dock sits on as well — saves under a name with a preview, and switches back in one tap.</li>
       <li><strong>Take your look with you.</strong> A theme saves out to a single file you can hand to someone else, wallpaper included, with anything particular to your machine left behind.</li>
@@ -214,6 +215,8 @@ PAGES['blog'] = {
       <li><strong>Windows drawn the way you want.</strong> Corner radius, border thickness, the gaps between windows and around the screen, how see-through they are, the blur behind them, the shadow beneath them, how much the ones you are not using dim, and how they animate. Give the borders a gradient of your own or leave them following the wallpaper, and put the lot back with one press.</li>
       <li><strong>App style, icons and pointer.</strong> All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.</li>
       <li><strong>Fonts.</strong> A searchable list that shows each font in its own lettering, and your choice carries into your apps rather than stopping at the desktop.</li>
+      <li><strong>Widgets on your desktop.</strong> Eleven of them: the clock, weather, a calendar, world clocks, notes, a to do list, timers, system resources, a music visualizer, media controls and a picture of your own. Drag each one where you want it, and give them frosted glass that samples the wallpaper behind. A theme remembers which are on and where they sit, and the clock gains a third style, a chunky pixel readout.</li>
+      <li><strong>A menu on the wallpaper.</strong> Right click the desktop to change the wallpaper, switch theme, and reach the bar and dock settings without opening Settings first.</li>
       <li><strong>A built-in window rule editor.</strong> Most desktops leave per-app rules to a config file you edit by hand. Here it is a page in Settings: teach one app where to open, whether it floats, how see-through it is, and what it is allowed to do.</li>
       <li><strong>Four bar styles.</strong> Hug, Float, Rect, or Notch, which sits on the screen edge and curves away from it.</li>
       <li><strong>A bar you can paint.</strong> Set the shape, transparency, color and width of the bar and of each widget on it.</li>
@@ -234,12 +237,13 @@ PAGES['blog'] = {
     ${shot('Gaming-Big-Picture.webp','Steam Big Picture running as the Mainstream Gaming Mode session','Gaming Mode — the machine really does hand itself over, rather than running Steam in a window.')}
 
     <h2>Everything in Settings</h2>
-    <p>Eighteen pages cover the whole machine, nine of which are Mainstream's own work with no equivalent in the shell it started from.</p>
+    <p>Twenty pages cover the whole machine, ten of which are Mainstream's own work with no equivalent in the shell it started from.</p>
     <ul>
       <li><strong>Displays.</strong> Arrange your monitors and set resolution, refresh rate, scale, orientation, HDR and color profiles, or mirror one screen onto another.</li>
       <li><strong>A layout per workspace.</strong> Four ways of arranging windows automatically plus a floating mode, and every workspace remembers its own.</li>
       <li><strong>Keyboard shortcuts.</strong> A real editor rather than a printed list — change the ones that ship, add your own, and set them by pressing the keys you want.</li>
       <li><strong>Touchpad gestures.</strong> Choose what each swipe and pinch does, applied the moment you set it.</li>
+      <li><strong>Manage your apps.</strong> Choose which app opens which kind of file, and what starts up when you log in, from one page. Every role arrives already set on a fresh install.</li>
       <li><strong>Wi-Fi, Bluetooth, sound, power, accounts and services</strong>, each with a proper page instead of a text file.</li>
     </ul>
     <figure>
@@ -272,6 +276,7 @@ PAGES['blog'] = {
       <li><strong>A graphical installer.</strong> Four ways in — Default Apps, Customize Your Apps, Console Mode and OS Only.</li>
       <li><strong>Dual-boot and encryption.</strong> Install alongside an existing Windows and it joins the start-up menu, or encrypt the whole system behind a passphrase. Both are set up during the install.</li>
       <li><strong>Graphics sorted out for you.</strong> Your card is recognized and given drivers that match it — AMD, Intel or NVIDIA, laptops with two included — based on which model you have rather than just the brand. An experimental legacy edition covers older NVIDIA cards, back to the GeForce 400 series.</li>
+      <li><strong>Intel and T2 Macs.</strong> Macs from 2012 to 2015 are supported, Broadcom Wi-Fi and the 2015 MacBook keyboard and trackpad included. A T2 Mac fetches its own Wi-Fi and Bluetooth firmware from Apple, and the installer says up front what the machine needs plugged in before it can be installed.</li>
       <li><strong>A first-boot welcome</strong> that shows you around and offers one-click installs for the extras you want, including DaVinci Resolve and OBS for anyone making things.</li>
     </ul>
     ${shot('Install_Welcome_Screen.webp','The Mainstream OS installer welcome screen','The installer. Boot from the USB stick, click through it, and you land on the desktop.')}
@@ -288,7 +293,7 @@ PAGES['blog'] = {
     </ul>
 
     <h2>Get it</h2>
-    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 2.0.0</strong></a> — 3.4&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 2.2.0</strong></a> — 3.4&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
 
     <h2>Everything that changed</h2>
     <p>This page is what Mainstream is, not what moved in any one release. For that — every version, and the commits behind each one — see the <a href="#changelog">changelog</a>.</p>

@@ -10,6 +10,8 @@ const I = {
   disc:    '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/>',
   sliders: '<line x1="4" y1="7" x2="20" y2="7"/><circle cx="9" cy="7" r="2"/><line x1="4" y1="17" x2="20" y2="17"/><circle cx="15" cy="17" r="2"/>',
   wrench:  '<path d="M20 7a5 5 0 0 1-6.6 4.7L7 18a2.1 2.1 0 0 1-3-3l6.3-6.3A5 5 0 0 1 16 2l-2.8 2.8 2.5 2.5L18.5 4.5A5 5 0 0 1 20 7Z"/>',
+  laptop:  '<rect x="5" y="5" width="14" height="10" rx="1.5"/><path d="M3 18h18"/>',
+  gpu:     '<rect x="3" y="7" width="18" height="10" rx="1.5"/><circle cx="9" cy="12" r="2.5"/><path d="M15 12h3"/><path d="M6 17v3M12 17v3M18 17v3"/>',
   wifi:    '<path d="M5 12a11 11 0 0 1 14 0"/><path d="M8.5 15a6 6 0 0 1 7 0"/><circle cx="12" cy="18" r="1"/>',
   bluetooth:'<path d="M8 6l8 6-4 3v-12l4 3-8 6"/>',
   bar:     '<rect x="3" y="5" width="18" height="3" rx="1"/><rect x="3" y="13" width="10" height="8" rx="1.5"/><rect x="15" y="13" width="6" height="8" rx="1.5"/>',
@@ -1332,7 +1334,7 @@ PAGES.recovery = {
 
 // ---------- HARDWARE: INTEL MACS ----------
 PAGES['intel-macs'] = {
-  group: 'Hardware', title: 'Intel Macs', icon: 'wrench',
+  group: 'Hardware', title: 'Intel Macs', icon: 'laptop',
   navTitle: 'Intel Macs',
   lede: 'Mainstream runs on Intel Macs from 2012 to 2020, and the installer applies what each generation needs on its own. Macs with Apple\'s T2 chip need a separate image, which is experimental. This page says which one to download, what works on your machine, and the one thing to arrange before you start.',
   render: () => `
@@ -1399,7 +1401,7 @@ PAGES['intel-macs'] = {
 
 // ---------- HARDWARE: LEGACY NVIDIA ----------
 PAGES['legacy-nvidia'] = {
-  group: 'Hardware', title: 'Older NVIDIA cards', icon: 'wrench',
+  group: 'Hardware', title: 'Older NVIDIA cards', icon: 'gpu',
   navTitle: 'Older NVIDIA',
   lede: 'NVIDIA cards from the RTX 20-series onward are handled by the standard image, set up during installation with nothing to configure. Cards older than that need drivers NVIDIA has frozen, which ride on a separate image. That image is experimental, and this page says which card needs it and what to expect from it.',
   render: () => `

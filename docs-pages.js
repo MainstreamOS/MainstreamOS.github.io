@@ -651,7 +651,8 @@ PAGES.background = {
   group: 'Settings', title: 'Background', icon: 'bg',
   lede: 'How the wallpaper behaves, how one picture transitions to the next, and the eleven widgets that live on top of it.',
   render: () => `
-    ${twoShot('BackgroundConfig-1.webp','Wallpaper panning, Clock widget.','BackgroundConfig-2.webp','Digital clock styling, Weather widget.')}
+
+    ${shot('BackgroundConfig-1.webp','The Background settings page showing the wallpaper transition picker with its looping preview','Every transition, with a preview above the picker playing the one you have chosen.')}
 
     <h2>Wallpaper transitions</h2>
     <p>Changing the wallpaper does not have to be a hard cut. Pick how one picture transitions to the next and the preview above the picker plays your choice on a loop, so you can judge it before you commit.</p>
@@ -676,6 +677,8 @@ PAGES.background = {
     <h2>Video wallpapers</h2>
     <p>Pick a video the same way you pick a picture and it plays as your background — nothing to install first, and the colors are drawn from it just as they are from a still image. The picker shows your wallpapers as thumbnails, and a newly chosen one appears immediately while its palette is worked out in the background.</p>
 
+    ${shot('BackgroundConfig-2.webp','Wallpaper panning, the frosted widget backgrounds switch, and the clock widget settings','Panning, the frosted backgrounds switch, and the start of the clock settings.')}
+
     <h2>Wallpaper panning</h2>
     <p>Controls how the wallpaper moves as you switch workspaces and toggle sidebars. The default feel is a gentle parallax that echoes the ripples in the mark.</p>
 
@@ -686,31 +689,7 @@ PAGES.background = {
       <div class="prop"><center><div class="k">Preferred wallpaper zoom (%)</div></center><div class="v">Baseline zoom level. 100% shows the image at screen size; &gt;100% crops in and gives panning more room.</div></div>
     </div>
 
-    <h2>Widgets on the wallpaper</h2>
-    <p>Eleven widgets can sit on the desktop, each switched on and placed on its own. Drag one where you want it and it stays there, remembered as a share of the screen rather than a pixel position, so one theme lays your desktop out the same way on a laptop panel and a 4K monitor alike.</p>
-
-    <div class="props">
-      <div class="prop"><center><div class="k">Clock</div></center><div class="v">The big time readout. Three styles, covered below.</div></div>
-      <div class="prop"><center><div class="k">Weather</div></center><div class="v">Icon, temperature and forecast, from the same source as the bar.</div></div>
-      <div class="prop"><center><div class="k">Calendar</div></center><div class="v">The month at a glance, with today marked.</div></div>
-      <div class="prop"><center><div class="k">World clock</div></center><div class="v">Other time zones beside your own.</div></div>
-      <div class="prop"><center><div class="k">Notes</div></center><div class="v">Short notes kept on the desktop.</div></div>
-      <div class="prop"><center><div class="k">To do</div></center><div class="v">A checklist that lives on the wallpaper.</div></div>
-      <div class="prop"><center><div class="k">Timers</div></center><div class="v">Countdowns you can start and reset in place.</div></div>
-      <div class="prop"><center><div class="k">Resources</div></center><div class="v">Processor, memory and disk at a glance.</div></div>
-      <div class="prop"><center><div class="k">Media</div></center><div class="v">What is playing, with controls.</div></div>
-      <div class="prop"><center><div class="k">Visualizer</div></center><div class="v">Audio drawn as it plays.</div></div>
-      <div class="prop"><center><div class="k">Your own image</div></center><div class="v">Any picture, placed on the desktop.</div></div>
-    </div>
-
-    <h3>Where each widget sits</h3>
-    <div class="props">
-      <div class="prop"><center><div class="k">Draggable</div></center><div class="v">Put it exactly where you want by hand.</div></div>
-      <div class="prop"><center><div class="k">Least busy</div></center><div class="v">Finds the emptiest part of the wallpaper and sits there.</div></div>
-      <div class="prop"><center><div class="k">Most busy</div></center><div class="v">Sits inside the detail of the picture, as a deliberate hero element.</div></div>
-    </div>
-
-    <h3>Frosted glass</h3>
+    <h2>Frosted glass</h2>
     <p>Switch on <b>Frosted widget backgrounds</b> and every widget card blurs the wallpaper behind it instead of sitting on a flat color, with a slider for how soft the blur is.</p>
     <p>It ships off. Each card that is on pays for its own blur, so a machine with older graphics is left alone unless you ask for it, and nothing is built at all while the switch is off.</p>
 
@@ -752,6 +731,34 @@ PAGES.background = {
 
     <h2>Widget: Weather</h2>
     <p>A compact weather card with icon, temperature, and forecast. Same data source as the bar\'s weather module. Positioning controls mirror the Clock widget — Draggable / Least busy / Most busy.</p>
+
+    ${shot('BackgroundConfig-3.webp','The More widgets grid with a switch for each of the nine remaining widgets','The rest of the widgets sit in one grid, each with its own switch.')}
+
+    <h2>Widgets on the wallpaper</h2>
+    <p>Eleven widgets can sit on the desktop, each switched on and placed on its own. Drag one where you want it and it stays there, remembered as a share of the screen rather than a pixel position, so one theme lays your desktop out the same way on a laptop panel and a 4K monitor alike.</p>
+
+    <div class="props">
+      <div class="prop"><center><div class="k">Clock</div></center><div class="v">The big time readout. Three styles, covered below.</div></div>
+      <div class="prop"><center><div class="k">Weather</div></center><div class="v">Icon, temperature and forecast, from the same source as the bar.</div></div>
+      <div class="prop"><center><div class="k">Calendar</div></center><div class="v">The month at a glance, with today marked.</div></div>
+      <div class="prop"><center><div class="k">World clock</div></center><div class="v">Other time zones beside your own.</div></div>
+      <div class="prop"><center><div class="k">Notes</div></center><div class="v">Short notes kept on the desktop.</div></div>
+      <div class="prop"><center><div class="k">To do</div></center><div class="v">A checklist that lives on the wallpaper.</div></div>
+      <div class="prop"><center><div class="k">Timers</div></center><div class="v">Countdowns you can start and reset in place.</div></div>
+      <div class="prop"><center><div class="k">Resources</div></center><div class="v">Processor, memory and disk at a glance.</div></div>
+      <div class="prop"><center><div class="k">Media player</div></center><div class="v">What is playing, with controls.</div></div>
+      <div class="prop"><center><div class="k">Visualizer</div></center><div class="v">Audio drawn as it plays.</div></div>
+      <div class="prop"><center><div class="k">Picture</div></center><div class="v">Any image of your own, placed on the desktop.</div></div>
+    </div>
+
+    <h3>Where each widget sits</h3>
+    <div class="props">
+      <div class="prop"><center><div class="k">Draggable</div></center><div class="v">Put it exactly where you want by hand.</div></div>
+      <div class="prop"><center><div class="k">Least busy</div></center><div class="v">Finds the emptiest part of the wallpaper and sits there.</div></div>
+      <div class="prop"><center><div class="k">Most busy</div></center><div class="v">Sits inside the detail of the picture, as a deliberate hero element.</div></div>
+      <div class="prop"><center><div class="k">Lock widget positions</div></center><div class="v">Pins every widget where it stands, so a stray drag cannot move one.</div></div>
+    </div>
+
   `
 };
 

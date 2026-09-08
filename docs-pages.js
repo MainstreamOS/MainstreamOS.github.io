@@ -317,6 +317,19 @@ PAGES['install-iso'] = {
 
     ${callout('tip','Dual-booting with Windows', '<p>The installer preserves existing operating system entries. After install, Limine will list your other operating systems automatically. If Windows doesn\'t appear, run <code>sudo limine-update</code> from a terminal and reboot.</p>')}
 
+    <h2>Running it in a virtual machine</h2>
+    <p>Mainstream installs in a virtual machine the same way it does on a real one. The display the machine is given is worth checking first, since it is picked in the hypervisor rather than in the installer.</p>
+
+    <div class="props">
+      <div class="prop"><center><div class="k">VirtualBox</div></center><div class="v">Set the graphics controller to <b>VMSVGA</b>, which is the default on current versions. The older <b>VBoxVGA</b> has no modern display driver behind it, and a guest running on it gets unsteady mouse and keyboard input.</div></div>
+      <div class="prop"><center><div class="k">VMware</div></center><div class="v">Nothing to change. Leave 3D acceleration on if the host offers it.</div></div>
+      <div class="prop"><center><div class="k">Proxmox, QEMU and KVM</div></center><div class="v">Use the <b>VirtIO-GPU</b> display. SPICE works as well.</div></div>
+    </div>
+
+    <p>The guest tools for VMware, VirtualBox, QEMU and SPICE all ship on the image and start themselves when they recognize the machine they are running on, so there is nothing to install inside the guest.</p>
+
+    ${callout('note','If the machine will not start','<p>Pick <b>Live (Safe graphics)</b> from the boot menu. It skips graphics mode setting altogether and comes up on a plain framebuffer, which is enough to run the installer.</p>')}
+
     <h2>Changing graphics cards</h2>
     <p>If you swap in a different graphics card later, run <code>gpu-drivers</code> from a terminal — it re-detects the GPU and installs the matching drivers, no password needed. Reboot afterward.</p>
 

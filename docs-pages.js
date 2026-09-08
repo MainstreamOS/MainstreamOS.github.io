@@ -1330,6 +1330,73 @@ PAGES.recovery = {
   `
 };
 
+// ---------- HARDWARE: INTEL MACS ----------
+PAGES['intel-macs'] = {
+  group: 'Hardware', title: 'Intel Macs', icon: 'wrench',
+  navTitle: 'Intel Macs',
+  lede: 'Mainstream runs on Intel Macs from 2012 to 2020, and the installer applies what each generation needs on its own. Macs with Apple\'s T2 chip need a separate image, which is experimental. This page says which one to download, what works on your machine, and the one thing to arrange before you start.',
+  render: () => `
+    <h2>Before you boot the stick</h2>
+    ${callout('warn','Mainstream replaces macOS','<p>The installer\'s <strong>Erase disk</strong> option takes the whole drive. Keeping macOS alongside is not something we test on Macs, so back up anything you want to keep first.</p>')}
+
+    <h2>Which image to download</h2>
+    <p>Almost every Mac takes the standard image. Only the last few years of Intel Macs need the other one.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">2012 to 2017</div></center><div class="v">The standard image, the same one everyone else uses.</div></div>
+      <div class="prop"><center><div class="k">2018 to 2020, with the T2 chip</div></center><div class="v">The <strong>MacBook</strong> image.</div></div>
+    </div>
+    <p>The T2 is a second chip Apple put in the last Intel Macs, and the built-in keyboard, trackpad and speakers are all wired through it rather than to the machine directly. Reaching them takes a kernel Arch does not ship, so that image carries its own. Everything else about it is the same desktop.</p>
+
+    ${callout('warn','The MacBook image is experimental','<p>It is newer and less tested than the rest of Mainstream, and it pulls the T2 kernel from <code>arch-mact2</code>, a third-party repository that is not signed. If a T2 Mac is the only computer you have, keep a way back to macOS.</p>')}
+
+    <h2>Getting online the first time</h2>
+    <p>Some Macs cannot use their own Wi-Fi until Mainstream is installed, so the install itself needs another way onto the network. A USB Ethernet adapter, a phone sharing its connection over USB, or a USB Wi-Fi stick all work. The installer tells you if your machine is one of them.</p>
+    <p>Two different reasons sit behind this, depending on the age of the Mac.</p>
+    <h3>2018 to 2020: firmware only Apple may hand out</h3>
+    <p>These Macs use a Broadcom radio whose firmware Apple has never released for anyone else to redistribute, so no Linux distribution can ship it, ours included. Mainstream installs it during setup instead: first from the <code>arch-mact2</code> repository, which is a few megabytes, and failing that by asking Apple for this machine\'s own recovery image and taking the firmware out of it, which is roughly 850 MB.</p>
+    <p>If the fetch cannot finish during the install, a timer keeps trying every twenty minutes until it does, so a machine that gets a cable later will pick it up on its own. You can also run it by hand:</p>
+<pre><code><span class="c"># Fetch the Wi-Fi and Bluetooth firmware now</span>
+<span class="k">sudo</span> mainstream-mac-firmware</code></pre>
+    <p>That command works in the live session too, so you can bring Wi-Fi up before installing rather than after.</p>
+    <h3>2012 to 2015: a driver built during setup</h3>
+    <p>Some Macs of this era carry a Broadcom card that the in-kernel driver never supported. The one that does is built against your kernel during installation, which means there is no Wi-Fi in the live session on those machines, and there is once the installed system starts. The packages ride on the image, so this part does not need a network of its own.</p>
+
+    <h2>What the installer handles for you</h2>
+    <p>None of this needs a setting. The installer looks at the machine and applies what fits it.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">2015 to 2017 Retina keyboard</div></center><div class="v">The keyboard and trackpad hang off an internal SPI bus rather than USB. That driver is added to the boot image, so the keyboard works at the disk password prompt as well as on the desktop.</div></div>
+      <div class="prop"><center><div class="k">2015 to 2017 Retina sleep</div></center><div class="v">A storage power setting these models need, without which the machine does not come back from sleep.</div></div>
+      <div class="prop"><center><div class="k">Broadcom Wi-Fi handshake</div></center><div class="v">The card\'s own security offload is turned off. Left on, it fails the handshake against most home routers and reports a correct password as wrong.</div></div>
+      <div class="prop"><center><div class="k">Function keys</div></center><div class="v">F1 to F12 behave as function keys, with brightness and volume reached by holding <kbd>fn</kbd>, which matches how the rest of the desktop expects them.</div></div>
+      <div class="prop"><center><div class="k">iPhone tethering</div></center><div class="v">Sharing a phone\'s connection over USB works out of the box, which is also the easiest way to get a Mac online for its first install.</div></div>
+    </div>
+
+    <h2>The Touch Bar</h2>
+    <p>Honest answer: it depends which Touch Bar you have, and the more common one does not work.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">2016 and 2017, the T1 chip</div></center><div class="v">Not supported. The strip stays dark. The physical <kbd>Esc</kbd> and the function keys along the top work normally.</div></div>
+      <div class="prop"><center><div class="k">2018 to 2020, the T2 chip</div></center><div class="v">Works on the MacBook image, showing the function keys.</div></div>
+    </div>
+    <p>The two generations use different hardware behind the same strip of glass, and the Linux driver only speaks to the later one. There is nothing to configure either way.</p>
+
+    <h2>Which Mac is this?</h2>
+    <p>From macOS, open the Apple menu and choose <strong>About This Mac</strong>. From a Mainstream live session, open a terminal and run:</p>
+<pre><code><span class="c"># The model identifier, such as MacBookPro15,1</span>
+<span class="k">cat</span> /sys/class/dmi/id/product_name</code></pre>
+    <p>Identifiers of <code>MacBookPro15,x</code> and up, <code>MacBookAir8,x</code> and up, <code>MacBook</code> models from 2018, <code>Macmini8,1</code> and <code>iMac20,x</code> are the T2 machines that want the MacBook image. Anything older takes the standard one.</p>
+
+    ${callout('note','Already installed and it is a T2 Mac?','<p>Installing the standard image on a T2 Mac leaves you without the built-in keyboard, trackpad and speakers, and a USB keyboard and mouse will get you through the install. There is no in-place move to the MacBook image, so switching means installing again.</p>')}
+
+    <h2>What still does not work</h2>
+    <ul>
+      <li>The Touch Bar on 2016 and 2017 models, as above.</li>
+      <li>The fingerprint reader, on every Mac. Nothing on Linux speaks to it.</li>
+      <li>The T1 chip generally, which is why 2016 and 2017 models keep their function keys rather than gaining a working strip.</li>
+      <li>Booting with Secure Boot left on. Turn it off in Startup Security Utility, from macOS Recovery, before installing.</li>
+    </ul>
+  `
+};
+
 // ---------- SECURITY ----------
 PAGES.security = {
   group: 'Security', title: 'The Safety Model', icon: 'check',

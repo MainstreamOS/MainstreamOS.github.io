@@ -8,6 +8,7 @@ const NAV_ORDER = [
   { group: 'Creative', ids: ['davinci','obs'], collapsible: true, icon: 'film', heading: 'Topics' },
   { group: 'Gaming', ids: ['gaming','steam-proton'], collapsible: true, icon: 'game' },
   { group: 'Remote Access', ids: ['remote-access'], bare: true },
+  { group: 'Hardware', ids: ['intel-macs'], bare: true },
   { group: 'Security', ids: ['security','verify','firewall','privacy'], collapsible: true, icon: 'shield' },
   { group: '', ids: ['changelog'], bare: true },
 ];

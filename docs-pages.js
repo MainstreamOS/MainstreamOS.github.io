@@ -1283,6 +1283,8 @@ PAGES.manage = {
   group: 'Settings', title: 'Manage', icon: 'apps', navTitle: 'Manage',
   lede: 'Which app opens which kind of file, and what starts up when you log in.',
   render: () => `
+    ${shot('ManageConfig-1.webp','The Manage page showing the ten default app roles, each with a picker beside it','Ten roles, each with every app on the machine that can fill it.')}
+
     <h2>Default apps</h2>
     <p>Ten roles, each with a picker that lists every app on the machine able to fill it. Change one and the choice is written where the rest of the system reads it, so a link in a chat window and a double click in Files both land on the app you named.</p>
     <p>Every role arrives already set on a fresh install, so nothing here starts out blank.</p>
@@ -1300,9 +1302,11 @@ PAGES.manage = {
       <div class="prop"><center><div class="k">PDF Documents</div></center><div class="v">PDFs, and the other document formats Papers reads.</div></div>
     </div>
 
+    ${shot('ManageConfig-2.webp','The Auto Start Apps list with a switch beside each entry and an Add an app picker below','Everything that opens after you log in, with the ones you added marked as yours.')}
+
     <h2>Auto start apps</h2>
-    <p>Everything that opens on its own after you log in, in one list. Each entry says whether you added it or whether it came with the system, so the ones you can safely turn off are obvious.</p>
-    <p>Add an app with the picker at the bottom, or remove one from the list. Turning an entry off does not uninstall anything.</p>
+    <p>Everything that opens on its own after you log in, in one list. Each entry says whether you added it or whether it came with the system.</p>
+    <p>Add one with the picker at the bottom. Anything you added can be taken off the list again; the entries that came with the system stay on it and are switched off instead, which is as far as this goes without root. Either way, switching one off does not uninstall it.</p>
 
     ${callout('note','Takes effect at next login','<p>A change here is not applied to the session you are in. Nothing opens or closes when you make it; the list is read the next time you log in.</p>')}
   `

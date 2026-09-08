@@ -1397,6 +1397,56 @@ PAGES['intel-macs'] = {
   `
 };
 
+// ---------- HARDWARE: LEGACY NVIDIA ----------
+PAGES['legacy-nvidia'] = {
+  group: 'Hardware', title: 'Older NVIDIA cards', icon: 'wrench',
+  navTitle: 'Older NVIDIA',
+  lede: 'NVIDIA cards from the RTX 20-series onward are handled by the standard image, set up during installation with nothing to configure. Cards older than that need drivers NVIDIA has frozen, which ride on a separate image. That image is experimental, and this page says which card needs it and what to expect from it.',
+  render: () => `
+    <h2>Which image does my card need?</h2>
+    <p>This does not follow the marketing generations, so it is worth checking rather than guessing.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">RTX 20-series and newer</div></center><div class="v">The <strong>standard</strong> image. The open driver is installed for you and this page does not apply.</div></div>
+      <div class="prop"><center><div class="k">GTX 750 through the GTX 10-series</div></center><div class="v">The <strong>legacy-NVIDIA</strong> image. A GTX 1080 and a GTX 750 Ti are years apart and share a driver branch.</div></div>
+      <div class="prop"><center><div class="k">GTX 600 and 700 series</div></center><div class="v">The <strong>legacy-NVIDIA</strong> image, on an older branch again.</div></div>
+      <div class="prop"><center><div class="k">GTX 400 and 500 series</div></center><div class="v">The <strong>legacy-NVIDIA</strong> image, on the oldest branch we carry.</div></div>
+      <div class="prop"><center><div class="k">Older than the GTX 400 series</div></center><div class="v">The <strong>standard</strong> image. There is no proprietary driver left for these, so they run on the open nouveau driver.</div></div>
+    </div>
+    <p>You do not have to work out which branch you are on. The installer reads the card's hardware ID and picks it, and all three are on the image already.</p>
+    <p>To see what you have, open a terminal and run:</p>
+<pre><code><span class="c"># Your graphics card, as the system sees it</span>
+<span class="k">lspci</span> | <span class="k">grep</span> -i vga</code></pre>
+
+    <h2>Why this one is called experimental</h2>
+    ${callout('warn','Set your expectations before you install','<p>This is a real, working desktop on the right hardware.</p>')}
+    <div class="props">
+      <div class="prop"><center><div class="k">The drivers are frozen</div></center><div class="v">NVIDIA has stopped developing the branches these cards need. They receive no new fixes, and when a future Linux kernel moves past what a branch understands, the driver stops building until someone patches it. Your desktop still starts, on the open driver, but the fast one is gone until that happens.</div></div>
+      <div class="prop"><center><div class="k">The driver is rebuilt on your machine</div></center><div class="v">It is compiled against your kernel every time the kernel updates, rather than shipped ready-made. That is one more moving part than the standard image has, and it is where breakage tends to appear.</div></div>
+    </div>
+
+    <h2>What we know does not work</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Variable refresh rate</div></center><div class="v">Not available on the GTX 750 through GTX 10-series under Wayland, so Mainstream leaves it off. A monitor advertising G-Sync or FreeSync will run at a fixed rate.</div></div>
+      <div class="prop"><center><div class="k">Cards with 2 GB of memory</div></center><div class="v">Tight enough that a heavy desktop can run the card out of memory. It works, but it is the configuration most likely to misbehave under load.</div></div>
+      <div class="prop"><center><div class="k">A blank or gray desktop shell</div></center><div class="v">A known failure of how the shell hands images to these drivers. If you hit it, the fix is one line, described below.</div></div>
+      <div class="prop"><center><div class="k">The live session on the oldest cards</div></center><div class="v">The USB stick itself runs the newest of the three branches, which the GTX 400 to 700 series cannot use, so the live desktop falls back to software rendering and will feel slow. Your card gets its own driver during installation, and the installed system is the one to judge.</div></div>
+    </div>
+
+    <h2>If the desktop comes up blank or gray</h2>
+    <p>On a GTX 750 through GTX 10-series card, Mainstream has already written the cure into your config, commented out. Open <code>~/.config/hypr/custom/env.lua</code> and find these two lines near the end:</p>
+<pre><code><span class="c">-- Gray/blank Quickshell on NVIDIA? Uncomment to force the SHM buffer path:</span>
+<span class="c">-- hl.env("QS_DISABLE_DMABUF", "1")</span></code></pre>
+    <p>Remove the two dashes from the front of the second line so it reads:</p>
+<pre><code><span class="k">hl.env</span>(<span class="s">"QS_DISABLE_DMABUF"</span>, <span class="s">"1"</span>)</code></pre>
+    <p>Then log out and back in. It trades some speed for a shell that draws. On older cards the line is not written for you, so add it to the same file yourself.</p>
+
+    <h2>If you downloaded the wrong image</h2>
+    <p>Nothing is broken and nothing is lost. Installing the standard image on an older NVIDIA card gives you a working desktop on the open nouveau driver, slower for games and video, and the installer leaves a note pointing at this edition. You can reinstall with the right image when it suits you.</p>
+
+    ${callout('note','Tell us how it went','<p>Every release is tested on an older NVIDIA machine before it goes out, but one card cannot stand in for a range that runs from the GTX 400 series to the GTX 10-series. If yours works, or if it does not, say so in <a href="https://discord.gg/WJ3AUK5Aqd">#support</a> with the model. That is how this edition gets better.</p>')}
+  `
+};
+
 // ---------- SECURITY ----------
 PAGES.security = {
   group: 'Security', title: 'The Safety Model', icon: 'check',

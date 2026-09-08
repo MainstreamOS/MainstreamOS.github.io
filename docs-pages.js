@@ -254,10 +254,11 @@ PAGES['install-iso'] = {
       <tbody>
         <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-x.x.x.iso</b></a></td><td>3.4 GB</td><td>Most modern laptops &amp; desktops</td></tr>
         <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-legacy-nvidia-x.x.x.iso</b></a></td><td>4.8 GB</td><td>Older NVIDIA cards, back to the GeForce 400 series (experimental)</td></tr>
+        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/macbook/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-macbook-x.x.x.iso</b></a></td><td>&mdash;</td><td>Intel Macs with Apple's T2 chip, 2018 to 2020 (experimental). Earlier Macs take the standard image</td></tr>
       </tbody>
     </table>
 
-    ${callout('note','All versions & checksums','<p>Looking for a specific release, the experimental legacy-NVIDIA edition, or the <code>.sha256</code> and signature files? Browse <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">every download on SourceForge</a>.</p>')}
+    ${callout('note','All versions & checksums','<p>Looking for a specific release, the experimental legacy-NVIDIA or MacBook editions, or the <code>.sha256</code> and signature files? Browse <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">every download on SourceForge</a>.</p>')}
 
     <h2>Flash to USB</h2>
     <p>Flash the downloaded ISO file to a USB stick. Any USB stick 8 GB or larger works.</p>
@@ -1435,7 +1436,7 @@ PAGES['intel-macs'] = {
     <p>Almost every Mac takes the standard image. Only the last few years of Intel Macs need the other one.</p>
     <div class="props">
       <div class="prop"><center><div class="k">2012 to 2017</div></center><div class="v">The standard image, the same one everyone else uses.</div></div>
-      <div class="prop"><center><div class="k">2018 to 2020, with the T2 chip</div></center><div class="v">The <strong>MacBook</strong> image.</div></div>
+      <div class="prop"><center><div class="k">2018 to 2020, with the T2 chip</div></center><div class="v">The <a href="https://sourceforge.net/projects/mainstreamos/files/macbook/" style="color:var(--stream-a);text-decoration:underline"><strong>MacBook</strong> image</a>.</div></div>
     </div>
     <p>The T2 is a second chip Apple put in the last Intel Macs, and the built-in keyboard, trackpad and speakers are all wired through it rather than to the machine directly. Reaching them takes a kernel Arch does not ship, so that image carries its own. Everything else about it is the same desktop.</p>
 

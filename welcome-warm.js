@@ -304,7 +304,15 @@ PAGES['donate'] = {
   lede: 'Mainstream is free, open-source, and independent. If it earned a place on your machine, you can help keep it going.',
   render: () => `
     <p>This started as a passion project and became something closer to a love letter to the Linux community. It grew into a whole operating system — installer, signed package repo, gaming and creator modes, snapshot rollback, a real settings panel for everything — built and maintained in the open.</p>
-    <p>Sponsorship is what keeps it moving. It pays for hardware to test on and the hours behind new features, polish, and keeping everything working across Arch's rolling updates. Even a small amount makes a direct difference to how fast Mainstream gets better.</p>
+    <p>Sponsorship is what keeps it moving. It pays for the hours behind new features and polish, for keeping everything working across Arch's rolling updates, and for three things in particular.</p>
+
+    <h2>What it pays for</h2>
+    <ul>
+      <li><strong>Hardware to test on.</strong> Mainstream is built and tested on the machines I happen to own. Everything outside that set is worked out at a distance: other graphics cards, other laptops, firmware that behaves in its own way, all of it from bug reports rather than from the machine itself. Having one in hand turns a fix that should work into one that is known to, and turns a week of back and forth into an afternoon.</li>
+      <li><strong>The Steam Deck and Framework laptops.</strong> Two devices worth supporting properly rather than by accident. Console Mode already works by handing the whole machine to a full-screen Steam session and taking it back afterward, which is the shape of a Deck exactly, and Framework is the laptop this community actually buys and keeps for years. Doing either one justice means having one on the desk rather than reasoning about it from a distance.</li>
+      <li><strong>Dedicated hosting.</strong> Downloads come from GitHub and SourceForge today, and both have served this project well. Hosting of its own would make them faster, allow mirrors, and give the repository room to grow.</li>
+    </ul>
+    <p>Even a small amount makes a direct difference to how fast Mainstream gets better.</p>
 
     <h2>Ways to help</h2>
     <div class="props">

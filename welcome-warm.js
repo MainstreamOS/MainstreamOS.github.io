@@ -195,10 +195,9 @@ PAGES['blog'] = {
       <li><strong>A wallpaper that rotates.</strong> Point it at a folder instead of one picture and set a timer. The palette follows along with every change, so the whole desktop recolors as it goes.</li>
       <li><strong>A wallpaper that changes with style.</strong> Ten ways for one picture to transition to the next: crossfade, slide, zoom, wipe, circle, ripple, peel, glitch, CRT and shatter, or let it pick at random. A preview beside the picker plays your choice on a loop.</li>
       <li><strong>Video wallpapers.</strong> A video works as a wallpaper with nothing extra to install — it plays quietly on a loop across every screen, and the color scheme comes from it just the same.</li>
-      <li><strong>Themes.</strong> Your whole look — wallpaper, colors, app style, icons, interface changes, and now the shape, transparency, blur, dim, borders, shadow, animations, window rules and which edge the dock sits on as well — saves under a name with a preview, and switches back in one tap.</li>
-      <li><strong>Take your look with you.</strong> A theme saves out to a single file you can hand to someone else, wallpaper included, with anything particular to your machine left behind.</li>
+        <li><strong>Themes.</strong> If you can change it, a theme remembers it. Wallpaper, colors, app style, icons, every bar, dock and title bar setting from shape to transparency to behavior, and now blur, dim, borders, shadow, animations, window rules and which edge the dock or bar sits on as well. It all saves under a name with a preview, and switches back in one tap.</li>
+      <li><strong>Take your look with you.</strong> A theme saves out to a single file you can hand to someone else, wallpaper included.</li>
       <li><strong>Day and Night.</strong> Pair two themes and let them follow the clock or your night-light schedule.</li>
-      <li><strong>Themes carry all of it.</strong> A theme takes every bar, dock and title bar setting with it: style, color, transparency, shape and behavior.</li>
     </ul>
     <figure>
       <div class="shot">
@@ -209,22 +208,15 @@ PAGES['blog'] = {
 
     <h2>Make it yours</h2>
     <ul>
-      <li><strong>A bar you arrange.</strong> Show, hide and reorder every piece of the bar by dragging, move them between the left, middle and right, and drop two together to join them into a single rounded group.</li>
-      <li><strong>A dock on any edge.</strong> Put it along the top, bottom, left or right of the screen, and the bar steps aside when you give the dock the edge it was using.</li>
-      <li><strong>Title bars, on or off.</strong> On for a familiar desktop, off for a clean one, switched instantly.</li>
+      <li><strong>A bar you arrange, and paint.</strong> Show, hide and reorder every piece by dragging, move them between the left, middle and right, and drop two together to join them into a single rounded group. Then set the shape, transparency, color and width of the bar and of each widget on it. Four styles to start from: Hug, Float, Rect, or Notch. Float and Notch can each be split into three separate strips.</li>
+      <li><strong>A dock you position, style and tune.</strong> Put it along the top, bottom, left or right of the screen, and the bar steps aside when you give the dock the edge it was using. One page holds its size, shape, corner roundness, transparency and color, in Float, Rect or Notch. Set how far an icon grows on hover and whether hovering magnifies or glows, mark open windows with dashes, dots or a count badge, choose the animation when you click an app, and turn the buttons on either side on or off.</li>
+      <li><strong>Title bars, on or off.</strong> On for a familiar desktop, off for a clean one, switched instantly. Set their color and how far you can see through them, and return to stock in one press.</li>
       <li><strong>Windows drawn the way you want.</strong> Corner radius, border thickness, the gaps between windows and around the screen, how see-through they are, the blur behind them, the shadow beneath them, how much the ones you are not using dim, and how they animate. Give the borders a gradient of your own or leave them following the wallpaper, and put the lot back with one press.</li>
       <li><strong>App style, icons and pointer.</strong> All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.</li>
       <li><strong>Fonts.</strong> A searchable list that shows each font in its own lettering, and your choice carries into your apps rather than stopping at the desktop.</li>
       <li><strong>Widgets on your desktop.</strong> Eleven of them: the clock, weather, a calendar, world clocks, notes, a to do list, timers, system resources, a music visualizer, media controls and a picture of your own. Drag each one where you want it, and give them frosted glass that samples the wallpaper behind. A theme remembers which are on and where they sit, and the clock gains a third style, a chunky pixel readout.</li>
       <li><strong>A menu on the wallpaper.</strong> Right click the desktop to change the wallpaper, switch theme, and reach the bar and dock settings without opening Settings first.</li>
       <li><strong>A built-in window rule editor.</strong> Most desktops leave per-app rules to a config file you edit by hand. Here it is a page in Settings: teach one app where to open, whether it floats, how see-through it is, and what it is allowed to do.</li>
-      <li><strong>Four bar styles.</strong> Hug, Float, Rect, or Notch, which sits on the screen edge and curves away from it.</li>
-      <li><strong>A bar you can paint.</strong> Set the shape, transparency, color and width of the bar and of each widget on it.</li>
-      <li><strong>A bar in three pieces.</strong> Any floating bar can be split into three strips.</li>
-      <li><strong>A settings page for the dock.</strong> Size, shape, corner roundness, transparency and color, all in one place.</li>
-      <li><strong>Three dock styles.</strong> Float, Rect or Notch.</li>
-      <li><strong>A dock that behaves how you like.</strong> Set how far an icon grows on hover and whether hovering magnifies or glows, mark open windows with dashes, dots or a count badge, choose the animation when you click an app, and turn the buttons on either side on or off.</li>
-      <li><strong>Title bars in your colors.</strong> Set their color and how far you can see through them, and return to stock in one press.</li>
     </ul>
     ${shot('BarConfig-1.webp','The bar widget layout editor in Settings, showing Simple and Custom modes and the widget list','The bar layout editor. Drag two pieces together and they join into one.')}
 

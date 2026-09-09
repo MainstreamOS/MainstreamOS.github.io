@@ -252,9 +252,9 @@ PAGES['install-iso'] = {
     <table class="t">
       <thead><tr><th>Image</th><th>Size</th><th>Best for</th></tr></thead>
       <tbody>
-        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-x.x.x.iso</b></a></td><td>3.4 GB</td><td>Most modern laptops &amp; desktops</td></tr>
+        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-x.x.x.iso</b></a></td><td>3.5 GB</td><td>Most modern laptops &amp; desktops</td></tr>
         <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/legacy-nvidia/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-legacy-nvidia-x.x.x.iso</b></a></td><td>4.8 GB</td><td>Older NVIDIA cards, back to the GeForce 400 series (experimental)</td></tr>
-        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/macbook/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-macbook-x.x.x.iso</b></a></td><td>&mdash;</td><td>Intel Macs with Apple's T2 chip, 2018 to 2020 (experimental). Earlier Macs take the standard image</td></tr>
+        <tr><td><a href="https://sourceforge.net/projects/mainstreamos/files/macbook/" style="color:var(--stream-a);text-decoration:underline"><b>mainstream-macbook-x.x.x.iso</b></a></td><td>3.5 GB</td><td>Intel Macs with Apple's T2 chip, 2018 to 2020 (experimental). Earlier Macs take the standard image</td></tr>
       </tbody>
     </table>
 

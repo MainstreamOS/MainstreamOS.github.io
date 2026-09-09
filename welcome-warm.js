@@ -20,7 +20,7 @@ PAGES.home = {
         <div class="cta-row">
           <a class="btn stream" href="https://mainstreamos.org/download">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12"/><path d="m6 10 6 6 6-6"/><path d="M4 21h16"/></svg>
-            Download · 3.4 GB
+            Download · 3.5 GB
           </a>
           <a class="btn ghost" href="#install-iso">Install guide →</a>
         </div>

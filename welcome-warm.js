@@ -212,11 +212,11 @@ PAGES['blog'] = {
       <li><strong>A dock you position, style and tune.</strong> Put it along the top, bottom, left or right of the screen, and the bar steps aside when you give the dock the edge it was using. One page holds its size, shape, corner roundness, transparency and color, in Float, Rect or Notch. Set how far an icon grows on hover and whether hovering magnifies or glows, mark open windows with dashes, dots or a count badge, choose the animation when you click an app, and turn the buttons on either side on or off.</li>
       <li><strong>Title bars, on or off.</strong> On for a familiar desktop, off for a clean one, switched instantly. Set their color and how far you can see through them, and return to stock in one press.</li>
       <li><strong>Windows drawn the way you want.</strong> Corner radius, border thickness, the gaps between windows and around the screen, how see-through they are, the blur behind them, the shadow beneath them, how much the ones you are not using dim, and how they animate. Give the borders a gradient of your own or leave them following the wallpaper, and put the lot back with one press.</li>
+      <li><strong>A built-in window rule editor.</strong> Most desktops leave per-app rules to a config file you edit by hand. Here it is a page in Settings: teach one app where to open, whether it floats, how see-through it is, and what it is allowed to do.</li>
       <li><strong>App style, icons and pointer.</strong> All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.</li>
       <li><strong>Fonts.</strong> A searchable list that shows each font in its own lettering, and your choice carries into your apps rather than stopping at the desktop.</li>
       <li><strong>Widgets on your desktop.</strong> Eleven of them: the clock, weather, a calendar, world clocks, notes, a to do list, timers, system resources, a music visualizer, media controls and a picture of your own. Drag each one where you want it, and give them frosted glass that samples the wallpaper behind. A theme remembers which are on and where they sit, and the clock gains a third style, a chunky pixel readout.</li>
       <li><strong>A menu on the wallpaper.</strong> Right click the desktop to change the wallpaper, switch theme, and reach the bar and dock settings without opening Settings first.</li>
-      <li><strong>A built-in window rule editor.</strong> Most desktops leave per-app rules to a config file you edit by hand. Here it is a page in Settings: teach one app where to open, whether it floats, how see-through it is, and what it is allowed to do.</li>
     </ul>
     ${shot('BarConfig-1.webp','The bar widget layout editor in Settings, showing Simple and Custom modes and the widget list','The bar layout editor. Drag two pieces together and they join into one.')}
 
@@ -231,11 +231,11 @@ PAGES['blog'] = {
     <p>Twenty pages cover the whole machine, ten of which are Mainstream's own work with no equivalent in the shell it started from.</p>
     <ul>
       <li><strong>Displays.</strong> Arrange your monitors and set resolution, refresh rate, scale, orientation, HDR and color profiles, or mirror one screen onto another.</li>
+      <li><strong>Wi-Fi, Bluetooth, sound, power, accounts and services</strong>, each with a proper page instead of a text file.</li>
       <li><strong>A layout per workspace.</strong> Four ways of arranging windows automatically plus a floating mode, and every workspace remembers its own.</li>
       <li><strong>Keyboard shortcuts.</strong> A real editor rather than a printed list — change the ones that ship, add your own, and set them by pressing the keys you want.</li>
-      <li><strong>Touchpad gestures.</strong> Choose what each swipe and pinch does, applied the moment you set it.</li>
       <li><strong>Manage your apps.</strong> Choose which app opens which kind of file, and what starts up when you log in, from one page. Every role arrives already set on a fresh install.</li>
-      <li><strong>Wi-Fi, Bluetooth, sound, power, accounts and services</strong>, each with a proper page instead of a text file.</li>
+      <li><strong>Touchpad gestures.</strong> Choose what each swipe and pinch does, applied the moment you set it.</li>
     </ul>
     <figure>
       <div class="shot">

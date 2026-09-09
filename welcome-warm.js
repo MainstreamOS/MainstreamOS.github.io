@@ -222,8 +222,7 @@ PAGES['blog'] = {
 
     <h2>A desktop and a games console, in one</h2>
     <ul>
-      <li><strong>Gaming Mode.</strong> One keypress puts the desktop away and hands the machine to Steam's full-screen mode, the same way a Steam Deck runs, then gives the desktop back. AMD, Intel and NVIDIA alike.</li>
-      <li><strong>Console Mode.</strong> An install option that starts straight into the full-screen Steam session and sets up game controllers, turning a computer under the TV into a console — with the desktop still there whenever you want it.</li>
+      <li><strong>Gaming and Console Mode.</strong> One keypress puts the desktop away and hands the machine to Steam's full-screen mode, the same way a Steam Deck runs, then gives the desktop back. AMD, Intel and NVIDIA alike. Install with Console Mode and it starts there instead: straight into the full-screen session with game controllers already set up, which turns a computer under the TV into a console. The desktop is still there whenever you want it.</li>
       <li><strong>Windows games, ready to run.</strong> The compatibility layer that runs Windows titles is installed and switched on during setup, so your library works the first time you open it.</li>
     </ul>
     ${shot('Gaming-Big-Picture.webp','Steam Big Picture running as the Mainstream Gaming Mode session','Gaming Mode — the machine really does hand itself over, rather than running Steam in a window.')}

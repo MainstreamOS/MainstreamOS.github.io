@@ -78,7 +78,29 @@ printf "    target:  %s\n\n" "$CLONE_DIR"
 
 if [[ -d "$CLONE_DIR/.git" ]]; then
     say "Existing clone at $CLONE_DIR — fetching latest $REPO_BRANCH..."
-    git -C "$CLONE_DIR" fetch --tags --force origin "$REPO_BRANCH"
+    # A clone that has lost an object cannot be fetched into, and this script
+    # reuses whatever is already at $CLONE_DIR, so one damaged object made a
+    # fresh install fail the same way updatems and repair had just failed. The
+    # clone is a cache. When the fetch fails with the signature of a damaged
+    # repository, set it aside and clone again, carrying the applied-tag marker
+    # across so the desktop still knows which release it has. Anything else
+    # that makes the fetch fail, a dropped connection say, still stops here.
+    if ! _fetch_out=$(git -C "$CLONE_DIR" fetch --tags --force origin "$REPO_BRANCH" 2>&1); then
+        printf '%s\n' "$_fetch_out" >&2
+        if grep -qE 'is empty|bad object|did not send all necessary objects|corrupt|unable to read|could not read' <<<"$_fetch_out"; then
+            _aside="${CLONE_DIR}.corrupt-$(date +%Y%m%d-%H%M%S)"
+            _saved_marker=""
+            [[ -f "$MARKER" ]] && _saved_marker=$(<"$MARKER")
+            say "The clone at $CLONE_DIR is damaged. Setting it aside as $_aside and cloning again."
+            mv "$CLONE_DIR" "$_aside"
+            git clone --branch "$REPO_BRANCH" "$REPO_URL" "$CLONE_DIR"
+            [[ -n "$_saved_marker" ]] && printf '%s\n' "$_saved_marker" > "$MARKER"
+            git -C "$CLONE_DIR" fetch --tags --force origin "$REPO_BRANCH"
+            say "Fresh clone in place. Any local edits are still in $_aside."
+        else
+            die "git fetch failed"
+        fi
+    fi
     # If the user has local changes, fail loud rather than blow them away.
     if ! git -C "$CLONE_DIR" diff --quiet || ! git -C "$CLONE_DIR" diff --cached --quiet; then
         die "Local changes in $CLONE_DIR. Commit/stash them or set MS_CLONE_DIR to a fresh path."

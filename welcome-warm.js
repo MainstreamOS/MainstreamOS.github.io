@@ -179,8 +179,8 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements and project updates.',
   render: () => `
-    <div class="eyebrow">Release &middot; 2.2.0 &middot; September 8, 2026</div>
-    <h2 id="mainstream-os-2-2-0">Mainstream OS 2.2.0 — a Linux desktop you set up by clicking</h2>
+    <div class="eyebrow">Release &middot; 2.3.0 &middot; September 14, 2026</div>
+    <h2 id="mainstream-os-2-2-0">Mainstream OS 2.3.0 — a Linux desktop you set up by clicking</h2>
 
     <p>Mainstream OS is a Linux operating system built on Arch. Its desktop is Hyprland — the software that arranges your windows and decides where they go — and Hyprland is normally set up by hand, by editing text files. Here you set it up by clicking: displays, window layouts, keyboard shortcuts, the bar, the look of the whole interface, updates and repairs each get a proper settings page — a settings app, not a config file, and never a terminal. Pick a wallpaper and the whole desktop takes its colors from it. One keypress hands the machine over to a full-screen Steam session for gaming, and a graphical installer puts it all on your computer in a few minutes. <strong>Deeply featured. Genuinely friendly.</strong></p>
 

@@ -1,6 +1,25 @@
 {
-  "latest": "2.3.0",
+  "latest": "2.3.1",
   "releases": [
+    {
+      "version": "2.3.1",
+      "date": "2026-09-14",
+      "kind": "fix",
+      "summary": "A patch on 2.3.0: Gemini 3 models can use tools in the AI sidebar again, and Brazilian Portuguese gains another 52 translated strings",
+      "changes": [
+        "The AI sidebar's Gemini 3 models no longer stop with an error the moment they run a tool, so asking one to change your wallpaper or look something up on your system works through to the answer",
+        "More of the interface is translated in Brazilian Portuguese (thanks @douglasboardman)"
+      ],
+      "commits": [
+        "2dbd074a2 ai: Gemini 3 models can run a tool without erroring on the next turn",
+        "9c176898b i18n: improve Brazilian Portuguese translations"
+      ],
+      "commitsTotal": 2,
+      "commitNotes": {
+        "2dbd074a2": "Asking Gemini 3 to do something that calls a tool failed with \"Function call is\nmissing a thought_signature\" as soon as the tool returned, because the reply\nsent back the model's own call without the signature Gemini 3 attaches to it.\nThe signature is kept and replayed now, along with the arguments the call was\nmade with, which were being dropped from that history too."
+      },
+      "merges": 1
+    },
     {
       "version": "2.3.0",
       "date": "2026-09-14",

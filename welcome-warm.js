@@ -318,7 +318,7 @@ PAGES['donate'] = {
       <div class="prop"><center><div class="k">GitHub Sponsors</div></center><div class="v">Monthly or one-time, at any amount — the simplest way to back ongoing work.</div></div>
       <div class="prop"><center><div class="k">Ko-fi</div></center><div class="v">A one-off tip, no account or subscription needed.</div></div>
       <div class="prop"><center><div class="k">Patreon</div></center><div class="v">Monthly membership, if that suits you better than sponsoring through GitHub.</div></div>
-      <div class="prop"><center><div class="k">Translate</div></center><div class="v">Mainstream speaks 13 languages so far. Adding yours takes minutes and helps people who cannot use it in English.</div></div>
+      <div class="prop"><center><div class="k">Translate</div></center><div class="v">Mainstream speaks 13 languages so far. The language files live on <a href="https://github.com/MainstreamOS/dots-hyprland">GitHub</a>, and a pull request adding yours is as welcome as one against the code.</div></div>
       <div class="prop"><center><div class="k">Contribute</div></center><div class="v">Code, docs, translations, bug reports, or just telling a friend — all of it counts, and none of it costs a thing.</div></div>
     </div>
 
@@ -326,7 +326,6 @@ PAGES['donate'] = {
       <a class="btn stream" href="https://github.com/sponsors/MainstreamOS">Donate / Sponsor on GitHub</a>
       <a class="btn ghost" href="https://ko-fi.com/mainstreamos">Tip on Ko-fi</a>
       <a class="btn ghost" href="https://www.patreon.com/cw/MainstreamOS">Support on Patreon</a>
-      <a class="btn ghost" href="https://crowdin.com/project/mainstream-os">Help translate</a>
     </div>
 
     ${callout('note','Thank you','<p>Whether you sponsor, contribute, or just use it and tell someone — thank you for helping make Linux mainstream.</p>')}

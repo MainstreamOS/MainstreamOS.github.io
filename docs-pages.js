@@ -1878,6 +1878,87 @@ PROTON_FSR4_UPGRADE=1 gamemoderun mangohud %command%</code></pre>
 
 // end
 
+PAGES['gaming-performance'] = {
+  group: 'Gaming', title: 'Gaming Performance', icon: 'power',
+  lede: 'Some performance tweaks are worth it, plenty are not, and a few will quietly make your machine slower or less safe. This page lists every performance change Mainstream makes for you, the ones you can switch on yourself, and the popular ones we leave out, with the reasoning for each.',
+  render: () => `
+    <h2>How we decide</h2>
+    <p>There is a lot of Linux gaming advice that trades something real for a number that never shows up in a game. Before a change ships here, it has to get past three questions.</p>
+    <ul>
+      <li><strong>Does it help where you would actually notice?</strong> Frame pacing and stutter matter far more than average frame rate. A change that adds two percent to a benchmark and nothing to how a game feels is not worth the risk it carries.</li>
+      <li><strong>What happens when it goes wrong?</strong> Costing you a little battery is not the same category of problem as a machine that will not boot.</li>
+      <li><strong>Can you undo it?</strong> Anything we switch on, you can switch off, from Settings, without opening a terminal.</li>
+    </ul>
+    <p>Anything that fails the last question does not ship at all, however good the numbers look.</p>
+
+    <h2>On by default</h2>
+    <p>These two are on for everyone. They are safe, they are reversible, and neither one asks you to understand it first.</p>
+
+    <h3>GameMode</h3>
+    <p><strong>What it does.</strong> While a game is running, GameMode asks the rest of the system to get out of the way. The processor moves to its performance profile, the graphics card eases off power saving, and the game is scheduled ahead of background work. When you quit, everything goes back to normal on its own.</p>
+    <p><strong>Where you would notice.</strong> Most on laptops and on any machine that idles in a power saving mode, where the opening minute of a game used to be spent waiting for the hardware to wake up properly.</p>
+    <p><strong>What it costs.</strong> A little more power while you are playing, and nothing at all when you are not. It does nothing until a game asks it to.</p>
+    <p>Gaming Mode on <code>SUPER</code>+<code>G</code> uses it automatically. For a game launched from the desktop, add <code>gamemoderun %command%</code> to its launch options, which is covered on the <a href="#steam-proton">Steam + Proton</a> page.</p>
+
+    <h3>Disk scheduling matched to your drive</h3>
+    <p><strong>What it does.</strong> Linux lets you choose how disk requests are queued, and the right answer depends entirely on the drive. Mainstream now picks per drive instead of applying one setting to everything. Mechanical hard drives get BFQ, which keeps the desktop responsive while a game loads or a large copy runs. NVMe drives are deliberately left alone, because they are fast enough that any scheduler is just extra work in the way.</p>
+    <p><strong>Where you would notice.</strong> Anyone with a game library on a mechanical drive. If every drive in your machine is solid state, this changes nothing for you, which is the intended result: they are already on the setting that suits them.</p>
+    <p><strong>What it costs.</strong> On a mechanical drive, a little raw throughput in exchange for the machine staying usable while that drive is busy.</p>
+    ${callout('note','The common mistake this avoids', '<p>Plenty of guides tell you to put BFQ on every drive. On a fast NVMe drive that costs performance for no benefit. Matching the scheduler to the hardware is the whole point, so the rule checks what kind of drive it is looking at first.</p>')}
+
+    <h2>Switch on if you want them</h2>
+    <p>These live in <strong>Settings</strong>, off by default. Each one is a genuine trade rather than a free win, so each is described with what it gives up.</p>
+
+    <h3>Responsive scheduler</h3>
+    <p><strong>What it does.</strong> Replaces the part of the kernel that decides which program runs next with one tuned for responsiveness rather than raw throughput. Of everything on this page, this is the biggest change to how a machine feels under load. A game stays smooth while something heavy is compiling, downloading, or encoding behind it.</p>
+    <p><strong>Where you would notice.</strong> If you do other things while you play, or if your processor has fewer cores and background work competes with the game for them. On an otherwise idle machine playing one game, expect very little difference.</p>
+    <p><strong>What it costs.</strong> This is a real trade. Work that wants throughput finishes measurably slower: long compiles, video encodes, big batch jobs. If your machine is mostly a workstation that occasionally plays a game, leave this off.</p>
+    <p><strong>If it goes wrong.</strong> The kernel supervises it. If the scheduler misbehaves, it gets removed automatically and the standard one takes over, so the worst realistic outcome is that you end up exactly where you started. That safety net is the reason we are comfortable offering this at all.</p>
+    <p><strong>To undo it.</strong> Turn the switch off. It takes effect immediately, with no reboot.</p>
+
+    <h3>Kernel options</h3>
+    <p>Two switches that change how the kernel starts up. Both need a reboot, and both are here as switches rather than defaults because neither one helps everybody.</p>
+    <p><strong>Split lock detection.</strong> Some games, usually older or hastily ported ones, occasionally make a kind of memory access that modern Intel processors deliberately slow down, because one program doing it repeatedly can stall the whole machine. Turning the protection off removes a specific and very noticeable stutter in those games. The cost is that the protection exists for a good reason, and without it a badly behaved program can hold everything else up. If you are not seeing that stutter, you do not need this.</p>
+    <p><strong>Transparent huge pages.</strong> Changes how the kernel hands out memory in large blocks. Some games load faster and run a little smoother. Others gain nothing and simply use more memory. This is the clearest case on the page of something worth testing rather than assuming.</p>
+    ${callout('tip','Test these, do not just enable them', '<p>Both vary by game and by machine. Switch one on, play the game that was bothering you, and switch it back off if nothing changed. A setting that did nothing for you is worth turning off rather than leaving on out of hope.</p>')}
+
+    <h2>What we do not ship, and why</h2>
+    <p>These come up constantly in Linux gaming guides. Each one is left out on purpose, and here is the reasoning so you can disagree with it knowingly.</p>
+
+    <h3>Optimized packages (x86-64-v3)</h3>
+    <p><strong>The pitch.</strong> Rebuild the entire system for instructions that newer processors have, and everything gets faster.</p>
+    <p><strong>Why not.</strong> Two reasons, and the second one settles it. The measured gain across ordinary desktop use is low single digit percent and is usually invisible in a game. More importantly, those packages will install perfectly happily on a processor that cannot run them, and the result is a machine that no longer boots. That includes processors far newer than you would guess, since several recent budget Intel chips are missing the instructions involved. Trading a possible unbootable system for a percent or two is not a deal we are willing to put in front of anyone, so Mainstream does not ship these packages.</p>
+
+    <h3>A custom gaming kernel</h3>
+    <p><strong>The pitch.</strong> Swap the kernel for one built and patched for gaming.</p>
+    <p><strong>Why not.</strong> The settings custom kernels are most praised for are already present in the kernel Mainstream ships, so the remaining difference is small. Against that, a second kernel doubles the surface for graphics driver problems, which are the most common way a Linux desktop stops reaching a login screen. The part people genuinely feel from a custom kernel is the scheduler, and that is available above as a switch that needs no new kernel and carries none of that risk.</p>
+
+    <h3>Turning off processor security mitigations</h3>
+    <p><strong>The pitch.</strong> The single biggest number on any benchmark chart, particularly on older Intel hardware.</p>
+    <p><strong>Why not.</strong> It is a real reduction in security on a machine that also runs a web browser. The number is genuine, and so is the cost, and a toggle in a settings app is not an honest way to present that choice to somebody who has not weighed it. If you understand the trade and want it, it is a kernel parameter you can set yourself. We would rather that be a deliberate decision than a click.</p>
+
+    <h3>Process priority daemons</h3>
+    <p><strong>The pitch.</strong> A background service that assigns a priority to every program on the system by name.</p>
+    <p><strong>Why not.</strong> It repeats what GameMode already does for games, and it argues with both the Gaming Mode session and the responsive scheduler over the same settings. Two things adjusting the same priorities from different directions produce a result neither of them intended.</p>
+
+    <h2>What to expect, honestly</h2>
+    <table class="t">
+      <thead><tr><th>Change</th><th>Where you would notice it</th><th>Roughly how much</th><th>Status</th></tr></thead>
+      <tbody>
+        <tr><td>GameMode</td><td>Laptops and power saving machines, the first minute of play</td><td>Removes a wake-up delay rather than adding frames</td><td>On by default</td></tr>
+        <tr><td>Disk scheduling</td><td>Mechanical drives and older SSDs while loading</td><td>Clearly smoother under load, no change on NVMe</td><td>On by default</td></tr>
+        <tr><td>Responsive scheduler</td><td>Playing while something heavy runs behind it</td><td>The largest change here for how it feels, little on an idle machine</td><td>Optional</td></tr>
+        <tr><td>Kernel options</td><td>Particular games with a particular stutter</td><td>All or nothing, depending entirely on the game</td><td>Optional</td></tr>
+        <tr><td>Optimized packages</td><td>Benchmarks</td><td>Low single digit percent</td><td>Not offered</td></tr>
+        <tr><td>Custom kernel</td><td>Mostly covered by the options above</td><td>Small</td><td>Not offered</td></tr>
+        <tr><td>Mitigations off</td><td>Older Intel, mostly in benchmarks</td><td>Large number, real security cost</td><td>Not offered</td></tr>
+      </tbody>
+    </table>
+
+    ${callout('tip','Measure before you tune', '<p>Press <code>Shift</code>+<code>F12</code> in a game for the MangoHud overlay, and watch the frame time graph rather than the frame rate. A steady line at 90 frames is a far better experience than a jagged one at 120. If a setting does not change that line, it did not help you, whatever the guide promised.</p>')}
+  `
+};
+
 // ---------- DESKTOP ----------
 PAGES.desktop = {
   group: 'Desktop', title: 'The Desktop', icon: 'iface', navTitle: 'The Desktop',

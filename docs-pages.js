@@ -1823,6 +1823,16 @@ PAGES.gaming = {
 
     ${callout('note','NVIDIA on Wayland', '<p>Mainstream installs a current NVIDIA driver matched to your card — that is what variable refresh rate and HDR need. Older NVIDIA cards are covered by the experimental legacy edition, on the driver that matches them.</p>')}
 
+    <h2>Which screen it opens on</h2>
+    <p>With more than one screen, Gaming Mode uses the one set as the default in <a href="#display">Settings &rarr; Display</a>. Open that page, pick the screen you play on, and set it as the default; the next <code>SUPER</code>+<code>G</code> comes up there. Until a default is chosen it uses whichever screen has your attention when you press the keys.</p>
+    <p>Why it needs telling: the gaming session takes over the display hardware directly rather than going through the desktop, and left to itself it starts on whichever screen the graphics driver happens to list first. That is often not the one in front of you.</p>
+    <h3>Choosing the screen yourself</h3>
+    <p>This works on any Mainstream install, including one that has not been updated yet, and it overrides the setting above. First find the name of the screen you want. In a terminal:</p>
+<pre><code>hyprctl monitors | grep Monitor</code></pre>
+    <p>The name is the word straight after <strong>Monitor</strong>, something like <code>DP-1</code> or <code>HDMI-A-1</code>. Then create a file called <code>60-gaming-screen.conf</code> in <code>~/.config/environment.d/</code> with one line in it, putting your own name in place of <code>DP-1</code>:</p>
+<pre><code>OUTPUT_CONNECTOR=DP-1,*</code></pre>
+    <p>Press <code>SUPER</code>+<code>G</code> again and the session opens on that screen. The <code>,*</code> on the end lets it still start if that screen is unplugged, and Mainstream leaves a file of your own alone, so this keeps working after you update.</p>
+
     <h2>Controllers</h2>
     <p>Plug or pair your controller (see <a href="#bluetooth">Bluetooth</a>). Steam Input auto-handles DualSense, DualShock, Xbox, Switch Pro, and 8BitDo pads, and the <code>ntsync</code> module that ships with the stack keeps Proton's synchronization fast.</p>
 

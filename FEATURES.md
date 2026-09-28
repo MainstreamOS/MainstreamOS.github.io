@@ -20,13 +20,18 @@ The shell — the bar, the side panels, the search box — is a lean, heavily mo
 
 - **A bar you arrange.** Show, hide and reorder every piece of the bar by dragging, move them between the left, middle and right, and drop two together to join them into a single rounded group.
 - **A dock on any edge.** Put it along the top, bottom, left or right of the screen, and the bar steps aside when you give the dock the edge it was using.
+- **A dock shaped your way.** Float it, set it into the screen edge, or run it end to end like a taskbar, and each shape remembers its own roundness. Icons glow or grow under the pointer.
 - **Title bars, on or off.** On for a familiar desktop, off for a clean one, switched instantly.
+- **Title bars that answer the mouse.** Double-click to maximize, middle-click to close, scroll to step a window between minimized and maximized. The buttons can be resized, recolored or kept hidden until the pointer arrives, and dark and light mode each keep their own title bar colors.
 - **Windows drawn the way you want.** Corner radius, border thickness, the gaps between windows and around the screen, how see-through they are, the blur behind them, the shadow beneath them, how much the ones you are not using dim, and how they animate. Give the borders a gradient of your own or leave them following the wallpaper, and put the lot back with one press.
 - **App style, icons and pointer.** All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.
 - **Fonts.** A searchable list that shows each font in its own lettering, and your choice carries into your apps rather than stopping at the desktop.
 - **A built-in window rule editor.** Most desktops leave per-app rules to a config file you edit by hand. Here it is a page in Settings: teach one app where to open, whether it floats, how see-through it is, and what it is allowed to do.
 - **Widgets on your desktop.** Eleven of them: the clock, weather, a calendar, world clocks, notes, a to do list, timers, system resources, a music visualizer, media controls and a picture of your own. Drag each one where you want it, and give them frosted glass that samples the wallpaper behind. A theme remembers which are on and where they sit. The clock gains a third style, a chunky pixel readout, alongside digital and cookie.
 - **A menu on the wallpaper.** Right click the desktop to change the wallpaper, switch theme, and reach the bar and dock settings without opening Settings first.
+- **A wallpaper for every monitor.** Right-click the desktop on any screen to give it its own wallpaper, while the colors keep following your main one.
+- **Name your workspaces.** Add the window title to the bar, right-click it to name the workspace you are on, and click it to jump between named ones.
+- **Notifications where you want them.** Any corner, or centered at the top or bottom, for as long as you want them on screen.
 - **Shake to Locate.** Switch it on, give the mouse a shake, and the pointer grows until you spot it.
 
 ## A desktop and a games console, in one
@@ -34,10 +39,11 @@ The shell — the bar, the side panels, the search box — is a lean, heavily mo
 - **Gaming Mode.** One keypress puts the desktop away and hands the machine to Steam's full-screen mode, the same way a Steam Deck runs, then gives the desktop back. AMD, Intel and NVIDIA alike.
 - **Console Mode.** An install option that starts straight into the full-screen Steam session and sets up game controllers, turning a computer under the TV into a console — with the desktop still there whenever you want it.
 - **Windows games, ready to run.** The compatibility layer that runs Windows titles is installed and switched on during setup, so your library works the first time you open it.
+- **A Gaming page in Settings.** One switch keeps games smooth while something heavy runs in the background, and two kernel options help the odd game that still stutters or loads slowly. Every one is off until you want it, and off again with a click.
 
 ## Everything in Settings
 
-Twenty pages cover the whole machine, ten of which are Mainstream's own work with no equivalent in the shell it started from.
+Twenty-two pages cover the whole machine, twelve of which are Mainstream's own work with no equivalent in the shell it started from.
 
 - **Displays.** Arrange your monitors and set resolution, refresh rate, scale, orientation, HDR and color profiles, or mirror one screen onto another.
 - **A layout per workspace.** Four ways of arranging windows automatically plus a floating mode, and every workspace remembers its own.
@@ -45,6 +51,7 @@ Twenty pages cover the whole machine, ten of which are Mainstream's own work wit
 - **Type in any language.** Add the keyboard layouts you write in and flip between them with a keystroke. For Japanese, Chinese, Korean or Vietnamese, pick an input source and the right input method is installed and switched on for you. Installs done in those languages arrive with it already working.
 - **Touchpad gestures.** Choose what each swipe and pinch does, applied the moment you set it.
 - **Manage your apps.** Choose which app opens which kind of file, and what starts up when you log in, from one page.
+- **Share folders with the computers at home.** Turn sharing on once, pick the folders, and Windows, Mac and Linux computers open them over your home network with a sharing password the page shows you. Folders stay closed on any network you have not turned on, like a coffee shop or hotel.
 - **Wi-Fi, Bluetooth, sound, power, accounts and services**, each with a proper page instead of a text file.
 
 ## Day to day
@@ -53,17 +60,21 @@ Twenty pages cover the whole machine, ten of which are Mainstream's own work wit
 - **A launcher that finds everything.** Apps, folders, files, quick sums and your clipboard history, all from one search box.
 - **Zoom out to the whole desktop.** Flick the pointer into the corner and the desktop pulls back into a scrolling map of every workspace — drag windows between them, drop files onto them. Built on [Scroll Overview](https://github.com/yayuuu/hyprland-scroll-overview) by [yayuuu](https://github.com/yayuuu).
 - **Quick settings and notifications** in one panel off the side of the screen.
+- **A Media tab with synced lyrics.** Album art, playback controls and lyrics that follow the song, colored from the album.
+- **Network speed at a glance.** A bar widget with live download and upload speeds, and the connection details when you hover it.
+- **Share your Wi-Fi with a QR code.** A friend scans it and joins, so nobody reads the password out.
 - **Pick up where you left off.** Sign out or restart and your windows reopen on the workspaces they were on. The session is written down as you work, so a crash costs you no more than a tidy sign-out would.
 - **Move files between your devices.** Send several at once to any phone, tablet, or computer on your network running [LocalSend](https://localsend.org), and receive from them the same way, with live progress and no cloud in the middle. Mainstream builds LocalSend into the desktop rather than bundling the app.
 - **Screen sharing and recording.** Share your screen in video calls and record it on Wayland, with GPU-accelerated encoding.
 - **Printing that just works.** Plug a printer in, or pick one up on the network, and print. No driver hunting and no unlock prompts.
-- **A local AI assistant.** The sidebar chats with an AI that runs entirely on your machine, so nothing you type leaves it. The first message walks you through the short setup, and cloud models can be added with a key if you want them.
+- **A local AI assistant.** The sidebar chats with an AI that runs entirely on your machine, so nothing you type leaves it. The first message walks you through the short setup, and cloud models can be added with a key if you want them, or with a Claude, Codex or Gemini plan you already pay for, no key needed.
 - **Auto Mount and Uninstall Apps**, two small apps for the fiddly parts: drives that are ready at every login, and removing software without breaking the desktop.
 
 ## Getting it installed
 
 - **A graphical installer.** Four ways in — Default, Custom, Console Mode and OS Only.
 - **Dual-boot and encryption.** Install alongside an existing Windows and it joins the start-up menu, or encrypt the whole system behind a passphrase. Both are set up during the install.
+- **Lay out your disks yourself.** Manual partitioning checks your layout before writing anything, and says in plain words what a layout needs to boot.
 - **Graphics sorted out for you.** Your card is recognized and given drivers that match it — AMD, Intel or NVIDIA, laptops with two included — based on which model you have rather than just the brand. An experimental legacy edition covers older NVIDIA cards, back to the GeForce 400 series.
 - **A first-boot welcome** that shows you around and offers one-click installs for the extras you want, including DaVinci Resolve and OBS for anyone making things.
 - **On an existing Arch install.** One command turns an Arch install you already have into Mainstream OS, in about ten minutes.

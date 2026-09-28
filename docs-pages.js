@@ -44,6 +44,7 @@ const I = {
   dpad:    '<path d="M9 4h6v5h5v6h-5v5H9v-5H4V9h5V4Z"/>',
   lock:    '<rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
   sidebar: '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="M15 4v16"/>',
+  folder:  '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="2"/><path d="M8.5 17.5a3.5 3.5 0 0 1 7 0"/>',
   send:    '<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/>',
   tag:     '<path d="M3 12V4h8l9 9-8 8-9-9Z"/><circle cx="7.5" cy="7.5" r="1.25"/>',
 };
@@ -343,7 +344,7 @@ PAGES['install-iso'] = {
 // ---------- QUICK ----------
 PAGES.quick = {
   group: 'Settings', title: 'Quick', icon: 'quick',
-  lede: 'Quick is the first screen of Settings — the dial-in knobs you\'ll touch most often. Wallpaper, color scheme, bar position, and rounded corners, all in one place.',
+  lede: 'Quick is the first screen of Settings — the dial-in knobs you\'ll touch most often. Wallpaper, color scheme, where the bar and dock sit and how they look, and rounded corners, all in one place.',
   render: () => `
     <p class="shot-note">The whole page at once. Quick is the everyday entry point, and every control on it has a fuller counterpart deeper in Settings when you want to go further than the shortcut.</p>
     ${shot('QuickConfig.webp','Quick settings page')}
@@ -356,17 +357,19 @@ PAGES.quick = {
       <div class="prop"><center><div class="k">Wallpaper</div></center><div class="v">Pick any image or video. <code>Ctrl</code>+<code>SUPER</code> (the ⊞ Windows or ⌘ Command key)+<code>T</code> is the keyboard shortcut.</div></div>
       <div class="prop"><center><div class="k">Slideshow</div></center><div class="v">Point it at a folder instead of one picture and it moves through them on a timer. The palette follows along, so the whole desktop recolors with every change. Choosing a single wallpaper again ends it.</div></div>
       <div class="prop"><center><div class="k">Light / Dark</div></center><div class="v">Hard-switch between Mainstream's warm Day theme and the default Night. Pair with <a href="#interface">Auto theme</a> in Interface settings to follow sunrise/sunset.</div></div>
-      <div class="prop"><center><div class="k">Palette style</div></center><div class="v"><span class="tag">Auto</span> <span class="tag">Content</span> <span class="tag">Expressive</span> <span class="tag">Fidelity</span> <span class="tag">Fruit Salad</span> <span class="tag">Monochrome</span> <span class="tag">Neutral</span> <span class="tag">Rainbow</span> <span class="tag">Tonal Spot</span><br/>Different Material You tonal maps. Expressive pops color the most; Monochrome strips it entirely.</div></div>
+      <div class="prop"><center><div class="k">Palette style</div></center><div class="v"><span class="tag">Auto</span> <span class="tag">Content</span> <span class="tag">Expressive</span> <span class="tag">Fidelity</span> <span class="tag">Fruit Salad</span> <span class="tag">Monochrome</span> <span class="tag">Neutral</span> <span class="tag">Rainbow</span> <span class="tag">Tonal Spot</span><br/>Different Material You tonal maps. Expressive pops color the most; Monochrome strips it entirely. The style Auto would choose for your wallpaper is left out of the row, since picking Auto already gives you that one.</div></div>
       <div class="prop"><center><div class="k">Transparency</div></center><div class="v">Toggles translucent surfaces (sidebars, notifications, dock). Turn off if you\'re on a slower GPU or prefer flat surfaces.</div></div>
+      <div class="prop"><center><div class="k">Screen round corner</div></center><div class="v"><b>No</b> · <b>Yes</b> · <b>When not fullscreen</b><br/>Draws subtle rounded corners at the edges of your monitor. <b>When not fullscreen</b> removes them while a window is fullscreen.</div></div>
     </div>
 
-    <h2>Bar &amp; screen</h2>
-    <p>The quick path to moving the bar around. For every option (workspace indicators, utility buttons, weather, tray, clock format) jump to the full <a href="#bar">Bar</a> page.</p>
+    <h2>Bar &amp; Dock</h2>
+    <p>The quick path to placing and shaping the bar and dock. For every option (workspace indicators, utility buttons, weather, tray, clock format, pinned apps, hover effects) go to the full <a href="#bar">Bar</a> and <a href="#dock">Dock</a> pages.</p>
 
     <div class="props">
       <div class="prop"><center><div class="k">Bar position</div></center><div class="v"><b>Top</b> (default) · <b>Left</b> · <b>Bottom</b> · <b>Right</b></div></div>
-      <div class="prop"><center><div class="k">Bar style</div></center><div class="v"><span class="tag">Hug</span> touches the screen edges.&nbsp; <span class="tag">Float</span> (default) floats with a gap around it.&nbsp; <span class="tag">Rect</span> is a flat rectangle.&nbsp; <span class="tag">Notch</span> sits on the edge with a curve drawn where each end leaves it, so the bar reads as grown out of the screen edge rather than laid on top of it.</div></div>
-      <div class="prop"><center><div class="k">Screen round corner</div></center><div class="v">Draws subtle rounded corners at the edges of your monitor. <b>When not fullscreen</b> disables them automatically while a window is fullscreened.</div></div>
+      <div class="prop"><center><div class="k">Bar style</div></center><div class="v"><span class="tag">Float</span> (default) floats with a gap around it.&nbsp; <span class="tag">Notch</span> sits on the edge with a curve drawn where each end leaves it, so the bar reads as grown out of the screen edge rather than laid on top of it.&nbsp; <span class="tag">Hug</span> touches the screen edges.&nbsp; <span class="tag">Rect</span> is a flat rectangle.</div></div>
+      <div class="prop"><center><div class="k">Dock position</div></center><div class="v"><b>Off</b> · <b>Left</b> · <b>Bottom</b> (default) · <b>Right</b><br/><b>Off</b> hides the dock. The edge the bar is on is left out, since the two cannot share it.</div></div>
+      <div class="prop"><center><div class="k">Dock style</div></center><div class="v"><span class="tag">Float</span> (default) floats above the edge.&nbsp; <span class="tag">Notch</span> sits on the edge, grown out of it like the bar\'s Notch.&nbsp; <span class="tag">Hug</span> runs end to end along its edge.&nbsp; <span class="tag">Rect</span> is a flat rectangle.</div></div>
     </div>
 
   `
@@ -398,6 +401,9 @@ PAGES.wifi = {
 
     <h2>Hidden networks &amp; enterprise Wi-Fi</h2>
     <p>Scroll to the bottom of the list. <strong>Add hidden network</strong> lets you enter the SSID manually. <strong>Enterprise (802.1x)</strong> opens a form with identity, anonymous identity, CA cert, and inner auth — useful for university and corporate networks.</p>
+
+    <h2>Sharing a network</h2>
+    <p>To let a friend's phone or another computer join a network you have saved, click the share button beside <strong>Forget</strong> on that network in Settings. A QR code appears that the other device can scan with its camera, so nobody has to read out or type the password.</p>
   `
 };
 
@@ -452,6 +458,8 @@ PAGES.bar = {
     <p>Drop one widget against another to <strong>group them into a pill</strong> — a single rounded container holding both, which is how the clock and its neighbours are drawn by default. <strong>Group style</strong> switches between pills and plain spacing. <strong>Reset to default layout</strong> puts everything back.</p>
     ${callout('note','Vertical bars leave some widgets out', '<p>A few widgets only make sense across the top. The update indicator, for one, isn\'t offered when the bar is vertical.</p>')}
 
+    <p>Two widgets worth knowing about. <strong>Window title</strong> shows the focused window's title, and doubles as a workspace namer: right-click it to give the workspace you are on a name, which then shows there instead of window titles, and click it to jump between your named workspaces. <strong>Network speed</strong> shows live download and upload speeds; hover it for the connection, signal and IP address, and click it to open the Wi-Fi list. Both are off until you add them to the layout.</p>
+
     <h2>Time &amp; Date</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Time Format</div></center><div class="v"><span class="tag">24h</span> 14:32 &nbsp; <span class="tag">12h am/pm</span> 2:32 pm &nbsp; <span class="tag">12h AM/PM</span> 2:32 PM (default)</div></div>
@@ -500,6 +508,7 @@ PAGES.bar = {
     <h2>Workspaces</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Always show numbers</div></center><div class="v">Off by default — only shows the number for the focused workspace. Turn on if you jump between workspaces by number a lot.</div></div>
+      <div class="prop"><center><div class="k">Roman / Han chars</div></center><div class="v">Number your workspaces in Roman numerals (I, II, III) or Han characters instead of the usual digits.</div></div>
       <div class="prop"><center><div class="k">Show app icons</div></center><div class="v">Draws the icon of whatever app is on each workspace. Quick visual map.</div></div>
       <div class="prop"><center><div class="k">Tint app icons</div></center><div class="v">Tints the icons with your Material You accent for a unified look.</div></div>
       <div class="prop"><center><div class="k">Large circular app icons</div></center><div class="v">Draws each workspace&rsquo;s app icon larger and in a circle rather than small and square. Off by default.</div></div>
@@ -518,6 +527,12 @@ PAGES.bar = {
       <li><b>Performance Profile toggle</b> — cycles Performance / Balanced / Power Saver.</li>
       <li><b>Record</b> — starts a screen recording, with visible recording indicator.</li>
     </ul>
+
+    <h2>Notifications &amp; tooltips</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Unread indicator: show count</div></center><div class="v">Shows how many notifications are waiting on the Bar's notification indicator, rather than just that some are.</div></div>
+      <div class="prop"><center><div class="k">Tooltips</div></center><div class="v">Choose whether Bar tooltips appear as the pointer passes over, or wait for a click.</div></div>
+    </div>
 
     <h2>Weather</h2>
     <p>Powered by Open-Meteo. When <strong>Enable GPS based location</strong> is on, Mainstream uses GeoClue and the <em>City name</em> field greys out, since your position is coming from the machine rather than from what you typed. Turn it off to name a city yourself. <strong>Polling interval</strong> is how often (in minutes) the widget refreshes.</p>
@@ -547,9 +562,9 @@ PAGES.dock = {
     <h2>Behavior</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Position</div></center><div class="v">Which edge the dock sits on: <span class="tag">Bottom</span> the default &nbsp; <span class="tag">Top</span> &nbsp; <span class="tag">Left</span> &nbsp; <span class="tag">Right</span> &nbsp; <span class="tag">Disabled</span> turns the dock off. On the left or right it stands vertically, icons stacked. Pick the edge your bar is already using and the bar moves to the opposite one, so the two never share a side.</div></div>
-      <div class="prop"><center><div class="k">Window indicators</div></center><div class="v">The mark under an icon that says the app is running, and how many windows it has. <span class="tag">Dashes</span> the default &nbsp; <span class="tag">Dots</span> &nbsp; <span class="tag">Count badge</span> a number instead of marks, which stays readable past three or four windows &nbsp; <span class="tag">None</span></div></div>
+      <div class="prop"><center><div class="k">Window indicators</div></center><div class="v">The mark under an icon that says the app is running, and how many windows it has. <span class="tag">Dashes</span> the default &nbsp; <span class="tag">Dots</span> &nbsp; <span class="tag">Count badge</span> a number instead of marks, which stays readable past three or four windows &nbsp; <span class="tag">None</span> &nbsp; <span class="tag">Dashes and badges</span> <span class="tag">Dots and badges</span> the marks and the count together</div></div>
       <div class="prop"><center><div class="k">Launch animation</div></center><div class="v">The icon reacts when you start an app, so you can see the click landed before the window appears. <span class="tag">Bounce</span> the default &nbsp; <span class="tag">Pulse</span> &nbsp; <span class="tag">Pop</span> &nbsp; <span class="tag">Wobble</span> &nbsp; <span class="tag">None</span> Only a genuine launch animates: clicking an app that is already open, or opening a folder, does not.</div></div>
-      <div class="prop"><center><div class="k">Hover animation</div></center><div class="v">What an icon does as the pointer passes over it. <span class="tag">Magnify</span> the icon grows, in the manner of a classic dock &nbsp; <span class="tag">Glow</span> a lit halo instead of a size change &nbsp; <span class="tag">None</span></div></div>
+      <div class="prop"><center><div class="k">Hover animation</div></center><div class="v">What an icon does as the pointer passes over it. <span class="tag">Magnify</span> the icon grows, in the manner of a classic dock &nbsp; <span class="tag">Glow</span> a lit halo instead of a size change &nbsp; <span class="tag">None</span> New installs start on Glow, and Magnify starts at a gentler strength when you pick it.</div></div>
       <div class="prop"><center><div class="k">Magnify amount</div></center><div class="v">How far the hovered icon grows. The mark on the track is the stock setting, so you can always find your way back to it.</div></div>
       <div class="prop"><center><div class="k">Glow intensity</div></center><div class="v">How strong the halo is. Appears in place of the magnify slider when Glow is the chosen hover animation.</div></div>
       <div class="prop"><center><div class="k">Hover to reveal</div></center><div class="v">The dock stays hidden while a window is focused and slides in when your cursor touches the edge it sits on. Off: it only appears on an empty workspace, not on hover.</div></div>
@@ -568,7 +583,7 @@ PAGES.dock = {
 
     <h2>Shape</h2>
     <div class="props">
-      <div class="prop"><center><div class="k">Corner style</div></center><div class="v"><span class="tag">Float</span> the dock floats clear of the edge with a margin around it, the default &nbsp; <span class="tag">Rect</span> a plain rectangle with no rounding &nbsp; <span class="tag">Notch</span> sits against the edge and curves away from it, so the screen edge appears to fold around the dock.</div></div>
+      <div class="prop"><center><div class="k">Corner style</div></center><div class="v"><span class="tag">Float</span> the dock floats clear of the edge with a margin around it, the default &nbsp; <span class="tag">Rect</span> a plain rectangle with no rounding &nbsp; <span class="tag">Notch</span> sits against the edge and curves away from it, so the screen edge appears to fold around the dock. &nbsp; <span class="tag">Hug</span> runs the whole length of the edge facing the Bar, like a taskbar, with smaller icons to match. Each style remembers its own roundness, so shaping one leaves the others as they were.</div></div>
       <div class="prop"><center><div class="k">Icon size</div></center><div class="v">How large the app icons are, and with them the dock itself.</div></div>
       <div class="prop"><center><div class="k">Corner roundness</div></center><div class="v">How rounded the dock\'s own corners are, from square to fully pill-shaped.</div></div>
     </div>
@@ -608,6 +623,7 @@ PAGES.interface = {
       <div class="prop"><center><div class="k">Layout</div></center><div class="v">Lay the workspace previews out <b>Vertical</b> or <b>Horizontal</b>.</div></div>
       <div class="prop"><center><div class="k">Workspace gap</div></center><div class="v">Pixels between workspace previews. Default 100.</div></div>
       <div class="prop"><center><div class="k">Workspace scale</div></center><div class="v">How much each preview shrinks — lower fits more workspaces on screen. Default 50%.</div></div>
+      <div class="prop"><center><div class="k">Each monitor / Match the others</div></center><div class="v">With more than one monitor, give one its own Scrolling Overview layout, workspace gap and scale, or set it to match the others again.</div></div>
     </div>
 
     <h2>Launcher Overview</h2>
@@ -649,6 +665,12 @@ PAGES.interface = {
       <div class="prop"><center><div class="k">Also unlock keyring</div></center><div class="v">Unlocking the screen also unlocks GNOME Keyring — no second password for Wi-Fi, Git creds, etc.</div></div>
       <div class="prop"><center><div class="k">Use varying shapes for password characters</div></center><div class="v">Each password dot becomes a different subtle shape. Purely cosmetic.</div></div>
       <div class="prop"><center><div class="k">Enable blur (Blurred style)</div></center><div class="v">Kawase blur behind the unlock prompt.</div></div>
+    </div>
+
+    <h2>Notifications</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Position</div></center><div class="v">Where notification popups appear: any corner of the screen, or centered at the top or bottom.</div></div>
+      <div class="prop"><center><div class="k">How long they stay</div></center><div class="v">How long a popup stays on screen before it tucks itself away into the notification list.</div></div>
     </div>
 
     <h2>On-screen display</h2>
@@ -793,7 +815,7 @@ PAGES.decorations = {
       <div class="prop"><center><div class="k">Blur</div></center><div class="v">Background blur behind transparent windows and panels. The most expensive thing on this page to draw.</div></div>
       <div class="prop"><center><div class="k">Shadows</div></center><div class="v">Drop shadows underneath windows.</div></div>
       <div class="prop"><center><div class="k">Borders</div></center><div class="v">Colored borders around active and inactive windows — useful for telling floating windows apart.</div></div>
-      <div class="prop"><center><div class="k">Rounded Corners</div></center><div class="v">Rounded corners on windows and the bar, following your theme radius.</div></div>
+      <div class="prop"><center><div class="k">Rounded Corners</div></center><div class="v">Rounded corners on windows and the bar, following your theme radius. Turning it off squares the screen corners and the Hug dock too, and turning it back on restores them all as they were.</div></div>
       <div class="prop"><center><div class="k">Title Bars</div></center><div class="v">Show title bars on windows, so every window keeps its close and maximize buttons. Turning this on reveals a <b>Title bars</b> section below, for coloring them.</div></div>
     </div>
     ${callout('note','A switch turns the section off', '<p>Each switch gates the matching section further down. With <strong>Blur</strong> off, the blur sliders stop having an effect — they keep their values for when you turn it back on.</p>')}
@@ -803,6 +825,11 @@ PAGES.decorations = {
     <div class="props">
       <div class="prop"><center><div class="k">Color</div></center><div class="v">Paints the title bar. Left empty, the title bar keeps the color it comes with, which is the one the plugin picks for itself. Applies as you edit.</div></div>
       <div class="prop"><center><div class="k">Opacity</div></center><div class="v">How see-through the title bar is. It takes effect once a color is set: the opacity is folded into the color the plugin is handed, so on its own, with no color, there is nothing to make transparent.</div></div>
+      <div class="prop"><center><div class="k">Dark and light</div></center><div class="v">Dark mode and light mode each keep their own title bar color and opacity, and light mode starts with a light title bar.</div></div>
+      <div class="prop"><center><div class="k">Window buttons</div></center><div class="v">The close, maximize and minimize buttons. Switching them off also hides their options; double-click, middle-click and scrolling on the title bar keep working.</div></div>
+      <div class="prop"><center><div class="k">Show buttons only on hover</div></center><div class="v">The buttons appear when the pointer is over the title bar.</div></div>
+      <div class="prop"><center><div class="k">Button size, background, icon color, highlight</div></center><div class="v">Resize the buttons and give them their own background, icon color and the circle that lights up behind one under the pointer. Left empty, a color follows the look they come with.</div></div>
+      <div class="prop"><center><div class="k">Scroll to maximize and minimize</div></center><div class="v">Scroll up on a title bar to maximize its window, and down to restore it, then minimize it. Double-click maximizes or restores, and middle-click closes, whatever this is set to.</div></div>
     </div>
 
     <h2>Window shape</h2>
@@ -925,7 +952,7 @@ PAGES.themes = {
     <div class="props">
       <div class="prop"><center><div class="k">Wallpaper</div></center><div class="v">The image file itself is copied into the theme, so the theme keeps working even if you later move or delete the original.</div></div>
       <div class="prop"><center><div class="k">Colors</div></center><div class="v">Your <strong>Material You palette style</strong> (Expressive, Monochrome, …) and <strong>Light/Dark</strong> choice. On apply, the palette is regenerated from the theme\'s wallpaper — and it reaches further than the desktop: your apps follow the light/dark switch and the terminal recolors too.</div></div>
-      <div class="prop"><center><div class="k">Every Settings option</div></center><div class="v">The desktop configuration as it stood when you saved: <strong>bar</strong> position, style, and modules; the <strong>dock</strong>&rsquo;s size, marks and end buttons; <strong>background widgets</strong> (clock, weather, quote); <strong>fonts</strong> and sizes; <strong>transparency</strong>; interface and launcher tweaks.</div></div>
+      <div class="prop"><center><div class="k">Every Settings option</div></center><div class="v">Every Settings option that shapes the look. Your own settings stay yours: language, search engine, AI settings, lock screen security, battery settings, pinned apps, time format, touchpad gestures and save folders are never saved into a theme, and never change when you apply or import one.</div></div>
       <div class="prop"><center><div class="k">Window decorations</div></center><div class="v">Animations, blur, shadows, borders and gaps, rounded corners, and title bars — applied live, so windows re-dress the moment you switch.</div></div>
       <div class="prop"><center><div class="k">System look</div></center><div class="v">Your app style, icon set, and mouse pointer, so your other programs change with the desktop instead of staying behind. Set these on the <a href="#decorations">Decorations</a> page.</div></div>
       <div class="prop"><center><div class="k">Preview</div></center><div class="v">A screenshot taken at save time becomes the theme\'s thumbnail in the grid.</div></div>
@@ -953,6 +980,8 @@ PAGES.themes = {
       </div>
       <figcaption>Switching live: one click and the wallpaper, colors, bar, dock, and widgets all follow in a single motion.</figcaption>
     </figure>
+
+    <p><code>Ctrl</code>+<code>SUPER</code>+<code>N</code> moves to your next saved theme from anywhere on the desktop.</p>
 
     <h2>Day/Night Themes</h2>
     ${shot('ThemesConfig-DayNight.webp','Day/Night Themes section of the Themes page','Pair two saved themes to time of day — a bright one for daytime, a dark one for night — and Mainstream switches between them on its own.')}
@@ -1146,6 +1175,8 @@ PAGES.mouse = {
     <h2>Touchpad</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Touchpad</div></center><div class="v">Turns the touchpad itself on or off. <b>Enabled</b> by default. The row only appears when a touchpad is actually detected, so a desktop never sees it. The change applies at once and is written to your Hyprland config, so it survives a restart.</div></div>
+      <div class="prop"><center><div class="k">Disable While Typing</div></center><div class="v">Ignores the touchpad for a moment after each key press, so a resting palm cannot move the pointer.</div></div>
+      <div class="prop"><center><div class="k">Disable While Using an External Mouse</div></center><div class="v">Turns the touchpad off once a USB or Bluetooth mouse is used, and back on when the mouse is disconnected.</div></div>
     </div>
 
     <p><strong>Scroll Direction</strong> works exactly like the mouse setting but is stored separately — touchpads default to <strong>Natural</strong> scrolling (the phone and tablet feel) while mice default to <strong>Traditional</strong>, and you can override either.</p>
@@ -1221,6 +1252,33 @@ PAGES.power = {
   `
 };
 
+// ---------- GAMING (SETTINGS) ----------
+PAGES['gaming-settings'] = {
+  group: 'Settings', title: 'Gaming', icon: 'game',
+  lede: 'Three switches for smoother play. One keeps games smooth while something heavy runs in the background, and two kernel options can help particular games stutter less or load faster.',
+  render: () => `
+    ${shot('GamingConfig.webp','Gaming settings page')}
+
+    <p>Everything on this page is off by default, and anything you turn on can be turned back off from here. The switches need the gaming stack, which the Welcome app installs, and the page tells you when it is missing. For what each switch changes under the hood, what it costs, and the popular tweaks Mainstream leaves out on purpose, see <a href="#gaming-performance">Gaming Performance</a>.</p>
+
+    <h2>Responsiveness</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Keep games smooth under load</div></center><div class="v">Switches to a scheduler that favors responsiveness over raw throughput, so a game stays smooth while something heavy runs behind it, like a compile, a video export or a big download being unpacked. Those long jobs finish a little slower in exchange. Takes effect right away, with no restart. If your kernel cannot run it, the switch says so and the standard scheduler stays in charge.</div></div>
+    </div>
+
+    <h2>Kernel options</h2>
+    <p>Neither of these helps every game. They are for the one game that is still stuttering or loading slowly after everything else.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Skip split lock detection</div></center><div class="v">Removes a stutter some older games show on Intel processors. It also removes a protection that stops one program from stalling the whole machine, so leave it off unless a game needs it.</div></div>
+      <div class="prop"><center><div class="k">Always use huge memory pages</div></center><div class="v">Some games load faster and run smoother with it. Others gain nothing and use more memory. Off, the default, hands huge pages out only where a program asks for them.</div></div>
+    </div>
+    <p>Both are boot options, so changing one rebuilds the boot image and applies after a restart. They are available when Mainstream manages the boot menu, which is the case on every install from the Mainstream ISO.</p>
+
+    ${callout('tip','Test one at a time','<p>Turn one option on, restart, and play the game that was giving you trouble. If nothing changed, turn it back off. Leaving an option on that did not help only keeps its cost.</p>')}
+    ${callout('note','Asks for your password','<p>Each change here asks for an administrator password, because it changes how the whole system runs. If the boot image cannot be rebuilt, the change is undone rather than left half applied.</p>')}
+  `
+};
+
 // ---------- ACCOUNTS ----------
 PAGES.accounts = {
   group: 'Settings', title: 'Accounts', icon: 'user',
@@ -1237,17 +1295,19 @@ PAGES.accounts = {
       <div class="prop"><center><div class="k">Change Password</div></center><div class="v">Sets a new login password. Requires your <em>current</em> password for confirmation.</div></div>
       <div class="prop"><center><div class="k">Change Login Name</div></center><div class="v">Renames the user on disk. The home directory is moved, so the system briefly locks out open sessions for that user.</div></div>
       <div class="prop"><center><div class="k">Change Login Image</div></center><div class="v">The picture shown on the greeter. Square images 256 px and up work well.</div></div>
+      <div class="prop"><center><div class="k">Repair Account</div></center><div class="v">For an account that is missing its setup. Fills in what is missing and leaves the person's own choices, like their default apps and shell, as they are.</div></div>
+      <div class="prop"><center><div class="k">Administrator</div></center><div class="v">Choose who can administer the computer: install software, change system settings and manage accounts. The last administrator cannot be made standard.</div></div>
       <div class="prop"><center><div class="k">Remove Account</div></center><div class="v">Deletes the user. You\'re asked separately whether to keep or delete the home directory.</div></div>
     </div>
 
     <h2>Add an Account</h2>
     <ol>
-      <li>Enter a <strong>Login name</strong> — lowercase, no spaces.</li>
+      <li>Enter a <strong>Login name</strong> (lowercase, no spaces) and, if you like, a full name.</li>
       <li>Set a password.</li>
-      <li>Choose whether to <strong>set up a personal folder</strong> (<code>/home/&lt;name&gt;</code>) for the new account.</li>
-      <li>Optionally <strong>copy your app settings</strong> so the new account starts with your <code>~/.config</code> as a base.</li>
+      <li>Turn on <strong>Let this person administer the computer</strong> only for someone who should manage it with you.</li>
       <li>Hit <strong>Create Account</strong>.</li>
     </ol>
+    <p>A new account gets the same desktop a fresh install gives you, and finishes setting itself up the first time that person signs in.</p>
 
     ${callout('tip','Protected by a password prompt', '<p>Creating, renaming, or deleting an account — or changing a password — asks for an administrator\'s password before it happens. Anyone can browse the list; only an admin can change it.</p>')}
   `
@@ -1298,6 +1358,44 @@ PAGES.services = {
       <div class="prop"><center><div class="k">City name</div></center><div class="v">The place to show weather for when GPS based location is off.</div></div>
       <div class="prop"><center><div class="k">Polling interval (m)</div></center><div class="v">How often the forecast refreshes, in minutes.</div></div>
     </div>
+  `
+};
+
+// ---------- SHARING (SETTINGS) ----------
+PAGES['sharing-settings'] = {
+  group: 'Settings', title: 'Sharing', icon: 'folder',
+  lede: 'Share folders with Windows, Mac and Linux computers on your home network. Turn it on once, pick the folders, and other computers sign in with a sharing password this page shows you.',
+  render: () => `
+    ${shot('SharingConfig-1.webp','Sharing settings page, top half','Turn sharing on, then use the addresses and sign-in details under How to Connect on the other computer.')}
+
+    <h2>Turning it on</h2>
+    <p>Flip <strong>Share folders with other computers</strong>. The first time, Mainstream downloads the sharing service (about 9 MB) and asks for your password once. Sharing then opens on the network you are connected to right now, and on no other.</p>
+    <p>The switch is for the whole computer. Each person who wants to share their own folders sets up their account once from this page, which gives them a sharing password of their own.</p>
+
+    <h2>How to Connect</h2>
+    <p>On the other computer, type one of the addresses this page shows, then sign in with the user name and password below them.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">For Windows</div></center><div class="v">Type it into the File Explorer address bar.</div></div>
+      <div class="prop"><center><div class="k">For Mac and Linux</div></center><div class="v">On a Mac, in Finder under <strong>Go</strong> &gt; <strong>Connect to Server</strong>. On Linux, in the file manager after pressing <code>Ctrl</code> + <code>L</code>.</div></div>
+      <div class="prop"><center><div class="k">By number</div></center><div class="v">The same addresses using this computer\'s network number. Use these if the name does not work. The number can change when your router restarts.</div></div>
+      <div class="prop"><center><div class="k">User name and Password</div></center><div class="v">What the other computer asks for. The sharing password is not your login password. <strong>Show</strong> reveals it, and <strong>Change</strong> sets a new one (8 to 128 characters) or lets <strong>Suggest One</strong> pick it for you. Computers that saved the old password will ask again.</div></div>
+    </div>
+    <p>This computer also shows up on its own under Network in File Explorer on Windows, in the Finder sidebar on a Mac, and under Network in Files on Linux.</p>
+
+    ${shot('SharingConfig-2.webp','Sharing settings page, bottom half','Pick the folders and what others can do with them, choose the networks to share on, and give the computer a name that is easy to type.')}
+
+    <h2>Shared Folders</h2>
+    <p><strong>Add a Folder</strong> shares any folder that belongs to you, and <strong>Share Your Public Folder</strong> is a one-click start. Each folder can be <span class="tag">View only</span> or <span class="tag">Can make changes</span>. The <strong>&times;</strong> stops sharing it; the folder and its files stay where they are.</p>
+    <p>You can also share from Files: right-click a folder and choose <strong>Share on Network</strong>. To send a single file to a phone or tablet instead, see <a href="#sharing">Sending files</a>.</p>
+
+    <h2>Networks</h2>
+    <p>Your folders are only shared on the networks turned on here. Anywhere else, like a coffee shop or a hotel, they stay closed. A cable connection uses one setting wherever you plug in, so on a laptop that leaves the house, leave it off and share over your home Wi-Fi instead.</p>
+
+    <h2>Computer Name</h2>
+    <p>The name other computers find this one by. A short one is easier to type. Use lowercase letters, numbers and dashes, up to 63 characters. Computers that saved the old name will need the new address.</p>
+
+    ${callout('note','Your sharing password stays in your keyring','<p>The password is kept in your keyring rather than in a file. If the keyring is locked, the page asks you to unlock it before it can show the password.</p>')}
+    ${callout('warn','Keep the firewall on','<p>The firewall is what keeps your folders closed on networks you have not turned on. If it is switched off while sharing runs, the page warns you, because your folders could then be reached from any network this computer is on.</p>')}
   `
 };
 
@@ -1368,6 +1466,10 @@ PAGES.update = {
 
 <span class="c"># Or just the desktop refresh, skipping the package steps</span>
 updatems --edge</code></pre>
+
+    <h2>Leave it running</h2>
+    <p>An update keeps going if you close Settings, and the result is waiting when you open the Update page again. Before you start, the page tells you whether the update will need a restart, and when it does, it ends with a <strong>Reboot Now</strong> button. Turn on <strong>Sound when done</strong> in the advanced options to hear a chime when it finishes, or a warning sound if something went wrong.</p>
+    <p>Updates keep what you changed: the Decorations settings you adjusted, the layouts picked on the Layouts page, the touchpad gestures on the Mouse page, and your own edits to settings files a release did not touch. Settings you never changed still take each release's new defaults.</p>
 
     <h2>If something breaks</h2>
     <p>Don\'t panic. You have a snapshot. Head over to <a href="#recovery">Recovery</a> to walk through rolling back from the Limine boot screen.</p>
@@ -1582,6 +1684,15 @@ PAGES.security = {
     <p>Mainstream never builds software recipes on your machine and never installs from an unvetted source. Everything comes from four signed repositories: Arch\'s own <code>core</code>, <code>extra</code>, and <code>multilib</code>, plus <strong>[mainstream]</strong> — our own curated, prebuilt repository that stands in for the AUR. No <code>yay</code>, no <code>paru</code>, no compiling at install time.</p>
 
     ${callout('note','Still full Arch underneath', '<p>Nothing here is locked down. Experienced users can opt into the AUR at any time (see the bottom of this page) — it just isn\'t the default, because the AUR\'s safety model asks more of you than a newcomer can reasonably give.</p>')}
+
+    <h2>Older installs get the same protections</h2>
+    <p>Security fixes are not only for new installs. Updating also cleans up what older installs carried from the installer:</p>
+    <ul>
+      <li><strong>Encrypted disks:</strong> the boot files, which are not encrypted, no longer hold an unused key to your disk. New installs never add it, and updating removes it wherever that is safe.</li>
+      <li><strong>SSH:</strong> installs from before July no longer let root sign in over SSH with a password if SSH is ever turned on.</li>
+      <li><strong>sudo:</strong> older installs lose the installer's rule that let administrators use sudo without a password, as long as a normal rule that asks for one is in place.</li>
+      <li><strong>Accounts:</strong> an administrator's password typed into a standard account's session is asked for again every time, rather than staying good there for a few minutes.</li>
+    </ul>
 
     <h2>Why the AUR isn\'t enabled by default</h2>
     <p>The AUR is one of the best things about Arch. It carries tens of thousands of packages, keeps pace with upstream faster than almost anywhere else, and every recipe is a plain-text <code>PKGBUILD</code> you can read end to end. We use it — to <em>build</em> things, once, on our side. What we don\'t do is point your machine at it.</p>
@@ -2003,6 +2114,8 @@ PAGES.desktop = {
     <p>Right click any empty part of the desktop and a menu opens on the wallpaper. It leads with the wallpaper itself, so changing your background is one click from where you already are, and carries on into the theme, the bar and the dock without opening Settings first.</p>
     <p>The widgets that sit on the wallpaper, the clock and the ten beside it, are set up in <a href="#background">Settings &rarr; Background</a>.</p>
 
+    <p>With more than one monitor, each can have its own wallpaper: right-click the desktop on the screen you want to change and choose <strong>Change Wallpaper</strong> to set that screen alone. Colors still come from the main wallpaper, and <strong>Use Main Wallpaper</strong> puts the screen back to it.</p>
+
     <h2>Title bars, your call</h2>
     <p>Tiling purists keep windows clean; everyone else can flip on familiar title bars with a close button. It\'s one toggle in <strong>Settings → Interface → Decorations</strong>, and it applies to every window instantly — no logout, no reload.</p>
     <figure>
@@ -2143,6 +2256,8 @@ PAGES['overview-launcher'] = {
       <figcaption>Open single apps or whole folders of apps at once, and rearrange your open apps across your workspaces.</figcaption>
     </figure>
 
+    <p>The launcher matches your Dock: the search panel, the dim behind it and the app list take the Dock's color and transparency, and the app list also takes its roundness. With the overview switched off, the launcher opens on your full app list with search still on top; a switch in Interface settings brings back the short list if you prefer it.</p>
+
     <h2>The scrolling overview</h2>
     <p>Sweep the cursor into the hot corner (top left) or press <code>SUPER</code> + <code>O</code> and the desktop zooms out into a map of your workspaces. Scroll across the workspace, drag windows between them, and click anywhere to dive back in. Combine it with the Scrolling layout in <strong><a href="#layouts">Settings → Layouts</a></strong> and you get the full niri-like experience.</p>
     <figure>
@@ -2195,6 +2310,12 @@ PAGES.sidebars = {
     <h2>Left: Intelligence</h2>
     <p>A chat panel for large language models — bring an API key for online models or run local ones, with a translator one tab away. <strong>Ctrl + O</strong> expands it, <strong>Ctrl + P</strong> pins it open, and it stays entirely out of the way until asked.</p>
 
+    <p>Gemini joins Claude and Codex as a plan: sign in once with your Google account, free or with Google AI Pro or Ultra, and chat through Google's Antigravity without an API key. The Bar's sidebar button shows the logo of the model you picked, and stays off the Bar while AI is off.</p>
+    <p>Pinning the left sidebar keeps it open while you use the desktop: clicking a window no longer closes it, and your windows move aside while the Bar and Dock stay where they are.</p>
+
+    <h2>Left: Media</h2>
+    <p>Album art, playback controls and synced lyrics for whatever is playing, colored from the album. Lyrics come from LRCLIB, and are only looked up while the tab is on screen.</p>
+
     <h2>Right: your system and your day</h2>
     <p>The right sidebar starts with one-tap toggles — network, Bluetooth, microphone, audio output, Night Light — and system shortcuts for editing, reloading, settings, and power.</p>
     ${shot('Right-Sidebar-Toggles.webp','Quick toggles row in the right sidebar')}
@@ -2228,6 +2349,8 @@ PAGES.sharing = {
       </div>
       <figcaption>Right-click to receive: the panel shows the incoming file land in Downloads.</figcaption>
     </figure>
+
+    <p>To share whole folders with other computers instead, so they can open them like a network drive, see <a href="#sharing-settings">Sharing</a> in Settings.</p>
 
     ${callout('note','Private by design','<p>Sharing is off until you start it, and only devices on your own network can ever see yours. There\'s no account to create, no server in the middle, and no size limit beyond your disk.</p>')}
   `

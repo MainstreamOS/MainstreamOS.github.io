@@ -179,8 +179,8 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements and project updates.',
   render: () => `
-    <div class="eyebrow">Release &middot; 2.3.0 &middot; September 14, 2026</div>
-    <h2 id="mainstream-os-2-2-0">Mainstream OS 2.3.0 — a Linux desktop you set up by clicking</h2>
+    <div class="eyebrow">Release &middot; 3.0.0 &middot; October 1, 2026</div>
+    <h2 id="mainstream-os-2-2-0">Mainstream OS 3.0.0 — a Linux desktop you set up by clicking</h2>
 
     <p>Mainstream OS is a Linux operating system built on Arch. Its desktop is Hyprland — the software that arranges your windows and decides where they go — and Hyprland is normally set up by hand, by editing text files. Here you set it up by clicking: displays, window layouts, keyboard shortcuts, the bar, the look of the whole interface, updates and repairs each get a proper settings page — a settings app, not a config file, and never a terminal. Pick a wallpaper and the whole desktop takes its colors from it. One keypress hands the machine over to a full-screen Steam session for gaming, and a graphical installer puts it all on your computer in a few minutes. <strong>Deeply featured. Genuinely friendly.</strong></p>
 
@@ -195,6 +195,7 @@ PAGES['blog'] = {
       <li><strong>A wallpaper that rotates.</strong> Point it at a folder instead of one picture and set a timer. The palette follows along with every change, so the whole desktop recolors as it goes.</li>
       <li><strong>A wallpaper that changes with style.</strong> Ten ways for one picture to transition to the next: crossfade, slide, zoom, wipe, circle, ripple, peel, glitch, CRT and shatter, or let it pick at random. A preview beside the picker plays your choice on a loop.</li>
       <li><strong>Video wallpapers.</strong> A video works as a wallpaper with nothing extra to install — it plays quietly on a loop across every screen, and the color scheme comes from it just the same.</li>
+      <li><strong>A wallpaper for each monitor.</strong> Right click the desktop on any screen and choose Change Wallpaper to give that screen its own picture. The colors keep following your main wallpaper.</li>
         <li><strong>Themes.</strong> If you can change it, a theme remembers it. Wallpaper, colors, app style, icons, every bar, dock and title bar setting from shape to transparency to behavior, and now blur, dim, borders, shadow, animations, window rules and which edge the dock or bar sits on as well. It all saves under a name with a preview, and switches back in one tap.</li>
       <li><strong>Take your look with you.</strong> A theme saves out to a single file you can hand to someone else, wallpaper included.</li>
       <li><strong>Day and Night.</strong> Pair two themes and let them follow the clock or your night-light schedule.</li>
@@ -209,9 +210,10 @@ PAGES['blog'] = {
     <h2>Make it yours</h2>
     <ul>
       <li><strong>A bar you arrange, and paint.</strong> Show, hide and reorder every piece by dragging, move them between the left, middle and right, and drop two together to join them into a single rounded group. Then set the shape, transparency, color and width of the bar and of each widget on it. Four styles to start from: Hug, Float, Rect, or Notch. Float and Notch can each be split into three separate strips.</li>
-      <li><strong>A dock you position, style and tune.</strong> Put it along the top, bottom, left or right of the screen, and the bar steps aside when you give the dock the edge it was using. One page holds its size, shape, corner roundness, transparency and color, in Float, Rect or Notch. Set how far an icon grows on hover and whether hovering magnifies or glows, mark open windows with dashes, dots or a count badge, choose the animation when you click an app, and turn the buttons on either side on or off.</li>
-      <li><strong>Title bars, on or off.</strong> On for a familiar desktop, off for a clean one, switched instantly. Set their color and how far you can see through them, and return to stock in one press.</li>
-      <li><strong>Windows drawn the way you want.</strong> Corner radius, border thickness, the gaps between windows and around the screen, how see-through they are, the blur behind them, the shadow beneath them, how much the ones you are not using dim, and how they animate. Give the borders a gradient of your own or leave them following the wallpaper, and put the lot back with one press.</li>
+      <li><strong>A dock you position, style and tune.</strong> Put it along the top, bottom, left or right of the screen, and the bar steps aside when you give the dock the edge it was using. One page holds its size, shape, corner roundness, transparency and color, in Float, Rect, Notch or Hug, which runs the whole length of the edge like a taskbar with smaller icons to match. Set how far an icon grows on hover and whether hovering magnifies or glows, mark open windows with dashes, dots or a count badge, choose the animation when you click an app, and turn the buttons on either side on or off.</li>
+      <li><strong>Title bars, on or off.</strong> On for a familiar desktop, off for a clean one, switched instantly. Set their color and how far you can see through them, keep separate colors for dark and light mode, and return to stock in one press. They answer your mouse too: double-click to maximize or restore, middle-click to close, and scroll over one to flip a window between minimized, normal and maximized, even with the buttons switched off. Resize or recolor the buttons, or hide them until your pointer arrives.</li>
+      <li><strong>Named workspaces.</strong> Add the Workspace title widget to the bar, right click it to name the workspace you are on, and click it to jump between the ones you have named. The dock's right click menu can send an app straight to a named workspace.</li>
+      <li><strong>Windows drawn the way you want.</strong> Corner radius, border thickness, the gaps between windows and around the screen, how see-through they are, the blur behind them, the shadow beneath them, how much the ones you are not using dim, and how they animate. Give the borders a gradient of your own or leave them following the wallpaper, Turn rounded corners off and everything squares off at once, from windows to the bar, dock, sidebars, notifications and menus, then back on to restore them all. Put the lot back with one press.</li>
       <li><strong>A built-in window rule editor.</strong> Most desktops leave per-app rules to a config file you edit by hand. Here it is a page in Settings: teach one app where to open, whether it floats, how see-through it is, and what it is allowed to do.</li>
       <li><strong>App style, icons and pointer.</strong> All three are dropdowns in Settings, with pointer sizes limited to the ones your chosen pointer can actually be drawn at.</li>
       <li><strong>Fonts.</strong> A searchable list that shows each font in its own lettering, and your choice carries into your apps rather than stopping at the desktop.</li>
@@ -224,6 +226,8 @@ PAGES['blog'] = {
     <ul>
       <li><strong>Gaming and Console Mode.</strong> One keypress puts the desktop away and hands the machine to Steam's full-screen mode, the same way a Steam Deck runs, then gives the desktop back. AMD, Intel and NVIDIA alike. Install with Console Mode and it starts there instead: straight into the full-screen session with game controllers already set up, which turns a computer under the TV into a console. The desktop is still there whenever you want it.</li>
       <li><strong>Windows games, ready to run.</strong> The compatibility layer that runs Windows titles is installed and switched on during setup, so your library works the first time you open it.</li>
+      <li><strong>A Gaming page in Settings.</strong> One switch keeps games smooth while something heavy runs in the background, and two more can help some games stutter less or load faster. GameMode, a performance booster, and MangoHud, an on-screen performance display, come installed.</li>
+      <li><strong>VR headsets.</strong> An optional extra lets standalone headsets like Quest, Pico and Vive Focus play your PC's games. Switch it on from the Welcome app.</li>
     </ul>
     ${shot('Gaming-Big-Picture.webp','Steam Big Picture running as the Mainstream Gaming Mode session','Gaming Mode — the machine really does hand itself over, rather than running Steam in a window.')}
 
@@ -236,6 +240,8 @@ PAGES['blog'] = {
       <li><strong>Keyboard shortcuts.</strong> A real editor rather than a printed list — change the ones that ship, add your own, and set them by pressing the keys you want.</li>
       <li><strong>Manage your apps.</strong> Choose which app opens which kind of file, and what starts up when you log in, from one page. Every role arrives already set on a fresh install.</li>
       <li><strong>Touchpad gestures.</strong> Choose what each swipe and pinch does, applied the moment you set it.</li>
+      <li><strong>Share folders on your home network.</strong> A Sharing page shares folders with Windows, Mac and Linux computers. Turn it on once, then right click a folder in Files and choose Share on Network. Folders are only shared on networks you trust.</li>
+      <li><strong>Share Wi-Fi with a QR code.</strong> Show a saved network as a code another device can scan to join, so nobody has to read out the password.</li>
     </ul>
     <figure>
       <div class="shot">
@@ -248,12 +254,13 @@ PAGES['blog'] = {
     <ul>
       <li><strong>A ready-made set of apps</strong> — browser, files, editor, calculator, calendar, photos, music, system monitor — each a tick-box during the install, plus a software store with pictures and descriptions for the rest.</li>
       <li><strong>A launcher that finds everything.</strong> Apps, folders, files, quick sums and your clipboard history, all from one search box.</li>
-      <li><strong>Zoom out to the whole desktop.</strong> Flick the pointer into the corner and the desktop pulls back into a scrolling map of every workspace — drag windows between them, drop files onto them. Built on <a href="https://github.com/yayuuu/hyprland-scroll-overview">Scroll Overview</a> by <a href="https://github.com/yayuuu">yayuuu</a>.</li>
-      <li><strong>Quick settings and notifications</strong> in one panel off the side of the screen.</li>
       <li><strong>Pick up where you left off.</strong> Sign out or restart and your windows reopen on the workspaces they were on. The session is written down as you work, so a crash costs you no more than a tidy sign-out would.</li>
+      <li><strong>Zoom out to the whole desktop.</strong> Flick the pointer into the corner and the desktop pulls back into a scrolling map of every workspace — drag windows between them, drop files onto them. Each monitor can have its own layout, gap and scale. Built on <a href="https://github.com/yayuuu/hyprland-scroll-overview">Scroll Overview</a> by <a href="https://github.com/yayuuu">yayuuu</a>.</li>
+      <li><strong>Quick settings and notifications</strong> in one panel off the side of the screen. Choose which corner notifications appear in, or centered at the top or bottom, and how long they stay.</li>
+      <li><strong>A media tab in the sidebar.</strong> Album art, playback controls and synced lyrics for whatever is playing, colored from the album. Press Ctrl+P to pin the left sidebar open while you work.</li>
       <li><strong>Move files between your devices.</strong> Send several at once to any phone, tablet, or computer on your network running <a href="https://localsend.org">LocalSend</a>, and receive from them the same way, with live progress and no cloud in the middle. Mainstream builds LocalSend into the desktop rather than bundling the app.</li>
       <li><strong>Auto Mount and Uninstall Apps</strong>, two small apps for the fiddly parts: drives that are ready at every login, and removing software without breaking the desktop.</li>
-      <li><strong>AI in the sidebar.</strong> Sign in to Claude or ChatGPT with a subscription you already have and no API key to paste, or follow a guided setup for free local AI with Ollama, where nothing you type leaves the computer.</li>
+      <li><strong>AI in the sidebar.</strong> Sign in to Claude or ChatGPT with a subscription you already have, or to Gemini with your Google account, free or on Google AI Pro or Ultra, with no API key to paste. Or follow a guided setup for free local AI with Ollama, where nothing you type leaves the computer.</li>
     </ul>
     <figure>
       <div class="shot">
@@ -268,7 +275,7 @@ PAGES['blog'] = {
       <li><strong>Dual-boot and encryption.</strong> Install alongside an existing Windows and it joins the start-up menu, or encrypt the whole system behind a passphrase. Both are set up during the install.</li>
       <li><strong>Graphics sorted out for you.</strong> Your card is recognized and given drivers that match it — AMD, Intel or NVIDIA, laptops with two included — based on which model you have rather than just the brand. An experimental legacy edition covers older NVIDIA cards, back to the GeForce 400 series.</li>
       <li><strong>Intel and T2 Macs.</strong> Macs from 2012 to 2015 are supported, Broadcom Wi-Fi and the 2015 MacBook keyboard and trackpad included. A T2 Mac fetches its own Wi-Fi and Bluetooth firmware from Apple, and the installer says up front what the machine needs plugged in before it can be installed.</li>
-      <li><strong>A first-boot welcome</strong> that shows you around and offers one-click installs for the extras you want, including DaVinci Resolve and OBS for anyone making things.</li>
+      <li><strong>A Welcome app that previews as you choose.</strong> Pick your language, window layout, hot corner and wallpaper, then style the bar, dock and window decorations while a live preview of your desktop updates as you go. Its apps page fits on one screen, sorted into Play, Create and Work, with anything you already have installed marked, and offers one-click installs for the extras you want: Office tools, image editing with GIMP and Krita, game streaming with Sunshine and Moonlight, and DaVinci Resolve, Blender and OBS for anyone making things.</li>
     </ul>
     ${shot('Install_Welcome_Screen.webp','The Mainstream OS installer welcome screen','The installer. Boot from the USB stick, click through it, and you land on the desktop.')}
 
@@ -284,7 +291,7 @@ PAGES['blog'] = {
     </ul>
 
     <h2>Get it</h2>
-    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 2.2.0</strong></a> — 3.4&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
+    <p><a href="https://mainstreamos.org/download"><strong>Download Mainstream OS 3.0.0</strong></a> — 3.1&nbsp;GB, for 64-bit PCs. The <a href="#install-iso">install guide</a> walks through every step with pictures, and the <a href="#changelog">changelog</a> lists everything this release changed.</p>
 
     <h2>Everything that changed</h2>
     <p>This page is what Mainstream is, not what moved in any one release. For that — every version, and the commits behind each one — see the <a href="#changelog">changelog</a>.</p>

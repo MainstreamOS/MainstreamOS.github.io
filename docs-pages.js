@@ -534,6 +534,9 @@ PAGES.bar = {
       <div class="prop"><center><div class="k">Tooltips</div></center><div class="v">Choose whether Bar tooltips appear as the pointer passes over, or wait for a click.</div></div>
     </div>
 
+    <p class="shot-note">The last stretch of the page: weather at the top, then the tray, notifications, and tooltips below it.</p>
+    ${shot('BarConfig-4.webp','Weather, Tray, Notifications and Tooltips')}
+
     <h2>Weather</h2>
     <p>Powered by Open-Meteo. When <strong>Enable GPS based location</strong> is on, Mainstream uses GeoClue and the <em>City name</em> field greys out, since your position is coming from the machine rather than from what you typed. Turn it off to name a city yourself. <strong>Polling interval</strong> is how often (in minutes) the widget refreshes.</p>
     <div class="props">
@@ -805,8 +808,8 @@ PAGES.decorations = {
   group: 'Settings', title: 'Decorations', icon: 'sliders',
   lede: 'How windows are drawn — their shape, transparency, blur, shadow and borders — plus the app style and icons your other programs use, the pointer, the fonts, and per-app window rules.',
   render: () => `
-    <p class="shot-note">The top of the page: which decorations windows get, the title bar colors that follow from them, and the shape and transparency of the windows themselves.</p>
-    ${shot('DecorationsConfig-1.webp','Window decorations, title bars, shape and transparency')}
+    <p class="shot-note">The top of the page: which decorations windows get, and the title bar settings that follow from them.</p>
+    ${shot('DecorationsConfig-1.webp?v=2','Window decorations and title bars')}
 
     <h2>Window decorations</h2>
     <p>Six switches for how a window is drawn. Turning any of them off is a fair trade for speed on older hardware — the desktop keeps working exactly the same, it just draws less.</p>
@@ -832,6 +835,9 @@ PAGES.decorations = {
       <div class="prop"><center><div class="k">Scroll to maximize and minimize</div></center><div class="v">Scroll up on a title bar to maximize its window, and down to restore it, then minimize it. Double-click maximizes or restores, and middle-click closes, whatever this is set to.</div></div>
     </div>
 
+    <p class="shot-note">The shape of every window, how see-through the focused and unfocused ones are, and the blur drawn behind them.</p>
+    ${shot('DecorationsConfig-2.webp?v=2','Window shape, transparency and blur')}
+
     <h2>Window shape</h2>
     <p>The geometry every window is laid out with.</p>
     <div class="props">
@@ -848,9 +854,6 @@ PAGES.decorations = {
       <div class="prop"><center><div class="k">Unfocused windows</div></center><div class="v">Everything behind it. Dropping this a little is an easy way to see at a glance which window has your keystrokes.</div></div>
     </div>
 
-    <p class="shot-note">The effects drawn around and behind a window: its blur, the dimming of everything else, its border color and its shadow.</p>
-    ${shot('DecorationsConfig-2.webp','Blur, dim, border color and shadow')}
-
     <h2>Window blur</h2>
     <p>What happens behind a transparent window. Needs <strong>Blur</strong> switched on above.</p>
     <div class="props">
@@ -859,6 +862,9 @@ PAGES.decorations = {
       <div class="prop"><center><div class="k">Saturation</div></center><div class="v">How much color the blurred wallpaper keeps.</div></div>
       <div class="prop"><center><div class="k">Blur through to the wallpaper</div></center><div class="v">Blur past the windows underneath and show the wallpaper instead, so a stack of windows does not muddy into itself.</div></div>
     </div>
+
+    <p class="shot-note">Dimming of the windows you are not using, border colors, the window shadow, and the animation style.</p>
+    ${shot('DecorationsConfig-3.webp?v=2','Window dim, border color, shadow and animations')}
 
     <h2>Window dim</h2>
     <p>Darkens whatever you are not working in, which is the quietest way to keep your eye on the right window.</p>
@@ -884,9 +890,6 @@ PAGES.decorations = {
       <div class="prop"><center><div class="k">Offset X / Offset Y</div></center><div class="v">Which direction it falls, as though you were moving the light source.</div></div>
     </div>
 
-    <p class="shot-note">How windows move, the reset that undoes everything above, and the app style, icons and pointer the rest of the system uses.</p>
-    ${shot('DecorationsConfig-3.webp','Animations, reset, system look and cursor')}
-
     <h2>Window animations</h2>
     <p>One list, holding a whole set of curves and timings.</p>
     <div class="props">
@@ -895,6 +898,9 @@ PAGES.decorations = {
 
     <h2>Reset</h2>
     <p><strong>Reset window settings</strong> puts everything above back the way it shipped. It leaves the sections below alone — your app style, icons, pointer and fonts stay as you set them.</p>
+
+    <p class="shot-note">The start of the lower half of the page: the app style, icons and pointer your other programs use, the cursor size, and the first of the fonts.</p>
+    ${shot('DecorationsConfig-4.webp','System look, Cursor, and the start of Fonts')}
 
     <h2>System look</h2>
     <p>The desktop follows your theme on its own. These three pick what everything <em>else</em> uses — your file manager, your browser, your text editor.</p>
@@ -912,7 +918,7 @@ PAGES.decorations = {
     ${callout('note','Not every cursor theme can be resized', '<p>The list only offers the sizes your chosen pointer theme can actually draw, so you will sometimes see fewer than four. A theme built at a single size stays that size whichever you pick.</p>')}
 
     <p class="shot-note">The last two sections: the fonts everything is set in, and the per-window rules that override any of it for one app.</p>
-    ${shot('DecorationsConfig-4.webp','Fonts and window rules')}
+    ${shot('DecorationsConfig-5.webp','Fonts and window rules')}
 
     <h2>Fonts</h2>
     <p>Mainstream uses <strong>Google Sans Flex</strong> and <strong>JetBrains Mono NF</strong> by default. Each list is searchable and shows every font in its own typeface, so you can read a name the way it will look.</p>
@@ -1149,7 +1155,7 @@ PAGES.mouse = {
   lede: 'Pointer speed, button layout, acceleration, and scroll direction — separately for mice and touchpads.',
   render: () => `
     <p class="shot-note">The top of the page: which button is primary, finding a lost pointer, and the mouse speed and acceleration below that.</p>
-    ${shot('MouseConfig.webp','Primary button, shake to locate, and mouse settings')}
+    ${shot('MouseConfig-1.webp','Primary button, shake to locate, and mouse settings')}
 
     <h2>General</h2>
     <p><strong>Primary Button</strong> — which physical button is the primary click. <b>Left</b> is the default; switch to <b>Right</b> for left-hand use.</p>

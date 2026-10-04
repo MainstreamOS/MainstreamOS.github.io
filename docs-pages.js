@@ -1658,7 +1658,7 @@ PAGES['legacy-nvidia'] = {
       <div class="prop"><center><div class="k">Cards with 2 GB of memory</div></center><div class="v">Tight enough that a heavy desktop can run the card out of memory. It works, but it is the configuration most likely to misbehave under load.</div></div>
       <div class="prop"><center><div class="k">A blank or gray desktop shell</div></center><div class="v">A known failure of how the shell hands images to these drivers. If you hit it, the fix is one line, described below.</div></div>
       <div class="prop"><center><div class="k">The live session on the oldest cards</div></center><div class="v">The USB stick itself runs the newest of the three branches, which the GTX 400 to 700 series cannot use, so the live desktop falls back to software rendering and will feel slow. Your card gets its own driver during installation, and the installed system is the one to judge.</div></div>
-      <div class="prop"><center><div class="k">The Steam Frame and other Steam Link headsets</div></center><div class="v">Not working on this experimental edition yet: SteamVR needs a Vulkan feature these drivers do not have. See <a href="#vr">VR and the Steam Frame</a>.</div></div>
+      <div class="prop"><center><div class="k">The Steam Frame and other Steam Link headsets</div></center><div class="v">Not working on this experimental edition yet: SteamVR needs a Vulkan feature these drivers do not have. Quest, Pico and other standalone headsets can try WiVRn instead. See <a href="#vr">VR and the Steam Frame</a>.</div></div>
     </div>
 
     <h2>If the desktop comes up blank or gray</h2>
@@ -2107,14 +2107,33 @@ PAGES['gaming-performance'] = {
 PAGES.vr = {
   group: 'Gaming', title: 'VR and the Steam Frame', icon: 'vr',
   navTitle: 'VR + Steam Frame',
-  lede: 'Stream PC VR games from Mainstream to Valve\'s Steam Frame through SteamVR, a free app you install from Steam. Support is experimental, because Valve does not fully support Linux PCs for the Frame yet. This page covers the setup that works today, the checks that catch most problems, and what to expect.',
+  lede: 'Stream PC VR games from Mainstream to Valve\'s Steam Frame through SteamVR, a free app you install from your Steam Library, or to Quest, Pico and other standalone headsets through WiVRn, which the Welcome app installs. Start with the table below. Steam Frame support is experimental, because Valve does not fully support Linux PCs for the Frame yet. This page covers which one to pick, the setup that works today, the checks that catch most problems, and what to expect.',
   render: () => `
     ${callout('warn','Experimental','<p>Valve\'s Steam Frame guide, as of its September 28, 2026 revision, says full SteamVR and wireless adapter support is "currently available on Windows only". Linux PCs can stream to the Frame today, and owners report it working on several Linux systems, with bugs Valve is still fixing. Any Steam or SteamVR update can change how well it works. The Frame also plays games on its own with no PC at all, and none of this page applies to that.</p>')}
 
-    <h2>What you need</h2>
+    <h2>Which one should I install?</h2>
+    <p>There are two ways to get your PC's VR games into a headset. <strong>SteamVR</strong> is Valve's own app, which Steam installs and updates. <strong>WiVRn</strong> is open source, streams to standalone headsets and needs no SteamVR. Pick by your headset:</p>
+    <table class="t">
+      <thead><tr><th>Your headset</th><th>Install</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td><b>Steam Frame</b></td><td><b>SteamVR</b>, experimental, from your Steam Library</td><td>The WiVRn release Mainstream ships cannot pair with the Frame yet, so Valve's SteamVR is the way to stream to it today. Opt into the SteamVR beta, as Valve advises.</td></tr>
+        <tr><td><b>Steam Frame</b> on the experimental <a href="#legacy-nvidia">legacy-NVIDIA edition</a></td><td><b>Neither</b>, not working yet</td><td>SteamVR needs a driver feature these cards do not have yet, as explained under <em>Older NVIDIA cards</em>, and WiVRn cannot pair with the Frame yet.</td></tr>
+        <tr><td><b>Valve Index, HTC Vive, Bigscreen Beyond</b> and other headsets that plug into the PC</td><td><b>SteamVR</b>, from your Steam Library</td><td>These headsets run on SteamVR itself, and WiVRn only streams to standalone headsets.</td></tr>
+        <tr><td><b>Quest, Pico, Vive Focus</b> and other standalone headsets (not the Steam Frame)</td><td><b>WiVRn</b>, recommended, from the Welcome app's <em>Extra VR Headset Support</em>, or Valve's Steam Link app with SteamVR</td><td>WiVRn is open source, made for these headsets and needs no SteamVR, while Valve labels Steam Link on Linux experimental.</td></tr>
+        <tr><td><b>Quest, Pico</b> and other standalone headsets (not the Steam Frame) on the experimental <a href="#legacy-nvidia">legacy-NVIDIA edition</a></td><td><b>WiVRn</b></td><td>SteamVR's streaming does not work on that experimental edition yet, so WiVRn is the one to try there.</td></tr>
+      </tbody>
+    </table>
+    <p>Install WiVRn from the Welcome app: on its <em>Get set up for what you do</em> page, tick <strong>Extra VR Headset Support</strong> under <em>Play</em>. It adds WiVRn, its dashboard, the WayVR overlay, and xrizer, which is how WiVRn runs SteamVR games. To open Welcome again after your first login, search for <strong>Welcome</strong> in the launcher.</p>
+    <p>SteamVR is not on the Welcome app. Install it from your Steam Library, for the Frame or a wired headset, once Steam is set up as described in <a href="#gaming">Setting up Gaming</a>. If it is not in your Library yet, search the Steam Store for <strong>SteamVR</strong>, which is free, and install it from there. Steam keeps it updated from then on.</p>
+
+    <h2>Use one at a time</h2>
+    <p>Do not run WiVRn and SteamVR together. You can have both installed, but if you switch from one to the other, quit the one you were using first, along with any VR game: quit SteamVR before you start WiVRn, and quit WiVRn before you start SteamVR.</p>
+    <p>While a headset is connected, WiVRn points VR games at itself, and Steam can point them back at SteamVR, so switching back and forth can leave games pointed at the one that is not running. If games open flat on the monitor or will not start after a switch, see <em>If VR stopped working after switching</em>, below.</p>
+
+    <h2>What you need for the Frame</h2>
     <ul>
       <li><strong>Steam</strong>, set up as described in <a href="#gaming">Setting up Gaming</a>.</li>
-      <li><strong>SteamVR.</strong> Mainstream does not include it; Steam installs and updates it. Get it free from the Steam Store, or pick <strong>SteamVR</strong> on the Welcome app's <em>Set up your apps</em> page, which sets up Steam if needed and asks it to install SteamVR.</li>
+      <li><strong>SteamVR</strong>, from your Steam Library. Mainstream does not include it; Steam installs and updates it.</li>
       <li><strong>The Frame's wireless adapter</strong>, plugged into this PC. Valve recommends it, though streaming over your home Wi-Fi alone works too.</li>
       <li><strong>Your Wi-Fi country</strong>, set in <a href="#wifi">Settings &rarr; Wi-Fi</a>.</li>
     </ul>
@@ -2157,7 +2176,7 @@ PAGES.vr = {
 
     <h2>Older NVIDIA cards</h2>
     ${callout('warn','Not on the legacy-NVIDIA edition yet','<p>The <a href="#legacy-nvidia">legacy-NVIDIA edition</a> is experimental, and it does not work with the Frame yet. SteamVR currently needs a Vulkan feature, <code>VK_KHR_maintenance9</code>, that NVIDIA\'s 580 drivers and older do not have, so it stops with error 405 before a stream starts. Valve said on October 3, 2026 that the next SteamVR beta drops that requirement. Until that beta is out and has been tried on this edition, treat the Frame as not working there. Whether these cards can encode the stream at all has not been checked either.</p>')}
-    <p>NVIDIA cards from the RTX 20-series onward use the standard image, whose current driver has that feature.</p>
+    <p>NVIDIA cards from the RTX 20-series onward use the standard image, whose current driver has that feature. On the experimental legacy-NVIDIA edition, Quest, Pico and other standalone headsets can try WiVRn instead, as the table at the top suggests.</p>
 
     <h2>What to expect</h2>
     <p>These are open problems on Linux PCs in general, not only on Mainstream.</p>
@@ -2172,14 +2191,29 @@ PAGES.vr = {
     <h2>If something does not work</h2>
     <ul>
       <li><strong>SteamVR's window never opens.</strong> Set SteamVR's launch options to <code>QT_QPA_PLATFORM=xcb %command%</code>, the same way as for a game on the <a href="#steam-proton">Steam + Proton</a> page, and start it again.</li>
-      <li><strong>Games open flat on the monitor.</strong> SteamVR was not running yet, or WiVRn was. Close the game, start SteamVR, then launch the game again.</li>
+      <li><strong>Games open flat on the monitor.</strong> SteamVR was not running yet. Close the game, start SteamVR, then launch the game again. If WiVRn was ever installed and that does not help, see <em>If VR stopped working after switching</em>, below.</li>
       <li><strong>Pairing keeps failing.</strong> Forgetting Steam's saved connection for the adapter, then pairing again, has worked for an owner. In <a href="#wifi">Settings &rarr; Wi-Fi</a>, under <strong>Saved Networks</strong>, click the trash button (<em>Forget network</em>) on <strong>Steam Frame Wireless Adapter</strong>. From a terminal, <code>nmcli connection delete "Steam Frame Wireless Adapter"</code> does the same.</li>
     </ul>
 
+    <h2>If VR stopped working after switching</h2>
+    <p>Small files in your home folder tell VR games which runtime to use:</p>
+    <ul>
+      <li><code>~/.config/openxr/1/active_runtime.json</code>, for OpenXR games. Some WiVRn builds also write <code>active_runtime.x86_64.json</code> and, for 32-bit games, <code>active_runtime.i686.json</code> next to it.</li>
+      <li><code>~/.config/openvr/openvrpaths.vrpath</code>, for OpenVR games, which include most SteamVR titles.</li>
+    </ul>
+    <p>While a headset is connected, WiVRn points them at itself and keeps the previous ones as copies ending in <code>.wivrn-backup</code>, then puts them back when it closes. If WiVRn crashed or was killed, or Steam rewrote one of them, they can point at a runtime that is not running or no longer installed: games open flat on the monitor, a game will not start, or SteamVR fails to start. Mainstream does not change these files when you switch, so fix them by hand. Quit any VR game, SteamVR and WiVRn, then look at what is there:</p>
+<pre><code><span class="k">ls</span> -l ~/.config/openxr/1/ ~/.config/openvr/
+<span class="k">grep</span> -Rils -e wivrn -e xrizer ~/.config/openxr/1/ ~/.config/openvr/</code></pre>
+    <p>The first line lists the files, any copies ending in <code>.wivrn-backup</code>, and where each file that is a link points. The second lists the files that name WiVRn or xrizer.</p>
+    <p><strong>Put back WiVRn's copies.</strong> A copy ending in <code>.wivrn-backup</code> is the file as it was before WiVRn changed it. Move each one back over its file, for example:</p>
+<pre><code><span class="k">mv</span> -f ~/.config/openvr/openvrpaths.vrpath.wivrn-backup ~/.config/openvr/openvrpaths.vrpath</code></pre>
+    <p><strong>Delete what still names WiVRn or xrizer.</strong> Run the <code>grep</code> line again and delete each file it lists, along with any link that <code>ls -l</code> shows pointing at a WiVRn file, for example:</p>
+<pre><code><span class="k">rm</span> ~/.config/openxr/1/active_runtime.json</code></pre>
+    <p>Then start the one you use. SteamVR writes <code>openvrpaths.vrpath</code> again when it starts, and WiVRn points them at itself the next time a headset connects. If an OpenXR game still cannot find SteamVR, open SteamVR's settings and set SteamVR as the OpenXR runtime.</p>
+
     <h2>WiVRn and other headsets</h2>
-    <p>Mainstream also offers <strong>WiVRn</strong>, an open-source way to stream to standalone headsets such as Quest, Pico and Vive Focus without SteamVR. Install it from the <strong>WiVRn</strong> option on the Welcome app's <em>Set up your apps</em> page. Those headsets can also use Valve's Steam Link app with SteamVR, which Valve labels experimental on Linux as well. Wired headsets, such as the Valve Index, use SteamVR from Steam.</p>
-    <p>A WiVRn app for the Steam Frame exists, but it is not in a WiVRn release yet, and the version Mainstream ships cannot pair with it. For the Frame, use SteamVR for now.</p>
-    ${callout('warn','Run one at a time','<p>Do not run WiVRn and SteamVR together. While a headset is connected, WiVRn points VR games at itself, and it puts the previous setting back when it closes. With both running, or after WiVRn closed unexpectedly, games can open in the wrong place or SteamVR can fail to start. Close WiVRn completely before you start SteamVR.</p>')}
+    <p><strong>WiVRn</strong> is an open-source way to stream to standalone headsets such as Quest, Pico and Vive Focus without SteamVR. Install it from the Welcome app's <em>Extra VR Headset Support</em>, as described under <em>Which one should I install?</em>, then open WiVRn to pair your headset and start it before your VR game. Quit SteamVR first if it is running, as described under <em>Use one at a time</em>. The WiVRn app on your headset has to be the same version as WiVRn on your PC, so when a Mainstream update brings a new WiVRn, update the headset app too. Until you do, the headset shows an <em>Incompatible WiVRn server</em> error. Those headsets can also use Valve's Steam Link app with SteamVR instead, which Valve labels experimental on Linux as well. Wired headsets, such as the Valve Index, use SteamVR.</p>
+    ${callout('note','Steam Frame support in WiVRn','<p>A WiVRn app for the Steam Frame exists, but it is not in a WiVRn release yet, and the version Mainstream ships cannot pair with it. Full Steam Frame support through WiVRn is expected with WiVRn\'s next release. Once that release is out and has been tried on Mainstream, this page will be updated. For the Frame, use SteamVR for now.</p>')}
 
     ${callout('note','Tell us how it went','<p>Steam Frame support on Linux is new for everyone, Mainstream included. If it works for you, or if it does not, say so in <a href="https://discord.gg/WJ3AUK5Aqd">#support</a> with your graphics card, whether you used the adapter or home Wi-Fi, and what Valve\'s script printed. That is how this page gets better.</p>')}
   `

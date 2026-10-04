@@ -47,6 +47,7 @@ const I = {
   folder:  '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="2"/><path d="M8.5 17.5a3.5 3.5 0 0 1 7 0"/>',
   send:    '<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/>',
   tag:     '<path d="M3 12V4h8l9 9-8 8-9-9Z"/><circle cx="7.5" cy="7.5" r="1.25"/>',
+  vr:      '<path d="M4 7h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4.5l-2-2.5h-3l-2 2.5H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/><circle cx="8" cy="11.5" r="1.5"/><circle cx="16" cy="11.5" r="1.5"/>',
 };
 
 const icon = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">${I[name] || I.disc}</svg>`;
@@ -145,7 +146,7 @@ PAGES.home = {
     <div class="card-grid">
       ${card('davinci','Set up DaVinci Resolve','film','GPU + OpenCL setup, AV1 hardware encode, and render presets for Resolve Studio.')}
       ${card('obs','Set up OBS','cam','Native bundle: Wayland game capture, a virtual camera, and GPU encoding.')}
-      ${card('gaming','Setting up Gaming','game','Steam + Proton, GameMode, controllers, Vulkan drivers, and VRR.')}
+      ${card('gaming','Setting up Gaming','game','Steam + Proton, GameMode, controllers, Vulkan drivers, VRR, and VR headsets, including the Steam Frame (experimental).')}
     </div>
   `
 };
@@ -404,6 +405,17 @@ PAGES.wifi = {
 
     <h2>Sharing a network</h2>
     <p>To let a friend's phone or another computer join a network you have saved, click the share button beside <strong>Forget</strong> on that network in Settings. A QR code appears that the other device can scan with its camera, so nobody has to read out or type the password.</p>
+
+    <h2>Wi-Fi Country</h2>
+    <p>Each country has its own rules for which Wi-Fi channels a card may use. Set <strong>Country</strong> to the one you are in, and Wi-Fi uses the channels allowed there. Without a country, Wi-Fi falls back to cautious worldwide settings, which leave out the 6 GHz channels needed by the wireless adapter for the Steam Frame, whose support is experimental.</p>
+    <p>Mainstream fills it in from your time zone when that time zone belongs to a single country, and it never assumes the US. It stays <strong>Not set</strong> when the time zone does not say where you are, such as UTC or a zone several countries share. It also stays unset after an install from the image that kept New York as the time zone, because the installer picks New York when it cannot tell where you are. If you change your time zone later, a country guessed this way follows it at the next update. One you pick here stays until you change it.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Changing it</div></center><div class="v">Asks for an administrator password, and usually applies right away. When it cannot, the note under the menu says it takes effect after a restart.</div></div>
+      <div class="prop"><center><div class="k">Cards with their own country</div></center><div class="v">Most Intel cards keep a country of their own, which this menu neither changes nor shows. Your choice stays saved, and USB adapters, such as the Steam Frame's, use it.</div></div>
+      <div class="prop"><center><div class="k">A network names another country</div></center><div class="v">Other cards can switch to the country a network names while you are connected to it, and the note under the menu says so. Your choice stays saved.</div></div>
+      <div class="prop"><center><div class="k">Not installed</div></center><div class="v">If the section says Wi-Fi country support is not installed, run an update from <a href="#update">Settings &rarr; Update</a>, then come back.</div></div>
+    </div>
+    <p>For what the country means for VR streaming, see <a href="#vr">VR and the Steam Frame</a>.</p>
   `
 };
 
@@ -1646,6 +1658,7 @@ PAGES['legacy-nvidia'] = {
       <div class="prop"><center><div class="k">Cards with 2 GB of memory</div></center><div class="v">Tight enough that a heavy desktop can run the card out of memory. It works, but it is the configuration most likely to misbehave under load.</div></div>
       <div class="prop"><center><div class="k">A blank or gray desktop shell</div></center><div class="v">A known failure of how the shell hands images to these drivers. If you hit it, the fix is one line, described below.</div></div>
       <div class="prop"><center><div class="k">The live session on the oldest cards</div></center><div class="v">The USB stick itself runs the newest of the three branches, which the GTX 400 to 700 series cannot use, so the live desktop falls back to software rendering and will feel slow. Your card gets its own driver during installation, and the installed system is the one to judge.</div></div>
+      <div class="prop"><center><div class="k">The Steam Frame and other Steam Link headsets</div></center><div class="v">Not working on this experimental edition yet: SteamVR needs a Vulkan feature these drivers do not have. See <a href="#vr">VR and the Steam Frame</a>.</div></div>
     </div>
 
     <h2>If the desktop comes up blank or gray</h2>
@@ -1940,6 +1953,8 @@ PAGES.gaming = {
 
     ${callout('tip','Console Mode', '<p>Choose <strong>Console Mode</strong> on the installer\'s session screen (or set the boot target in Gaming Mode Setup) and the machine boots straight into Gaming Mode every time — turning any mini-PC into a couch console. The full desktop is always one <em>Switch to Desktop</em> away.</p>')}
 
+    ${callout('note','VR runs from the desktop', '<p>Play VR games from the desktop, not from Gaming Mode. That includes the Steam Frame, whose support is experimental. In Gaming Mode or on a Console Mode install, open Steam\'s power menu and pick <em>Switch to Desktop</em> first. <a href="#vr">VR and the Steam Frame</a> has the rest.</p>')}
+
     ${callout('note','NVIDIA on Wayland', '<p>Mainstream installs a current NVIDIA driver matched to your card — that is what variable refresh rate and HDR need. Older NVIDIA cards are covered by the experimental legacy edition, on the driver that matches them.</p>')}
 
     <h2>Which screen it opens on</h2>
@@ -2088,6 +2103,88 @@ PAGES['gaming-performance'] = {
   `
 };
 
+// ---------- GAMING: VR ----------
+PAGES.vr = {
+  group: 'Gaming', title: 'VR and the Steam Frame', icon: 'vr',
+  navTitle: 'VR + Steam Frame',
+  lede: 'Stream PC VR games from Mainstream to Valve\'s Steam Frame through SteamVR, a free app you install from Steam. Support is experimental, because Valve does not fully support Linux PCs for the Frame yet. This page covers the setup that works today, the checks that catch most problems, and what to expect.',
+  render: () => `
+    ${callout('warn','Experimental','<p>Valve\'s Steam Frame guide, as of its September 28, 2026 revision, says full SteamVR and wireless adapter support is "currently available on Windows only". Linux PCs can stream to the Frame today, and owners report it working on several Linux systems, with bugs Valve is still fixing. Any Steam or SteamVR update can change how well it works. The Frame also plays games on its own with no PC at all, and none of this page applies to that.</p>')}
+
+    <h2>What you need</h2>
+    <ul>
+      <li><strong>Steam</strong>, set up as described in <a href="#gaming">Setting up Gaming</a>.</li>
+      <li><strong>SteamVR.</strong> Mainstream does not include it; Steam installs and updates it. Get it free from the Steam Store, or pick <strong>SteamVR</strong> on the Welcome app's <em>Set up your apps</em> page, which sets up Steam if needed and asks it to install SteamVR.</li>
+      <li><strong>The Frame's wireless adapter</strong>, plugged into this PC. Valve recommends it, though streaming over your home Wi-Fi alone works too.</li>
+      <li><strong>Your Wi-Fi country</strong>, set in <a href="#wifi">Settings &rarr; Wi-Fi</a>.</li>
+    </ul>
+    <p>Valve asks for Linux 7.2 or newer for the adapter. The standard Mainstream kernel already meets that and includes the adapter's driver and firmware, so there is nothing extra to install for it.</p>
+    <p>On a machine set up with <code>./setup</code>, check your kernel with <code>uname -r</code>. The adapter needs Arch's <code>linux</code> kernel, version 7.2 or newer; <code>linux-lts</code> (6.18) has no driver for it.</p>
+
+    <h2>Set it up</h2>
+    <ol>
+      <li><strong>Use the desktop, not Gaming Mode.</strong> Valve recommends the desktop when streaming from its own Steam Machine, and one owner saw VR games open as flat windows in a full-screen Steam session like Gaming Mode. VR inside Gaming Mode has not been tested on Mainstream. On a Console Mode install, open Steam's power menu and pick <em>Switch to Desktop</em> first.</li>
+      <li><strong>Opt into the SteamVR beta.</strong> In your Steam Library, right-click <strong>SteamVR</strong>, choose <em>Properties</em>, open <em>Betas</em> and pick the beta. Valve's Linux fixes land there first.</li>
+      <li><strong>Check your Wi-Fi country</strong> in <a href="#wifi">Settings &rarr; Wi-Fi</a>, under <strong>Wi-Fi Country</strong>. Mainstream fills it in from your time zone when it can and never assumes the US, so make sure it names the country you are in.</li>
+      <li><strong>Plug the adapter into a USB 3 port</strong>, preferably one on the back of the PC, rather than through a hub or extension cable. Keep it within about 20 feet (6 m) of where you play, with a clear line of sight to the headset.</li>
+      <li><strong>Pair the adapter.</strong> Steam shows pairing prompts on the PC once the adapter is plugged in, and may ask for your password while it sets up the adapter's connection. If no prompt appears, try another port, or pair from the headset under <em>Steam Settings &rarr; Remote Play &rarr; Wireless Streaming Adapter</em>.</li>
+      <li><strong>Start SteamVR, then the game.</strong> On Linux, Steam does not start SteamVR for a VR game yet. Start SteamVR from your Library and wait until it shows in the headset, then launch the game. A game started first opens as a flat window on your monitor.</li>
+    </ol>
+    <p>When SteamVR starts for the first time, and sometimes after it updates, it may ask for your password to finish its own setup.</p>
+
+    <h2>Keep Wi-Fi on</h2>
+    <p>To your PC, the adapter is a Wi-Fi card. Turning Wi-Fi off, from the right sidebar's Wi-Fi toggle or from Settings, turns the adapter off with it. That holds on a desktop that reaches the internet over a cable too: leave Wi-Fi on, even with no network joined. While the adapter is plugged in, <a href="#wifi">Settings &rarr; Wi-Fi</a> shows this reminder under <strong>Enable Wi-Fi</strong>.</p>
+
+    <h2>Keep the PC awake</h2>
+    <p>A headset sends your PC no keyboard or mouse input, so a long session can look idle. While SteamVR's status window is open, Mainstream keeps the PC from locking, turning off the screen or going to sleep. If it still locks or sleeps partway through a session, turn on <strong>Keep awake</strong>, the coffee cup among the right sidebar's toggles, before you start, and turn it off when you are done.</p>
+    <p>This lasts as long as SteamVR runs, even with the headset off, so quit SteamVR when you are done. After it quits, the PC can stay awake until you next switch to another window. To turn this off, add this line to <code>~/.config/hypr/custom/rules.lua</code>:</p>
+    <pre><code>hl.window_rule({ name = "steamvr-idle-inhibit", enabled = false })</code></pre>
+    <p>Choosing <em>Allow sleep</em> for SteamVR in Settings &rarr; Decorations &rarr; Window rules does not turn it off.</p>
+
+    <h2>Check the adapter with Valve's script</h2>
+    <p>Valve publishes a short <a href="https://github.com/ValveSoftware/SteamVR-for-Linux/blob/master/frame-dongle-troubleshoot.sh">troubleshooting script</a> for the adapter on Linux. It checks the driver, whether Wi-Fi is switched off and your Wi-Fi country, and it changes nothing. Plug the adapter in first, then run it as yourself, without <code>sudo</code>:</p>
+<pre><code><span class="c"># Download Valve's script, then run it</span>
+<span class="k">curl</span> -fsSLO https://raw.githubusercontent.com/ValveSoftware/SteamVR-for-Linux/master/frame-dongle-troubleshoot.sh
+<span class="k">bash</span> frame-dongle-troubleshoot.sh</code></pre>
+    <p>Lines that start with <strong>PROBLEM</strong> need fixing, and the last line reads <strong>SUCCESS</strong> when nothing obvious is wrong. A regulatory domain of <code>00</code> means no Wi-Fi country is set, which <a href="#wifi">Settings &rarr; Wi-Fi</a> fixes. The script also lists the firewall ports Steam needs, because it cannot read firewall rules. Mainstream's firewall allows those ports by default, as the <a href="#firewall">Firewall</a> page explains, though that has not yet been checked on the adapter's own connection with a Frame.</p>
+
+    <h2>If your country has no 6 GHz Wi-Fi</h2>
+    <p>The adapter reaches the headset over 6 GHz Wi-Fi, which some countries do not allow yet. If Valve's script says your country's rules lack a 6 GHz band, the adapter will not work there for now. Valve has said a coming beta lets it work without 6 GHz. Do not pick a different country to get around it: that breaks the radio rules where you live, and Valve asks people not to. Until then, you can:</p>
+    <ul>
+      <li><strong>Stream over your home Wi-Fi</strong> without the adapter. A PC wired to the router and a 5 GHz or newer network give it the best chance.</li>
+      <li><strong>Connect with a USB cable</strong>, which is Valve's suggested workaround. On the headset, turn on developer mode under <em>Settings &rarr; System</em>, then connect it to the PC over USB.</li>
+    </ul>
+
+    <h2>Older NVIDIA cards</h2>
+    ${callout('warn','Not on the legacy-NVIDIA edition yet','<p>The <a href="#legacy-nvidia">legacy-NVIDIA edition</a> is experimental, and it does not work with the Frame yet. SteamVR currently needs a Vulkan feature, <code>VK_KHR_maintenance9</code>, that NVIDIA\'s 580 drivers and older do not have, so it stops with error 405 before a stream starts. Valve said on October 3, 2026 that the next SteamVR beta drops that requirement. Until that beta is out and has been tried on this edition, treat the Frame as not working there. Whether these cards can encode the stream at all has not been checked either.</p>')}
+    <p>NVIDIA cards from the RTX 20-series onward use the standard image, whose current driver has that feature.</p>
+
+    <h2>What to expect</h2>
+    <p>These are open problems on Linux PCs in general, not only on Mainstream.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">SteamVR does not start for a game</div></center><div class="v">Start SteamVR yourself before every VR game, as in the steps above.</div></div>
+      <div class="prop"><center><div class="k">The stream drops and reconnects</div></center><div class="v">Reported with the adapter on Linux PCs. Keeping the adapter close, in sight of the headset and on a rear USB 3 port gives it the best chance.</div></div>
+      <div class="prop"><center><div class="k">The adapter retries while the headset sleeps</div></center><div class="v">Steam tries to reach the headset about once a minute while it is asleep, so the adapter keeps trying to connect in the background. Unplugging the adapter between sessions stops it.</div></div>
+      <div class="prop"><center><div class="k">NVIDIA crashes</div></center><div class="v">Some systems with current NVIDIA cards report SteamVR's compositor crashing during play. Keep the driver and the SteamVR beta up to date.</div></div>
+      <div class="prop"><center><div class="k">Eye-tracked foveated streaming</div></center><div class="v">Not confirmed on Linux PCs yet.</div></div>
+    </div>
+
+    <h2>If something does not work</h2>
+    <ul>
+      <li><strong>SteamVR's window never opens.</strong> Set SteamVR's launch options to <code>QT_QPA_PLATFORM=xcb %command%</code>, the same way as for a game on the <a href="#steam-proton">Steam + Proton</a> page, and start it again.</li>
+      <li><strong>Games open flat on the monitor.</strong> SteamVR was not running yet, or WiVRn was. Close the game, start SteamVR, then launch the game again.</li>
+      <li><strong>Pairing keeps failing.</strong> Forgetting Steam's saved connection for the adapter, then pairing again, has worked for an owner. In <a href="#wifi">Settings &rarr; Wi-Fi</a>, under <strong>Saved Networks</strong>, click the trash button (<em>Forget network</em>) on <strong>Steam Frame Wireless Adapter</strong>. From a terminal, <code>nmcli connection delete "Steam Frame Wireless Adapter"</code> does the same.</li>
+    </ul>
+
+    <h2>WiVRn and other headsets</h2>
+    <p>Mainstream also offers <strong>WiVRn</strong>, an open-source way to stream to standalone headsets such as Quest, Pico and Vive Focus without SteamVR. Install it from the <strong>WiVRn</strong> option on the Welcome app's <em>Set up your apps</em> page. Those headsets can also use Valve's Steam Link app with SteamVR, which Valve labels experimental on Linux as well. Wired headsets, such as the Valve Index, use SteamVR from Steam.</p>
+    <p>A WiVRn app for the Steam Frame exists, but it is not in a WiVRn release yet, and the version Mainstream ships cannot pair with it. For the Frame, use SteamVR for now.</p>
+    ${callout('warn','Run one at a time','<p>Do not run WiVRn and SteamVR together. While a headset is connected, WiVRn points VR games at itself, and it puts the previous setting back when it closes. With both running, or after WiVRn closed unexpectedly, games can open in the wrong place or SteamVR can fail to start. Close WiVRn completely before you start SteamVR.</p>')}
+
+    ${callout('note','Tell us how it went','<p>Steam Frame support on Linux is new for everyone, Mainstream included. If it works for you, or if it does not, say so in <a href="https://discord.gg/WJ3AUK5Aqd">#support</a> with your graphics card, whether you used the adapter or home Wi-Fi, and what Valve\'s script printed. That is how this page gets better.</p>')}
+  `
+};
+
 // ---------- DESKTOP ----------
 PAGES.desktop = {
   group: 'Desktop', title: 'The Desktop', icon: 'iface', navTitle: 'The Desktop',
@@ -2221,7 +2318,7 @@ PAGES.firewall = {
       <thead><tr><th>Traffic</th><th>What happens</th></tr></thead>
       <tbody>
         <tr><td>Anything your computer asks for</td><td>Allowed. Browsing, updates, game downloads, video calls: outgoing connections are never blocked.</td></tr>
-        <tr><td>Apps listening on high ports (1025 and up)</td><td>Allowed. Game hosting, LocalSend, Syncthing, VNC, and virtually every desktop app work with no setup.</td></tr>
+        <tr><td>Apps listening on high ports (1025 and up)</td><td>Allowed. Game hosting, LocalSend, Syncthing, VNC, and virtually every desktop app work with no setup. That includes Steam streaming and VR headsets: Steam's ports 27031 to 27037, SteamVR streaming on 10400 and 10401, and WiVRn on 9757.</td></tr>
         <tr><td>Unsolicited traffic to system ports (1 through 1024)</td><td>Rejected, apart from a short list: SSH, printer discovery, and Windows network browsing.</td></tr>
       </tbody>
     </table>

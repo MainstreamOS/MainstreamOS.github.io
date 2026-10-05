@@ -1614,6 +1614,7 @@ PAGES['intel-macs'] = {
     <p>Identifiers of <code>MacBookPro15,x</code> and up, <code>MacBookAir8,x</code> and up, <code>MacBook</code> models from 2018, <code>Macmini8,1</code> and <code>iMac20,x</code> are the T2 machines that want the MacBook image. Anything older takes the standard one.</p>
 
     ${callout('note','Already installed and it is a T2 Mac?','<p>Installing the standard image on a T2 Mac leaves you without the built-in keyboard, trackpad and speakers, and a USB keyboard and mouse will get you through the install. There is no in-place move to the MacBook image, so switching means installing again.</p>')}
+    ${callout('tip','Updates stop with "arch-mact2: signature is invalid"','<p>MacBook installs from before 3.1.0 could end up asking for a signature the T2 kernel\'s repository does not have, which stops every update. Run this once in a terminal, then update as usual:</p><pre><code>sudo sed -i \'/^[[]arch-mact2]/,/^[[]/ s/^SigLevel = Required$/SigLevel = Never/\' /etc/pacman.conf</code></pre>')}
 
     <h2>What still does not work</h2>
     <ul>

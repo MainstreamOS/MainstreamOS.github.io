@@ -179,6 +179,109 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements and project updates.',
   render: () => `
+    <div class="eyebrow">Release &middot; 4.0.0 &middot; November 4, 2026</div>
+    <h2 id="mainstream-os-4-0-0">Mainstream OS 4.0.0: an island, new looks, and your phone</h2>
+
+    <p>4.0.0 is the biggest release Mainstream has had. The top of the screen can now be a Dynamic Island that opens into whatever you need. Three new looks, Solid, Frost and Glass, restyle the Bar, the Island, the Dock and your windows in one click. Your phone's texts, contacts and files now live on the desktop, the scrolling layout gets a big round of improvements including a launcher made for it, and Alt+Tab finally does what you expect it to.</p>
+
+    ${shot('Blog-4.0.0-Hero.webp','The Mainstream OS 4.0.0 desktop with the Dynamic Island, the Phone tab in the left sidebar, and the Alt+Tab switcher','The Mainstream OS 4.0.0 desktop: an island, new looks, and your phone.')}
+
+    <h2>The Dynamic Island</h2>
+    <p>Choose the Dynamic Island in Settings &rarr; Bar and the bar becomes a small island at the top of the screen, showing the time. Rest the pointer on it and it opens into a panel: your quick settings, the music that is playing, your notifications, the weather, timers, your calendar and tasks, calls and messages from your phone, and how hard your computer is working. Step between panels with the arrows, turn off the ones you never use, and the island tucks itself away again when you move on. Your desktop's notifications can open in it too, or stay as floating pop-ups.</p>
+    <p>It also comes to you. When your phone rings or a text arrives, the island opens by itself for a few seconds: answer or decline the call, call back, or reply by typing or with a voice message, all without picking up the phone. Drop files on it to send them to a nearby phone or computer with LocalSend. And because a notification on a stream can say more than you meant to share, you can enable streamer privacy to pause automatic call, message and phone-notification pop-ups while Discord or OBS is open.</p>
+    <p>It can be your app drawer too: enable <strong>Use Dynamic Island as your App Drawer</strong> and Super opens search ready to type, with image search, music recognition and session actions alongside it. The normal Island panels remain available the rest of the time.</p>
+    <p>You do not have to dig through Settings to find it. The Welcome app now starts by asking whether you want the traditional Bar or the Dynamic Island, with a live preview of how the island opens, and then lets you pick a matching <strong>Float</strong>, <strong>Notch</strong> or <strong>Rect</strong> style for the island and your Dock.</p>
+    <figure>
+      <div class="shot">
+        <video src="assets/docs/Island-Overview.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
+      </div>
+      <figcaption>The Dynamic Island — opening on hover and stepping through panels, then opening by itself for an incoming text.</figcaption>
+    </figure>
+
+    <h2>Solid, Frost and Glass</h2>
+    <p>The Bar and Dock settings now have a <strong>Backdrop</strong> section with three looks. <strong>Solid</strong> is the surface you know. <strong>Frost</strong> lays a soft, milky blur of your wallpaper behind the Bar, the Dynamic Island and the Dock. <strong>Glass</strong> keeps the wallpaper clearer and slightly magnified, like looking through a lens. Window decorations get the same three, with a magnifying lens around the edges of Glass windows, and desktop widgets follow the Dock, or keep a look of their own: Solid, Frost, Glass or a plain blur.</p>
+    <p>The launcher follows along, frosted with Frost and see-through with Glass. Adjust the blur, haze, magnification and offset, save your own mix as a preset, and your themes bring their presets with them. The Welcome app has the same three looks as buttons.</p>
+    <figure>
+      <div class="shot">
+        <video src="assets/docs/Blur-Presets.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
+      </div>
+      <figcaption>Switching the Bar, Dock and windows between Solid, Frost and Glass over one wallpaper.</figcaption>
+    </figure>
+
+    <h2>Clocks, timers and wallpapers</h2>
+    <p>An optional depth effect lets whatever is in front in your wallpaper pass in front of the clock, and the clocks and weather widget can be recolored and resized. Timers can be set by length or by time of day on scroll wheels, and read hours, minutes and seconds everywhere. Changing wallpapers is smoother too: the new picture loads out of sight and takes its place as the transition starts, while the picture and widgets hold still.</p>
+    ${shot('Clock-Depth-Effect.webp','The clock with the depth effect, part of the wallpaper passing in front of it','The clock depth effect — part of the wallpaper passes in front of the clock numbers.')}
+
+    <h2>Your phone, on your desktop</h2>
+    <p>The new Phone tab in the left sidebar connects to the free KDE Connect app on your phone, straight over your Wi-Fi with no cloud in between. Read and answer your text conversations: reply to a particular message, react to one, and send pictures, GIFs and emoji, with photos, videos and voice clips playing right in the thread. Call or message anyone from your contacts, find recent calls in their own tab, and browse your phone's camera roll and screenshots as a grid of pictures, or its downloads and storage as a list, saving copies to your computer in a click.</p>
+    <p>Pair from the Phone tab, with steps for Android and iPhone right there, and switch between phones if you have more than one. Calls and notifications from the phone arrive in the Dynamic Island. Prefer the traditional Bar? Calls and messages get cards of their own above your notifications, with Answer, Decline and quick reply, and a Phone widget shows your phone's battery and unread messages. Privacy switches choose whether names, numbers, message contents and pictures show.</p>
+    <p>Want a conversation off your desktop without changing your phone? Choose <strong>Hide on this desktop</strong>, and bring it back from the hidden conversations list whenever you like. The desktop side runs Rust Connect while your phone keeps the KDE Connect app; if you paired with KDE Connect on this computer before, you may need to pair again.</p>
+    ${shot('Phone-Conversation.webp','A conversation in the Phone tab with a reply, a reaction, a photo and a voice clip','The Phone tab: your conversations, contacts and files right on the desktop.')}
+
+    <h2>A redesigned launcher</h2>
+    <p>The launcher has been redesigned around its configurable workspace grid, with a refreshed search box and app drawer. It keeps its proportions across display scales, lets you rename a workspace with a right-click, and shows exactly where a dragged window will land between other windows.</p>
+    <p>Minimized windows have a home you can reach in one move. Right-click the workspace pill, or press <strong>Super+S</strong>, to open the scratchpad, the special workspace that holds the apps and windows you have minimized.</p>
+
+    <h2>The scrolling layout, taken further</h2>
+    <p>4.0.0 brings a big round of improvements to the scrolling layout, from a launcher built specifically for it to finer control over window sizes, plus a slew of new, easy-to-use keybinds.</p>
+    <p>With the scrolling or monocle layout, the launcher can instead stack three workspaces in one panel, styled like the grid with the same rounded corners, spacing, outlines and workspace numbers. Each one shows the whole screen plus half of the windows to either side, so you can see where every column sits and drag windows between workspaces in one move. Your apps sit in one panel beside it, under a search bar that spans both.</p>
+    <p>Prefer the workspace grid? Choose whether the scrolling and monocle layouts use the stacked workspace view or the traditional grid, and whether the navigation arrows stay visible, fade when not in use, or are turned off. In the grid, windows scrolled off the screen now show where they really are instead of piling on top of their neighbors.</p>
+    ${shot('Scrolling-Launcher.webp','The scrolling launcher with three workspaces stacked in one panel, the app panel beside it and the search bar across both','The launcher built for scrolling and monocle layouts — workspaces stacked beside your app drawer.')}
+    <p>The scrolling layout can also set the default size of new windows in two-thirds or in thirds. With thirds, one window fills the screen, two take half each and three take a third each, and any windows after that scroll on. Choose it in <strong>Settings &rarr; Layouts</strong>, and use <strong>Ctrl+Super+F</strong> to expand a column into free space or <strong>Ctrl+Super+A</strong> to fit all columns on screen.</p>
+    <p>The scrolling overview now hides the Bar and the Dock as well.</p>
+
+    <h2>Alt+Tab, the way it should work</h2>
+    <p>Press Alt+Tab for an overview of your open windows, with live previews, search and your Dock along the bottom. Keep tapping Tab to follow the order you see on screen, page across your workspaces, and let go on the window you want. The selection grows slightly and stays clear against light or dark windows.</p>
+    <figure>
+      <div class="shot">
+        <video src="assets/docs/Alt-Tab-Switcher.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
+      </div>
+      <figcaption>Alt+Tab moving through windows with live previews and paging across workspaces.</figcaption>
+    </figure>
+
+    <h2>Storage and AppImages</h2>
+    <p>The new <strong>Storage</strong> page in Settings shows what is filling your disk, frees up space from one list, and lets you browse your Home folder by size to find your largest files. AppImages now install with a double-click: keep the default folder or choose your own, the app appears in your launcher, and Uninstall Apps removes it from wherever it lives.</p>
+    ${shot('Storage-Page.webp','Settings Storage page with the disk breakdown bar and the Home folder sorted by size','Settings → Storage: see what is filling your disk and browse your largest files.')}
+
+    <h2>Faster updates and a steadier login</h2>
+    <p>Updates are smoother and considerably faster. The logic that tells you when a reboot is needed has been refined too, so if you update regularly you should see fewer suggestions to reboot or log out.</p>
+    <p>Session restore at login is better as well. Apps restored at login now wait for the VPN and the desktop services they need, so certain apps no longer open to a black window or with the wrong theme.</p>
+
+    <h2>Settings you asked for</h2>
+    <ul>
+      <li><strong>Automatic login, per account.</strong> Turn it on or off for any account in Settings &rarr; Accounts, or when creating one. It holds through Gaming Mode.</li>
+      <li><strong>Date and time.</strong> Settings &rarr; Services sets the time zone, and the date and time by hand whenever you turn automatic time off.</li>
+      <li><strong>Move to workspace, your way.</strong> The Dock's app menu lists the workspace you are on as Current when it has no name of its own, and can show workspace numbers, named workspaces or both.</li>
+      <li><strong>Bigger or smaller.</strong> Settings &rarr; Power sizes either style of the session menu, and Settings &rarr; Interface sizes the clock on the login screen.</li>
+    </ul>
+
+    <h2>Hyprland 0.57, with more ways to share and style</h2>
+    <p>This release brings the desktop up to <strong>Hyprland 0.57</strong>. The new <strong>Blur style</strong> choice sits above Strength in <a href="#decorations">Settings &rarr; Decorations</a>. Try Frost, Water or Acrylic alongside the familiar soft blur; the menu follows what your installed Hyprland supports. Animated styles can use more GPU power.</p>
+    <p>Screen sharing can now follow <strong>one workspace</strong>. Choose it in the system sharing dialog and your call or recording keeps showing that workspace while you switch elsewhere on your own screen. The picker floats in a small window, with monitor and individual-window capture still alongside it. The <a href="#obs">OBS guide</a> covers where to find it.</p>
+
+    <h2>Verified packages and a security policy</h2>
+    <p>Every package in the Mainstream repository now also verifies upstream source checksums and developer PGP signatures while it is built, so packages are checked before updates reach your system.</p>
+    <p>Mainstream also has a formal Security Policy, with private vulnerability reporting across its GitHub repositories, dedicated disclosure contacts and response targets.</p>
+
+    <h2>Nineteen complete desktop translations</h2>
+    <p>Alongside English, the desktop UI is fully translated into Mexican Spanish, Brazilian Portuguese, German, French, Russian, Simplified Chinese, Traditional Chinese, Japanese, Korean, Turkish, Italian, Polish, Indonesian, Ukrainian, Vietnamese, Arabic, Persian, Hindi and Hebrew. Changing <strong>Interface Language</strong> in <a href="#services">Settings &rarr; Services</a> changes the desktop's controls and messages; your keyboard layout and input method remain choices of their own.</p>
+    <p>Mainstream aims to be as useful and friendly as possible, and that includes talking to people in their own language. There are not yet human translators for this many languages, so rather than make people wait, these translations were generated automatically, letting everyone use the desktop in their own language from day one. To keep quality up, each language has its own glossary so terms stay consistent, and the results went through several rounds of careful review and cross-checking. The details are in the <a href="https://github.com/MainstreamOS/dots-hyprland/blob/mainstream/dots/.config/quickshell/ii/translations/TERMINOLOGY.md">localization guide</a>.</p>
+    <p>You may still run into awkward or incorrect wording. If you speak one of these languages, <a href="https://github.com/MainstreamOS/dots-hyprland/tree/mainstream/dots/.config/quickshell/ii/translations">your help is very welcome</a>. New languages will be added on community request, with human reviewers involved from the start.</p>
+
+    <h2>And plenty more</h2>
+    <ul>
+      <li>New options across every Dock style: Bubble hover, Minimal indicators with optional count badges, adjustable launcher icon and dot sizes, optional separators, and screen-edge padding for floating docks.</li>
+      <li>Native GTK4 and libadwaita apps pick up theme colors without closing and reopening (original concept and implementation by @saneaspect).</li>
+      <li>The left sidebar's chat is now a rebuilt AI Assistant. Sign in once to Claude, Codex or Gemini and use the plan you already have, or keep everything on your own computer with Ollama. Pick the model, how hard it thinks, and whether it asks first (Ask), goes ahead (Auto) or only plans (Plan). Gemini 4 Argon joins the lineup, and <code>/ollama list</code> shows the local models you have and the ones you can download.</li>
+      <li>Bluetooth headsets and controllers connect more reliably, and USB audio built on MV-SILICON chips, like fifine headsets, now works across the whole volume slider.</li>
+      <li>Pointer speed is now a fine-grained slider, and sidebar text stays sharp at fractional display scales.</li>
+      <li>The lock screen explains account lockouts instead of calling every failed attempt an incorrect password (thanks @benoitjadinon).</li>
+      <li>The script installer handles more existing Arch-based setups, including another Quickshell package or login manager, and keeps an existing boot entry instead of creating a duplicate.</li>
+    </ul>
+    <p>The full list is on the <a href="#changelog">Changelog</a>. 4.0.0 is available now in <strong>Settings &rarr; Update</strong> for existing Mainstream installs.</p>
+
+    <hr style="margin:48px 0;opacity:.3">
+
     <div class="eyebrow">Release &middot; 3.0.0 &middot; October 1, 2026</div>
     <h2 id="mainstream-os-2-2-0">Mainstream OS 3.0.0 — a Linux desktop you set up by clicking</h2>
 

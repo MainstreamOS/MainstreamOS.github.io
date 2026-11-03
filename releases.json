@@ -1,6 +1,138 @@
 {
-  "latest": "3.0.2",
+  "latest": "4.0.0",
   "releases": [
+    {
+      "version": "4.0.0",
+      "date": "2026-11-04",
+      "kind": "feature",
+      "summary": "A new Dynamic Island, Frost and Glass looks, calls and messages from your phone on the desktop, a big round of scrolling layout improvements including a new launcher, and an Alt+Tab window switcher, plus translations in 19 languages",
+      "changes": [
+        "Welcome now starts with a choice: the traditional Bar or the Dynamic Island. See how the Island opens in a live preview, then choose a matching Float, Notch or Rect style for it and your Dock",
+        "New Dynamic Island: a compact alternative to the traditional Bar, with panels for your system controls, media, notifications, weather, timers, calendar, tasks, calls, messages and system resources",
+        "Choose which Island panels appear and put them in the order you want, and choose whether desktop notifications appear inside the Island or as floating pop-ups",
+        "You also have the option to use the Dynamic Island as your App Drawer: press Super to search your apps, with image search, music recognition and session actions on hand, and it goes back to being your Island when you're done",
+        "Drop a file onto the Dynamic Island to send it to a nearby device with LocalSend",
+        "Your phone gets a place on the desktop: there is a new Phone tab in the left sidebar",
+        "Pair a phone or switch between paired phones in the Phone tab, with guided setup for Android and iPhone, and call or message contacts straight from their contact cards",
+        "The Phone tab brings conversations, contacts, recent calls and files, with replies, reactions, emoji, GIFs, pictures, videos, voice clips and link previews on supported phones",
+        "Answer calls, reply to texts by typing or voice, and see your call history from the Phone tab or the Dynamic Island's Call panel",
+        "Browse your phone's storage from the Phone tab, with Camera & Media and Screenshots shown as picture grids, and search, download or open files and pictures straight in your default apps",
+        "The traditional Bar gets call and message cards above your notifications, with Answer, Decline and quick reply, plus a Phone widget for battery and unread messages",
+        "Phone privacy is yours to set: choose how much contact information the Island shows, with separate switches for names, numbers, message contents and pictures",
+        "Optional streamer privacy keeps call, message and phone-notification pop-ups off the Island while Discord or OBS is open, with a separate switch for each",
+        "All of the phone features are powered by Rust Connect, a heavily modified version of KDE Connect that has been rewritten in Rust. (original implementation by @georgeglarson)",
+        "It replaces KDE Connect on the desktop, uses fewer resources, and adds extra features built specifically to support Mainstream OS's interface and new features",
+        "Three new looks for the Bar, Dynamic Island, Dock and window decorations: Solid, Frost and Glass. Frost and Glass blur your wallpaper behind them, with blur, haze, magnification and offset you can adjust in Settings and the Welcome app",
+        "Along with Frost and Glass, you can make and save your own blur presets under a name, and themes carry the blur presets for your desktop and windows",
+        "The desktop widgets now follow your UI's blur preset settings by default, which instantly helps them fit your chosen look. You can also set them manually to Solid, Frost, Glass or plain Blur, if you enjoy the original widget Blur option, from the option directly below the More widgets section in the Background settings",
+        "Apps built with GTK4 and libadwaita, such as many GNOME apps, now pick up your theme colors without being closed and reopened (original concept and implementation by @saneaspect)",
+        "New Alt+Tab window switcher: an overview with live window previews, search and the Dock. Tab moves through your windows in order, and the selected window grows and stays easy to see on light or dark backgrounds",
+        "There is now a new launcher tailored specifically to Hyprland's scrolling and monocle layouts, with three workspaces stacked vertically beside the app drawer, showing the screen and the windows beside it",
+        "Right-click a workspace in the launcher to rename it, which makes it easy to keep track of and organize your workspaces and to send windows to them with your Dock",
+        "Right-clicking an app on your Dock shows a Move to workspace menu, allowing you to move any of that app's windows to a specific workspace. This menu can be set to show only workspace numbers, only named workspaces, or both, and now labels the current unnamed workspace Current",
+        "Choose whether scrolling and monocle layouts use their stacked workspace view or the traditional workspace grid, with navigation arrows that can stay visible, fade when not in use, or be turned off",
+        "The scrolling layout now has an option to set the default size of new windows in two-thirds or thirds. With thirds, one window fills the screen, two take half each and three take a third each, and new windows after that scroll on. Choose it in Settings > Layouts, and use Ctrl+Super+F to expand a column into free space or Ctrl+Super+A to fit all columns on screen",
+        "Share or stream an entire workspace: the screen-sharing picker now lets you choose a specific workspace as your capture source in OBS, Discord, calls or your browser, so your audience sees only what you want while the rest of your desktop stays private",
+        "New Dock options: Bubble hover animation, Minimal window indicators, optional icon separators, launcher icon sizing and dot spacing, and screen-edge padding for floating docks",
+        "Right-clicking the workspace pill now opens the scratchpad, a special workspace that holds apps and windows you have minimized. You can also access this special workspace with the Super+S keybind",
+        "Set a timer for a length of time or a time of day, with scroll wheels for the hours, minutes and seconds. Pomodoro is now Focus, and the timer remembers the tab you left",
+        "The detachable left sidebar now has its own Dock icon and can be pinned to the Dock, so it's easier to use as if it were its own app",
+        "Give your desktop clock some depth: an optional effect puts the foreground of a still wallpaper in front of the clock. The first use downloads about 75 MB",
+        "You can now change the digital clock's color or the pixel clock's accent, resize the cookie or pixel clocks, or resize or recolor the weather widget",
+        "Make either Session menu style larger or smaller from Settings > Power, and resize the login screen clock from Settings > Interface",
+        "The left sidebar's Intelligence tab is now a rebuilt AI Assistant, with clearer pickers for the model, thinking and how it works, plus conversation controls and your plan usage at a glance",
+        "Choose between the Ask, Auto or Plan execution modes for your models. Ask mode lets Claude and Codex ask for your approval as they work, and you can stop a reply when you need to (thanks @benoitjadinon for the modes and Stop button)",
+        "Gemini 4 Argon joins the AI Assistant, and /ollama list shows both the AI models on your computer and the ones you can download",
+        "New Storage page in Settings: see what is filling your disk in a colorful breakdown, easily gain back space with a Free up space list that shows what each cleanup will give you, browse your Home folder by size and find your largest files. You're asked to confirm before anything is removed",
+        "You can now install an AppImage with a double-click: keep the default folder or choose your own, find it in the launcher, and remove it later from Uninstall Apps",
+        "You can now adjust pointer speed with a fine-grained slider in Settings > Mouse",
+        "You can now turn automatic login on or off from Settings > Accounts, including when creating an account",
+        "Set the date, time and time zone from Settings > Services, or let the time set itself from the internet",
+        "In the launcher's workspace grid, with certain window layouts, windows scrolled off screen now appear beside the ones you can see instead of piling on top of each other",
+        "App folders in the launcher stay clickable as they expand, fit complete rows, and no longer slow down unrelated apps (thanks @benoitjadinon)",
+        "The emoji picked with the Super+. keybind now paste directly into the window you came from",
+        "The scrolling overview now hides the Bar and Dock",
+        "TV episodes played in mpv can now fill in missing episode titles and artwork",
+        "Lyrics in the sidebar and desktop media widget recover sooner from a stalled request, and Media text stays readable over album art",
+        "Bluetooth headsets and controllers connect more reliably",
+        "Recording a region captures exactly what you selected on a scaled display",
+        "The lock screen now explains when an account is temporarily locked out instead of calling every failed attempt an incorrect password (thanks @benoitjadinon)",
+        "Session restore at login has been improved. Apps restored at login now wait for the VPN and desktop services they need, so certain apps no longer open to a black window or with the wrong theme",
+        "Updates have been made smoother and are now considerably faster",
+        "The logic for notifying you when you will need to reboot after an update has been refined, so you should receive fewer recommendations to reboot or log out if you update regularly",
+        "You can now hide the tips on the Update and Recovery settings pages to give their output boxes a little more room, so you get to see more of what's going on at once",
+        "The script installation method for installing Mainstream has been made more flexible and now works with more existing Arch-based setups",
+        "All packages in the Mainstream repository now also verify upstream source checksums and developer PGP signatures during build, ensuring complete package integrity before updates reach your system",
+        "Added a formal Security Policy and private vulnerability reporting across our GitHub repositories, with dedicated disclosure contacts and response targets",
+        "The desktop is now translated into 19 languages: Mexican Spanish, Brazilian Portuguese, German, French, Russian, Simplified Chinese, Japanese, Korean, Turkish, Italian, Polish, Indonesian, Ukrainian, Vietnamese, Traditional Chinese, Arabic, Persian, Hindi and Hebrew",
+        "Mainstream OS aims to be as useful and user-friendly as possible, and that includes being able to talk to people in their own language",
+        "We don't yet have human translators for this many languages. Rather than make people wait, we generated these translations automatically so everyone can use the desktop in their own language from day one. To keep quality up, each language has its own glossary so terms stay consistent, and the results went through several rounds of careful review and cross-checking. Details are in the localization guide: https://github.com/MainstreamOS/dots-hyprland/blob/mainstream/dots/.config/quickshell/ii/translations/TERMINOLOGY.md",
+        "New languages will be added on community request, with human reviewers involved from the start",
+        "You may still run into awkward or incorrect wording. If you speak one of these languages, we'd love your help: https://github.com/MainstreamOS/dots-hyprland/tree/mainstream/dots/.config/quickshell/ii/translations",
+        "Plus many smaller fixes, performance improvements and polish. As always, refer to the full changelog page on the website for a more complete list of changes and improvements: https://mainstreamos.org/#changelog"
+      ],
+      "commits": [
+        "91a54588b release: 4.0.0, the Dynamic Island, Frost and Glass looks, calls and messages from your phone on the desktop, scrolling layout improvements including a new launcher, and an Alt+Tab window switcher",
+        "a94bca31f portal: theme the screen-sharing picker with Material 3 and Matugen",
+        "be97e1762 docs: add system requirements specification",
+        "1ad982c1e session: default the session menu size to 75%",
+        "56a424e11 background: draw the full clock depth cutout over the wallpaper",
+        "09d3f386c launcher: unify the familiar look and improve desktop controls",
+        "bdebaae44 update: list commits from other Mainstream repos in a release's changelog",
+        "55255084a docs: add security policy and release versioning overview",
+        "012a266fe docs: update Mainstream contribution and issue guidance",
+        "10d1acbf5 updater: guide terminal upgrades to Settings with a direct-update command",
+        "82fdefb70 backdrop: restore panel blur for video wallpapers",
+        "ee29ee361 installer: preserve distinct recovery boot entries",
+        "edc581aa8 installer: clear inherited boot menu wallpapers and margins",
+        "d21bcb653 installer: keep one boot menu group for the installed system",
+        "bf6245a6b installer: read existing Limine settings and preserve snapshots",
+        "e87aeca63 installer: repair Resolve startup and preserve repository trust",
+        "0ba9d18e8 updater: migrate managed packages and select current Proton archives",
+        "a52561fff installer: report missing packages and finish boot setup",
+        "e2604bd8e installer: seed required packages before installing desktop dependencies",
+        "a90ce2f58 installer: handle existing desktop settings and config paths",
+        "bac827d4d installer: avoid package file conflicts on existing systems",
+        "119cf8cc7 quickshell: build the latest upstream merge",
+        "1900c7c6a settings: resize the login clock from Interface settings",
+        "e57110d5d session: resize both menu styles from Power settings",
+        "d1eff8c76 installer: replace conflicting GTK themes before dependency builds",
+        "eeab35d8c installer: request Mainstream replacements explicitly during system upgrade",
+        "9068794e0 installer: recognize installed replacements when querying provided packages",
+        "81b1fb43b sharing: discover local devices beside VPN connections and receive from the Island",
+        "591b2f0fa about: credit the original Rust Connect creator",
+        "61594ed18 phone: refresh contacts after granting phone permissions",
+        "3e94bda4c Prevent blur samplers from retaining destroyed windows",
+        "a08e55a24 Restore CLI assistant activity tracking",
+        "6871312d6 backdrop: restore plain blur and automatic opacity for Solid",
+        "b50d9a102 welcome: show window blur before window shape",
+        "149424a33 color picker: reset transparency along with the color",
+        "2d629f48b island: keep system buttons readable over translucent backgrounds",
+        "fed420008 backdrop: keep window blur out of the bar and dock",
+        "1532a6c7d translations: localize Mainstream UI across 19 languages",
+        "d3cb2f097 translations: make maintenance tools safe and reusable",
+        "79d939edf translations: consolidate localization guidance and review notes"
+      ],
+      "commitsTotal": 279,
+      "commitNotes": {
+        "bdebaae44": "A release can name commits from the packages or plugin repos in release-notes.json by sha, and the manifest reads their subjects and bodies from clones beside this one, so the technical track covers what ships alongside the desktop.",
+        "1532a6c7d": "Consolidate the locale catalogs and terminology refinements. Cover all\n3,411 current English keys, including phone setup and selection, storage,\nAppImage installation, clock depth effects, blur presets and date settings.\n\nPreserve placeholders, commands and deletion scope. Validate all 19 locales\nagainst the current UI, extension and updater source keys.",
+        "d3cb2f097": "Make coverage reports, extraction and synchronization previews read-only.\nRequire explicit sync --apply for add-only catalog updates, preserving\nexisting translations and extra keys. Validate all inputs before writes,\nretain exact-byte backups, and leave unchanged catalogs untouched.\n\nHandle QML template expressions, Unicode escapes, Files extension strings\nand shell translation calls. Add deterministic structural QA, safe custom\npaths, documented commands and 27 regression tests. Check source coverage\nbefore starting translation requests.\n\nRetire the five unused locale build scripts instead of shipping rejected\narchived drafts or one-off conversion tooling.",
+        "79d939edf": "Keep terminology, source-context decisions, review requirements and the\nrelease-time commit workflow in one authoritative guide. Preserve all 19\nlocale glossaries and notes, including the merged review findings.\n\nUntil release, amend catalog updates into the consolidated translation\ncommit. Keep guidance, tooling and catalogs together after feature work,\nwith the final release-notes commit following the language block."
+      },
+      "otherCommits": [
+        {
+          "repo": "MainstreamOS/hyprland-scroll-overview",
+          "commit": "8d5819f capture: restore previews for off-screen scrolling windows",
+          "note": "Complete window capture requests skipped by Hyprland when the window is entirely outside its monitor. Use the existing capture path and non-owning references so Alt+Tab and dock previews work without moving windows or changing capture permissions."
+        },
+        {
+          "repo": "MainstreamOS/packages",
+          "commit": "9c492d6 feat(mpv): look up missing TV episode metadata asynchronously"
+        }
+      ],
+      "merges": 3
+    },
     {
       "version": "3.0.2",
       "date": "2026-10-07",
@@ -1091,72 +1223,6 @@
         "002606654 shell: dispatch through hl.dsp instead of legacy names",
         "101e6127c quicktoggles: read bool-typed animations option on Hyprland 0.56"
       ]
-    },
-    {
-      "version": "1.0.2",
-      "date": "2026-07-20",
-      "kind": "patch",
-      "summary": "A Hyprland update can no longer strand you at the login screen",
-      "changes": [
-        "Title bars and the overview stay off until they rebuild for a new Hyprland",
-        "Restore Snapshot in Settings now makes the snapshot you booted from permanent",
-        "Super plus scroll moves workspaces the way you scroll again"
-      ],
-      "commits": [
-        "c202752aa keybinds: track Hyprland 0.56 scroll axis naming fix",
-        "ff8320423 hyprbars: build from upstream hyprland-plugins",
-        "d368b3524 recover: drive the limine-snapper-sync 1.31 restore prompts",
-        "85da839bf plugins: cap rebuild commit walk-back at 15",
-        "7f5b29e88 plugins: survive Hyprland updates that outrun plugin ABI"
-      ],
-      "commitNotes": {
-        "7f5b29e88": "A rebuild that fails for a new Hyprland version now quarantines the\nversion-mismatched .so instead of leaving it for dlopen to segfault on \u2014\nthe user logs into a plugin-less session with the existing status\nnotification instead of looping at SDDM, and the 24h retry timer restores\nthe plugin once upstream ships a compatible commit. Successful builds\nstamp each .so with the Hyprland version they were built for, and the\nconfig refuses to load a stamped plugin that does not match the installed\nHyprland \u2014 which also covers booting an older system snapshot against a\nnewer plugin in the shared home subvolume."
-      }
-    },
-    {
-      "version": "1.0.1",
-      "date": "2026-07-19",
-      "kind": "patch",
-      "summary": "Two small fixes for virtual machine guests and the installer's welcome screen",
-      "changes": [
-        "Copy and paste between your host and a QEMU/KVM virtual machine",
-        "The installer's welcome screen notes when you're already connected"
-      ],
-      "commits": [
-        "f57c08e2d execs: start the SPICE agent inside virtual machines",
-        "7a73e9921 installer: note when the network is already connected"
-      ]
-    },
-    {
-      "version": "1.0.0",
-      "date": "2026-07-18",
-      "kind": "feature",
-      "summary": "The first Mainstream OS release: a Hyprland desktop and an Arch-based installer ISO",
-      "changes": [
-        "Configure the whole desktop from one Settings app instead of a config file",
-        "Enter a gamescope Steam Big Picture session with Super+G",
-        "Retheme the shell, apps, terminal and lock screen from your wallpaper",
-        "Boot back into an earlier Btrfs snapshot from the Limine menu",
-        "Preinstall GE-Proton and set it as Steam's default compatibility tool",
-        "Arrange monitors and set scale, HDR and ICC profiles in Settings",
-        "Give each workspace its own layout: dwindle, master, scrolling, monocle or float",
-        "Remap any keyboard shortcut from Settings instead of editing config files",
-        "Turn window title bars on or off without logging out",
-        "Save wallpaper, palette and decorations as themes that switch day and night",
-        "Start with a set of everyday apps, each one optional at install",
-        "Install more apps from a store with pictures instead of package names",
-        "Zoom out to a scrolling map of every workspace with Super+O",
-        "Send files to nearby devices by dropping them on the bar",
-        "Reopen your windows on their original workspaces after a reboot",
-        "Install from a graphical installer with a Get Started setup picker",
-        "Encrypt the whole system with LUKS2 and a boot passphrase",
-        "Install alongside Windows and add it to the boot menu",
-        "Detect the graphics card during install and fit matching drivers",
-        "Meet the desktop with a first-boot tour and one-click extra installs",
-        "Update packages, Flatpaks and the desktop from one Settings button",
-        "Install prebuilt signed packages instead of building from the AUR"
-      ],
-      "commits": []
     }
   ]
 }

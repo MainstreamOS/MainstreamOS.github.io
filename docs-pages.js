@@ -2632,6 +2632,15 @@ const commitList = (r, prev) => {
     : r.unreleased
       ? `<p class="rl-empty">Not tagged yet, so there is no commit range to list.</p>`
       : `<p class="rl-empty">No commit range: 1.0.0 is the first release, so there is nothing to compare it against. <a href="${RELEASE_REPO}/tree/${escHtml(r.version)}">Browse the tree at ${escHtml(r.version)}</a>.</p>`;
+  const others = Array.isArray(r.otherCommits) && r.otherCommits.length
+    ? `<div class="rl-tech-head">From other Mainstream repos</div><ul class="rl-commits">${r.otherCommits.map(o => {
+        const { id, subject } = commitParts(o.commit);
+        const repo = escHtml(String(o.repo || ''));
+        const sha = id
+          ? `<a class="rl-sha" href="https://github.com/${repo}/commit/${escHtml(id)}">${escHtml(id)}</a>` : '';
+        const note = o.note ? `<div class="rl-note">${escHtml(o.note)}</div>` : '';
+        return `<li>${sha}<span class="rl-subj">${repo.split('/').pop()}: ${escHtml(subject)}</span>${note}</li>`;
+      }).join('')}</ul>` : '';
   const capped = r.commitsTotal && r.commitsTotal > rows.length
     ? `<p class="rl-empty">Showing ${rows.length} of ${escHtml(String(r.commitsTotal))} commits; the full diff below has the rest.</p>` : '';
   const merged = r.merges
@@ -2640,7 +2649,7 @@ const commitList = (r, prev) => {
     ? `<p class="rl-empty"><a href="${RELEASE_REPO}/compare/${escHtml(prev)}...${escHtml(r.version)}">Full diff ${escHtml(prev)} → ${escHtml(r.version)}</a></p>` : '';
   return `<div class="rl-tech">
     <div class="rl-tech-head">Commits in this release</div>
-    ${body}${capped}${merged}
+    ${body}${capped}${merged}${others}
     <p class="rl-empty">Installer and ISO changes are tracked separately and aren't listed here.</p>
     ${compare}
   </div>`;

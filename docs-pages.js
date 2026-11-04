@@ -1748,8 +1748,9 @@ PAGES.security = {
     <p>The same thing happens when the ISO is built. Our build system compiles every dependency that would otherwise come from the AUR into <strong>[mainstream]</strong> and bakes it straight into the image. The installer uses <code>pacman</code> and nothing else — it explicitly refuses any package that isn\'t in a configured repository, because the installer does not touch the AUR. A fresh Mainstream install has never run an AUR helper and never compiled a recipe on your disk.</p>
 
     <h3>Signed and verified</h3>
-    <p>Trust is checked the same way Arch checks its own packages — with signatures.</p>
+    <p>Trust is checked at both ends — before a package is built, and before your machine installs it:</p>
     <ul>
+      <li><strong>Upstream sources are verified before building.</strong> Every recipe built in <a href="https://github.com/MainstreamOS/packages">MainstreamOS/packages</a> checks upstream source checksums (<code>sha256sums</code> / <code>b2sums</code>) and upstream PGP signatures (<code>validpgpkeys</code>, pinned in <code>keys/upstream/</code>) before compiling anything.</li>
       <li><code>core</code>, <code>extra</code>, and <code>multilib</code> are verified against Arch\'s keyring.</li>
       <li><strong>[mainstream]</strong> is verified against the Mainstream signing key, which your system imports and trusts the first time it boots. From then on every update from <strong>[mainstream]</strong> is signature-checked — a tampered package simply won\'t install.</li>
     </ul>
@@ -1761,6 +1762,21 @@ PAGES.security = {
     <p>It\'s still Arch. If you know what the AUR is and you accept the responsibility that comes with it, nothing stops you — install <code>yay</code> or <code>paru</code> yourself and use them as you always would. Mainstream\'s update tool will even pick a helper up and refresh your AUR packages alongside system updates if it finds one; if there isn\'t one, it simply skips that step.</p>
 
     ${callout('warn','The review is yours now', '<p>The moment you install from the AUR, its safety model is in your hands: read every <code>PKGBUILD</code> before you build it, and remember that AUR packages sit outside the tested, signed baseline — a later system update can leave one needing a rebuild.</p>')}
+
+    <h2>What is ours and what is Arch\'s</h2>
+    <p>Mainstream is a rolling-release operating system built on Arch Linux. Security updates apply to the rolling system repositories and the current <code>4.x</code> desktop release series:</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Mainstream first-party</div></center><div class="v">The desktop shell and system helpers (<a href="https://github.com/MainstreamOS/dots-hyprland">dots-hyprland</a>), the <a href="https://github.com/MainstreamOS/packages">[mainstream] package repository</a>, the <a href="https://github.com/MainstreamOS/calamares">graphical installer</a>, and the <a href="https://github.com/MainstreamOS/archiso">ISO builder</a> are maintained directly by Mainstream.</div></div>
+      <div class="prop"><center><div class="k">Upstream Arch Linux</div></center><div class="v">Packages in <code>core</code>, <code>extra</code>, and <code>multilib</code> come straight from official Arch Linux mirrors and are tracked by the <a href="https://security.archlinux.org/">Arch Linux Security Tracker</a>.</div></div>
+    </div>
+
+    <h2>Reporting a security issue</h2>
+    <p>If you find a security vulnerability in any Mainstream component, package, or build workflow, please report it privately rather than opening a public issue or posting in Discord:</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">GitHub Security Advisory</div></center><div class="v">Open a private report on <a href="https://github.com/MainstreamOS/dots-hyprland/security/advisories/new">MainstreamOS/dots-hyprland</a> or <a href="https://github.com/MainstreamOS/packages/security/advisories/new">MainstreamOS/packages</a> under the repository\'s <strong>Security</strong> tab.</div></div>
+      <div class="prop"><center><div class="k">Email</div></center><div class="v">If you prefer email, write to <a href="mailto:mainstreamlinuxos@gmail.com">mainstreamlinuxos@gmail.com</a> with <code>[SECURITY]</code> in the subject line.</div></div>
+      <div class="prop"><center><div class="k">What to expect</div></center><div class="v">Acknowledgment within <strong>72 hours</strong>, triage and status within <strong>7 days</strong>, and coordinated disclosure once a signed package or release fix is published.</div></div>
+    </div>
   `
 };
 
@@ -2659,6 +2675,17 @@ PAGES.changelog = {
     <h2>Being told about new releases</h2>
     <p>Mainstream can let you know when a release you don\'t have yet is published — a small icon in the bar, a notification, both, or nothing at all. The icon only appears while a release is waiting. Click it to open <a href="#update">Settings &rarr; Update</a>; right-click it for <strong>What\'s new</strong> (this page), <strong>Check now</strong>, and a quick way to change how you\'re told.</p>
     <p>The icon carries a colored dot: white for a small fix, blue for a new feature, yellow once a release has been waiting a week, and red once it\'s been three weeks — or straight away if the release closes a security hole. Choose what you hear about, and how, under <strong>Release notifications</strong> in <a href="#update">Settings &rarr; Update</a>.</p>
+
+    <h2>How versions and releases work</h2>
+    <p>Mainstream separates <strong>rolling system packages</strong>, <strong>numbered desktop releases</strong>, and <strong>install images</strong> so your system stays current without ever needing a reinstall:</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">System packages · Rolling</div></center><div class="v">Arch Linux (<code>core</code>, <code>extra</code>, <code>multilib</code>) and the signed <code>[mainstream]</code> repository update continuously. Existing installs move forward in place through <a href="#update">Settings &rarr; Update</a>.</div></div>
+      <div class="prop"><center><div class="k">Major · 4.0.0</div></center><div class="v">Major desktop redesigns, new architectural pieces, or settings migrations (applied automatically during the update).</div></div>
+      <div class="prop"><center><div class="k">Minor · 4.1.0</div></center><div class="v">New desktop features, settings pages, or visual modes that drop into your existing setup without changing how your current settings work.</div></div>
+      <div class="prop"><center><div class="k">Patch · 4.0.1</div></center><div class="v">Bug fixes, security fixes, and smaller refinements.</div></div>
+      <div class="prop"><center><div class="k">Install images · ISOs</div></center><div class="v">Live ISOs are point-in-time snapshots bundling the current Linux kernel, hardware drivers, installer, and newest numbered release so fresh hardware boots and installs cleanly.</div></div>
+      <div class="prop"><center><div class="k">Edge channel · --edge</div></center><div class="v">An optional toggle in <a href="#update">Settings &rarr; Update</a> (or <code>install.sh --edge</code>) that follows the <code>mainstream</code> development branch ahead of numbered releases, protected by the same pre-update Btrfs snapshots.</div></div>
+    </div>
 
     ${callout('tip','ISOs, checksums, and signatures','<p>Installer images for every release — including the experimental legacy-NVIDIA edition — live on the <a href="https://sourceforge.net/projects/mainstreamos/files/" style="color:var(--stream-a);text-decoration:underline">downloads page</a>. The <a href="#verify">verify page</a> shows how to check one.</p>')}
   `,

@@ -104,6 +104,7 @@ PAGES.home = {
       </div>
       <div class="right">
         <div class="hero-pill"><div class="ic">${icon('disc')}</div><div><b>Bootable ISO</b><span>Flash it, boot it, done — no prior Linux knowledge required.</span></div></div>
+        <div class="hero-pill"><div class="ic">${icon('laptop')}</div><div><b>System Requirements</b><span>64-bit CPU · 4 GB RAM (8 GB rec.) · 25 GB disk · Wayland GPU</span></div></div>
         <div class="hero-pill"><div class="ic">${icon('rocket')}</div><div><b>One-line script install</b><span>Onto any fresh Arch system in under 10 minutes.</span></div></div>
         <div class="hero-pill"><div class="ic">${icon('recover')}</div><div><b>Snapshot-protected updates</b><span>Every update is a Btrfs snapshot. Roll back from Limine at any time.</span></div></div>
       </div>
@@ -247,6 +248,24 @@ PAGES['install-iso'] = {
   lede: 'No Linux experience required. Download the Mainstream live image, flash it to a USB stick, and the installer walks you through disk setup, user creation, and first boot.',
   render: () => `
     ${shot('Install_Welcome_Screen.webp','Mainstream installer welcome screen','The Mainstream installer. The sidebar is the whole journey — Welcome, Location, Keyboard, Partitions, Users, Get Started, Apps, then a Summary before anything touches your disk.')}
+
+    <h2>System requirements</h2>
+    <p>Before installing, make sure your computer meets these minimum specifications:</p>
+
+    <table class="t">
+      <thead><tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr></thead>
+      <tbody>
+        <tr><td><b>Processor (CPU)</b></td><td>64-bit x86-64 dual-core (Intel Core 2 Duo / Core i3+, AMD Athlon 64 X2 / Ryzen 3+)</td><td>64-bit quad-core or faster (Intel 8th Gen Core i5+, AMD Ryzen 5+)</td></tr>
+        <tr><td><b>Memory (RAM)</b></td><td><b>4 GB RAM</b> (live installer &amp; baseline desktop)</td><td><b>8 GB RAM</b> (smooth multi-tab browsing &amp; multitasking)</td></tr>
+        <tr><td><b>Storage</b></td><td><b>25 GB</b> available space (SSD or HDD)</td><td><b>64 GB+</b> NVMe or SATA SSD</td></tr>
+        <tr><td><b>Graphics (GPU)</b></td><td>Wayland &amp; OpenGL 3.3 / GLES 3.0 capable:<br>• Intel HD Graphics 4000+ (2012+)<br>• AMD Radeon HD 7000 / RX series (GCN 1.0+ with amdgpu)<br>• NVIDIA GeForce GTX 900+ (Maxwell) with 535+ driver or modern open kernel modules</td><td>• AMD Radeon RX 500+ / RX 5000+ or Intel Iris Xe / Arc<br>• NVIDIA GeForce GTX 1660 / RTX 2060 or newer</td></tr>
+        <tr><td><b>Display</b></td><td>1280&times;720 (720p)</td><td>1920&times;1080 (1080p) or higher (scaling supported)</td></tr>
+        <tr><td><b>Boot &amp; Firmware</b></td><td>UEFI (64-bit) or Legacy BIOS (Secure Boot disabled)</td><td>UEFI (64-bit)</td></tr>
+        <tr><td><b>Network</b></td><td>Internet connection required for installation mirrors &amp; packages</td><td>Broadband internet connection</td></tr>
+      </tbody>
+    </table>
+
+    ${callout('tip','Hardware tip: Solid UI mode', '<p>On computers with integrated graphics or older GPUs meeting the minimum spec, setting your desktop look to <strong>Solid</strong> (rather than Frost or Glass) in Welcome or Settings turns off live wallpaper blur sampling, giving smooth 60fps performance on lighter hardware.</p>')}
 
     <h2>Download</h2>
     <p>Grab the latest ISO from <a href="https://mainstreamos.org/download" style="color:var(--stream-a);text-decoration:underline">mainstreamos.org/download</a>. Every image is signed — <a href="#verify" style="color:var(--stream-a);text-decoration:underline">verifying your download</a> takes about thirty seconds and proves it\'s exactly what we published.</p>

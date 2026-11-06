@@ -43,10 +43,11 @@ The shell — the bar, the side panels, the search box — is a lean, heavily mo
 
 ## Everything in Settings
 
-Twenty-two pages cover the whole machine, twelve of which are Mainstream's own work with no equivalent in the shell it started from.
+Twenty-three pages cover the whole machine, twelve of which are Mainstream's own work with no equivalent in the shell it started from.
 
 - **Displays.** Arrange your monitors and set resolution, refresh rate, scale, orientation, HDR and color profiles, or mirror one screen onto another.
 - **A layout per workspace.** Four ways of arranging windows automatically plus a floating mode, and every workspace remembers its own.
+- **Storage.** See what is filling your disk, free up space from one list, and find your largest files.
 - **Keyboard shortcuts.** A real editor rather than a printed list — change the ones that ship, add your own, and set them by pressing the keys you want.
 - **Type in any language.** Add the keyboard layouts you write in and flip between them with a keystroke. For Japanese, Chinese, Korean or Vietnamese, pick an input source and the right input method is installed and switched on for you. Installs done in those languages arrive with it already working.
 - **Touchpad gestures.** Choose what each swipe and pinch does, applied the moment you set it.

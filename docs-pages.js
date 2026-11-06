@@ -1470,6 +1470,33 @@ PAGES.manage = {
   `
 };
 
+// ---------- STORAGE ----------
+PAGES.storage = {
+  group: 'Settings', title: 'Storage', icon: 'disc',
+  lede: 'See what is filling your disk, free up space, and find your largest files.',
+  render: () => `
+    ${shot('StorageConfig.webp','Settings Storage page with the disk breakdown bar and the Home folder sorted by size','Settings → Storage: see what is filling your disk and browse your largest files.')}
+
+    <h2>What is filling your disk</h2>
+    <p>The top of the page shows how full the disk is, broken down into apps, Flatpak apps, games, documents, downloads, pictures, videos, music, app caches, the Trash and other files in your Home folder.</p>
+
+    <h2>Free up space</h2>
+    <p>One list gathers what can safely go, with how much each one frees and a short note on what it is:</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Trash</div></center><div class="v">Files you already deleted.</div></div>
+      <div class="prop"><center><div class="k">Build and download caches</div></center><div class="v">Kept by tools like yay, uv and npm. They download again when needed.</div></div>
+      <div class="prop"><center><div class="k">Old package versions</div></center><div class="v">Older copies of updates. The newest copy of each stays.</div></div>
+      <div class="prop"><center><div class="k">Crash reports</div></center><div class="v">Memory saved when an app crashes, only useful for debugging.</div></div>
+      <div class="prop"><center><div class="k">Unused packages</div></center><div class="v">Installed for something that no longer needs them.</div></div>
+      <div class="prop"><center><div class="k">System logs</div></center><div class="v">Older log files the system keeps.</div></div>
+    </div>
+    <p>Each one asks before it removes anything, and anything that belongs to the whole system asks for an administrator's password.</p>
+
+    <h2>Your Home folder by size</h2>
+    <p>Browse your Home folder sorted by size to see which folders are largest, and find your largest files in one list.</p>
+  `
+};
+
 // ---------- UPDATE ----------
 PAGES.update = {
   group: 'Settings', title: 'Update', icon: 'update',

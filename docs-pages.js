@@ -640,10 +640,15 @@ PAGES.interface = {
   group: 'Settings', title: 'Interface', icon: 'iface',
   lede: 'The sidebars, the hot corner, the overviews and the lock screen — the parts of the desktop you reach for, rather than the parts that are simply drawn.',
   render: () => `
-    <p class="shot-note">The top of the page: the hot corner and the two overviews it can open. The dock section that used to sit below them now has a <a href="#dock">page of its own</a>.</p>
+    <p class="shot-note">Near the top of the page: the hot corner and the two overviews it can open. The dock section that used to sit below them now has a <a href="#dock">page of its own</a>.</p>
     ${shot('InterfaceConfig-1.webp','The hot corner and the overviews')}
 
     ${callout('note','Looking for decorations or fonts?', '<p>Window borders, blur, shadows, rounded corners and title bars — along with your app style, icons, pointer and fonts — now live on their own <a href="#decorations">Decorations</a> page.</p>')}
+
+    <h2>Login screen</h2>
+    <div class="props">
+      <div class="prop"><center><div class="k">Clock size (%)</div></center><div class="v">Makes the clock on the login screen larger or smaller, from 50% to 200%, and <strong>Reset</strong> returns it to 100%. It changes the login clock for every account and shows the next time the login screen opens.</div></div>
+    </div>
 
     <h2>Left Hot Corner</h2>
     <p>The very top-left corner of the screen is a hot corner — sweep your cursor into it and the overview opens.</p>
@@ -670,9 +675,15 @@ PAGES.interface = {
       <div class="prop"><center><div class="k">Pre-load overview</div></center><div class="v">Keeps the overview built in the background so it opens instantly, at a small memory cost.</div></div>
     </div>
 
+    <h3>Scrolling and monocle launcher</h3>
+    <p>These layouts automatically use a vertical workspace list beside the app drawer. <strong>Visible workspaces</strong> chooses how many previews fit at once, <strong>Workspaces on the right</strong> swaps the two sides, and <strong>Show recently used apps</strong> adds two rows of recent apps above the drawer.</p>
+
+    <h2>Workspace navigation</h2>
+    <p><strong>Show navigation arrows</strong> turns the scrolling and monocle arrows on or off together, on the desktop and inside the launcher.</p>
+
     <h2>Left Sidebar</h2>
     <div class="props">
-      <div class="prop"><center><div class="k">AI</div></center><div class="v"><span class="tag">No</span> disables the assistant entirely. <span class="tag">Yes</span> turns it on, connecting to whichever provider you set up with your own API key. Google Gemini, Anthropic's Claude, and OpenAI's Codex can all be used in the left sidebar, each over its official API. Full plan (subscription) integration for each is coming later. <span class="tag">Local only</span> restricts it to a local Ollama model, so nothing leaves your machine.</div></div>
+      <div class="prop"><center><div class="k">AI</div></center><div class="v"><span class="tag">No</span> disables the assistant entirely. <span class="tag">Yes</span> turns it on, connecting to whichever provider you set up with your own API key. Google Gemini, Anthropic's Claude, and OpenAI's Codex can all be used in the left sidebar, each over its official API. You can also sign in with a Claude, Codex or Gemini plan instead of an API key; see <a href="#ai-assistant">AI Assistant</a>. <span class="tag">Local only</span> restricts it to a local Ollama model, so nothing leaves your machine.</div></div>
       <div class="prop"><center><div class="k">Translator</div></center><div class="v">Click-to-translate selected text, powered by Gemini or a local LibreTranslate server.</div></div>
     </div>
 
@@ -1136,8 +1147,15 @@ PAGES.layouts = {
       </tbody>
     </table>
 
+    <h2>Moving through scrolling and monocle windows</h2>
+    <p>Arrows at the sides move through columns in Scrolling and through windows in Monocle. They make room for a side Dock when it is pinned or revealed, and disappear when there is nothing further in that direction. Turn them off under <strong>Settings &rarr; Interface &rarr; Workspace navigation</strong>.</p>
+    <p>Minimized windows all go to the same scratchpad, opened with <strong>Super + S</strong>. That workspace always uses Dwindle, even when your regular workspaces use Scrolling or Monocle.</p>
+
     <h3>Title Bars</h3>
     <p>Title bars are on by default, so every window keeps its familiar close and maximize buttons. If you prefer the cleaner look, or you already live in tiling layouts and keybinds, the <strong>Title Bars</strong> toggle turns them off instantly.</p>
+
+    <h2>Column sizes in Scrolling</h2>
+    <p>The scrolling layout can size windows in two-thirds or in thirds. With thirds, one window fills the screen, two take half each, three take a third each, and each new window after that scrolls on. <strong>Ctrl + Super + F</strong> expands a column into the free space, and <strong>Ctrl + Super + A</strong> fits all columns on screen.</p>
 
     <h2>Per-workspace layouts</h2>
     ${shot('LayoutsConfig-2.webp','Per-workspace layout matrix')}
@@ -1256,6 +1274,13 @@ PAGES.power = {
       <div class="prop"><center><div class="k">Power Button Behavior</div></center><div class="v"><span class="tag">Suspend</span> (default) &nbsp; <span class="tag">Hibernate</span> &nbsp; <span class="tag">Shut Down</span> &nbsp; <span class="tag">Do Nothing</span></div></div>
     </div>
 
+    <h2>Session Menu</h2>
+    <p>The menu that opens from the power button in the right sidebar, or with <code>Ctrl</code>+<code>Alt</code>+<code>Delete</code>.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Simple session menu</div></center><div class="v">Lock, Logout, Reboot and Shutdown in one row of large buttons. Turn it off for the full menu, with Sleep, Hibernate, Task Manager and Reboot to firmware settings.</div></div>
+      <div class="prop"><center><div class="k">Size (%)</div></center><div class="v">Makes either menu style larger or smaller, from 50% to 200%. Default 100%.</div></div>
+    </div>
+
     <h2>Power Saving</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Automatic Screen Blank</div></center><div class="v">Turns the display off after <b>Delay</b> of inactivity. Default 10 minutes.</div></div>
@@ -1335,6 +1360,7 @@ PAGES.accounts = {
       <div class="prop"><center><div class="k">Change Login Image</div></center><div class="v">The picture shown on the greeter. Square images 256 px and up work well.</div></div>
       <div class="prop"><center><div class="k">Repair Account</div></center><div class="v">For an account that is missing its setup. Fills in what is missing and leaves the person's own choices, like their default apps and shell, as they are.</div></div>
       <div class="prop"><center><div class="k">Administrator</div></center><div class="v">Choose who can administer the computer: install software, change system settings and manage accounts. The last administrator cannot be made standard.</div></div>
+      <div class="prop"><center><div class="k">Log in automatically</div></center><div class="v">Starts the computer straight into this account without asking for a password. Only one account can have it, so turning it on moves it from anyone else. If the computer is set to start in Gaming Mode, that start is separate and keeps its own setting in Gaming Mode Setup.</div></div>
       <div class="prop"><center><div class="k">Remove Account</div></center><div class="v">Deletes the user. You\'re asked separately whether to keep or delete the home directory.</div></div>
     </div>
 
@@ -1343,8 +1369,10 @@ PAGES.accounts = {
       <li>Enter a <strong>Login name</strong> (lowercase, no spaces) and, if you like, a full name.</li>
       <li>Set a password.</li>
       <li>Turn on <strong>Let this person administer the computer</strong> only for someone who should manage it with you.</li>
+      <li>Turn on <strong>Log in automatically</strong> if the computer should start straight into this account.</li>
       <li>Hit <strong>Create Account</strong>.</li>
     </ol>
+    <p>Automatic login lasts through Gaming Mode: leaving a game session returns to the right desktop, and a crash never drops you back into the game. Removing an account clears its automatic login, so a later account with the same name never inherits it. Apps that keep saved passwords may ask for the account's password once after an automatic login.</p>
     <p>A new account gets the same desktop a fresh install gives you, and finishes setting itself up the first time that person signs in.</p>
 
     ${callout('tip','Protected by a password prompt', '<p>Creating, renaming, or deleting an account — or changing a password — asks for an administrator\'s password before it happens. Anyone can browse the list; only an admin can change it.</p>')}
@@ -1354,7 +1382,7 @@ PAGES.accounts = {
 // ---------- SERVICES ----------
 PAGES.services = {
   group: 'Settings', title: 'Services', icon: 'gear',
-  lede: 'Language settings, translation generation, music recognition, networking agent, launcher search, weather, and where screenshots and screen recordings are saved.',
+  lede: 'Language, date and time, translation generation, music recognition, networking agent, launcher search, weather, and where screenshots and screen recordings are saved.',
   render: () => `
     ${shot('ServicesConfig.webp','Services settings page')}
 
@@ -1363,6 +1391,17 @@ PAGES.services = {
       <div class="prop"><center><div class="k">Interface Language</div></center><div class="v">Default is <b>Auto (System)</b>, which reads your locale. Pick any bundled translation from the dropdown.</div></div>
       <div class="prop"><center><div class="k">Generate translation with Gemini</div></center><div class="v">Enter a locale code (<code>en_US</code>, <code>fr_FR</code>, <code>zh_CN</code>…) and Mainstream generates a full translation pack using Gemini. Takes ~2 minutes. Useful for locales Mainstream doesn\'t ship yet.</div></div>
     </div>
+
+    <p>Alongside English, the full desktop interface is translated into Mexican Spanish, Brazilian Portuguese, German, French, Russian, Simplified Chinese, Traditional Chinese, Japanese, Korean, Turkish, Italian, Polish, Indonesian, Ukrainian, Vietnamese, Arabic, Persian, Hindi and Hebrew. Interface language is separate from your <a href="#keyboard">keyboard layout and input method</a>.</p>
+
+    <h2>Date &amp; time</h2>
+    <p>Shows today's date and time and whether the clock is in sync with internet time.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Set time automatically</div></center><div class="v">Keeps the clock in sync with internet time. On by default.</div></div>
+      <div class="prop"><center><div class="k">Time zone</div></center><div class="v">Every time zone, listed by city.</div></div>
+      <div class="prop"><center><div class="k">Date and time</div></center><div class="v">Appear while automatic time is off, already filled in with the current date and time, so a small correction is a small edit. Press <strong>Set</strong> to apply.</div></div>
+    </div>
+    ${callout('tip','Asks for a password','<p>Changing the date, time or time zone asks for an administrator\'s password, like any change to the whole machine.</p>')}
 
     <h2>Music Recognition</h2>
     <p>Mainstream can listen through your default audio input and identify what\'s playing — tied to the bar\'s music module.</p>
@@ -1510,7 +1549,7 @@ PAGES.update = {
     <p>You choose how much of that you want: the bar indicator and the notification can each be turned off, and you can ask to hear only about bigger releases rather than every patch.</p>
 
     <h2>Before &amp; after the update</h2>
-    <p>The tip box at the top is worth reading before you click the button the first time: test the things you rely on <em>before</em> the update, and test the same things again after. Most updates come and go without a hitch, but knowing what to check makes it obvious if something stopped working.</p>
+    <p>The tip box at the top is worth reading before you click the button the first time: test the things you rely on <em>before</em> the update, and test the same things again after. Most updates come and go without a hitch, but knowing what to check makes it obvious if something stopped working. Once you know the drill, <strong>Disable tips</strong> hides the tip box, on Update and Recovery separately, to give the output more room.</p>
 
     <h2>How updating works</h2>
     <p>Type your password, hit <strong>Start update</strong>, and the steps run in order:</p>
@@ -1959,9 +1998,12 @@ PAGES.obs = {
     <p>That pulls OBS Studio plus <code>obs-vkcapture</code> (low-overhead Vulkan/OpenGL game capture), <code>v4l2loopback</code> (the virtual camera), the <strong>Browser Source</strong> plugin (web overlays, alerts, and custom browser docks), and the <code>move-transition</code>, <code>source-record</code>, <code>source-clone</code>, <code>composite-blur</code>, and <code>shaderfilter</code> plugins.</p>
 
     <h2>Screen &amp; game capture on Wayland</h2>
-    <p>For your desktop, add a <strong>Source</strong> → <strong>Screen Capture (PipeWire)</strong>. A portal dialog asks which monitor or window to share; OBS remembers the choice across restarts via the portal token.</p>
+    <p>For your desktop, add a <strong>Source</strong> → <strong>Screen Capture (PipeWire)</strong>. A portal dialog asks which monitor, window or workspace to share; OBS remembers the choice across restarts via the portal token.</p>
     ${twoShot('Obs-Pipewire-Portal-Window-1.webp', 'The source starts empty — click Open Selector to choose what to share.', 'Obs-Pipewire-Portal-Window-2.webp', 'The system portal lists your monitors and windows. Pick one and hit Share.')}
-    <p>This portal dialog is Wayland-native and comes from the desktop, not OBS — so a first-time capture looks a little different from other systems, but nothing is wrong: click <strong>Open Selector</strong>, choose your monitor or window, and share.</p>
+    <p>This portal dialog is Wayland-native and comes from the desktop, not OBS — so a first-time capture looks a little different from other systems, but nothing is wrong: click <strong>Open Selector</strong>, choose your monitor, window or workspace, and share.</p>
+    <h3>Share one workspace</h3>
+    <p>Choose a workspace in the selector to keep sharing that workspace while you switch to another one on your own screen. The same choice is available in video-call apps that use the system screen-sharing dialog, so you can present from one workspace and keep your notes on another.</p>
+    <p>The selector opens as a compact floating window, leaving the desktop visible while you choose. Monitor and individual-window capture are still available alongside workspace capture.</p>
     <h3>Set up Game Capture</h3>
     <p>For a single game, a direct Vulkan/OpenGL capture is far lighter than grabbing the whole screen. <code>obs-vkcapture</code> ships with <code>mainstream-obs</code>, so there is nothing to install:</p>
     <ol>
@@ -2600,6 +2642,9 @@ PAGES.sharing = {
     </figure>
 
     <p>To share whole folders with other computers instead, so they can open them like a network drive, see <a href="#sharing-settings">Sharing</a> in Settings.</p>
+
+    <h2>Share a workspace in a call</h2>
+    <p>The system screen-sharing picker can share a monitor, a window or a single workspace. Pick a workspace and the call keeps showing it while you move elsewhere on your own screen. See <a href="#obs">Set up OBS</a> for the picker and recording options.</p>
 
     ${callout('note','Private by design','<p>Sharing is off until you start it, and only devices on your own network can ever see yours. There\'s no account to create, no server in the middle, and no size limit beyond your disk.</p>')}
   `

@@ -3,7 +3,7 @@
 const NAV_ORDER = [
   { group: 'Start here', ids: ['home'] },
   { group: 'Installation', ids: ['install-iso', 'install-script'], collapsible: true, icon: 'rocket' },
-  { group: 'Desktop', ids: ['desktop','overview-launcher','shortcuts','sidebars','sharing','desktop-apps'] },
+  { group: 'Desktop', ids: ['desktop','overview-launcher','shortcuts','sidebars','phone','sharing','desktop-apps'] },
   { group: 'Settings', ids: ['quick','wifi','bluetooth','bar','dock','interface','background','decorations','themes','display','layouts','keyboard','mouse','power','gaming-settings','accounts','services','sharing-settings','manage','storage','update','recovery','about'] },
   { group: 'Creative', ids: ['davinci','obs'], collapsible: true, icon: 'film', heading: 'Topics' },
   { group: 'Gaming', ids: ['gaming','steam-proton','gaming-performance','vr'], collapsible: true, icon: 'game' },

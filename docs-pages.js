@@ -47,6 +47,7 @@ const I = {
   folder:  '<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Z"/><circle cx="12" cy="13" r="2"/><path d="M8.5 17.5a3.5 3.5 0 0 1 7 0"/>',
   send:    '<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/>',
   tag:     '<path d="M3 12V4h8l9 9-8 8-9-9Z"/><circle cx="7.5" cy="7.5" r="1.25"/>',
+  phone:   '<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/>',
   vr:      '<path d="M4 7h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4.5l-2-2.5h-3l-2 2.5H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/><circle cx="8" cy="11.5" r="1.5"/><circle cx="16" cy="11.5" r="1.5"/>',
 };
 
@@ -2523,6 +2524,54 @@ PAGES.sidebars = {
     ${shot('Right-Sidebar-Calendar.webp','The calendar with an event popup open','Calendar events pop out in place — deadlines included.')}
     <p>You don\'t even have to open the sidebar to check your schedule — pressing the <strong>date and time</strong> in the bar pops the same calendar events and task list out on their own.</p>
     ${shot('Bar-Task-List-Popup.webp','Calendar events and a task list popping out from the bar\'s clock','Press the date and time in the bar to see your calendar events and task list from anywhere.')}
+  `
+};
+
+PAGES.phone = {
+  group: 'Desktop', title: 'Phone', icon: 'phone', navTitle: 'Phone',
+  lede: 'Your texts, contacts, calls and files on the desktop, over your own Wi-Fi.',
+  render: () => `
+    ${shot('Phone-Conversation.webp','Screenshot: the Phone tab in the left sidebar with a conversation open: replies, a reaction, a picture and a voice clip.','The Phone tab: your conversations, contacts and files.')}
+
+    <p>The Phone tab in the left sidebar brings your phone to the desktop. It talks to the free <strong>KDE Connect</strong> app on your phone, directly over your Wi-Fi, so nothing goes through a cloud service.</p>
+
+    <p>Mainstream uses <strong>Rust Connect</strong> on the computer and KDE Connect on the phone. Updates replace the stock desktop KDE Connect package and switch to the packaged Rust Connect service together, avoiding two competing phone backends. Existing Rust Connect pairings are kept; if you used stock KDE Connect on the computer, you may need to pair again. Its saved data is retained.</p>
+
+    <h2>Pair your phone</h2>
+    <ol>
+      <li>Install the free KDE Connect app on your phone: from the Google Play Store or F-Droid on Android, or the App Store on iPhone.</li>
+      <li>Connect the phone to the same Wi-Fi as this computer.</li>
+      <li>Open KDE Connect on the phone, tap this computer, and tap the button to pair. Pairing works over Wi-Fi; it does not use Bluetooth or a cable.</li>
+      <li>A request appears at the top of the Phone tab. Check that its code matches the one on your phone, then click <strong>Accept</strong>.</li>
+    </ol>
+    ${/* shot('Phone-Pairing.webp','Screenshot: the Phone tab\'s Connect your phone steps with a pairing request and its matching code.') */ ''}
+    ${callout('tip','Keep it connected','On Android, set KDE Connect\'s battery use to <strong>Unrestricted</strong> (Settings &rarr; Apps &rarr; KDE Connect &rarr; Battery) so the phone stays connected while its screen is off.')}
+
+    <h2>Messages</h2>
+    <p>Read and answer your text conversations: reply to a particular message, react to one, and send pictures, GIFs and emoji from the plus button. Its picker opens on emoji, with your most-used ones at the top; switch tabs for GIFs, which animate in the attachment preview before you send them. Pictures, videos and voice clips play right in the conversation, and links show a preview.</p>
+    <p>Right-click a conversation and choose <strong>Hide on this desktop</strong> to keep it out of the list without deleting anything from your phone. <strong>Show hidden conversations</strong> lets you find and unhide it later, so you can keep using your stock phone app.</p>
+    ${/* shot('Phone-Emoji-GIF-Picker.webp','Screenshot: the emoji and GIF picker open above the message field.') */ ''}
+
+    <h2>Contacts</h2>
+    <p>Your phone's contacts, with buttons to call or message each one.</p>
+    ${/* shot('Phone-Contacts.webp','Screenshot: the contacts page with a contact selected and its call and message buttons.') */ ''}
+
+    <h2>Files</h2>
+    <p>Browse your phone's storage from the desktop. <strong>Camera &amp; Media</strong> and <strong>Screenshots</strong> open as a grid of pictures, while Downloads and internal storage can show a list or a grid. Search, sort, select several files at once and save copies to your Downloads folder. Pictures and other files open straight in your default apps.</p>
+    ${/* shot('Phone-Files-Gallery.webp','Screenshot: Camera &amp; Media open as a grid of square pictures.') */ ''}
+    ${/* shot('Phone-Files-List.webp','Screenshot: Downloads in list view, with thumbnails and the save buttons.') */ ''}
+
+    <h2>Privacy</h2>
+    <p>Choose what the Phone tab shows under <strong>Contact privacy</strong> in <a href="#interface">Settings &rarr; Interface</a>: <strong>Show contact name</strong>, <strong>Show phone number</strong>, <strong>Show message contents</strong> and <strong>Show contact picture</strong>. The <a href="#dynamic-island">Dynamic Island</a> keeps switches of its own.</p>
+
+    <h2>Paired or connected?</h2>
+    <p>A paired phone is remembered; it is only connected when Rust Connect can reach it. A Bluetooth connection in quick settings does not by itself mean the Phone tab is online. If it says <strong>Not reachable</strong>, open KDE Connect on the phone, check both devices are on the same Wi-Fi, and check its battery and permission settings.</p>
+
+    <h2>Recent calls</h2>
+    <p>Your recent calls have a tab of their own, with call and message buttons on each one.</p>
+
+    <h2>Calls and notifications</h2>
+    <p>Calls and notifications from your phone appear in the <a href="#dynamic-island">Dynamic Island</a>, where you can answer, call back and reply. On the traditional Bar, calls and messages get cards of their own above your notifications, with Answer, Decline and quick reply, and a Phone widget shows your phone's battery and unread messages. With the Dynamic Island, turning off its Calls or Messages panel uses these cards instead. Messages, contacts and files need an Android phone; KDE Connect on iPhone offers fewer features.</p>
   `
 };
 

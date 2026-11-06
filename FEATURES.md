@@ -58,6 +58,7 @@ Twenty-three pages cover the whole machine, twelve of which are Mainstream's own
 ## Day to day
 
 - **A ready-made set of apps** — browser, files, editor, calculator, calendar, photos, music, system monitor — each a tick-box during the install, plus a software store with pictures and descriptions for the rest.
+- **Your phone on the desktop.** Read and answer your texts with replies, reactions, pictures, GIFs and voice clips, call or message your contacts, and browse your phone's photos and files, all over your own Wi-Fi with the free KDE Connect app.
 - **A launcher that finds everything.** Apps, folders, files, quick sums and your clipboard history, all from one search box.
 - **Zoom out to the whole desktop.** Flick the pointer into the corner and the desktop pulls back into a scrolling map of every workspace — drag windows between them, drop files onto them. Built on [Scroll Overview](https://github.com/yayuuu/hyprland-scroll-overview) by [yayuuu](https://github.com/yayuuu).
 - **Quick settings and notifications** in one panel off the side of the screen.

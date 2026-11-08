@@ -1278,7 +1278,7 @@ PAGES.power = {
     <p>The menu that opens from the power button in the right sidebar, or with <code>Ctrl</code>+<code>Alt</code>+<code>Delete</code>.</p>
     <div class="props">
       <div class="prop"><center><div class="k">Simple session menu</div></center><div class="v">Lock, Logout, Reboot and Shutdown in one row of large buttons. Turn it off for the full menu, with Sleep, Hibernate, Task Manager and Reboot to firmware settings.</div></div>
-      <div class="prop"><center><div class="k">Size (%)</div></center><div class="v">Makes either menu style larger or smaller, from 50% to 200%. Default 100%.</div></div>
+      <div class="prop"><center><div class="k">Size (%)</div></center><div class="v">Makes either menu style larger or smaller, from 50% to 200%. Default 75%.</div></div>
     </div>
 
     <h2>Power Saving</h2>

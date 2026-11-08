@@ -257,7 +257,7 @@ PAGES['install-iso'] = {
       <thead><tr><th>Component</th><th>Minimum</th><th>Recommended</th></tr></thead>
       <tbody>
         <tr><td><b>Processor (CPU)</b></td><td>64-bit x86-64 dual-core (Intel Core 2 Duo / Core i3+, AMD Athlon 64 X2 / Ryzen 3+)</td><td>64-bit quad-core or faster (Intel 8th Gen Core i5+, AMD Ryzen 5+)</td></tr>
-        <tr><td><b>Memory (RAM)</b></td><td><b>4 GB RAM</b> (live installer &amp; baseline desktop)</td><td><b>8 GB RAM</b> (smooth multi-tab browsing &amp; multitasking)</td></tr>
+        <tr><td><b>Memory (RAM)</b></td><td><b>4 GB RAM</b> (live installer &amp; everyday use)<br>The desktop alone runs in about 1.5 GB</td><td><b>8 GB RAM</b> (smooth multi-tab browsing &amp; multitasking)</td></tr>
         <tr><td><b>Storage</b></td><td><b>25 GB</b> available space (SSD or HDD)</td><td><b>64 GB+</b> NVMe or SATA SSD</td></tr>
         <tr><td><b>Graphics (GPU)</b></td><td>Wayland &amp; OpenGL 3.3 / GLES 3.0 capable:<br>• Intel HD Graphics 4000+ (2012+)<br>• AMD Radeon HD 7000 / RX series (GCN 1.0+ with amdgpu)<br>• NVIDIA GeForce GTX 900+ (Maxwell) with 535+ driver or modern open kernel modules</td><td>• AMD Radeon RX 500+ / RX 5000+ or Intel Iris Xe / Arc<br>• NVIDIA GeForce GTX 1660 / RTX 2060 or newer</td></tr>
         <tr><td><b>Display</b></td><td>1280&times;720 (720p)</td><td>1920&times;1080 (1080p) or higher (scaling supported)</td></tr>

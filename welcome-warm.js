@@ -425,11 +425,11 @@ PAGES['donate'] = {
 
     <h2>Ways to help</h2>
     <div class="props">
-      <div class="prop"><center><div class="k">GitHub Sponsors</div></center><div class="v">Monthly or one-time, at any amount — the simplest way to back ongoing work.</div></div>
-      <div class="prop"><center><div class="k">Ko-fi</div></center><div class="v">A one-off tip, no account or subscription needed.</div></div>
-      <div class="prop"><center><div class="k">Patreon</div></center><div class="v">Monthly membership, if that suits you better than sponsoring through GitHub.</div></div>
-      <div class="prop"><center><div class="k">Translate</div></center><div class="v">Mainstream speaks 13 languages so far. The language files live on <a href="https://github.com/MainstreamOS/dots-hyprland">GitHub</a>, and a pull request adding yours is as welcome as one against the code.</div></div>
-      <div class="prop"><center><div class="k">Contribute</div></center><div class="v">Code, docs, translations, bug reports, or just telling a friend — all of it counts, and none of it costs a thing.</div></div>
+      <div class="prop"><center><div class="k"><a href="https://github.com/sponsors/MainstreamOS" target="_blank" rel="noopener">GitHub Sponsors</a></div></center><div class="v">Monthly or one-time, at any amount — the simplest way to back ongoing work on <a href="https://github.com/sponsors/MainstreamOS" target="_blank" rel="noopener">GitHub</a>.</div></div>
+      <div class="prop"><center><div class="k"><a href="https://ko-fi.com/mainstreamos" target="_blank" rel="noopener">Ko-fi</a></div></center><div class="v">A one-off tip on <a href="https://ko-fi.com/mainstreamos" target="_blank" rel="noopener">Ko-fi</a>, no account or subscription needed.</div></div>
+      <div class="prop"><center><div class="k"><a href="https://www.patreon.com/cw/MainstreamOS" target="_blank" rel="noopener">Patreon</a></div></center><div class="v">Monthly membership on <a href="https://www.patreon.com/cw/MainstreamOS" target="_blank" rel="noopener">Patreon</a>, if that suits you better than sponsoring through GitHub.</div></div>
+      <div class="prop"><center><div class="k"><a href="https://github.com/MainstreamOS/dots-hyprland" target="_blank" rel="noopener">Translate</a></div></center><div class="v">Mainstream speaks 19 languages so far. The language files live on <a href="https://github.com/MainstreamOS/dots-hyprland" target="_blank" rel="noopener">GitHub</a>, and a pull request adding yours is as welcome as one against the code.</div></div>
+      <div class="prop"><center><div class="k"><a href="https://github.com/MainstreamOS" target="_blank" rel="noopener">Contribute</a></div></center><div class="v">Code, docs, translations, bug reports, or just telling a friend — all of it counts, and none of it costs a thing on <a href="https://github.com/MainstreamOS" target="_blank" rel="noopener">GitHub</a>.</div></div>
     </div>
 
     <div class="cta-row" style="margin-top:6px">

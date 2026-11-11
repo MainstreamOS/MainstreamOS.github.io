@@ -654,6 +654,24 @@ a.card:hover { border-color: var(--line-strong); transform: translateY(-2px); }
   max-width: 720px;
 }
 
+.docs-content p a:not([class]),
+.docs-content li a:not([class]),
+.docs-content td a:not([class]),
+.docs-content .lead a:not([class]) {
+  color: var(--stream-a);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in oklch, var(--stream-a) 40%, transparent);
+  text-underline-offset: 2.5px;
+  transition: color .15s ease, text-decoration-color .15s ease;
+}
+.docs-content p a:not([class]):hover,
+.docs-content li a:not([class]):hover,
+.docs-content td a:not([class]):hover,
+.docs-content .lead a:not([class]):hover {
+  color: var(--stream-hi, var(--stream-a));
+  text-decoration-color: currentColor;
+}
+
 .docs-content ul,
 .docs-content ol {
   padding-left: 1.2em;

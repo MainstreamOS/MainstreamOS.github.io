@@ -73,6 +73,7 @@ html[data-theme="light"] {
   --line:        rgba(20,24,32,.10);
   --line-strong: rgba(20,24,32,.22);
 
+  --stream-a:    oklch(0.48 0.14 220);
   --stream-hi:   oklch(0.55 0.14 220);
 }
 

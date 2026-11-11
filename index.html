@@ -124,6 +124,42 @@
   pre .v{color:#ffcf8a}
   pre .o{color:#f78c8c}
 
+  /* ===== Content links ===== */
+  main p a:not([class]),
+  main .v a:not([class]),
+  main td a:not([class]),
+  main li a:not([class]),
+  .callout-body a:not([class]),
+  figcaption a:not([class]),
+  .reassure a:not([class]) {
+    color: var(--stream-a);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in oklch, var(--stream-a) 40%, transparent);
+    text-underline-offset: 2.5px;
+    transition: color .15s ease, text-decoration-color .15s ease;
+  }
+  main p a:not([class]):hover,
+  main .v a:not([class]):hover,
+  main td a:not([class]):hover,
+  main li a:not([class]):hover,
+  .callout-body a:not([class]):hover,
+  figcaption a:not([class]):hover,
+  .reassure a:not([class]):hover {
+    color: var(--stream-hi, var(--stream-a));
+    text-decoration-color: currentColor;
+  }
+  .prop .k a {
+    color: var(--ink);
+    text-decoration: none;
+    transition: color .15s ease;
+    display: inline-block;
+  }
+  .prop .k a:hover {
+    color: var(--stream-a);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
   /* ===== shot ===== */
   .shot{
     border-radius:var(--r-lg);overflow:hidden;border:1px solid var(--line);

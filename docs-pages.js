@@ -2537,6 +2537,21 @@ PAGES['overview-launcher'] = {
     ${shot('Recognize-Music-Button.webp','The Recognize music button on the launcher search bar','The Recognize music button, on the launcher search bar.')}
     <p>As soon as it finds a match, a notification names the track alongside its cover art, with one-tap actions to open it on <strong>Shazam</strong>, search <strong>YouTube</strong>, or copy the title. Recognition timing is tunable in <strong>Settings → <a href="#services">Services</a></strong>.</p>
     ${shot('Recognize-Music-Notification.webp','A Music Recognized notification showing the song title, album art, and Shazam, YouTube, and copy actions','The result — the track named with its album art, plus Shazam, YouTube, and copy actions.')}
+
+    <h2>Switch windows with Alt+Tab</h2>
+    <p>Press <strong>Alt+Tab</strong> for an overview of your open windows, with live previews, window search and your Dock along the bottom. Keep holding Alt and press Tab to follow the windows in the order they appear, or page across workspaces, then let go to jump to the window you picked. The selected window grows slightly and stands out against both light and dark backgrounds.</p>
+    <figure>
+      <div class="shot">
+        <video src="assets/docs/Alt-Tab-Switcher.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
+      </div>
+      <figcaption>Alt+Tab moving through windows with live previews and paging across workspaces.</figcaption>
+    </figure>
+
+    <h2>A launcher for scrolling layouts</h2>
+    <p>With the scrolling or monocle window layout, the launcher shows three workspaces stacked in one panel, with the same rounded corners, spacing, outlines and workspace numbers as the regular launcher. Each one shows the whole screen and half of the windows to either side, so you can see where every column sits and drag windows between workspaces in one move. The space the Bar and Dock take is left out, so each preview shows only your windows.</p>
+    <p>Beside it, one panel holds your apps: <strong>Recently used apps</strong> at the top and every app below, five to a row. The search bar spans both panels. Drag a window to the highlighted insertion point to place it beside or between other windows, or drop an app or a folder from the drawer onto a workspace to launch it there. Scroll over the workspaces to reveal others, and use the arrows or arrow keys to move column by column in Scrolling, or window by window in Monocle.</p>
+    <p>Choose the number of visible workspaces and swap the two panels in <strong>Settings &rarr; Interface &rarr; Launcher Overview</strong>. The Dock stays interactive while either launcher is open. <strong>Super + W</strong> still opens the wallpaper picker, and <strong>Super + S</strong> opens your minimized windows.</p>
+    ${shot('Scrolling-Launcher.webp','The scrolling launcher with three workspaces stacked in one panel, the app panel beside it and the search bar across both','The launcher built for scrolling and monocle layouts — workspaces stacked beside your app drawer.')}
   `
 };
 

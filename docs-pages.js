@@ -122,7 +122,7 @@ PAGES.home = {
     <div class="card-grid">
       ${card('desktop','The Desktop','iface','The bar, the dock, and title bars — the pieces you live with every day.', true)}
       ${card('overview-launcher','Overview & Launcher','overview','A zoomed-out map of every workspace and a launcher that finds everything.')}
-      ${card('sidebars','Sidebars','sidebar','Intelligence on the left; toggles, notifications, and calendar on the right.')}
+      ${card('sidebars','Sidebars','sidebar','The AI Assistant on the left; toggles, notifications, and calendar on the right.')}
       ${card('sharing','Sharing','send','Send and receive files with any device on your network — no cloud.')}
       ${card('desktop-apps','Desktop Apps','dock','Auto Drive Mount and Uninstall Apps: system chores without a terminal.')}
     </div>
@@ -2495,20 +2495,20 @@ PAGES['overview-launcher'] = {
 
 PAGES.sidebars = {
   group: 'Desktop', title: 'Sidebars', icon: 'sidebar',
-  lede: 'Two slide-out panels bookend the desktop: intelligence and translation on the left, system controls and your day on the right.',
+  lede: 'Two slide-out panels bookend the desktop: an AI assistant and translation on the left, system controls and your day on the right.',
   render: () => `
     <figure>
       <div class="shot">
         <video src="assets/docs/Sidebars-Demo.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
       </div>
-      <figcaption>Both sidebars in action — quick toggles and your day on the right, the Intelligence panel on the left.</figcaption>
+      <figcaption>Both sidebars in action — quick toggles and your day on the right, the AI Assistant on the left.</figcaption>
     </figure>
 
-    <p>Opening them is a single click on the bar: click the <strong>left side of the top bar</strong> for the Intelligence sidebar, or the <strong>right side</strong> for toggles, notifications, and your calendar — exactly what the clip above shows.</p>
+    <p>Opening them is a single click on the bar: click the <strong>left side of the top bar</strong> for the AI Assistant sidebar, or the <strong>right side</strong> for toggles, notifications, and your calendar — exactly what the clip above shows.</p>
 
     ${twoShot('Full-Left-Sidebar.webp','The left sidebar: chat with local or online models, or translate.','Full-Right-Sidebar.webp','The right sidebar: quick toggles, notifications, and the calendar.')}
 
-    <h2>Left: Intelligence</h2>
+    <h2>Left: AI Assistant</h2>
     <p>A chat panel for large language models — bring an API key for online models or run local ones, with a translator one tab away. <strong>Ctrl + O</strong> expands it, <strong>Ctrl + P</strong> pins it open, and it stays entirely out of the way until asked.</p>
 
     <p>Gemini joins Claude and Codex as a plan: sign in once with your Google account, free or with Google AI Pro or Ultra, and chat through Google's Antigravity without an API key. The Bar's sidebar button shows the logo of the model you picked, and stays off the Bar while AI is off.</p>

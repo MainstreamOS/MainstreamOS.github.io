@@ -480,6 +480,9 @@ PAGES.bar = {
     <p class="shot-note">The top of the page: the widget catalog you arrange the bar from, then the clock formats and where the bar sits.</p>
     ${shot('BarConfig-1.webp','Widget layout, Time and Date, and Positioning')}
 
+    <h2>Traditional Bar or Dynamic Island</h2>
+    <p>Choose the desktop bar in this page: <strong>Traditional Bar</strong> keeps the full widget layout below, while <a href="#dynamic-island"><strong>Dynamic Island</strong></a> shows its own panels and phone options. Island-only controls stay out of the traditional Bar settings. With the Island selected, <strong>Island position</strong> and <strong>Island style</strong> set its placement and Notch, Float or Rect shape.</p>
+
     <h2>Widget layout</h2>
     <p>The bar is built from widgets you arrange yourself. There are two ways to go about it:</p>
     <div class="props">
@@ -597,9 +600,9 @@ PAGES.dock = {
     <h2>Behavior</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Position</div></center><div class="v">Which edge the dock sits on: <span class="tag">Bottom</span> the default &nbsp; <span class="tag">Top</span> &nbsp; <span class="tag">Left</span> &nbsp; <span class="tag">Right</span> &nbsp; <span class="tag">Disabled</span> turns the dock off. On the left or right it stands vertically, icons stacked. Pick the edge your bar is already using and the bar moves to the opposite one, so the two never share a side.</div></div>
-      <div class="prop"><center><div class="k">Window indicators</div></center><div class="v">The mark under an icon that says the app is running, and how many windows it has. <span class="tag">Dashes</span> the default &nbsp; <span class="tag">Dots</span> &nbsp; <span class="tag">Count badge</span> a number instead of marks, which stays readable past three or four windows &nbsp; <span class="tag">None</span> &nbsp; <span class="tag">Dashes and badges</span> <span class="tag">Dots and badges</span> the marks and the count together</div></div>
+      <div class="prop"><center><div class="k">Window indicators</div></center><div class="v">The mark under an icon that says the app is running, and how many windows it has. <span class="tag">Dashes</span> the default &nbsp; <span class="tag">Dots</span> &nbsp; <span class="tag">Minimal</span> a small, quiet mark &nbsp; <span class="tag">Minimal and badges</span> adds the window count &nbsp; <span class="tag">Count badge</span> a number instead of marks, which stays readable past three or four windows &nbsp; <span class="tag">None</span> &nbsp; <span class="tag">Dashes and badges</span> <span class="tag">Dots and badges</span> the marks and the count together</div></div>
       <div class="prop"><center><div class="k">Launch animation</div></center><div class="v">The icon reacts when you start an app, so you can see the click landed before the window appears. <span class="tag">Bounce</span> the default &nbsp; <span class="tag">Pulse</span> &nbsp; <span class="tag">Pop</span> &nbsp; <span class="tag">Wobble</span> &nbsp; <span class="tag">None</span> Only a genuine launch animates: clicking an app that is already open, or opening a folder, does not.</div></div>
-      <div class="prop"><center><div class="k">Hover animation</div></center><div class="v">What an icon does as the pointer passes over it. <span class="tag">Magnify</span> the icon grows, in the manner of a classic dock &nbsp; <span class="tag">Glow</span> a lit halo instead of a size change &nbsp; <span class="tag">None</span> New installs start on Glow, and Magnify starts at a gentler strength when you pick it.</div></div>
+      <div class="prop"><center><div class="k">Hover animation</div></center><div class="v">What an icon does as the pointer passes over it. <span class="tag">Magnify</span> the icon grows, in the manner of a classic dock &nbsp; <span class="tag">Glow</span> a lit halo instead of a size change &nbsp; <span class="tag">Bubble</span> a rounded lift under the pointer &nbsp; <span class="tag">None</span> New installs start on Glow, and Magnify starts at a gentler strength when you pick it.</div></div>
       <div class="prop"><center><div class="k">Magnify amount</div></center><div class="v">How far the hovered icon grows. The mark on the track is the stock setting, so you can always find your way back to it.</div></div>
       <div class="prop"><center><div class="k">Glow intensity</div></center><div class="v">How strong the halo is. Appears in place of the magnify slider when Glow is the chosen hover animation.</div></div>
       <div class="prop"><center><div class="k">Hover to reveal</div></center><div class="v">The dock stays hidden while a window is focused and slides in when your cursor touches the edge it sits on. Off: it only appears on an empty workspace, not on hover.</div></div>
@@ -831,7 +834,7 @@ PAGES.background = {
       <div class="prop"><center><div class="k">Timers</div></center><div class="v">Countdowns you can start and reset in place.</div></div>
       <div class="prop"><center><div class="k">Resources</div></center><div class="v">Processor, memory and disk at a glance.</div></div>
       <div class="prop"><center><div class="k">Media player</div></center><div class="v">What is playing, with controls.</div></div>
-      <div class="prop"><center><div class="k">Visualizer</div></center><div class="v">Audio drawn as it plays.</div></div>
+      <div class="prop"><center><div class="k">Visualizer</div></center><div class="v">Audio drawn as it plays. Its position and width stay put as you move between workspaces, including with wallpaper parallax.</div></div>
       <div class="prop"><center><div class="k">Picture</div></center><div class="v">Any image of your own, placed on the desktop.</div></div>
     </div>
 
@@ -900,6 +903,7 @@ PAGES.decorations = {
     <h2>Window blur</h2>
     <p>What happens behind a transparent window. Needs <strong>Blur</strong> switched on above.</p>
     <div class="props">
+      <div class="prop"><center><div class="k">Blur style</div></center><div class="v">Choose the look of the blur before adjusting its strength. Hyprland 0.57 adds styles such as Frost, Water and Acrylic beyond the familiar soft blur; the list only offers what your installed version supports. Animated styles can use more GPU power.</div></div>
       <div class="prop"><center><div class="k">Strength</div></center><div class="v">How far the blur reaches. Higher costs more to draw.</div></div>
       <div class="prop"><center><div class="k">Noise</div></center><div class="v">A light grain over the blur, which stops large flat areas from banding.</div></div>
       <div class="prop"><center><div class="k">Saturation</div></center><div class="v">How much color the blurred wallpaper keeps.</div></div>
@@ -948,7 +952,7 @@ PAGES.decorations = {
     <h2>System look</h2>
     <p>The desktop follows your theme on its own. These three pick what everything <em>else</em> uses — your file manager, your browser, your text editor.</p>
     <div class="props">
-      <div class="prop"><center><div class="k">App style</div></center><div class="v">The widget theme your programs are drawn with — buttons, menus, scrollbars.</div></div>
+      <div class="prop"><center><div class="k">App style</div></center><div class="v">The widget theme your programs are drawn with — buttons, menus, scrollbars. Native GTK4 and libadwaita apps also pick up your theme colors as they change, without closing and reopening.</div></div>
       <div class="prop"><center><div class="k">Icons</div></center><div class="v">The icon set used across the desktop and inside apps.</div></div>
       <div class="prop"><center><div class="k">Mouse cursor</div></center><div class="v">The pointer theme. Your choice survives a logout.</div></div>
     </div>
@@ -1876,11 +1880,11 @@ PAGES.about = {
     <h2>Distro</h2>
     <p>The top of the page links straight to what you\'ll want when you need it:</p>
     <div class="props">
-      <div class="prop"><center><div class="k">Documentation</div></center><div class="v">This site — <a href="https://mainstreamos.org/">mainstreamos.org</a>.</div></div>
-      <div class="prop"><center><div class="k">Issues</div></center><div class="v">Report a bug or request a feature on the tracker.</div></div>
-      <div class="prop"><center><div class="k">Discord</div></center><div class="v">Live help and community — questions, showcases, and release news.</div></div>
-      <div class="prop"><center><div class="k">Privacy Policy</div></center><div class="v">What Mainstream does and doesn\'t collect.</div></div>
-      <div class="prop"><center><div class="k">Donate</div></center><div class="v">Like where this is going? Help it get there.</div></div>
+      <div class="prop"><center><div class="k"><a href="https://mainstreamos.org/">Documentation</a></div></center><div class="v">This site — <a href="https://mainstreamos.org/">mainstreamos.org</a>.</div></div>
+      <div class="prop"><center><div class="k"><a href="https://github.com/MainstreamOS/dots-hyprland/issues" target="_blank" rel="noopener">Issues</a></div></center><div class="v">Report a bug or request a feature on the <a href="https://github.com/MainstreamOS/dots-hyprland/issues" target="_blank" rel="noopener">tracker</a>.</div></div>
+      <div class="prop"><center><div class="k"><a href="https://discord.gg/WJ3AUK5Aqd" target="_blank" rel="noopener">Discord</a></div></center><div class="v">Live help and community on <a href="https://discord.gg/WJ3AUK5Aqd" target="_blank" rel="noopener">Discord</a> — questions, showcases, and release news.</div></div>
+      <div class="prop"><center><div class="k"><a href="#privacy">Privacy Policy</a></div></center><div class="v"><a href="#privacy">What Mainstream does and doesn\'t collect</a> (also available as a <a href="privacy.html" target="_blank" rel="noopener">standalone page</a>).</div></div>
+      <div class="prop"><center><div class="k"><a href="#donate">Donate</a></div></center><div class="v">Like where this is going? <a href="https://github.com/sponsors/MainstreamOS" target="_blank" rel="noopener">Help it get there on GitHub Sponsors</a> (or see <a href="#donate">ways to help</a>).</div></div>
     </div>
 
     <h2>Built With</h2>
@@ -1888,14 +1892,14 @@ PAGES.about = {
     <table class="t">
       <thead><tr><th>Project</th><th>By</th><th>What it is</th></tr></thead>
       <tbody>
-        <tr><td><b><a href="https://github.com/end-4/dots-hyprland">illogical-impulse</a></b></td><td>end-4 (<a href="https://github.com/sponsors/end-4">Donate</a>)</td><td>The desktop shell Mainstream ships — a lean, heavily modified version, continuously merged from upstream.</td></tr>
-        <tr><td><b><a href="https://git.outfoxxed.me/quickshell/quickshell">Quickshell</a></b></td><td>outfoxxed</td><td>The Qt/QML shell framework the UI is built on.</td></tr>
-        <tr><td><b><a href="https://github.com/yayuuu/hyprland-scroll-overview">Scroll Overview</a></b></td><td>yayuuu</td><td>The Hyprland plugin behind the workspace overview.</td></tr>
-        <tr><td><b><a href="https://calamares.io">Calamares</a></b></td><td>Calamares Team</td><td>The graphical installer.</td></tr>
-        <tr><td><b><a href="https://github.com/ful1e5/Bibata_Cursor">Bibata Cursor</a></b></td><td>ful1e5 (<a href="https://github.com/sponsors/ful1e5">Donate</a>)</td><td>The default cursor theme.</td></tr>
-        <tr><td><b><a href="https://github.com/xCaptaiN09/pixie-sddm">Pixie</a></b></td><td>xCaptaiN09</td><td>The SDDM login theme.</td></tr>
-        <tr><td><b><a href="https://github.com/BlueManCZ/hyprmod">hyprmod</a></b></td><td>BlueManCZ</td><td>The keybind editor behind Settings → Keybinds.</td></tr>
-        <tr><td><b><a href="https://archlinux.org">Arch Linux</a></b></td><td>Arch Linux team (<a href="https://github.com/sponsors/archlinux">Donate</a>)</td><td>The base distribution.</td></tr>
+        <tr><td><b><a href="https://github.com/end-4/dots-hyprland" target="_blank" rel="noopener">illogical-impulse</a></b></td><td>end-4 (<a href="https://github.com/sponsors/end-4" target="_blank" rel="noopener">Donate</a>)</td><td>The desktop shell Mainstream ships — a lean, heavily modified version, continuously merged from upstream.</td></tr>
+        <tr><td><b><a href="https://git.outfoxxed.me/quickshell/quickshell" target="_blank" rel="noopener">Quickshell</a></b></td><td>outfoxxed</td><td>The Qt/QML shell framework the UI is built on.</td></tr>
+        <tr><td><b><a href="https://github.com/yayuuu/hyprland-scroll-overview" target="_blank" rel="noopener">Scroll Overview</a></b></td><td>yayuuu</td><td>The Hyprland plugin behind the workspace overview.</td></tr>
+        <tr><td><b><a href="https://calamares.io" target="_blank" rel="noopener">Calamares</a></b></td><td>Calamares Team</td><td>The graphical installer.</td></tr>
+        <tr><td><b><a href="https://github.com/ful1e5/Bibata_Cursor" target="_blank" rel="noopener">Bibata Cursor</a></b></td><td>ful1e5 (<a href="https://github.com/sponsors/ful1e5" target="_blank" rel="noopener">Donate</a>)</td><td>The default cursor theme.</td></tr>
+        <tr><td><b><a href="https://github.com/xCaptaiN09/pixie-sddm" target="_blank" rel="noopener">Pixie</a></b></td><td>xCaptaiN09</td><td>The SDDM login theme.</td></tr>
+        <tr><td><b><a href="https://github.com/BlueManCZ/hyprmod" target="_blank" rel="noopener">hyprmod</a></b></td><td>BlueManCZ</td><td>The keybind editor behind Settings → Keybinds.</td></tr>
+        <tr><td><b><a href="https://archlinux.org" target="_blank" rel="noopener">Arch Linux</a></b></td><td>Arch Linux team (<a href="https://github.com/sponsors/archlinux" target="_blank" rel="noopener">Donate</a>)</td><td>The base distribution.</td></tr>
       </tbody>
     </table>
 
@@ -2499,7 +2503,8 @@ PAGES['overview-launcher'] = {
       <figcaption>Open single apps or whole folders of apps at once, and rearrange your open apps across your workspaces.</figcaption>
     </figure>
 
-    <p>The launcher matches your Dock: the search panel, the dim behind it and the app list take the Dock's color and transparency, and the app list also takes its roundness. With the overview switched off, the launcher opens on your full app list with search still on top; a switch in Interface settings brings back the short list if you prefer it.</p>
+    <p>Both launchers match your Dock: the search panel and the app list take the Dock's  roundness. With the overview switched off, the launcher opens on your full app list with search still on top; a switch in Interface settings brings back the short list if you prefer it.</p>
+    <p>The regular launcher keeps its configurable workspace grid in <strong>Settings &rarr; Interface &rarr; Launcher Overview</strong>. Right-click a workspace in either launcher to rename it; named workspaces show their title inside a pill on the preview.</p>
 
     <h2>The scrolling overview</h2>
     <p>Sweep the cursor into the hot corner (top left) or press <code>SUPER</code> + <code>O</code> and the desktop zooms out into a map of your workspaces. Scroll across the workspace, drag windows between them, and click anywhere to dive back in. Combine it with the Scrolling layout in <strong><a href="#layouts">Settings → Layouts</a></strong> and you get the full niri-like experience.</p>

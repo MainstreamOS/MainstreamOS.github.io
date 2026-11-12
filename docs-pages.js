@@ -48,6 +48,7 @@ const I = {
   send:    '<path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4Z"/>',
   tag:     '<path d="M3 12V4h8l9 9-8 8-9-9Z"/><circle cx="7.5" cy="7.5" r="1.25"/>',
   phone:   '<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/>',
+  island:  '<rect x="6" y="4" width="12" height="5" rx="2.5"/><rect x="3" y="11" width="18" height="9" rx="2"/>',
   vr:      '<path d="M4 7h16a2 2 0 0 1 2 2v6a2 2 0 0 1-2 2h-4.5l-2-2.5h-3l-2 2.5H4a2 2 0 0 1-2-2V9a2 2 0 0 1 2-2Z"/><circle cx="8" cy="11.5" r="1.5"/><circle cx="16" cy="11.5" r="1.5"/>',
 };
 
@@ -2586,6 +2587,49 @@ PAGES.sidebars = {
     ${shot('Right-Sidebar-Calendar.webp','The calendar with an event popup open','Calendar events pop out in place — deadlines included.')}
     <p>You don\'t even have to open the sidebar to check your schedule — pressing the <strong>date and time</strong> in the bar pops the same calendar events and task list out on their own.</p>
     ${shot('Bar-Task-List-Popup.webp','Calendar events and a task list popping out from the bar\'s clock','Press the date and time in the bar to see your calendar events and task list from anywhere.')}
+  `
+};
+
+
+PAGES['dynamic-island'] = {
+  group: 'Desktop', title: 'Dynamic Island', icon: 'island', navTitle: 'Dynamic Island',
+  lede: 'A small island at the top of the screen that opens into whatever you need: controls, music, notifications, your day, and your phone.',
+  render: () => `
+    <figure>
+      <div class="shot">
+        <video src="assets/docs/Island-Overview.mp4" autoplay loop muted playsinline controls style="width:100%;display:block"></video>
+      </div>
+      <figcaption>The Dynamic Island — opening on hover and stepping through panels, then opening by itself for an incoming text.</figcaption>
+    </figure>
+
+    <p>The Dynamic Island is a style for the bar. Instead of a strip across the whole screen, a small island sits at the top center showing the time. Rest the pointer on it and it opens into a panel; move away and it tucks itself back in. Choose it in <strong>Settings &rarr; Bar</strong>, and pick its shape there too: Notch, Float or Rect.</p>
+
+    <h2>Panels</h2>
+    <p>Use the arrows beside the panel title to move between panels. Scrolling there switches workspaces instead, like scrolling on the bar.</p>
+    <ul>
+      <li><strong>System:</strong> volume, brightness, Wi-Fi, Bluetooth and the rest of your quick settings.</li>
+      <li><strong>Media:</strong> album art and playback controls for whatever is playing. A music app that starts playing brings this panel up first.</li>
+      <li><strong>Notifications:</strong> everything waiting for you, with replies and actions right in the list. With <strong>Show desktop notifications in the Island</strong> on in Settings &rarr; Bar, your desktop's notifications open the island instead of appearing as floating pop-ups.</li>
+      <li><strong>Weather</strong>, <strong>Timers</strong> (Pomodoro, stopwatch and countdown) and <strong>Calendar &amp; tasks</strong>.</li>
+      <li><strong>Calls</strong> and <strong>Messages</strong> from your phone, with your recent call history.</li>
+      <li><strong>Resources &amp; Utility:</strong> how busy your processor, memory and graphics card are.</li>
+    </ul>
+    <p>Turn panels off or reorder them under <strong>Island panels</strong> in Settings &rarr; Bar.</p>
+    ${shot('Island-Panels-Settings.webp','Settings Bar with the Island style choices and the Island panels list')}
+
+    <h2>Calls and messages</h2>
+    <p>With your phone paired (see <a href="#phone">Phone</a>), the island opens by itself for an incoming call, a text or a phone notification, then closes again after a few seconds. Answer or decline a call, call someone back, or reply to a message without picking up the phone, by typing or by recording a voice reply.</p>
+    ${shot('Island-Incoming-Call.webp','The island open for an incoming call, with the caller\'s picture and the answer and decline buttons')}
+    ${shot('Island-Message-Reply.webp','The island showing a text message with the reply field and the voice reply button')}
+    ${callout('tip','Private while you stream','Enable <strong>Disable calls, messages, and phone notifications while streaming</strong> under <strong>Connect phone services</strong> in Settings &rarr; Bar to pause automatic phone pop-ups while Discord or OBS is open. Choose either app or both; native and Flatpak versions are detected. You can still open the phone panels yourself.')}
+    <p><strong>Contact privacy</strong> appears while a phone is connected and lets you choose how much caller and contact information the island shows. The system panel also opens matching audio, network, Bluetooth and Night Light controls, including the Night Light mode and intensity.</p>
+
+    <h2>Send files by dropping them</h2>
+    <p>Drag files onto the island to send them to a phone, tablet or computer nearby with <a href="#sharing">LocalSend</a>.</p>
+    ${/* pendingShot('Island-LocalSend-Drop.mp4','Video: dragging two files from the file manager onto the island and choosing a nearby phone.') */ ''}
+
+    <h2>Search apps from the island</h2>
+    <p>Switch on <strong>Use Dynamic Island as your App Drawer</strong> and pressing <strong>Super</strong> opens app search right in the island, ready to type. Google Lens, music recognition and session buttons sit beside the search field. The island keeps its normal panels the rest of the time.</p>
   `
 };
 

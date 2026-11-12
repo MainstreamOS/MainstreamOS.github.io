@@ -63,6 +63,15 @@ const shot = (src, alt, cap) => `
     ${cap ? `<figcaption>${cap}</figcaption>` : ''}
   </figure>`;
 
+// A picture or clip still to be captured: a labeled frame where it will go.
+const pendingShot = (file, what, cap) => `
+  <figure>
+    <div class="shot" style="aspect-ratio:16/9;display:grid;place-items:center;border:2px dashed currentColor;opacity:.55;text-align:center;padding:16px">
+      <div><strong>${file}</strong><br>${what}</div>
+    </div>
+    ${cap ? `<figcaption>${cap}</figcaption>` : ''}
+  </figure>`;
+
 const twoShot = (a, ac, b, bc) => `
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:1000px;margin:0 0 32px">
     <figure style="margin:0"><div class="shot"><img src="assets/docs/${a}" alt=""/></div>${ac ? `<figcaption>${ac}</figcaption>` : ''}</figure>
@@ -531,6 +540,19 @@ PAGES.bar = {
     </div>
     <p><strong>Reset to default transparency</strong> returns both sliders to following the interface. The tracks cannot express that state on their own, so this is the only way back to it.</p>
 
+    <h2>Solid, Frost and Glass</h2>
+    <p>The <strong>Backdrop</strong> section gives the Bar a look in one click. <strong>Solid</strong> is the original surface. <strong>Frost</strong> lays a soft, milky blur of your wallpaper behind it. <strong>Glass</strong> keeps the wallpaper clearer and slightly magnified, like looking through a lens. A preset applies to the Bar, the Dynamic Island and the Dock together, so the three always match.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Blur preset</div></center><div class="v">Solid, Frost, Glass, or any preset you saved yourself.</div></div>
+      <div class="prop"><center><div class="k">Blur amount</div></center><div class="v">How soft the wallpaper behind the Bar looks.</div></div>
+      <div class="prop"><center><div class="k">Haze</div></center><div class="v">A thin white layer over the blur. More haze reads as frost.</div></div>
+      <div class="prop"><center><div class="k">Magnification</div></center><div class="v">How much larger the wallpaper shows behind the Bar.</div></div>
+      <div class="prop"><center><div class="k">Horizontal and vertical offset</div></center><div class="v">How far the magnified wallpaper slides.</div></div>
+      <div class="prop"><center><div class="k">Save preset</div></center><div class="v">Keeps your own mix under a name, next to the three built in.</div></div>
+    </div>
+    <p>The launcher follows along: with Frost its panels turn frosted, and with Glass the workspace panel lets the launcher's blur show through. The same three presets are buttons in the Welcome app.</p>
+    ${/* pendingShot('Bar-Blur-Presets.webp','Screenshot: the same Bar in Solid, Frost and Glass over one wallpaper.') */ ''}
+
     <h2>Colors</h2>
     <p><strong>Background</strong> gives the strip a color of your own, by swatch or by hex. <strong>Widget pills</strong> does the same for the group pills, set apart from the strip, and is not offered when Group style is Line-separated. Leave either empty and it follows the theme, changing with your wallpaper like everything else. <strong>Reset to default colors</strong> empties every slot at once, which saves working out that an emptied box is how you say you want no color of your own.</p>
     ${callout('note','Each mode keeps its own colors', '<p>Dark mode and light mode store these separately, so a color picked in one does not follow you into the other. Set them twice if you move between them.</p>')}
@@ -620,6 +642,13 @@ PAGES.dock = {
     <p class="shot-note">What the dock looks like rather than how it behaves: its shape, how solid its surface is, and its color.</p>
     ${shot('DockConfig-2.webp','Dock shape, transparency and colors')}
 
+    <h2>The app menu</h2>
+    <p>Right-click an app that has open windows and choose <strong>Move to workspace</strong> to send all of its windows somewhere else. The workspace you are on is highlighted, and when it has no name of its own it is listed as <strong>Current</strong>, so bringing the app over to where you are is one click.</p>
+    <div class="props">
+      <div class="prop"><center><div class="k">Move to workspace shows</div></center><div class="v"><span class="tag">Both</span> the default, with a row of workspace numbers and a list of your named workspaces. Choose <span class="tag">Workspace numbers</span> or <span class="tag">Named workspaces</span> to show only one.</div></div>
+    </div>
+    ${/* pendingShot('Dock-Move-To-Workspace.webp','Screenshot: the Dock app menu with Move to workspace, the numbers row and the named list led by Current.') */ ''}
+
     <h2>Shape</h2>
     <div class="props">
       <div class="prop"><center><div class="k">Corner style</div></center><div class="v"><span class="tag">Float</span> the dock floats clear of the edge with a margin around it, the default &nbsp; <span class="tag">Rect</span> a plain rectangle with no rounding &nbsp; <span class="tag">Notch</span> sits against the edge and curves away from it, so the screen edge appears to fold around the dock. &nbsp; <span class="tag">Hug</span> runs the whole length of the edge facing the Bar, like a taskbar, with smaller icons to match. Each style remembers its own roundness, so shaping one leaves the others as they were.</div></div>
@@ -633,9 +662,22 @@ PAGES.dock = {
       <div class="prop"><center><div class="k">Background</div></center><div class="v">How far through that surface you can see. Slide it down for a dock that reads as part of the wallpaper, up for one that reads as a solid shelf.</div></div>
     </div>
 
+    <h2>Solid, Frost and Glass</h2>
+    <p>The Dock has the same <strong>Backdrop</strong> presets as the <a href="#bar">Bar</a>, and choosing one sets both. A Frost Dock keeps its frosted look while the launcher is open. A Glass Dock fades to its plain surface over the launcher, then fades back when the launcher closes.</p>
+    ${/* pendingShot('Dock-Blur-Presets.webp','Screenshot: the Dock in Frost and in Glass, at rest and over the open launcher.') */ ''}
+
     <h2>Colors</h2>
     <p><strong>Dock background</strong> takes a color of your own, either from the swatch or by typing a hex value. Leave it empty and the dock follows the theme, changing with your wallpaper like everything else.</p>
     ${callout('note','Each mode keeps its own color', '<p>Dark mode and light mode store the dock color separately, so a color picked in one does not follow you into the other. Set it twice if you switch between them.</p>')}
+
+    <h2>More ways to style it</h2>
+    <ul>
+      <li><strong>Bubble</strong> hover animation and <strong>Minimal</strong> window indicators, in every Dock style.</li>
+      <li>Set the launcher button's icon size and the spacing of its dots, and turn the icon separators on or off.</li>
+      <li>Set <strong>Screen edge padding</strong> for Float docks. Notch, Rect and Hug stay against the edge and hide this setting.</li>
+      <li><strong>Reset to default shape</strong> resets the launcher icon size and dot spacing along with the Dock shape. Existing users keep their familiar launcher button size when updating.</li>
+    </ul>
+    ${/* pendingShot('Dock-Bubble-Hover.mp4','Video: the pointer moving across the Dock with the Bubble hover animation and Minimal indicators under open apps.') */ ''}
   `
 };
 
@@ -777,10 +819,6 @@ PAGES.background = {
       <div class="prop"><center><div class="k">Preferred wallpaper zoom (%)</div></center><div class="v">Baseline zoom level. 100% shows the image at screen size; &gt;100% crops in and gives panning more room.</div></div>
     </div>
 
-    <h2>Frosted glass</h2>
-    <p>Switch on <b>Frosted widget backgrounds</b> and every widget card blurs the wallpaper behind it instead of sitting on a flat color, with a slider for how soft the blur is.</p>
-    <p>It ships off. Each card that is on pays for its own blur, so a machine with older graphics is left alone unless you ask for it, and nothing is built at all while the switch is off.</p>
-
     <h2>Widget: Clock</h2>
     <p>The giant time readout is the signature of the default Mainstream wallpaper. Everything about it is adjustable — position, style, font, whether it shows the date, whether it's only visible when the screen is locked.</p>
 
@@ -817,6 +855,9 @@ PAGES.background = {
     <h3>Quote</h3>
     <p>Enable it and a quote string appears beneath the clock. Useful for a personal mantra on the lock screen.</p>
 
+    <p>The clock can stand behind your wallpaper: turn on the <strong>depth effect</strong> and whatever is in front in the picture passes in front of the clock. The first time, it downloads about 75 MB. You can also change the digital clock's color and the pixel clock's accent, resize the cookie and pixel clocks, and resize or recolor the weather widget. Settings only shows what the clock you picked can use.</p>
+    ${shot('Clock-Depth-Effect.webp','The clock with the depth effect, part of the wallpaper passing in front of it','The clock depth effect — part of the wallpaper passes in front of the clock numbers.')}
+
     <h2>Widget: Weather</h2>
     <p>A compact weather card with icon, temperature, and forecast. Same data source as the bar\'s weather module. Positioning controls mirror the Clock widget — Draggable / Least busy / Most busy.</p>
 
@@ -846,6 +887,10 @@ PAGES.background = {
       <div class="prop"><center><div class="k">Most busy</div></center><div class="v">Sits inside the detail of the picture, as a deliberate hero element.</div></div>
       <div class="prop"><center><div class="k">Lock widget positions</div></center><div class="v">Pins every widget where it stands, so a stray drag cannot move one.</div></div>
     </div>
+
+    <h2>Widget appearance</h2>
+    <p><strong>Blur preset</strong> picks what sits behind the desktop widget cards, every widget but the Clock and Weather. <span class="tag">Follow UI blur preset</span> matches the Dock, so the whole desktop changes together, and while the Dock is Solid the cards are too. <span class="tag">Solid</span> keeps each card on a flat color. <span class="tag">Frost</span> and <span class="tag">Glass</span> hold the widgets on one look whatever the rest of the desktop does. <span class="tag">Blur</span> is a plain blur of the wallpaper, with a <strong>Blur amount</strong> slider for how soft it is. On a bright wallpaper the cards firm up just enough to keep their text readable.</p>
+    <p>Each card that is on pays for its own blur, so Solid is the light choice for older graphics, and nothing is built at all while the cards are Solid. With a video wallpaper the cards show as Solid.</p>
 
   `
 };
@@ -913,6 +958,9 @@ PAGES.decorations = {
 
     <p class="shot-note">Dimming of the windows you are not using, border colors, the window shadow, and the animation style.</p>
     ${shot('DecorationsConfig-3.webp?v=2','Window dim, border color, shadow and animations')}
+
+    <h2>Blur presets</h2>
+    <p><strong>Blur preset</strong> sits above Blur style and sets the whole blur in one click: <strong>Solid</strong> for the familiar soft blur, <strong>Frost</strong> for a milkier one, and <strong>Glass</strong> for a clear blur with a magnifying lens around the edges of each window. With Glass, <strong>Magnification</strong>, <strong>Lens width</strong> and <strong>Clarity</strong> fine-tune the lens. Save your own mix as a preset, and pick from the same three presets on the Welcome app's windows page.</p>
 
     <h2>Window dim</h2>
     <p>Darkens whatever you are not working in, which is the quietest way to keep your eye on the right window.</p>
@@ -2587,6 +2635,10 @@ PAGES.sidebars = {
     ${shot('Right-Sidebar-Calendar.webp','The calendar with an event popup open','Calendar events pop out in place — deadlines included.')}
     <p>You don\'t even have to open the sidebar to check your schedule — pressing the <strong>date and time</strong> in the bar pops the same calendar events and task list out on their own.</p>
     ${shot('Bar-Task-List-Popup.webp','Calendar events and a task list popping out from the bar\'s clock','Press the date and time in the bar to see your calendar events and task list from anywhere.')}
+
+    <h2>A sidebar in its own window</h2>
+    <p>Detach a sidebar to keep it in a window of its own, with its own icon in the Dock, and put it back from its menu when you are done.</p>
+    <p>Both sidebars now share the Dynamic Island's look, from the calendar and to-do list to the quick toggles and the Wi-Fi and Bluetooth lists.</p>
   `
 };
 

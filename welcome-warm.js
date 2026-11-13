@@ -179,6 +179,64 @@ PAGES['blog'] = {
   navTitle: 'Blog',
   lede: 'Release announcements and project updates.',
   render: () => `
+    <div class="eyebrow">Release &middot; 4.1.0 &middot; November 14, 2026</div>
+    <h2 id="mainstream-os-4-1-0">Mainstream OS 4.1.0, &ldquo;Project Ant Man&rdquo;: size it your way</h2>
+
+    <p>This release is all about scale and polish. We call it <strong>Project Ant Man</strong> because so many parts of the desktop can now shrink or grow on command. The Bar, the Dynamic Island and the text on your screen each get a size of their own, so a small laptop, a 4K monitor and a TV across the room can all look right without touching your display scale. Around that, the Island learns a few new things, notifications can open their links, the Phone tab reaches further back in your conversations, and Storage can make room on your boot partition before a kernel update needs it.</p>
+
+    <h2>The Dynamic Island, small or large</h2>
+    <p>The Island gets two sliders in the same place, because it has two states. <strong>Size</strong> sets the Island while it is closed, from 80% to 150%, so the clock at the top of your screen can be as quiet or as readable as you like. <strong>Panel size</strong> sets the Island while it is open, from 80% to 180%, and scales every panel with it: quick settings, media, notifications, weather and the rest. Keep a small Island that opens into large, easy-to-read panels, or the other way around.</p>
+    ${shot('Island-Size.webp','Screenshot: the Dynamic Island closed and open, each at a small and a large size.','The Island closed and open. Each state keeps its own size.')}
+
+    <h2>A Bar the size you want</h2>
+    <p>Open <strong>Settings &rarr; Bar</strong> and look under <strong>Shape</strong> for the new <strong>Size</strong> slider. Drag it anywhere from 80% to 150% and the whole Bar follows: its height, its icons, its text and the spacing between them. Go smaller to give your windows a little more room, or larger if the Bar has always felt like a thin strip on a big screen.</p>
+    ${shot('Bar-Size.webp','Screenshot: the traditional Bar at 80%, 100% and 150%, stacked for comparison.','The Bar at 80%, 120%, and 150%.')}
+
+    <h2>Text size, apart from display scale</h2>
+    <p>Until now, the only way to get bigger text was to raise your display scale, which makes everything bigger and fits less on the screen. <strong>Settings &rarr; Display</strong> now has a <strong>Text size</strong> section with two sliders that change the text and nothing else.</p>
+    <ul>
+      <li><strong>UI text size</strong>, from 80% to 130%, covers Mainstream itself: the sidebars, menus, notifications and Settings. They make room as the text grows, so nothing is cut off.</li>
+      <li><strong>App font size</strong>, from 80% to 200%, covers your apps. GTK and Qt apps and Firefox follow it. Electron apps keep using their own zoom controls.</li>
+    </ul>
+    <p>The two are separate on purpose. You can read your apps comfortably at 150% and keep the desktop around them compact, and one button puts both back to the default.</p>
+    ${shot('Text-Size.webp','Screenshot: Settings, Display, Text size with both sliders raised, beside a sidebar and an app showing the larger text.','Text size in Settings &rarr; Display. Desktop text and app text each have their own slider.')}
+
+    <h2>More in the Island</h2>
+    <p>The weather panel now shows the next four days alongside the next four hours. It alternates between the two while it is open, and scrolling over the forecast switches right away. Your forecast and cover art are ready as the Weather and Media panels open, so there is nothing to wait for.</p>
+    <p>When a release is waiting, the Island can show a small badge beside the clock. Open <strong>Update available</strong> from the Island to read what is new in each waiting release, and the Update page in Settings shows the same notes with a link to the full changelog. The notifications panel has a <strong>Clear all</strong> button, and the Hug Dock can now run down either side of the screen with the Island.</p>
+
+    <h2>Notifications that open their links</h2>
+    <p>Desktop and Island notifications have a new <strong>Open link</strong> button that opens the link in your browser. It works for notifications from your phone too. Phones often pass an alert along without the link behind it, so for apps like Reddit and X, Open link looks the post up for you, and for apps like Gmail it opens the app's site.</p>
+
+    <h2>Further back in your conversations</h2>
+    <p>The Phone tab now opens a conversation with its latest 100 messages, which makes long threads quick to open. Scroll to the top and the older messages load in, without losing your place. YouTube links play inline again, and if a video cannot load, the player stops waiting and offers to open it in your browser. Photos, videos and voice notes you sent can load from your phone when the original file on your computer is gone or has changed.</p>
+
+    <h2>Room for the next kernel</h2>
+    <p><strong>Settings &rarr; Storage</strong> now shows how much room is left on your EFI boot partition, the small partition your computer starts from. If it is filling up, choose <strong>Expand size</strong> on supported layouts to make room for extra kernels or more snapshots. Mainstream builds the larger partition beside the one you have and checks it before switching over, so the partition you boot from today stays bootable the whole time. Storage also shows how much space your AppImages take up.</p>
+
+    <h2>Quicker and lighter</h2>
+    <p>The launcher opens faster, and its workspace previews stay visible as you switch windows or workspaces. The sidebars and some phone features now load as you use them, which lowers memory use while the desktop is idle. Glass has a clearer look by default, and the Dock follows the launcher and Alt+Tab backdrops in both Frost and Glass. The left sidebar's Media tab gets a volume slider and shows more of the cover art your player supplies, including embedded images and local artwork.</p>
+
+    <h2>Laptops and hardware</h2>
+    <ul>
+      <li><strong>Clamshell mode.</strong> Under <strong>Display &rarr; Lid Behavior</strong>, work on an external screen with the lid closed. The built-in screen comes back when you open the lid, and <strong>Sleep on lid close</strong> chooses what happens when you are undocked.</li>
+      <li><strong>Hybrid NVIDIA laptops.</strong> When integrated graphics drive the display, video decoding now uses the integrated GPU, which fixes black or stuttering video in browsers and Electron apps.</li>
+      <li><strong>Older NVIDIA cards.</strong> Support for legacy NVIDIA drivers is still experimental, and it now recognizes more cards and uses the suspend settings for the driver you have installed.</li>
+      <li><strong>Intel laptops, MacBooks and Broadcom wireless.</strong> Matching drivers, thermal and power management and Wi-Fi stability options are set up on first boot and during updates.</li>
+      <li><strong>New installs.</strong> The ISO includes support for compatible fingerprint readers, newer laptop audio profiles and thermal management on Intel systems. The graphical installer asks for confirmation before it starts, and shows an on-screen keyboard if you start it without a physical one.</li>
+    </ul>
+
+    <h2>Fixes</h2>
+    <ul>
+      <li>System tray menus no longer open cut off, and the left sidebar stays within the screen.</li>
+      <li>Recent messages no longer flicker in the Island, and conversations no longer get stuck when you delete them in the Phone tab.</li>
+      <li>When GitHub is unreachable during an update, Hyprland's title bar and scrolling overview plugins can be rebuilt from saved sources.</li>
+      <li>The setup script uses more prebuilt packages and installs dependencies in groups, so there is less to build on your computer.</li>
+    </ul>
+    <p>The full list is on the <a href="#changelog">Changelog</a>. 4.1.0 is available now in <strong>Settings &rarr; Update</strong> for existing Mainstream installs.</p>
+
+    <hr style="margin:48px 0;opacity:.3">
+
     <div class="eyebrow">Release &middot; 4.0.0 &middot; November 4, 2026</div>
     <h2 id="mainstream-os-4-0-0">Mainstream OS 4.0.0: an island, new looks, and your phone</h2>
 
